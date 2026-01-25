@@ -3,7 +3,7 @@ import { fetchAPI } from '@/lib/api';
 import { Calendar } from 'lucide-react';
 
 export default async function LatestBlogPosts() {
-  const data = await fetchAPI('/blog?take=3');
+  const data = await fetchAPI('/blog?take=3').catch(() => ({ items: [] }));
   const posts = data?.items || data || [];
 
   if (!posts || posts.length === 0) return null;

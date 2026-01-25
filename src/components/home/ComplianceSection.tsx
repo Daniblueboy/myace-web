@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, Award, Shield } from 'lucide-react';
 
 export default async function ComplianceSection() {
-  const items = await fetchAPI('/compliance?displayOnHome=true');
+  const items = await fetchAPI('/compliance?displayOnHome=true').catch(() => []);
 
   if (!items || items.length === 0) return null;
 
