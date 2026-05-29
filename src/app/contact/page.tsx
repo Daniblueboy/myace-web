@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -272,7 +273,7 @@ function ContactContent() {
                   Explore our estates and the land or apartment options within each.
                 </p>
                 <Button variant="secondary" className="w-full" asChild>
-                  <a href="/estates">Explore Estates</a>
+                  <Link href="/estates">Explore Estates</Link>
                 </Button>
               </div>
             </div>

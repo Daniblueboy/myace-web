@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/theme-provider';
 import { QueryProvider } from '@/components/query-provider';
 import { PublicChrome } from '@/components/layout/PublicChrome';
+import { NavigationProgress } from '@/components/layout/NavigationProgress';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +29,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <QueryProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <Suspense fallback={null}>
+              <NavigationProgress />
+            </Suspense>
             <PublicChrome>{children}</PublicChrome>
             <Toaster position="top-right" richColors />
           </ThemeProvider>

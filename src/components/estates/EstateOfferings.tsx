@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FileImage } from 'lucide-react';
 
@@ -135,7 +136,7 @@ export default function EstateOfferings({ properties = [] }: { properties: any[]
               )}
             </div>
             <Button asChild className="w-full" disabled={!option.available}>
-              <a href="/book-inspection">Book Inspection</a>
+              <Link href="/book-inspection">Book Inspection</Link>
             </Button>
           </div>
         ))}

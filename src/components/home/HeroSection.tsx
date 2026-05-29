@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -97,10 +98,10 @@ export default function HeroSection() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Button size="lg" asChild>
-            <a href="/estates">Explore Estates</a>
+            <Link href="/estates">Explore Estates</Link>
           </Button>
           <Button size="lg" variant="outline" className="bg-transparent !text-white border-white hover:bg-white hover:!text-primary" asChild>
-            <a href="/book-inspection">Book Inspection</a>
+            <Link href="/book-inspection">Book Inspection</Link>
           </Button>
         </div>
         
