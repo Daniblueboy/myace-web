@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
+import { API_URL } from '@/lib/api';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -86,11 +87,10 @@ export function PropertyForm({ initialData, onSubmit, loading, estates = [] }: P
   const { showAlert } = useAdminModal();
 
   async function uploadFile(file: File, folder: string) {
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
     const formData = new FormData();
     formData.append('file', file);
     formData.append('folder', folder);
-    const res = await fetch(`${apiBase}/admin/uploads`, {
+    const res = await fetch(`${API_URL}/admin/uploads`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

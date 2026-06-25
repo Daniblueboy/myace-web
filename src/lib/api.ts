@@ -1,15 +1,19 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+import { getFallbackData } from '@/lib/fallback-data';
 
-// Shorter timeout for build-time fetches to prevent Vercel timeouts
-const FETCH_TIMEOUT = process.env.NODE_ENV === 'production' ? 10000 : 30000;
+export const API_URL = (
+  process.env.NEXT_PUBLIC_API_URL || 'https://aceroyal-api.onrender.com/api/v1'
+).replace(/\/$/, '');
+
+// Render free services can take close to a minute to wake from idle.
+const FETCH_TIMEOUT = process.env.NODE_ENV === 'production' ? 75000 : 30000;
 
 export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+  const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
 
   try {
-    const res = await fetch(`${API_URL}${endpoint}`, {
+    const res = await fetch(`${API_URL}${path}`, {
       ...options,
       signal: controller.signal,
       headers: {
@@ -28,12 +32,19 @@ export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
     }
 
     return res.json();
-  } catch (error: any) {
+  } catch (error: unknown) {
     clearTimeout(timeoutId);
 
+    const apiError = error instanceof Error ? error : null;
     // Return empty data during build if API is unavailable
-    if (error.name === 'AbortError' || error.message?.includes('fetch')) {
-      console.warn(`API fetch failed for ${endpoint}, returning empty data`);
+    if (apiError?.name === 'AbortError' || apiError?.message.includes('fetch')) {
+      const method = options.method || 'GET';
+      const fallbackData = getFallbackData(path, method);
+      if (fallbackData !== undefined) {
+        console.warn(`API fetch failed for ${path}, returning fallback data`);
+        return fallbackData;
+      }
+      console.warn(`API fetch failed for ${path}, returning empty data`);
       return [];
     }
     throw error;
