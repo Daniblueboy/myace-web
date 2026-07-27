@@ -20,7 +20,7 @@ export default async function AboutPage() {
   const teamMembers = await fetchAPI('/team').catch(() => []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
