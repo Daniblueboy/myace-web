@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import HeroSection from '@/components/home/HeroSection';
 import FeaturedEstates from '@/components/home/FeaturedEstates';
 import LatestEstates from '@/components/home/LatestEstates';
@@ -13,24 +14,37 @@ import { StatesSection } from '@/components/home/StatesSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
 import { CtaSection } from '@/components/home/CtaSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import { SectionSkeleton } from '@/components/layout/SectionSkeleton';
 
 export default function HomePage() {
   return (
     <div>
       <HeroSection />
-      <PromoSection />
+      <Suspense fallback={<div className="h-2 animate-pulse bg-primary/10" />}>
+        <PromoSection />
+      </Suspense>
       <CeoWelcomeSection />
-      <FeaturedEstates />
-      <LatestEstates />
+      <Suspense fallback={<SectionSkeleton />}>
+        <FeaturedEstates />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton cards={4} tone="muted" />}>
+        <LatestEstates />
+      </Suspense>
       <WhyChooseUs />
       <ServicesSection />
       <StatesSection />
-      <ComplianceSection />
+      <Suspense fallback={<SectionSkeleton cards={4} tone="muted" />}>
+        <ComplianceSection />
+      </Suspense>
       <PartnersSection />
-      <TestimonialsSection />
+      <Suspense fallback={<SectionSkeleton tone="muted" />}>
+        <TestimonialsSection />
+      </Suspense>
       <AppDownloadSection />
       <NewsletterSection />
-      <LatestBlogPosts />
+      <Suspense fallback={<SectionSkeleton />}>
+        <LatestBlogPosts />
+      </Suspense>
       <CtaSection />
     </div>
   );

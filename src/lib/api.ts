@@ -6,11 +6,20 @@ export const API_URL = (
 
 // Render free services can take close to a minute to wake from idle.
 const FETCH_TIMEOUT = process.env.NODE_ENV === 'production' ? 75000 : 30000;
+export const API_REQUEST_START_EVENT = 'aceroyal:api-request-start';
+export const API_REQUEST_END_EVENT = 'aceroyal:api-request-end';
+
+function dispatchRequestEvent(name: string) {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event(name));
+  }
+}
 
 export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
   const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  dispatchRequestEvent(API_REQUEST_START_EVENT);
 
   try {
     const res = await fetch(`${API_URL}${path}`, {
@@ -48,5 +57,7 @@ export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
       return [];
     }
     throw error;
+  } finally {
+    dispatchRequestEvent(API_REQUEST_END_EVENT);
   }
 }
