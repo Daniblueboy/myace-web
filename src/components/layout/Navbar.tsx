@@ -79,6 +79,7 @@ export function Navbar() {
             </DropdownMenuContent>
           </DropdownMenu>
           <Link href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
+          <Link href="/careers" className="text-sm font-medium hover:text-primary transition-colors">Careers</Link>
           <Link href="/faq" className="text-sm font-medium hover:text-primary transition-colors">FAQs</Link>
           <Link href="/resources" className="text-sm font-medium hover:text-primary transition-colors">Resources</Link>
           <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</Link>
@@ -120,6 +121,7 @@ export function Navbar() {
                           ))}
                         </div>
                         <Link href="/blog" className="text-lg font-medium">Blog</Link>
+                        <Link href="/careers" className="text-lg font-medium">Careers</Link>
                         <Link href="/faq" className="text-lg font-medium">FAQs</Link>
                         <Link href="/resources" className="text-lg font-medium">Resources</Link>
                         <Link href="/contact" className="text-lg font-medium">Contact</Link>

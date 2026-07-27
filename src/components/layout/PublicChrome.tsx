@@ -1,19 +1,14 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { MessageCircle } from 'lucide-react';
 
 export function PublicChrome({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isAdminRoute = pathname.startsWith('/admin');
-
   return (
     <div className="flex flex-col min-h-screen">
-      {!isAdminRoute && <Navbar />}
+      <Navbar />
       <main className="grow">{children}</main>
-      {!isAdminRoute && (
         <a
           href="https://wa.me/2348012345678?text=Hello%20Aceroyal%20Estates%2C%20I%27d%20like%20to%20book%20an%20inspection."
           target="_blank"
@@ -24,8 +19,7 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
           <MessageCircle className="h-5 w-5" />
           Chat with us
         </a>
-      )}
-      {!isAdminRoute && <Footer />}
+      <Footer />
     </div>
   );
 }
