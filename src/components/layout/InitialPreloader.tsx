@@ -8,6 +8,7 @@ const EXIT_ANIMATION_MS = 450;
 
 export function InitialPreloader() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isLogoLoaded, setIsLogoLoaded] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
@@ -53,6 +54,9 @@ export function InitialPreloader() {
       <div className="initial-preloader__mark">
         <div className="initial-preloader__ring" aria-hidden="true" />
         <div className="initial-preloader__logo">
+          <span className="initial-preloader__monogram" aria-hidden="true">
+            AR
+          </span>
           <Image
             src="/images/cropped-cropped-logo-jpeg.jpg"
             alt="Aceroyal Estates"
@@ -60,10 +64,11 @@ export function InitialPreloader() {
             height={64}
             priority
             unoptimized
+            onLoad={() => setIsLogoLoaded(true)}
+            className={isLogoLoaded ? 'initial-preloader__image--loaded' : ''}
           />
         </div>
       </div>
-      <p className="initial-preloader__label">Building lasting value</p>
     </div>
   );
 }
