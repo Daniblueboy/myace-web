@@ -20,7 +20,7 @@ import 'yet-another-react-lightbox/styles.css';
 // Dynamically import map to avoid SSR issues with Leaflet
 const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'), {
   ssr: false,
-  loading: () => <div className="h-[400px] bg-slate-200 rounded-lg animate-pulse" />,
+  loading: () => <div className="h-[400px] rounded-lg bg-slate-100" />,
 });
 
 export default function PropertyDetailPage() {

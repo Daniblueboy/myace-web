@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { QueryProvider } from '@/components/query-provider';
 import { PublicChrome } from '@/components/layout/PublicChrome';
 import { NavigationProgress } from '@/components/layout/NavigationProgress';
+import { InitialPreloader } from '@/components/layout/InitialPreloader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <QueryProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <InitialPreloader />
             <Suspense fallback={null}>
               <NavigationProgress />
             </Suspense>

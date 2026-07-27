@@ -1,6 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
-import FeaturedEstates from '@/components/home/FeaturedEstates';
-import LatestEstates from '@/components/home/LatestEstates';
+import EstateSections from '@/components/home/EstateSections';
 import ComplianceSection from '@/components/home/ComplianceSection';
 import PartnersSection from '@/components/home/PartnersSection';
 import PromoSection from '@/components/home/PromoSection';
@@ -20,8 +19,7 @@ export default function HomePage() {
       <HeroSection />
       <PromoSection />
       <CeoWelcomeSection />
-      <FeaturedEstates />
-      <LatestEstates />
+      <EstateSections />
       <WhyChooseUs />
       <ServicesSection />
       <StatesSection />

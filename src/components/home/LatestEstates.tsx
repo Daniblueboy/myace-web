@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import { fetchAPI } from '@/lib/api';
+import type { Estate } from '@/shared';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default async function LatestEstates() {
-  const data = await fetchAPI('/estates').catch(() => ({ items: [] }));
-  const estates = data?.items || data || [];
+type LatestEstatesProps = {
+  estates: Estate[];
+};
 
-  if (!estates || estates.length === 0) return null;
-
+export default function LatestEstates({ estates }: LatestEstatesProps) {
   return (
     <section className="py-16 bg-slate-50 dark:bg-slate-950">
       <div className="container space-y-8">
@@ -26,7 +25,7 @@ export default async function LatestEstates() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {estates.slice(0, 4).map((estate: any) => (
+          {estates.slice(0, 4).map((estate) => (
             <Link
               key={estate.id}
               href={`/estates/${estate.slug}`}

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Property } from '@/shared';
-import { fetchAPI } from '@/lib/api';
+import { API_ENABLED, fetchAPI } from '@/lib/api';
+import { fallbackEstates, fallbackProperties } from '@/lib/fallback-data';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,9 +14,9 @@ import { useSearchParams } from 'next/navigation';
 
 export default function PropertiesClient() {
   const searchParams = useSearchParams();
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [estates, setEstates] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>(fallbackProperties);
+  const [loading, setLoading] = useState(false);
+  const [estates, setEstates] = useState<any[]>(fallbackEstates);
   const [filters, setFilters] = useState({
     type: '',
     state: '',
@@ -32,7 +33,7 @@ export default function PropertiesClient() {
   const limit = 10;
 
   const fetchProperties = async (overrideFilters = filters, overridePage = page) => {
-    setLoading(true);
+    if (API_ENABLED) setLoading(true);
     try {
       const params = new URLSearchParams();
       if (overrideFilters.type && overrideFilters.type !== 'ALL') params.append('type', overrideFilters.type);
@@ -53,7 +54,7 @@ export default function PropertiesClient() {
     } catch (error) {
       console.error('Failed to fetch properties:', error);
     } finally {
-      setLoading(false);
+      if (API_ENABLED) setLoading(false);
     }
   };
 
@@ -187,11 +188,7 @@ export default function PropertiesClient() {
             </Select>
           </div>
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map(i => (
-                <div key={i} className="h-[400px] bg-slate-100 rounded-xl animate-pulse" />
-              ))}
-            </div>
+            <div className="min-h-64" aria-label="Updating estate offerings" />
           ) : properties.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {properties.map(property => (

@@ -409,8 +409,6 @@ export function getFallbackData(endpoint: string, method = 'GET') {
   const pathname = url.pathname;
   const params = url.searchParams;
 
-  if (pathname.startsWith('/admin') || pathname.startsWith('/auth')) return undefined;
-
   if (pathname === '/estates') {
     const items = paginate(fallbackEstates, params);
     return { items, total: fallbackEstates.length };

@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import { fetchAPI } from '@/lib/api';
+import type { Estate } from '@/shared';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default async function FeaturedEstates() {
-  const data = await fetchAPI('/estates').catch(() => ({ items: [] }));
-  const estates = data?.items || data || [];
+type FeaturedEstatesProps = {
+  estates: Estate[];
+};
 
-  if (!estates || estates.length === 0) return null;
-
+export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
   return (
     <section className="py-16 bg-white dark:bg-slate-950">
       <div className="container">
@@ -25,7 +24,7 @@ export default async function FeaturedEstates() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {estates.slice(0, 3).map((estate: any) => (
+          {estates.slice(0, 3).map((estate) => (
             <Link
               key={estate.id}
               href={`/estates/${estate.slug}`}
