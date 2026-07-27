@@ -3,9 +3,10 @@ import { getFallbackData } from '@/lib/fallback-data';
 export const API_URL = (
   process.env.NEXT_PUBLIC_API_URL || 'https://aceroyal-api.onrender.com/api/v1'
 ).replace(/\/$/, '');
+export const API_ENABLED = process.env.NEXT_PUBLIC_API_ENABLED === 'true';
 
-// Render free services can take close to a minute to wake from idle.
-const FETCH_TIMEOUT = process.env.NODE_ENV === 'production' ? 75000 : 30000;
+// Public pages fall back quickly instead of holding visible sections on a cold API.
+const FETCH_TIMEOUT = process.env.NODE_ENV === 'production' ? 8000 : 5000;
 export const API_REQUEST_START_EVENT = 'aceroyal:api-request-start';
 export const API_REQUEST_END_EVENT = 'aceroyal:api-request-end';
 
@@ -19,18 +20,34 @@ export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
   const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const method = (options.method || 'GET').toUpperCase();
+  const fallbackData = getFallbackData(path, method);
+
+  if (!API_ENABLED) {
+    if (method === 'GET') {
+      return fallbackData ?? [];
+    }
+
+    throw new Error(
+      'Online submissions are temporarily unavailable. Please contact Aceroyal Estates directly.'
+    );
+  }
+
+  const cacheOptions =
+    method === 'GET'
+      ? { next: { revalidate: 300 } }
+      : { cache: 'no-store' as RequestCache };
   dispatchRequestEvent(API_REQUEST_START_EVENT);
 
   try {
     const res = await fetch(`${API_URL}${path}`, {
+      ...cacheOptions,
       ...options,
       signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         ...options.headers,
       },
-      // Don't cache during build to get fresh data
-      cache: 'no-store',
     });
 
     clearTimeout(timeoutId);
@@ -47,8 +64,6 @@ export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
     const apiError = error instanceof Error ? error : null;
     // Return empty data during build if API is unavailable
     if (apiError?.name === 'AbortError' || apiError?.message.includes('fetch')) {
-      const method = options.method || 'GET';
-      const fallbackData = getFallbackData(path, method);
       if (fallbackData !== undefined) {
         console.warn(`API fetch failed for ${path}, returning fallback data`);
         return fallbackData;

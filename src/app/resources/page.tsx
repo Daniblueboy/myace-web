@@ -72,11 +72,11 @@ export default async function ResourcesPage({
         <div className="container mx-auto px-4">
           <div className="flex flex-row gap-4 items-center max-w-xl mx-auto">
             <div className="flex-1">
-              <Suspense fallback={<div className="h-10 bg-muted animate-pulse rounded-md" />}>
+              <Suspense fallback={null}>
                 <SearchInput placeholder="Search resources..." />
               </Suspense>
             </div>
-            <Suspense fallback={<div className="h-10 w-[180px] bg-muted animate-pulse rounded-md" />}>
+            <Suspense fallback={null}>
               <EstateFilter estates={estates} />
             </Suspense>
           </div>

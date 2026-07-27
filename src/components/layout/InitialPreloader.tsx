@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const MINIMUM_DISPLAY_MS = 900;
+const MINIMUM_DISPLAY_MS = 1600;
 const EXIT_ANIMATION_MS = 450;
 
 export function InitialPreloader() {
@@ -59,6 +59,7 @@ export function InitialPreloader() {
             width={156}
             height={64}
             priority
+            unoptimized
           />
         </div>
       </div>
