@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
 
 type Promo = {
   id: string;
@@ -152,7 +153,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
                 <div
                   className="prose prose-sm dark:prose-invert max-w-none"
                   dangerouslySetInnerHTML={{
-                    __html: activePromo.details,
+                    __html: DOMPurify.sanitize(activePromo.details),
                   }}
                 />
               ) : (

@@ -25,6 +25,7 @@
     "@types/leaflet": "^1.9.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "isomorphic-dompurify": "^3.23.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.562.0",
     "next": "16.2.12",
