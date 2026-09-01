@@ -164,12 +164,10 @@ export function Navbar() {
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
-          {/* Built and ready, not live yet — uncomment once the customer portal is
-              public, and set NEXT_PUBLIC_CUSTOMER_PORTAL_URL in the deployment env.
+          {/* Preview only: set NEXT_PUBLIC_CUSTOMER_PORTAL_URL before the customer portal is actually public. */}
           <Button variant="ghost" asChild>
             <a href={process.env.NEXT_PUBLIC_CUSTOMER_PORTAL_URL || '#'}>Customer Login</a>
           </Button>
-          */}
           <Button asChild><Link href="/book-inspection">Book Inspection</Link></Button>
         </div>
 
