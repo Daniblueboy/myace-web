@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { fetchAPI } from '@/lib/api';
@@ -26,14 +26,6 @@ const RESOURCES_LINKS = [
 ];
 
 const NAV_LINKS_TAIL = [{ href: '/contact', label: 'Contact' }];
-
-const ALL_NAV_LINKS = [
-  ...NAV_LINKS_BEFORE_ESTATES,
-  { href: '/estates', label: 'Estates' },
-  ...NAV_LINKS_AFTER_ESTATES,
-  ...RESOURCES_LINKS,
-  ...NAV_LINKS_TAIL,
-];
 
 const CUSTOMER_PORTAL_URL = 'https://app.myaceroyal.com';
 
@@ -262,25 +254,68 @@ export function Navbar() {
                       </Button>
                     </div>
                     <div className="flex flex-col gap-5 mt-4">
-                        {ALL_NAV_LINKS.map((link) => {
+                        {[...NAV_LINKS_BEFORE_ESTATES, { href: '/estates', label: 'Estates' }, ...NAV_LINKS_AFTER_ESTATES].map((link) => {
                           const active = isActivePath(pathname, link.href);
                           return (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              aria-current={active ? 'page' : undefined}
-                              className={`text-lg font-medium ${active ? 'text-primary' : ''}`}
-                            >
-                              {link.label}
-                            </Link>
+                            <SheetClose asChild key={link.href}>
+                              <Link
+                                href={link.href}
+                                aria-current={active ? 'page' : undefined}
+                                className={`text-lg font-medium ${active ? 'text-primary' : ''}`}
+                              >
+                                {link.label}
+                              </Link>
+                            </SheetClose>
                           );
                         })}
-                        <Button variant="outline" className="w-full mt-2" asChild>
-                          <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
-                            Customer Login
-                          </a>
-                        </Button>
-                        <Button className="w-full" asChild><Link href="/book-inspection">Book Inspection</Link></Button>
+
+                        <div className="pt-1 border-t dark:border-slate-800">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-4 mb-3">
+                            Resources
+                          </p>
+                          <div className="flex flex-col gap-4 pl-2">
+                            {RESOURCES_LINKS.map((link) => {
+                              const active = isActivePath(pathname, link.href);
+                              return (
+                                <SheetClose asChild key={link.href}>
+                                  <Link
+                                    href={link.href}
+                                    aria-current={active ? 'page' : undefined}
+                                    className={`text-base font-medium ${active ? 'text-primary' : 'text-muted-foreground'}`}
+                                  >
+                                    {link.label}
+                                  </Link>
+                                </SheetClose>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {NAV_LINKS_TAIL.map((link) => {
+                          const active = isActivePath(pathname, link.href);
+                          return (
+                            <SheetClose asChild key={link.href}>
+                              <Link
+                                href={link.href}
+                                aria-current={active ? 'page' : undefined}
+                                className={`text-lg font-medium border-t dark:border-slate-800 pt-4 ${active ? 'text-primary' : ''}`}
+                              >
+                                {link.label}
+                              </Link>
+                            </SheetClose>
+                          );
+                        })}
+
+                        <SheetClose asChild>
+                          <Button variant="outline" className="w-full mt-2" asChild>
+                            <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
+                              Customer Login
+                            </a>
+                          </Button>
+                        </SheetClose>
+                        <SheetClose asChild>
+                          <Button className="w-full" asChild><Link href="/book-inspection">Book Inspection</Link></Button>
+                        </SheetClose>
                     </div>
                 </SheetContent>
             </Sheet>

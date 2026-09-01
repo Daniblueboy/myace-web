@@ -69,6 +69,8 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
     );
   }
 
+  const tourImages: string[] = [...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))];
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <div className="container py-12 md:py-16 space-y-10">
@@ -142,10 +144,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               </div>
             </div>
             <div className="group relative min-h-[280px] lg:min-h-full">
-              <EstateHeroCarousel
-                images={[...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))]}
-                alt={estate.name}
-              />
+              <EstateHeroCarousel images={tourImages} alt={estate.name} />
             </div>
           </div>
         </div>
@@ -200,7 +199,14 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
         ) : null}
 
         <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-          <h2 className="text-2xl font-bold">Virtual Tour</h2>
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h2 className="text-2xl font-bold">Virtual Tour</h2>
+            {!estate.virtualTourUrl && tourImages.length > 0 && (
+              <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                Sample preview
+              </span>
+            )}
+          </div>
           {estate.virtualTourUrl ? (
             <div className="aspect-video rounded-xl overflow-hidden border">
               <iframe
@@ -210,6 +216,16 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
                 allowFullScreen
               />
+            </div>
+          ) : tourImages.length > 0 ? (
+            <div className="space-y-3">
+              <div className="rounded-xl overflow-hidden border h-[320px] md:h-[420px]">
+                <EstateHeroCarousel images={tourImages} alt={`${estate.name} sample walkthrough`} />
+              </div>
+              <p className="text-sm text-muted-foreground">
+                This is a photo-based preview, not a real 360° tour yet. Book an inspection to walk
+                the estate in person.
+              </p>
             </div>
           ) : (
             <div className="rounded-xl border border-dashed p-8 text-center space-y-3">

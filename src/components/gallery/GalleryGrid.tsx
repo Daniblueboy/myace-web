@@ -35,8 +35,8 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         <ImageIcon className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
         <h3 className="text-lg font-semibold mb-2">Photos and videos coming soon</h3>
         <p className="text-muted-foreground">
-          We'll be sharing photos and videos from our allocation events here as they happen.
-          Follow us on social media or check back after our next allocation.
+          We'll be sharing photos and videos here as they happen. Follow us on social media or
+          check back soon.
         </p>
       </div>
     );

@@ -579,13 +579,45 @@ export const fallbackTestimonials: Testimonial[] = [
   },
 ];
 
-// Deliberately empty — no real allocation event photos/videos sourced yet.
-// Do not fill this with stock imagery: unlike hero/mood photography, gallery
-// items specifically claim "this happened at our allocation event," so a
-// stock substitute here would misrepresent something that didn't occur.
-// Populate once Daniel supplies real media (photos/video from an allocation
-// event, ideally hosted on Cloudinary per the earlier asset-storage decision).
-export const fallbackGalleryItems: GalleryItem[] = [];
+// TODO(content): placeholder stock photos standing in so the gallery grid/
+// lightbox can actually be seen and tested before real photos/videos exist.
+// Same treatment as the hero/estate stock imagery elsewhere in this file —
+// swap every item below for real photos (ideally hosted on Cloudinary, per
+// the earlier asset-storage decision) before go-live.
+export const fallbackGalleryItems: GalleryItem[] = [
+  {
+    id: 'fallback-gallery-1',
+    title: 'Allocation Day — Alpha Garden City',
+    mediaType: 'image',
+    mediaUrl: estateImages.alphaGardenCity,
+    estateName: 'Alpha Garden City',
+    active: true,
+  },
+  {
+    id: 'fallback-gallery-2',
+    title: 'Site Inspection Walkthrough',
+    mediaType: 'image',
+    mediaUrl: estateImages.placeholder1,
+    estateName: 'Heritage Estate',
+    active: true,
+  },
+  {
+    id: 'fallback-gallery-3',
+    title: 'Estate Launch Event',
+    mediaType: 'image',
+    mediaUrl: estateImages.placeholder2,
+    estateName: 'Eko Paragon Residence',
+    active: true,
+  },
+  {
+    id: 'fallback-gallery-4',
+    title: 'Client Handover',
+    mediaType: 'image',
+    mediaUrl: estateImages.placeholder3,
+    estateName: 'Downtown Lagos',
+    active: true,
+  },
+];
 
 export const fallbackComplianceItems = [
   {
