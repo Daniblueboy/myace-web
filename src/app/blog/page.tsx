@@ -7,10 +7,15 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
+const TITLE = 'Blog & Insights | Aceroyal Estates';
+const DESCRIPTION = 'Real estate news, investment guides and updates from Aceroyal Estates.';
+
 export const metadata: Metadata = {
   title: 'Blog & Insights',
-  description: 'Real estate news, investment guides and updates from Aceroyal Estates.',
+  description: DESCRIPTION,
   alternates: { canonical: '/blog' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/blog' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const PAGE_SIZE = 9;

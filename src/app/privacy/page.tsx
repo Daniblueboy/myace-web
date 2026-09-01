@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
 
+const TITLE = 'Privacy Policy | Aceroyal Estates';
+const DESCRIPTION = 'How Aceroyal Estates collects, uses and protects your personal data.';
+
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'How Aceroyal Estates collects, uses and protects your personal data.',
+  description: DESCRIPTION,
   alternates: { canonical: '/privacy' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/privacy' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 export default function PrivacyPage() {

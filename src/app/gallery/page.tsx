@@ -2,10 +2,15 @@ import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
 
+const GALLERY_TITLE = 'Gallery | Aceroyal Estates';
+const GALLERY_DESCRIPTION = 'Photos and videos from Aceroyal Estates — allocations, site progress, events and more.';
+
 export const metadata: Metadata = {
   title: 'Gallery',
-  description: 'Photos and videos from Aceroyal Estates — allocations, site progress, events and more.',
+  description: GALLERY_DESCRIPTION,
   alternates: { canonical: '/gallery' },
+  openGraph: { title: GALLERY_TITLE, description: GALLERY_DESCRIPTION, url: '/gallery' },
+  twitter: { title: GALLERY_TITLE, description: GALLERY_DESCRIPTION },
 };
 
 export default async function GalleryPage() {

@@ -4,11 +4,16 @@ import { Card } from '@/components/ui/card';
 import { Check, Building2, Users, FileText, HeadphonesIcon } from 'lucide-react';
 import Link from 'next/link';
 
+const TITLE = 'Our Services | Aceroyal Estates';
+const DESCRIPTION =
+  'Property sales, development, facility management, investment advisory, valuation and documentation services from Aceroyal Estates.';
+
 export const metadata: Metadata = {
   title: 'Our Services',
-  description:
-    'Property sales, development, facility management, investment advisory, valuation and documentation services from Aceroyal Estates.',
+  description: DESCRIPTION,
   alternates: { canonical: '/services' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/services' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 export default function ServicesPage() {

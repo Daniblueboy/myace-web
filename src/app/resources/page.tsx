@@ -11,10 +11,15 @@ import { Suspense } from 'react';
 
 export const dynamic = 'force-dynamic';
 
+const TITLE = 'Downloads & Resources | Aceroyal Estates';
+const DESCRIPTION = 'Brochures, consent forms and FAQs for Aceroyal Estates properties, available to download.';
+
 export const metadata: Metadata = {
   title: 'Downloads & Resources',
-  description: 'Brochures, consent forms and FAQs for Aceroyal Estates properties, available to download.',
+  description: DESCRIPTION,
   alternates: { canonical: '/resources' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/resources' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const ITEMS_PER_PAGE = 9;

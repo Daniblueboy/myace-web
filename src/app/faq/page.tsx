@@ -4,10 +4,15 @@ import { FAQList } from '@/components/faq/FAQList';
 
 export const dynamic = 'force-dynamic';
 
+const TITLE = 'Frequently Asked Questions | Aceroyal Estates';
+const DESCRIPTION = 'Answers to common questions about buying property, payment plans and inspections with Aceroyal Estates.';
+
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
-  description: 'Answers to common questions about buying property, payment plans and inspections with Aceroyal Estates.',
+  description: DESCRIPTION,
   alternates: { canonical: '/faq' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/faq' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 export default async function FAQPage() {

@@ -46,11 +46,23 @@ export async function generateMetadata({
     (estate.description as string | undefined)?.slice(0, 155) ||
     `${estate.name} — an Aceroyal Estates development in ${[estate.city, estate.state].filter(Boolean).join(', ')}.`;
 
+  const title = `${estate.name} | Aceroyal Estates`;
+
   return {
     title: estate.name,
     description,
     alternates: { canonical: `/estates/${slug}` },
-    openGraph: estate.coverImage ? { images: [estate.coverImage] } : undefined,
+    openGraph: {
+      title,
+      description,
+      url: `/estates/${slug}`,
+      images: estate.coverImage ? [estate.coverImage] : undefined,
+    },
+    twitter: {
+      title,
+      description,
+      images: estate.coverImage ? [estate.coverImage] : undefined,
+    },
   };
 }
 
@@ -113,7 +125,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link href="/book-inspection">Book Inspection</Link>
+                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
                 </Button>
                 <Button variant="outline" asChild>
                   <a
@@ -130,7 +142,11 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Home className="h-4 w-4" /> Available Units
                   </div>
-                  <div className="text-2xl font-semibold mt-1">{estate.properties?.length || 0}</div>
+                  {estate.properties?.length ? (
+                    <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
+                  ) : (
+                    <div className="text-lg font-semibold mt-1">Contact Sales</div>
+                  )}
                 </div>
                 <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -184,7 +200,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
                 </p>
                 <Button variant="outline" asChild className="w-full">
-                  <Link href="/book-inspection">Book a Slot</Link>
+                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book a Slot</Link>
                 </Button>
               </div>
             </TabsContent>
@@ -248,7 +264,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                       tour it in person.
                     </p>
                     <Button variant="outline" asChild>
-                      <Link href="/book-inspection">Book Inspection</Link>
+                      <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
                     </Button>
                   </div>
                 )}

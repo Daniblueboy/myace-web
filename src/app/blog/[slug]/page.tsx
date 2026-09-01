@@ -19,12 +19,23 @@ export async function generateMetadata({
   }
 
   const description = (post.excerpt as string | undefined)?.slice(0, 155) || undefined;
+  const title = `${post.title} | Aceroyal Estates`;
 
   return {
     title: post.title,
     description,
     alternates: { canonical: `/blog/${slug}` },
-    openGraph: post.coverImage ? { images: [post.coverImage] } : undefined,
+    openGraph: {
+      title,
+      description,
+      url: `/blog/${slug}`,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
+    twitter: {
+      title,
+      description,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
   };
 }
 

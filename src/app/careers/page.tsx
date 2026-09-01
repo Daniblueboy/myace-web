@@ -11,11 +11,16 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const TITLE = 'Careers | Aceroyal Estates';
+const DESCRIPTION =
+  'Build a rewarding career in Nigerian real estate with Aceroyal Estates. Explore our culture, teams, and future opportunities.';
+
 export const metadata: Metadata = {
   title: 'Careers',
-  description:
-    'Build a rewarding career in Nigerian real estate with Aceroyal Estates. Explore our culture, teams, and future opportunities.',
+  description: DESCRIPTION,
   alternates: { canonical: '/careers' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/careers' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const values = [

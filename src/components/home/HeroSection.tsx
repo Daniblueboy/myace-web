@@ -85,7 +85,11 @@ export default function HeroSection() {
               <source src={slide.url} type="video/mp4" />
             </video>
           ) : (
-            <img src={slide.url} alt="Hero slide" className="w-full h-full object-cover" />
+            <img
+              src={slide.url}
+              alt="Hero slide"
+              className="w-full h-full object-cover animate-hero-kenburns"
+            />
           )}
         </div>
       ))}

@@ -14,13 +14,19 @@ const estateImages = {
   placeholder3: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
 };
 
+// PRE-CUTOVER CHECKLIST: pricing baked into the descriptions below (Alpha
+// Garden City, Heritage Estate, Eko Paragon Residence, Prime Boulevard Annex)
+// is confirmed real per the client's own screenshots, but is promotional and
+// time-sensitive — verify current rates with Aceroyal before go-live. This
+// note was previously (wrongly) appended to the public-facing description
+// text itself; moved here so it's visible to us, not site visitors.
 export const fallbackEstates: Estate[] = [
   {
     id: 'fallback-estate-alpha-garden-city',
     name: 'Alpha Garden City',
     slug: 'alpha-garden-city',
     description:
-      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, built around orchard-style landscapes, wellness-focused amenities, and low-density planning. Every acre is enriched with 10-15 fruit-bearing trees, and the estate features a Central Wellness Village (holistic spa, wellness clinics, fitness studios), an integrated golf course, and a low-density model of roughly one home per acre. Residential options include wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nPrelaunch pricing: 500sqm from ₦3.5M, 1 acre (+1 plot free) from ₦12.5M. Initial deposit from ₦500K (500sqm) / ₦1.5M (1 acre). Promotional pricing — confirm current rates before publishing.',
+      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, built around orchard-style landscapes, wellness-focused amenities, and low-density planning. Every acre is enriched with 10-15 fruit-bearing trees, and the estate features a Central Wellness Village (holistic spa, wellness clinics, fitness studios), an integrated golf course, and a low-density model of roughly one home per acre. Residential options include wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nPrelaunch pricing: 500sqm from ₦3.5M, 1 acre (+1 plot free) from ₦12.5M. Initial deposit from ₦500K (500sqm) / ₦1.5M (1 acre).',
     state: 'Oyo',
     city: 'Ibadan',
     address: 'Ibadan, Oyo State',
@@ -38,7 +44,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Heritage Estate',
     slug: 'heritage-estate',
     description:
-      'Heritage Estate (Obodo Oma) is a premium residential and commercial estate in Ekwegbe Nike, Enugu State, with an approved layout and registered survey. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M, initial deposit ₦1M. Promotional pricing — confirm current rates before publishing.',
+      'Heritage Estate (Obodo Oma) is a premium residential and commercial estate in Ekwegbe Nike, Enugu State, with an approved layout and registered survey. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M, initial deposit ₦1M.',
     state: 'Enugu',
     city: 'Nike',
     address: 'Ekwegbe Nike, Enugu State',
@@ -107,7 +113,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Eko Paragon Residence',
     slug: 'eko-paragon-residence',
     description:
-      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit). Promotional pricing — confirm current rates before publishing.',
+      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit).',
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo G.R.A., Lagos',
@@ -124,7 +130,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Prime Boulevard Annex',
     slug: 'prime-annex',
     description:
-      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja, close to the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital. Available for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.\n\nNow selling: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit). Promotional pricing — confirm current rates before publishing.',
+      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja, close to the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital. Available for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.\n\nNow selling: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit).',
     state: 'Abuja',
     city: 'Gwagwalada',
     address: 'Gwagwalada, Abuja (tarred road behind Prime Boulevard 1)',

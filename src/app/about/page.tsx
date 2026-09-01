@@ -16,11 +16,16 @@ import { fetchAPI } from '@/lib/api';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import { Reveal } from '@/components/motion/Reveal';
 
+const TITLE = 'About Aceroyal Estates | Nigerian Real Estate Company';
+const DESCRIPTION =
+  'Learn about Aceroyal Estates, our mission, leadership, real estate services and commitment to transparent property ownership across Nigeria.';
+
 export const metadata: Metadata = {
-  title: 'About Aceroyal Estates | Nigerian Real Estate Company',
-  description:
-    'Learn about Aceroyal Estates, our mission, leadership, real estate services and commitment to transparent property ownership across Nigeria.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: '/about' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/about' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 function initials(name: string) {

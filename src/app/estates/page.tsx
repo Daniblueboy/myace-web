@@ -5,10 +5,15 @@ import { MapPin, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/Reveal';
 
+const TITLE = 'Our Estates | Aceroyal Estates';
+const DESCRIPTION = 'Browse active Aceroyal Estates developments across Lagos, Abuja, Oyo, Enugu and Edo — land and homes with transparent pricing.';
+
 export const metadata: Metadata = {
   title: 'Our Estates',
-  description: 'Browse active Aceroyal Estates developments across Lagos, Abuja, Oyo, Enugu and Edo — land and homes with transparent pricing.',
+  description: DESCRIPTION,
   alternates: { canonical: '/estates' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/estates' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 export default async function EstatesPage({

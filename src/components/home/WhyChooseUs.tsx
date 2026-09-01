@@ -1,11 +1,18 @@
 import { BadgeCheck, Zap, Shield, Headset } from 'lucide-react';
 
+// PRE-CUTOVER CHECKLIST: this copy is unverified — it's original scaffold
+// boilerplate, not sourced from the live site or confirmed by Aceroyal
+// (unlike the partnership/compliance claims elsewhere, which ARE real
+// live-site content just pending validation). Softened the specific,
+// SLA-sounding claims ("within 24 hours", "bank-grade security", "24/7") to
+// something defensible without a concrete guarantee behind it. Restore the
+// stronger wording if Aceroyal can actually back it.
 export function WhyChooseUs() {
   const features = [
-    { icon: BadgeCheck, title: 'Verified Listings', desc: 'Every property is thoroughly vetted for authenticity.' },
-    { icon: Zap, title: 'Fast Processes', desc: 'Seamless documentation and allocation within 24 hours.' },
-    { icon: Shield, title: 'Secure Transactions', desc: 'Bank-grade security for all financial dealings.' },
-    { icon: Headset, title: '24/7 Support', desc: 'Dedicated customer success team at your service.' },
+    { icon: BadgeCheck, title: 'Verified Listings', desc: 'Property documentation is reviewed as part of every sale.' },
+    { icon: Zap, title: 'Guided Process', desc: 'A structured, transparent path from selection to allocation.' },
+    { icon: Shield, title: 'Secure Processes', desc: 'Structured, trusted channels for payments and documentation.' },
+    { icon: Headset, title: 'Dedicated Support', desc: 'A customer success team on hand throughout your journey.' },
   ];
 
   return (

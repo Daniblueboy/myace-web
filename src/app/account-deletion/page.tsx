@@ -3,10 +3,16 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Mail, Clock, ShieldAlert, AlertTriangle } from 'lucide-react';
 
+const TITLE = 'Account Deletion | Aceroyal Estates';
+const DESCRIPTION =
+  'How to request deletion of your Aceroyal Estates account and personal data, and what to expect once you do.';
+
 export const metadata: Metadata = {
   title: 'Account Deletion',
-  description:
-    'How to request deletion of your Aceroyal Estates account and personal data, and what to expect once you do.',
+  description: DESCRIPTION,
+  alternates: { canonical: '/account-deletion' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/account-deletion' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 const STEPS = [

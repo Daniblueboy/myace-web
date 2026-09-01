@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
 
+const TITLE = 'Terms & Conditions | Aceroyal Estates';
+const DESCRIPTION = 'Terms and conditions for using the Aceroyal Estates website and services.';
+
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
-  description: 'Terms and conditions for using the Aceroyal Estates website and services.',
+  description: DESCRIPTION,
   alternates: { canonical: '/terms' },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/terms' },
+  twitter: { title: TITLE, description: DESCRIPTION },
 };
 
 export default function TermsPage() {

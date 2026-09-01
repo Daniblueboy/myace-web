@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // isomorphic-dompurify's server-side path pulls in jsdom, which crashes
+  // in Vercel's serverless bundling (ERR_REQUIRE_ESM inside
+  // html-encoding-sniffer's dependency chain) if bundled by Next. Leaving
+  // it external lets Node's own module resolution handle it at runtime
+  // instead, which doesn't hit that conflict.
+  serverExternalPackages: ["jsdom", "isomorphic-dompurify"],
   async redirects() {
     return [
       // --- Active estates: same slug, different path prefix ---

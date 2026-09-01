@@ -44,12 +44,13 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   }
 
   const images = items.filter((item) => item.mediaType === 'image');
+  const videoCount = items.length - images.length;
   const imageSlides = images.map((item) => ({ src: item.mediaUrl, title: item.title }));
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.mediaType === filter);
   const filters = [
     { value: 'all' as const, label: 'All media', icon: Images, count: items.length },
     { value: 'image' as const, label: 'Photos', icon: ImageIcon, count: images.length },
-    { value: 'video' as const, label: 'Videos', icon: Video, count: items.length - images.length },
+    ...(videoCount > 0 ? [{ value: 'video' as const, label: 'Videos', icon: Video, count: videoCount }] : []),
   ];
 
   return (
