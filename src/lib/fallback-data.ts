@@ -365,14 +365,125 @@ export const fallbackBlogPosts = [
     createdAt: '2025-03-15T00:00:00.000Z',
     updatedAt: '2025-03-15T00:00:00.000Z',
   },
+  {
+    id: 'fallback-blog-allocation-day',
+    title: 'Land Ownership Made Easy: Why Allocation Day Matters',
+    slug: 'land-ownership-made-easy-why-allocation-day-matters',
+    excerpt: 'What happens at Aceroyal’s quarterly Allocation Day, and why walking your plot matters.',
+    content:
+      'Allocation Day is the moment your land goes from "something you paid for" to something you can actually stand on. At Aceroyal Estate Homes, we hold this every three months.\n\nOn Allocation Day, licensed surveyors who drafted the survey plans guide you through your land’s exact location and boundaries. Documents are signed on-site with the Admin team, so there’s no back-and-forth or weeks of waiting. It’s also a chance to meet future neighbors and fellow investors — and yes, there’s lunch.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-02-24T00:00:00.000Z',
+    updatedAt: '2025-02-24T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-lagos-vs-abuja',
+    title: 'Lagos vs. Abuja: Where Should You Invest in Real Estate in 2025?',
+    slug: 'lagos-vs-abuja-where-should-you-invest-in-real-estate-in-2025',
+    excerpt: 'Comparing Lagos’s fast-paced growth against Abuja’s stability — and which fits which kind of investor.',
+    content:
+      'Lagos is fast-paced, high-demand real estate: over 20 million people, growing development hubs like Ibeju-Lekki and Abijo GRA, and major infrastructure (Lekki-Epe Expressway, Fourth Mainland Bridge, Dangote Refinery) pushing property values up daily. Best picks: Eko Paragon Residence (Abijo GRA) for rental income, Legacy Garden City Phase 2 (Imota) for land banking.\n\nAbuja is calmer and more structured — government presence means steady, long-term investment security, with land banking opportunities in areas like Gwagwalada and Kuje still affordable but appreciating. Best pick: Prime Boulevard Annex (Gwagwalada).\n\nChoose Lagos for fast-paced, high-demand real estate and rental income; choose Abuja for stability, exclusivity, and government-backed security. Both are goldmines — it depends on your goals.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-02-17T00:00:00.000Z',
+    updatedAt: '2025-02-17T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-lose-money-lagos',
+    title: 'Why Most People Lose Money in Lagos Real Estate—And How to Avoid It',
+    slug: 'why-most-people-lose-money-in-lagos-real-estate-and-how-to-avoid-it',
+    excerpt: 'Common due-diligence mistakes that cost Lagos land buyers their investment, and how to avoid them.',
+    content:
+      'A common story: a buyer thought he’d secured a prime plot by the roadside in Ibeju-Lekki, only to discover at allocation that the land belonged to the government, marked for a future road expansion. His entire investment was gone — the result of skipping due diligence.\n\nAvoid "too good to be true" deals — research market prices and buy from reputable developers with full documentation. Never pay without proper documentation: get a Contract of Sale or Deed of Assignment, and pay into a corporate account, not a personal one. Think long-term — real wealth in Lagos real estate comes from patience and appreciation, not quick flips.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-02-11T00:00:00.000Z',
+    updatedAt: '2025-02-11T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-is-lagos-still-good',
+    title: 'Is Lagos Real Estate Still a Good Investment in 2025?',
+    slug: 'is-lagos-real-estate-still-a-good-investment-in-2025',
+    excerpt: 'Population growth, infrastructure projects, and rental demand behind Lagos’s continued property boom.',
+    content:
+      'Lagos real estate remains one of Nigeria’s most profitable investments — thousands relocate to the city daily, pushing demand for land and housing higher. Areas like Ibeju-Lekki, Epe, and Lekki Phase 2 have seen major appreciation, while Ikorodu and Ajah are becoming investor favorites.\n\nMajor infrastructure projects — the Imota Rice Mill, Fourth Mainland Bridge, and Lagos-Calabar Coastal Road — are driving demand further. Rental income is strong too, from short-let apartments to commercial properties, giving landlords steady cash flow.\n\nThe risk is choosing the wrong developer — delayed projects and poor-quality builds are common, so buy from a company with a proven track record and full transparency.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-02-04T00:00:00.000Z',
+    updatedAt: '2025-02-04T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-hotel-residences',
+    title: 'Luxury Living, Lucrative Returns: Lagos Hotel Residences',
+    slug: 'luxury-living-lucrative-returns-lagos-hotel-residences',
+    excerpt: 'Inside Eko Paragon Residence — furnished suites, hotel-style amenities, and short/long-term rental income.',
+    content:
+      'AceRoyal Estate Homes, in partnership with the Lagos State Development & Property Corporation (LSDPC) and Gidi Homes, presents Eko Paragon Residence — furnished 1, 2, or 3-bedroom apartments and suites available for short-term or long-term rental.\n\nAmenities include 24/7 power supply, valet parking, 24/7 security, a state-of-the-art health center, cinema, high-speed Wi-Fi, an Olympic-size swimming pool, dedicated concierge services, and eco-friendly energy efficiency.\n\nAs Lagos continues to attract international businesses and high-net-worth individuals, the appeal of hotel residences as a stable, profitable rental asset class will only increase.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-01-27T00:00:00.000Z',
+    updatedAt: '2025-01-27T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-stop-dreaming',
+    title: 'Stop Dreaming, Start Doing: Build Real Wealth This Year',
+    slug: 'stop-dreaming-start-doing-build-real-wealth-this-year',
+    excerpt: 'The AceRoyal Investment Plan — Appreciate, Capitalize, Enhance — for turning financial goals into action.',
+    content:
+      'Financial goals are easy to set and hard to follow through on. The AceRoyal Investment Plan breaks it into three steps:\n\nAppreciate — land banking in rapidly developing areas like Legacy Garden City, Imota, Ikorodu, and Edo Mega City, where land value consistently appreciates over time.\n\nCapitalize — invest in Eko Paragon Residence for passive rental income from short- and long-term residents, with the management team handling tenant screening, maintenance, and cleaning.\n\nEnhance — diversify across both land banking and hotel-residence investments to strengthen portfolio stability and returns.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-01-15T00:00:00.000Z',
+    updatedAt: '2025-01-15T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-land-titles',
+    title: 'Land Titles and Why They Matter',
+    slug: 'land-titles-and-why-they-matter',
+    excerpt: 'What a registered survey is, why it’s required before any land title, and how Aceroyal handles the paperwork.',
+    content:
+      'A land title is the official document proving land ownership — in Nigeria this includes the Certificate of Occupancy (C of O), Right of Occupancy (R of O), Freehold, and others. A registered survey — a map of the land’s exact boundaries, dimensions, and location, filed with the state’s Office of the Surveyor-General — is a prerequisite for obtaining any of them.\n\nA registered survey provides clarity (no boundary disputes), is essential for obtaining a land title, and gives peace of mind that the land is free of government acquisition or other claims.\n\nAceroyal Estates Homes handles the full process — engaging certified surveyors, submitting documents to the right authorities, and keeping clients informed — so every property sold is free from government encumbrances, adverse claimants, and communal issues.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2024-09-15T00:00:00.000Z',
+    updatedAt: '2024-09-15T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-brg-partnership',
+    title: 'Aceroyal Estates Forges Strategic Partnership With the Billionaire Realtor Group',
+    slug: 'aceroyal-estates-forges-strategic-partnership-with-the-billionaire-realtor-group',
+    excerpt: 'Aceroyal Estates partners with Africa’s leading brokerage firm to expand reach across West Africa.',
+    content:
+      'AceRoyal Estates Limited announced an official partnership with The Billionaire Realtor Group (BRG), described as Africa’s leading brokerage firm, to strengthen market presence, elevate sales, and enhance delivery capabilities across West Africa.\n\nCEO Dr. Endurance Agonor said: "In an era where collaboration should supersede competition, our partnership with The Billionaire Realtor Group is proof of our commitment to revolutionizing the real estate market. By pooling our resources and expertise, we are not only expanding our reach but also exploring real estate investment opportunities in Africa."\n\nBRG brings deep expertise in luxury homes across Africa and a wide network of high-net-worth clients, positioning the partnership to expand the range of premium real estate solutions available to clients.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2023-12-11T00:00:00.000Z',
+    updatedAt: '2023-12-11T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-ceo-award',
+    title: 'Dr. Endurance Agonor Appointed President of the Africa Under 40 CEO Forum',
+    slug: 'dr-endurance-agonor-ceo-of-aceroyal-estates-becomes-president-of-africa-under-40-ceo-forum',
+    excerpt: 'Aceroyal Estates’ CEO recognized for leadership at a continental awards event honoring young African achievers.',
+    content:
+      'Dr. Endurance Agonor, CEO of AceRoyal Estate Homes Limited, was appointed President of the Africa Under 40 CEO Forum, announced at a continental award event on July 22, 2023.\n\nThe Forum celebrates young African achievers who have excelled across industries and made significant contributions to community service and philanthropy, fostering networking and collaboration among successful young Africans to advance the continent.\n\nUnder his leadership, AceRoyal Estate Homes Limited has been recognized for its innovative approach to property development, sustainable practices, and community engagement.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2023-08-08T00:00:00.000Z',
+    updatedAt: '2023-08-08T00:00:00.000Z',
+  },
 ];
 
+// TODO(content): only the CEO is a confirmed real person (named in press
+// coverage). Rest of the team roster needs real names/roles/photos from
+// Daniel — do not invent additional team members.
 export const fallbackTeamMembers: TeamMember[] = [
   {
     id: 'fallback-team-ceo',
-    name: 'Aceroyal Estates Team',
-    role: 'Sales and Client Advisory',
-    bio: 'Our team supports buyers from enquiry to inspection, documentation, allocation, and after-sales guidance.',
+    name: 'Dr. Endurance Agonor',
+    role: 'Chief Executive Officer',
+    bio: 'President of the Africa Under 40 CEO Forum. Leads AceRoyal Estate Homes’ strategy, partnerships, and delivery.',
     photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
     active: true,
   },
@@ -424,6 +535,13 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-aeon-trisl',
     name: 'AEON Trisl Group',
+    logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    category: 'PARTNER',
+    active: true,
+  },
+  {
+    id: 'fallback-partner-brg',
+    name: 'The Billionaire Realtor Group',
     logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
     category: 'PARTNER',
     active: true,
