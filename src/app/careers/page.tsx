@@ -53,7 +53,7 @@ export default function CareersPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(224,28,36,0.18),transparent_42%)]" />
-        <div className="container relative py-20 md:py-28">
+        <div className="container relative py-12 md:py-16">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
               Careers at Aceroyal
@@ -79,7 +79,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="container py-20 md:py-28">
+      <section className="container py-12 md:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">How we work</p>
@@ -127,7 +127,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section id="opportunities" className="container scroll-mt-24 py-20 md:py-28">
+      <section id="opportunities" className="container scroll-mt-24 py-12 md:py-16">
         <div className="mx-auto max-w-4xl rounded-3xl border bg-card p-8 text-center shadow-sm md:p-12">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
             <MapPin className="h-7 w-7 text-primary" aria-hidden="true" />

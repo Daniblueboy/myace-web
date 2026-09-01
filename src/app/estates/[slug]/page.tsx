@@ -44,7 +44,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      <div className="container py-20 md:py-28 space-y-10">
+      <div className="container py-12 md:py-16 space-y-10">
         <div>
           <Button variant="ghost" asChild className="gap-2">
             <Link href="/estates">

@@ -51,7 +51,7 @@ export default async function ResourcesPage({
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/10 border-b">
-        <div className="container mx-auto px-4 py-20 md:py-28 relative">
+        <div className="container mx-auto px-4 py-12 md:py-16 relative">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
@@ -84,7 +84,7 @@ export default async function ResourcesPage({
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto px-4 py-20 md:py-28">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         {allResources.length === 0 ? (
           <div className="text-center py-24 max-w-md mx-auto">
             <div className="w-20 h-20 rounded-full bg-muted/50 flex items-center justify-center mx-auto mb-6">

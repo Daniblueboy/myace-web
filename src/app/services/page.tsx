@@ -53,7 +53,7 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-20 md:py-28">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         {/* Hero */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6">Our Services</h1>
