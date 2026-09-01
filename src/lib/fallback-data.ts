@@ -288,30 +288,82 @@ fallbackEstates.forEach((estate) => {
   ];
 });
 
+// Real posts pulled from the live blog (most recent 6, matching what the
+// live homepage features). 20 older posts (2022-2025) not migrated yet.
+// TODO(content): cover images are still placeholder Unsplash photos - the
+// live posts' own images weren't cleanly resolved during this pass.
 export const fallbackBlogPosts = [
   {
-    id: 'fallback-blog-investment',
-    title: 'Why Invest in Nigerian Real Estate?',
-    slug: 'why-invest-nigerian-real-estate',
-    excerpt: 'A practical look at demand, population growth, and long-term estate value.',
+    id: 'fallback-blog-downtown-phase-2-launch',
+    title: 'Beyond the Carnival, the Rise of Downtown Lagos Commercial City Phase 2',
+    slug: 'beyond-the-carnival-downtown-lagos-commercial-city-phase-2',
+    excerpt: 'What the Downtown Lagos Commercial City Phase 2 launch event revealed about the project beyond the celebration.',
     content:
-      'Nigeria continues to see strong demand for secure housing and documented land. Well-planned estates with clear infrastructure plans can give buyers better confidence and stronger resale value over time.\n\nBefore buying, review the title documents, estate layout, development timeline, and payment structure. A site inspection remains one of the best ways to compare location quality and surrounding growth.',
+      'What unfolded at Downtown Lagos Commercial City Phase 2 wasn’t just a gathering, a celebration, or even a launch event. It was an experience, one that blended energy, people, and possibility into something far more meaningful than a typical carnival.\n\nThe launch marked more than the unveiling of a new development — it introduced a commercial land in Lagos positioned for relevance, growth, and long-term value. Strategically located just minutes from the Dangote Refinery and in close proximity to the Calabar Coastal Road, Downtown Lagos Commercial City Phase 2 sits within a fast-rising economic corridor.\n\nOwning a plot here is not just about buying land, it is about securing a position within a future commercial center. For investors and business owners, early entry into developments like this often defines long-term advantage.\n\nDowntown Lagos Commercial City Phase 2 is not just expanding commercial space. It is creating a hub where business, visibility, and future value intersect.',
     coverImageUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
     published: true,
-    createdAt: now,
-    updatedAt: now,
+    createdAt: '2026-04-20T00:00:00.000Z',
+    updatedAt: '2026-04-20T00:00:00.000Z',
   },
   {
-    id: 'fallback-blog-locations',
-    title: 'Top Locations for Estate Buyers',
-    slug: 'top-locations-estate-buyers',
-    excerpt: 'How to compare access, infrastructure, title, and long-term growth potential.',
+    id: 'fallback-blog-eleko-land',
+    title: 'Why Smart Investors Are Rushing to Buy Land in Eleko',
+    slug: 'why-smart-investors-are-rushing-to-buy-land-in-eleko',
+    excerpt: 'Why Eleko, along the Lekki-Epe corridor, is drawing early investors ahead of Lekki- and Ajah-style price growth.',
     content:
-      'Location drives both convenience and long-term value. Buyers should compare access roads, nearby commercial activity, drainage, security, and planned infrastructure.\n\nThe right estate should balance affordability, documentation, and realistic development timelines.',
+      'A lot of people are starting to look beyond the usual places like Lekki and Ajah, because the real opportunity now is getting in early somewhere that is still growing. That’s exactly why smart investors are beginning to buy land in Eleko.\n\nLagos keeps expanding — what used to be considered "far" a few years ago is now fully developed and expensive, as happened with Lekki, Ajah, and Sangotedo. That same movement is heading toward Eleko now, and the price of land there is still at entry level compared to other parts of Lagos on the same axis.\n\nEleko sits along the Lekki-Epe corridor, one of the fastest-developing parts of Lagos. One major confidence point for investors: Phase 1 of Downtown Lagos Commercial City was a success — allocations were completed and all clients received their plots as promised.',
     coverImageUrl: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
     published: true,
-    createdAt: now,
-    updatedAt: now,
+    createdAt: '2026-04-20T00:00:00.000Z',
+    updatedAt: '2026-04-20T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-millionaires-secret',
+    title: 'The Secret Investment That’s Creating Millionaires',
+    slug: 'the-secret-investment-thats-creating-millionaires',
+    excerpt: 'How hotel-residence investments like Eko Paragon Residence offer passive rental income without landlord headaches.',
+    content:
+      'Savvy investors are earning passive income by owning hotel residences rather than managing traditional Airbnbs directly. Not all short-term rental investments are worth it — some drain your time and resources, while the right hotel residence gives high returns with zero effort.\n\nEko Paragon Residence, an upcoming five-star hotel residence in Abijo GRA, Lagos, developed by Aceroyal Estate Homes in partnership with LSDPC, offers a fully managed system: the hotel team handles marketing, guest experience, and maintenance, while the owner simply enjoys rental income.\n\nWith a hotel residence like Eko Paragon, investors can expect steady, predictable income, plus appreciating property value in Abijo GRA — earning both rental income and long-term value growth.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-04-01T00:00:00.000Z',
+    updatedAt: '2025-04-01T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-land-banking',
+    title: 'Land Banking: The Smartest Investment You’ll Regret Not Making',
+    slug: 'land-banking-the-smartest-investment-youll-regret-not-making',
+    excerpt: 'Why buying and holding land in high-growth areas like Legacy Garden City and Edo Mega City builds long-term wealth.',
+    content:
+      'Unlike cars or gadgets that lose value over time, land is an appreciating asset. Lagos, Abuja, and Benin are expanding rapidly, turning today’s outskirts into tomorrow’s prime real estate.\n\nLand banking — the strategic purchase of land in high-growth areas, held for future value appreciation — has turned modest early investments into significant returns for those who got in early, including Aceroyal’s own in-house Architect and Site Manager.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of investors, including those in the diaspora, secure land without fear of scams.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-03-26T00:00:00.000Z',
+    updatedAt: '2025-03-26T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-nigerian-real-estate-getting-started',
+    title: 'Thinking of Investing in Nigerian Real Estate? Here’s the Right Way to Get Started',
+    slug: 'thinking-of-investing-in-nigerian-real-estate-here-is-the-right-way-to-get-started',
+    excerpt: 'A practical checklist for diaspora and first-time investors: goals, location, paperwork, and starting small.',
+    content:
+      'Real estate in Nigeria is one of the smartest investments you can make, but only if you do it the right way — buying property is not like ordering online and hoping it arrives. You need a strategy.\n\nStart with a clear goal: are you buying for yourself, to rent out, or to hold until the value grows? Pick the right location — the Lekki-Epe corridor, with the Lekki Free Trade Zone, Dangote Refinery, and proposed airport, is turning the region into a real estate hotspot.\n\nAlways verify the paperwork before buying — check for a C of O, Governor’s Consent, or a proper Deed of Assignment. If the documentation isn’t clear, walk away. If you’re not ready for a big investment, start with a plot, develop it gradually, and scale up.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-03-17T00:00:00.000Z',
+    updatedAt: '2025-03-17T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-integrity',
+    title: 'The Secret Ingredient to Real Estate Success No One’s Talking About',
+    slug: 'the-secret-ingredient-to-real-estate-success-no-one-is-talking-about',
+    excerpt: 'Why transparency and honest communication — not hype — are what actually build buyer trust in Nigerian real estate.',
+    content:
+      'Investors dislike hidden fees, misrepresentation, or surprises about property issues. They value honesty and transparency above all — buyers and investors are especially cautious in the Nigerian property market.\n\nWhen a developer consistently demonstrates honesty, they build trust, and trust is the foundation for long-lasting relationships that turn clients into brand evangelists.\n\nAt Aceroyal Estates, our commitment to transparency means every transaction is handled with care so clients receive exactly what they are promised — we’ve earned our reputation by choosing honesty over hype.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2025-03-15T00:00:00.000Z',
+    updatedAt: '2025-03-15T00:00:00.000Z',
   },
 ];
 
