@@ -499,7 +499,7 @@ export const fallbackTeamMembers: TeamMember[] = [
   {
     id: 'fallback-team-coo',
     name: 'Dr. Racheal Okun Agonor',
-    role: 'Chief Operating Officer',
+    role: 'Chief Operating Officer & Co-Founder',
     photoUrl: null,
     active: true,
   },

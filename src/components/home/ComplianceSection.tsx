@@ -28,29 +28,24 @@ export default async function ComplianceSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {items.map((item: any) => {
             const Icon = iconMap[item.type] || CheckCircle2;
             return (
-              <Card key={item.id} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full mb-4">
+              <Card
+                key={item.id}
+                className="h-full flex flex-col items-center text-center p-8 gap-4 hover:shadow-lg transition-shadow"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full">
                   <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h3 className="font-bold mb-2">{item.title}</h3>
-                {item.registrationNo && (
-                  <Badge variant="secondary" className="mb-2">
-                    {item.registrationNo}
-                  </Badge>
-                )}
+                <h3 className="font-bold text-lg">{item.title}</h3>
+                {item.registrationNo && <Badge variant="secondary">{item.registrationNo}</Badge>}
                 {item.description && (
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {item.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 )}
                 {item.issuedBy && (
-                  <p className="text-xs text-muted-foreground">
-                    Issued by: {item.issuedBy}
-                  </p>
+                  <p className="text-xs text-muted-foreground mt-auto pt-2">Issued by: {item.issuedBy}</p>
                 )}
               </Card>
             );

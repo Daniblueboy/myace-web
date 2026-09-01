@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { BrandLogo } from '@/components/layout/BrandLogo';
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
       <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand */}
         <div className="space-y-4">
-          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="Aceroyal Estates" className="h-12 w-auto" />
+          <BrandLogo theme="dark" className="h-12" />
           <p className="text-sm text-slate-400">
             Premium real estate solutions in Nigeria. Helping you find your dream property with ease and trust.
           </p>

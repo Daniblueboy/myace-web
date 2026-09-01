@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { fetchAPI } from '@/lib/api';
+import { BrandLogo } from '@/components/layout/BrandLogo';
 
 const NAV_LINKS_BEFORE_ESTATES = [{ href: '/', label: 'Home' }];
 
@@ -203,7 +204,7 @@ export function Navbar() {
     <nav className="premium-navigation sticky top-0 z-50 border-b">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="Aceroyal Estates" className="h-10 w-auto" />
+          <BrandLogo className="h-10" />
         </Link>
 
         {/* Desktop Menu */}
@@ -246,8 +247,20 @@ export function Navbar() {
                 <SheetTrigger asChild>
                     <Button variant="ghost" size="icon"><Menu className="h-5 w-5"/></Button>
                 </SheetTrigger>
-                <SheetContent>
-                    <div className="flex flex-col gap-4 mt-8">
+                <SheetContent className="px-6">
+                    <div className="flex items-center justify-between mt-8">
+                      <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Menu</span>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                        aria-label="Toggle theme"
+                      >
+                        <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      </Button>
+                    </div>
+                    <div className="flex flex-col gap-5 mt-4">
                         {ALL_NAV_LINKS.map((link) => {
                           const active = isActivePath(pathname, link.href);
                           return (
@@ -261,7 +274,7 @@ export function Navbar() {
                             </Link>
                           );
                         })}
-                        <Button variant="outline" className="w-full" asChild>
+                        <Button variant="outline" className="w-full mt-2" asChild>
                           <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
                             Customer Login
                           </a>
