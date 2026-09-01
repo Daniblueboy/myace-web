@@ -51,7 +51,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[600px] flex items-center justify-center bg-slate-900 text-white overflow-hidden py-24 md:py-0"
+      className="relative min-h-[600px] md:min-h-[750px] flex items-center justify-center bg-slate-900 text-white overflow-hidden py-24 md:py-0"
       onTouchStart={(e) => {
         touchStartX.current = e.touches[0].clientX;
       }}

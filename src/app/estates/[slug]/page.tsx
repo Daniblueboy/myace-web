@@ -11,6 +11,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator';
 import PropertyPanorama from '@/components/properties/PropertyPanorama';
+import { ShareEstate } from '@/components/estates/ShareEstate';
+import { RelatedEstates } from '@/components/estates/RelatedEstates';
+
+const SITE_URL = 'https://aceroyalestates.com';
 
 function getEmbedUrl(url: string) {
   if (!url) return url;
@@ -136,6 +140,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                     Download Brochure
                   </a>
                 </Button>
+                <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
               </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
@@ -301,6 +306,10 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <EstateOfferings properties={estate.properties || []} />
             </TabsContent>
           </Tabs>
+        </Reveal>
+
+        <Reveal>
+          <RelatedEstates currentSlug={estate.slug} state={estate.state} />
         </Reveal>
       </div>
     </div>
