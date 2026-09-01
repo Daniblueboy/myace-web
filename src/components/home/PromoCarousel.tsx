@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -29,8 +29,37 @@ type Promo = {
 export default function PromoCarousel({ promos }: { promos: Promo[] }) {
   const [activePromo, setActivePromo] = useState<Promo | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sortedPromos = useMemo(() => promos || [], [promos]);
+
+  const step = () => {
+    const container = containerRef.current;
+    if (!container) return 0;
+    const firstCard = container.querySelector("[data-promo-card]") as HTMLDivElement | null;
+    return firstCard ? firstCard.offsetWidth + 24 : container.clientWidth * 0.9;
+  };
+
+  const updateScrollState = () => {
+    const container = containerRef.current;
+    if (!container) return;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    setCanScrollPrev(container.scrollLeft > 8);
+    setCanScrollNext(container.scrollLeft < maxScroll - 8);
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    const container = containerRef.current;
+    if (!container) return;
+    container.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      container.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [sortedPromos.length]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -38,17 +67,19 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
     const interval = setInterval(() => {
       const maxScroll = container.scrollWidth - container.clientWidth;
       if (maxScroll <= 0) return;
-      const firstCard = container.querySelector("[data-promo-card]") as HTMLDivElement | null;
-      const step = firstCard ? firstCard.offsetWidth + 24 : container.clientWidth * 0.9;
-      const next = container.scrollLeft + step;
+      const next = container.scrollLeft + step();
       if (next >= maxScroll - 8) {
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        container.scrollBy({ left: step, behavior: "smooth" });
+        container.scrollBy({ left: step(), behavior: "smooth" });
       }
     }, 5000);
     return () => clearInterval(interval);
   }, [sortedPromos.length, isPaused]);
+
+  const scrollByStep = (direction: 1 | -1) => {
+    containerRef.current?.scrollBy({ left: step() * direction, behavior: "smooth" });
+  };
 
   return (
     <section className="container py-20 md:py-28">
@@ -57,63 +88,110 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>
           <h2 className="text-2xl md:text-3xl font-bold">Estate Updates & Promos</h2>
         </div>
-        <p className="text-sm text-muted-foreground hidden md:block">Scroll for more</p>
+        {sortedPromos.length > 1 && (
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              type="button"
+              aria-label="Previous announcement"
+              onClick={() => scrollByStep(-1)}
+              disabled={!canScrollPrev}
+              className="flex h-10 w-10 items-center justify-center rounded-full border bg-background text-foreground transition-colors hover:bg-muted disabled:opacity-30 disabled:pointer-events-none"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next announcement"
+              onClick={() => scrollByStep(1)}
+              disabled={!canScrollNext}
+              className="flex h-10 w-10 items-center justify-center rounded-full border bg-background text-foreground transition-colors hover:bg-muted disabled:opacity-30 disabled:pointer-events-none"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
       </div>
 
-      <div
-        ref={containerRef}
-        className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
-        {sortedPromos.map((promo) => (
-          <div
-            key={promo.id}
-            data-promo-card
-            className="min-w-[320px] md:min-w-[520px] lg:min-w-[640px] bg-primary rounded-2xl overflow-hidden shadow-2xl snap-start"
-          >
-            <div className="grid md:grid-cols-[1.1fr_0.9fr] min-h-[340px]">
-              <div className="p-8 flex flex-col justify-center text-white space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold">{promo.title}</h2>
-                <p className="text-primary-foreground/90 text-base md:text-lg">
-                  {promo.message}
-                </p>
-                <div className="flex gap-3">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    onClick={() => setActivePromo(promo)}
-                  >
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
+          {sortedPromos.map((promo) => (
+            <div
+              key={promo.id}
+              data-promo-card
+              className="min-w-[320px] md:min-w-[520px] lg:min-w-[640px] bg-primary rounded-2xl overflow-hidden shadow-2xl snap-start"
+            >
+              <div className="grid md:grid-cols-[1.1fr_0.9fr] min-h-[340px]">
+                <div className="p-8 flex flex-col justify-center text-white space-y-4">
+                  <h2 className="text-2xl md:text-3xl font-bold">{promo.title}</h2>
+                  <p className="text-primary-foreground/90 text-base md:text-lg">
+                    {promo.message}
+                  </p>
+                  <div className="flex gap-3">
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      onClick={() => setActivePromo(promo)}
+                    >
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              {promo.videoUrl ? (
-                <div className="min-h-[280px] relative">
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    src={promo.videoUrl}
+                {promo.videoUrl ? (
+                  <div className="min-h-[280px] relative">
+                    <video
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      src={promo.videoUrl}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-transparent to-transparent" />
+                  </div>
+                ) : (
+                  <div
+                    className="min-h-[280px] bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(${promo.imageUrl || "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1400&q=80"})`,
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-transparent to-transparent" />
-                </div>
-              ) : (
-                <div
-                  className="min-h-[280px] bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${promo.imageUrl || "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1400&q=80"})`,
-                  }}
-                />
-              )}
+                )}
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Mobile nav — desktop uses the buttons in the header above */}
+        {sortedPromos.length > 1 && (
+          <div className="mt-2 flex justify-center gap-2 md:hidden">
+            <button
+              type="button"
+              aria-label="Previous announcement"
+              onClick={() => scrollByStep(-1)}
+              disabled={!canScrollPrev}
+              className="flex h-9 w-9 items-center justify-center rounded-full border bg-background text-foreground disabled:opacity-30"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next announcement"
+              onClick={() => scrollByStep(1)}
+              disabled={!canScrollNext}
+              className="flex h-9 w-9 items-center justify-center rounded-full border bg-background text-foreground disabled:opacity-30"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
           </div>
-        ))}
+        )}
       </div>
 
       <Dialog open={!!activePromo} onOpenChange={(open) => !open && setActivePromo(null)}>
@@ -163,7 +241,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
               )}
             </div>
             <DialogFooter>
-              <Button asChild>
+              <Button asChild onClick={() => setActivePromo(null)}>
                 <Link href={activePromo.linkUrl || "/contact"}>Continue</Link>
               </Button>
             </DialogFooter>
