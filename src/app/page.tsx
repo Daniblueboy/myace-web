@@ -11,7 +11,6 @@ import { ServicesSection } from '@/components/home/ServicesSection';
 import { StatesSection } from '@/components/home/StatesSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
 import { CtaSection } from '@/components/home/CtaSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
 import { Reveal } from '@/components/motion/Reveal';
 import RealtorSection from '@/components/home/RealtorSection';
 
@@ -27,7 +26,8 @@ export default function HomePage() {
       <Reveal><StatesSection /></Reveal>
       <Reveal><ComplianceSection /></Reveal>
       <Reveal><PartnersSection /></Reveal>
-      <Reveal><TestimonialsSection /></Reveal>
+      {/* Testimonials removed until Aceroyal provides genuine, approved
+          customer testimonials — do not ship placeholder social proof. */}
       <Reveal><RealtorSection /></Reveal>
       <Reveal><AppDownloadSection /></Reveal>
       <Reveal><NewsletterSection /></Reveal>

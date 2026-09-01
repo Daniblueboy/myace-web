@@ -489,24 +489,9 @@ export const fallbackTeamMembers: TeamMember[] = [
   },
 ];
 
-export const fallbackTestimonials: Testimonial[] = [
-  {
-    id: 'fallback-testimonial-1',
-    name: 'Prospective Buyer',
-    role: 'Property Investor',
-    message: 'The inspection process and payment information made it easier to understand the available estate options.',
-    rating: 5,
-    active: true,
-  },
-  {
-    id: 'fallback-testimonial-2',
-    name: 'Family Buyer',
-    role: 'Home Seeker',
-    message: 'The team explained the estate documents and helped us compare options by location and budget.',
-    rating: 5,
-    active: true,
-  },
-];
+// Deliberately empty — do not add placeholder/invented testimonials. Only
+// populate this once Aceroyal supplies genuine, approved customer quotes.
+export const fallbackTestimonials: Testimonial[] = [];
 
 export const fallbackComplianceItems = [
   {
