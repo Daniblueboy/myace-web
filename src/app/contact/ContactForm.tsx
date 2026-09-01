@@ -27,7 +27,9 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [offices, setOffices] = useState<any[]>([]);
   const [properties, setProperties] = useState<any[]>([]);
+  const [estateName, setEstateName] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const estateSlug = searchParams.get('estate');
 
   useEffect(() => {
     fetchAPI('/offices').then(setOffices).catch(() => []);
@@ -45,6 +47,24 @@ export default function ContactForm() {
       setFormData((prev) => ({ ...prev, propertyId }));
     }
   }, [searchParams]);
+
+  // Preserve the estate a visitor came from (?estate=slug), same pattern as
+  // book-inspection — fetch it directly rather than only matching against
+  // /properties, since some estates have no individual Property records yet.
+  useEffect(() => {
+    if (!estateSlug) return;
+    fetchAPI(`/estates/${estateSlug}`)
+      .then((estate: any) => {
+        if (!estate) return;
+        setEstateName(estate.name || null);
+        setFormData((prev) => ({
+          ...prev,
+          officeState: prev.officeState || estate.state || prev.officeState,
+          message: prev.message || `I'm interested in ${estate.name}. `,
+        }));
+      })
+      .catch(() => {});
+  }, [estateSlug]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
