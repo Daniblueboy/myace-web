@@ -12,34 +12,24 @@ export function InitialPreloader() {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    const startedAt = performance.now();
-    let exitTimer: ReturnType<typeof setTimeout> | undefined;
-    let removeTimer: ReturnType<typeof setTimeout> | undefined;
+    // Deliberately doesn't gate on document.readyState / window 'load' —
+    // by the time this client component mounts and its effect runs, the
+    // document has already hydrated, so those signals are frequently
+    // already-fired and racy to listen for after the fact (can hang
+    // forever if 'load' fired before the listener attached). A fixed
+    // minimum display time is simpler and can't get stuck.
+    const exitTimer = setTimeout(() => {
+      setIsLeaving(true);
+    }, MINIMUM_DISPLAY_MS);
 
-    const pageReady =
-      document.readyState === 'complete'
-        ? Promise.resolve()
-        : new Promise<void>((resolve) => {
-            window.addEventListener('load', () => resolve(), { once: true });
-          });
-
-    const fontsReady = document.fonts?.ready ?? Promise.resolve();
-
-    Promise.all([pageReady, fontsReady]).then(() => {
-      const elapsed = performance.now() - startedAt;
-      const remaining = Math.max(0, MINIMUM_DISPLAY_MS - elapsed);
-
-      exitTimer = setTimeout(() => {
-        setIsLeaving(true);
-        removeTimer = setTimeout(() => setIsVisible(false), EXIT_ANIMATION_MS);
-      }, remaining);
-    });
-
-    return () => {
-      if (exitTimer) clearTimeout(exitTimer);
-      if (removeTimer) clearTimeout(removeTimer);
-    };
+    return () => clearTimeout(exitTimer);
   }, []);
+
+  useEffect(() => {
+    if (!isLeaving) return;
+    const removeTimer = setTimeout(() => setIsVisible(false), EXIT_ANIMATION_MS);
+    return () => clearTimeout(removeTimer);
+  }, [isLeaving]);
 
   if (!isVisible) return null;
 

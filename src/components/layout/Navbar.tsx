@@ -1,12 +1,141 @@
 'use client';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Moon, Sun } from 'lucide-react';
+import { Menu, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { fetchAPI } from '@/lib/api';
+
+const NAV_LINKS_BEFORE_ESTATES = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+];
+
+const NAV_LINKS_AFTER_ESTATES = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/faq', label: 'FAQs' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const ALL_NAV_LINKS = [...NAV_LINKS_BEFORE_ESTATES, { href: '/estates', label: 'Estates' }, ...NAV_LINKS_AFTER_ESTATES];
+
+function isActivePath(pathname: string, href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? 'page' : undefined}
+      className={`relative text-sm font-medium transition-colors py-1 ${active ? 'text-primary' : 'hover:text-primary'}`}
+    >
+      {label}
+      <span
+        className={`absolute -bottom-[1px] left-0 h-[2px] w-full origin-left rounded-full bg-primary transition-transform duration-200 ease-out ${
+          active ? 'scale-x-100' : 'scale-x-0'
+        }`}
+      />
+    </Link>
+  );
+}
+
+function EstatesMegaMenu({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const { data } = useQuery({
+    queryKey: ['nav-estates'],
+    queryFn: () => fetchAPI('/estates?take=8').then((res) => res.items || res || []),
+    staleTime: 5 * 60 * 1000,
+  });
+  const estates = Array.isArray(data) ? data : [];
+
+  const openNow = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const closeSoon = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  return (
+    <div className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className={`relative flex items-center gap-1 text-sm font-medium transition-colors py-1 ${
+          active ? 'text-primary' : 'hover:text-primary'
+        }`}
+      >
+        Estates
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <span
+          className={`absolute -bottom-[1px] left-0 h-[2px] w-full origin-left rounded-full bg-primary transition-transform duration-200 ease-out ${
+            active ? 'scale-x-100' : 'scale-x-0'
+          }`}
+        />
+      </button>
+
+      <div
+        className={`absolute left-1/2 top-full z-50 mt-3 w-[36rem] -translate-x-1/2 origin-top transition-all duration-200 ease-out ${
+          open ? 'pointer-events-auto translate-y-0 opacity-100 scale-100' : 'pointer-events-none -translate-y-1 opacity-0 scale-95'
+        }`}
+      >
+        <div className="rounded-2xl border bg-popover text-popover-foreground shadow-xl p-4">
+          <div className="grid grid-cols-2 gap-2">
+            {estates.length === 0
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="h-16 animate-pulse rounded-xl bg-muted" />
+                ))
+              : estates.slice(0, 6).map((estate: any) => (
+                  <Link
+                    key={estate.id}
+                    href={`/estates/${estate.slug}`}
+                    className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-muted"
+                  >
+                    <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-muted">
+                      {estate.coverImage && (
+                        <img
+                          src={estate.coverImage}
+                          alt=""
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold">{estate.name}</p>
+                      <p className="truncate text-xs text-muted-foreground">
+                        {[estate.city, estate.state].filter(Boolean).join(', ')}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+          </div>
+          <Link
+            href="/estates"
+            className="mt-3 flex items-center justify-between rounded-xl bg-primary/5 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/10"
+          >
+            View all estates
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
 
   return (
     <nav className="premium-navigation sticky top-0 z-50 border-b">
@@ -17,15 +146,16 @@ export function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-6 items-center">
-          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
-          <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">About</Link>
-          <Link href="/services" className="text-sm font-medium hover:text-primary transition-colors">Services</Link>
-          <Link href="/estates" className="text-sm font-medium hover:text-primary transition-colors">Estates</Link>
-          <Link href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</Link>
-          <Link href="/careers" className="text-sm font-medium hover:text-primary transition-colors">Careers</Link>
-          <Link href="/faq" className="text-sm font-medium hover:text-primary transition-colors">FAQs</Link>
-          <Link href="/resources" className="text-sm font-medium hover:text-primary transition-colors">Resources</Link>
-          <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</Link>
+          {NAV_LINKS_BEFORE_ESTATES.map((link) => (
+            <NavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
+          ))}
+
+          <EstatesMegaMenu active={isActivePath(pathname, '/estates')} />
+
+          {NAV_LINKS_AFTER_ESTATES.map((link) => (
+            <NavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
+          ))}
+
           <Button
             variant="ghost"
             size="icon"
@@ -45,15 +175,19 @@ export function Navbar() {
                 </SheetTrigger>
                 <SheetContent>
                     <div className="flex flex-col gap-4 mt-8">
-                        <Link href="/" className="text-lg font-medium">Home</Link>
-                        <Link href="/about" className="text-lg font-medium">About</Link>
-                        <Link href="/services" className="text-lg font-medium">Services</Link>
-                        <Link href="/estates" className="text-lg font-medium">Estates</Link>
-                        <Link href="/blog" className="text-lg font-medium">Blog</Link>
-                        <Link href="/careers" className="text-lg font-medium">Careers</Link>
-                        <Link href="/faq" className="text-lg font-medium">FAQs</Link>
-                        <Link href="/resources" className="text-lg font-medium">Resources</Link>
-                        <Link href="/contact" className="text-lg font-medium">Contact</Link>
+                        {ALL_NAV_LINKS.map((link) => {
+                          const active = isActivePath(pathname, link.href);
+                          return (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              aria-current={active ? 'page' : undefined}
+                              className={`text-lg font-medium ${active ? 'text-primary' : ''}`}
+                            >
+                              {link.label}
+                            </Link>
+                          );
+                        })}
                         <Button className="w-full" asChild><Link href="/book-inspection">Book Inspection</Link></Button>
                     </div>
                 </SheetContent>
