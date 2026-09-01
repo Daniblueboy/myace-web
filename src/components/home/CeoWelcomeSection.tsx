@@ -23,7 +23,7 @@ export default function CeoWelcomeSection() {
           <div className="space-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Corporate HQ: 123 Admiralty Way, Lekki Phase 1, Lagos</span>
+              <span>Corporate HQ: Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos</span>
             </div>
             <p className="font-semibold text-slate-900 dark:text-white">Dr Endurance Agonor</p>
             <p>Chief Executive Officer</p>

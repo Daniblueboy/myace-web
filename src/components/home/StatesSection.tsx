@@ -1,13 +1,6 @@
-const states = [
-  'Lagos',
-  'Abuja (FCT)',
-  'Ogun',
-  'Oyo',
-  'Rivers',
-  'Cross River',
-  'Enugu',
-  'Kaduna',
-];
+// Only states where an active or previously delivered estate actually
+// exists — do not list aspirational/unconfirmed coverage.
+const states = ['Lagos', 'Abuja (FCT)', 'Oyo', 'Enugu', 'Edo'];
 
 export function StatesSection() {
   return (

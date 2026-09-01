@@ -143,8 +143,8 @@ export default function HeroSection() {
             <option value="Lagos">Lagos</option>
             <option value="Abuja">Abuja</option>
             <option value="Oyo">Oyo</option>
-            <option value="Ogun">Ogun</option>
-            <option value="Rivers">Rivers</option>
+            <option value="Enugu">Enugu</option>
+            <option value="Edo">Edo</option>
           </select>
           <Button size="lg" className="w-full md:w-auto" type="submit">
             <Search className="mr-2 h-4 w-4" /> Search

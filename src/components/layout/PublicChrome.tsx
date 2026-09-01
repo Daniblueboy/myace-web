@@ -10,7 +10,7 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="grow">{children}</main>
         <a
-          href="https://wa.me/2348012345678?text=Hello%20Aceroyal%20Estates%2C%20I%27d%20like%20to%20book%20an%20inspection."
+          href="https://wa.me/2349156549709?text=Hello%20Aceroyal%20Estates%2C%20I%27d%20like%20to%20book%20an%20inspection."
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"

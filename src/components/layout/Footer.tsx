@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -12,10 +12,9 @@ export function Footer() {
             Premium real estate solutions in Nigeria. Helping you find your dream property with ease and trust.
           </p>
           <div className="flex gap-4">
-            <Link href="#" className="hover:text-white"><Facebook className="w-5 h-5" /></Link>
-            <Link href="#" className="hover:text-white"><Instagram className="w-5 h-5" /></Link>
-            <Link href="#" className="hover:text-white"><Twitter className="w-5 h-5" /></Link>
-            <Link href="#" className="hover:text-white"><Linkedin className="w-5 h-5" /></Link>
+            <a href="https://www.instagram.com/aceroyal_estates/" target="_blank" rel="noopener noreferrer" className="hover:text-white"><Instagram className="w-5 h-5" /></a>
+            <a href="https://twitter.com/AceroyalLtd" target="_blank" rel="noopener noreferrer" className="hover:text-white"><Twitter className="w-5 h-5" /></a>
+            <a href="https://www.youtube.com/channel/UCx09TJiqRT_eVXga9cF7Amw" target="_blank" rel="noopener noreferrer" className="hover:text-white"><Youtube className="w-5 h-5" /></a>
           </div>
         </div>
 
@@ -50,15 +49,15 @@ export function Footer() {
           <ul className="space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="w-5 h-5 text-primary shrink-0" />
-              <span>123 Admiralty Way, Lekki Phase 1, Lagos, Nigeria</span>
+              <span>Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos, Nigeria</span>
             </li>
             <li className="flex gap-3">
               <Phone className="w-5 h-5 text-primary shrink-0" />
-              <span>+234 801 234 5678</span>
+              <span>0201 330 0287, 0915 654 9709</span>
             </li>
             <li className="flex gap-3">
               <Mail className="w-5 h-5 text-primary shrink-0" />
-              <span>info@aceroyalestates.com</span>
+              <span>customercare@aceroyalestates.com</span>
             </li>
           </ul>
         </div>
