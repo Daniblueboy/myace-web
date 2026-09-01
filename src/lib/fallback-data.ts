@@ -484,12 +484,15 @@ export const fallbackBlogPosts = [
 // Deliberately not reproducing "Abidemi Adedoyin" appearing twice, which
 // the live site does — looks like a duplication bug there, not something
 // to carry over.
+// photoUrl is only set where we have a real photo (currently just the CEO) —
+// everyone else renders as an initials avatar on the About page rather than
+// the company logo standing in for a face.
 export const fallbackTeamMembers: TeamMember[] = [
   {
     id: 'fallback-team-ceo',
     name: 'Dr. Endurance Cletus Agonor',
-    role: 'CEO and Founder',
-    bio: 'President of the Africa Under 40 CEO Forum. Leads AceRoyal Estate Homes’ strategy, partnerships, and delivery.',
+    role: 'Founder & Chief Executive Officer',
+    bio: 'President of the Africa Under 40 CEO Forum and a member of REDAN (Real Estate Developers Association of Nigeria). Leads Aceroyal Estate Homes’ strategy, partnerships, and delivery.',
     photoUrl: '/images/ceo.jpg',
     active: true,
   },
@@ -497,42 +500,42 @@ export const fallbackTeamMembers: TeamMember[] = [
     id: 'fallback-team-coo',
     name: 'Dr. Racheal Okun Agonor',
     role: 'Chief Operating Officer',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
   {
     id: 'fallback-team-regional-manager',
     name: 'Esther Udorji',
     role: 'Regional Manager',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
   {
     id: 'fallback-team-hr-manager',
     name: 'Umeh Jennifer Oluchi',
     role: 'HR Manager',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
   {
     id: 'fallback-team-head-legal',
     name: 'Barr. Arowolo Akinwale',
     role: 'Head of Legal',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
   {
     id: 'fallback-team-project-manager',
     name: 'Abidemi Adedoyin',
     role: 'Project Manager',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
   {
     id: 'fallback-team-client-service',
     name: 'Mary A. Adekahunsi',
     role: 'Head, Client Service/Customer Support (CSCSP, ACISCSM)',
-    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    photoUrl: null,
     active: true,
   },
 ];
@@ -572,6 +575,22 @@ export const fallbackComplianceItems = [
     type: 'LEGAL_DOCUMENT',
     title: 'Documented Estate Process',
     description: 'Brochures, payment details, and title information are shared during enquiry and inspection.',
+    displayOnHome: true,
+    active: true,
+  },
+  // PRE-CUTOVER CHECKLIST: not sourced from the live site — added because the
+  // site collects personal data via its forms, which brings it under the
+  // Nigeria Data Protection Act. Confirm actual NDPC registration status with
+  // Aceroyal before go-live; phrasing below deliberately mirrors the CAC
+  // item's "available on request" hedge rather than asserting a registration
+  // number we haven't seen.
+  {
+    id: 'fallback-compliance-ndpc',
+    type: 'DATA_PROTECTION',
+    title: 'Data Protection Compliance',
+    description: 'Personal data is handled in line with the Nigeria Data Protection Act. Registration documentation available on request.',
+    registrationNo: 'Available on request',
+    issuedBy: 'Nigeria Data Protection Commission',
     displayOnHome: true,
     active: true,
   },

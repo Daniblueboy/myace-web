@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,12 @@ import { Badge } from '@/components/ui/badge';
 import { Suspense } from 'react';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Downloads & Resources',
+  description: 'Brochures, consent forms and FAQs for Aceroyal Estates properties, available to download.',
+  alternates: { canonical: '/resources' },
+};
 
 const ITEMS_PER_PAGE = 9;
 

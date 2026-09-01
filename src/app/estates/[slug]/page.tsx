@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
 import { MapPin, Home, ShieldCheck, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,30 @@ function getEmbedUrl(url: string) {
     return id ? `https://player.vimeo.com/video/${id}` : url;
   }
   return url;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const estate = await fetchAPI(`/estates/${slug}`).catch(() => null);
+
+  if (!estate) {
+    return { title: 'Estate Not Found' };
+  }
+
+  const description =
+    (estate.description as string | undefined)?.slice(0, 155) ||
+    `${estate.name} — an Aceroyal Estates development in ${[estate.city, estate.state].filter(Boolean).join(', ')}.`;
+
+  return {
+    title: estate.name,
+    description,
+    alternates: { canonical: `/estates/${slug}` },
+    openGraph: estate.coverImage ? { images: [estate.coverImage] } : undefined,
+  };
 }
 
 export default async function EstateDetailPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand */}
         <div className="space-y-4">
-          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="AceRoyal Estates" className="h-12 w-auto" />
+          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="Aceroyal Estates" className="h-12 w-auto" />
           <p className="text-sm text-slate-400">
             Premium real estate solutions in Nigeria. Helping you find your dream property with ease and trust.
           </p>
@@ -64,7 +64,16 @@ export function Footer() {
       </div>
       <div className="container mt-8 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
         <div>
-          &copy; {new Date().getFullYear()} Aceroyal Estates. All rights reserved.
+          &copy; {new Date().getFullYear()} Aceroyal Estates. All rights reserved. Made with passion by{' '}
+          <a
+            href="https://doutechsolutions.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white"
+          >
+            DouTech Solutions
+          </a>
+          .
         </div>
         <div className="flex items-center gap-4">
           <Link href="/terms" className="hover:text-white">Terms &amp; Conditions</Link>

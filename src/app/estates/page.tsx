@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { fetchAPI } from '@/lib/api';
 import { MapPin, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/motion/Reveal';
+
+export const metadata: Metadata = {
+  title: 'Our Estates',
+  description: 'Browse active Aceroyal Estates developments across Lagos, Abuja, Oyo, Enugu and Edo — land and homes with transparent pricing.',
+  alternates: { canonical: '/estates' },
+};
 
 export default async function EstatesPage({
   searchParams,

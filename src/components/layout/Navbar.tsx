@@ -9,21 +9,29 @@ import { Menu, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { fetchAPI } from '@/lib/api';
 
-const NAV_LINKS_BEFORE_ESTATES = [
-  { href: '/', label: 'Home' },
+const NAV_LINKS_BEFORE_ESTATES = [{ href: '/', label: 'Home' }];
+
+const NAV_LINKS_AFTER_ESTATES = [
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
 ];
 
-const NAV_LINKS_AFTER_ESTATES = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/careers', label: 'Careers' },
+const RESOURCES_LINKS = [
+  { href: '/blog', label: 'Insights / Blog' },
   { href: '/faq', label: 'FAQs' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/resources', label: 'Downloads' },
 ];
 
-const ALL_NAV_LINKS = [...NAV_LINKS_BEFORE_ESTATES, { href: '/estates', label: 'Estates' }, ...NAV_LINKS_AFTER_ESTATES];
+const NAV_LINKS_TAIL = [{ href: '/contact', label: 'Contact' }];
+
+const ALL_NAV_LINKS = [
+  ...NAV_LINKS_BEFORE_ESTATES,
+  { href: '/estates', label: 'Estates' },
+  ...NAV_LINKS_AFTER_ESTATES,
+  ...RESOURCES_LINKS,
+  ...NAV_LINKS_TAIL,
+];
 
 const CUSTOMER_PORTAL_URL = 'https://app.myaceroyal.com';
 
@@ -135,6 +143,58 @@ function EstatesMegaMenu({ active }: { active: boolean }) {
   );
 }
 
+function ResourcesMenu({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openNow = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const closeSoon = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  return (
+    <div className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className={`relative flex items-center gap-1 text-sm font-medium transition-colors py-1 ${
+          active ? 'text-primary' : 'hover:text-primary'
+        }`}
+      >
+        Resources
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <span
+          className={`absolute -bottom-[1px] left-0 h-[2px] w-full origin-left rounded-full bg-primary transition-transform duration-200 ease-out ${
+            active ? 'scale-x-100' : 'scale-x-0'
+          }`}
+        />
+      </button>
+
+      <div
+        className={`absolute left-1/2 top-full z-50 mt-3 w-56 -translate-x-1/2 origin-top transition-all duration-200 ease-out ${
+          open ? 'pointer-events-auto translate-y-0 opacity-100 scale-100' : 'pointer-events-none -translate-y-1 opacity-0 scale-95'
+        }`}
+      >
+        <div className="rounded-2xl border bg-popover text-popover-foreground shadow-xl p-2">
+          {RESOURCES_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted hover:text-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
@@ -143,7 +203,7 @@ export function Navbar() {
     <nav className="premium-navigation sticky top-0 z-50 border-b">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="AceRoyal Estates" className="h-10 w-auto" />
+          <img src="/images/cropped-cropped-logo-jpeg.jpg" alt="Aceroyal Estates" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Menu */}
@@ -155,6 +215,12 @@ export function Navbar() {
           <EstatesMegaMenu active={isActivePath(pathname, '/estates')} />
 
           {NAV_LINKS_AFTER_ESTATES.map((link) => (
+            <NavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
+          ))}
+
+          <ResourcesMenu active={RESOURCES_LINKS.some((link) => isActivePath(pathname, link.href))} />
+
+          {NAV_LINKS_TAIL.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
           ))}
 

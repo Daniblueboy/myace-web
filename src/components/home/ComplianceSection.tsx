@@ -11,6 +11,7 @@ export default async function ComplianceSection() {
 
   const iconMap: any = {
     CAC_REGISTRATION: Shield,
+    DATA_PROTECTION: Shield,
     GOVT_CERTIFICATE: Award,
     LEGAL_DOCUMENT: CheckCircle2,
     AWARD: Award,

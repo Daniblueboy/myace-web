@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
 import { FAQList } from '@/components/faq/FAQList';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Frequently Asked Questions',
+  description: 'Answers to common questions about buying property, payment plans and inspections with Aceroyal Estates.',
+  alternates: { canonical: '/faq' },
+};
 
 export default async function FAQPage() {
   const faqs = await fetchAPI('/faqs').catch(() => []);

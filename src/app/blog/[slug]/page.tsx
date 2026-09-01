@@ -1,9 +1,32 @@
+import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
 import { Calendar, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import DOMPurify from 'isomorphic-dompurify';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await fetchAPI(`/blog/${slug}`).catch(() => null);
+
+  if (!post) {
+    return { title: 'Post Not Found' };
+  }
+
+  const description = (post.excerpt as string | undefined)?.slice(0, 155) || undefined;
+
+  return {
+    title: post.title,
+    description,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: post.coverImage ? { images: [post.coverImage] } : undefined,
+  };
+}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;

@@ -12,9 +12,10 @@ import {
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
-  title: 'Careers | Aceroyal Estates',
+  title: 'Careers',
   description:
     'Build a rewarding career in Nigerian real estate with Aceroyal Estates. Explore our culture, teams, and future opportunities.',
+  alternates: { canonical: '/careers' },
 };
 
 const values = [

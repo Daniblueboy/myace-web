@@ -27,28 +27,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  // NOTE: the referenced icon was previously pointing at a file
-  // (/icon.jpg) that doesn't exist in public/ — the favicon has been
-  // silently 404ing. Using the real logo asset instead. A dedicated
-  // square favicon (and a real Open Graph share image, distinct from
-  // the logo) would be a worthwhile follow-up.
-  icons: {
-    icon: '/images/cropped-cropped-logo-jpeg.jpg',
-    apple: '/images/cropped-cropped-logo-jpeg.jpg',
-  },
+  // Favicon/apple-icon and the Open Graph/Twitter share image are generated
+  // by src/app/icon.tsx, apple-icon.tsx, opengraph-image.tsx and
+  // twitter-image.tsx (Next.js file conventions) — no need to declare them
+  // here, and doing so would override those generated images.
   openGraph: {
     type: 'website',
     url: SITE_URL,
     siteName: SITE_NAME,
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ['/images/cropped-cropped-logo-jpeg.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ['/images/cropped-cropped-logo-jpeg.jpg'],
   },
 };
 
