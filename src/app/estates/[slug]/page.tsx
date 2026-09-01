@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import EstateOfferings from '@/components/estates/EstateOfferings';
 import EstateGallery from '@/components/estates/EstateGallery';
+import { EstateHeroCarousel } from '@/components/estates/EstateHeroCarousel';
+import { Reveal } from '@/components/motion/Reveal';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 function getEmbedUrl(url: string) {
@@ -56,7 +58,20 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-8 space-y-5">
               <div className="space-y-3">
-                <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Estate Spotlight</p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Estate Spotlight</p>
+                  {estate.status && (
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                        estate.status === 'SOLD_OUT'
+                          ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+                          : 'bg-primary/10 text-primary'
+                      }`}
+                    >
+                      {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
+                    </span>
+                  )}
+                </div>
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">{estate.name}</h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="w-4 h-4" />
@@ -101,24 +116,16 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 </div>
               </div>
             </div>
-            <div className="relative min-h-[280px] lg:min-h-full">
-              {estate.coverImage ? (
-                <img
-                  src={estate.coverImage}
-                  alt={estate.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center text-slate-500">
-                  Estate Preview Coming Soon
-                </div>
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+            <div className="group relative min-h-[280px] lg:min-h-full">
+              <EstateHeroCarousel
+                images={[...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))]}
+                alt={estate.name}
+              />
             </div>
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <Reveal className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
             <h2 className="text-2xl font-bold">Estate Highlights</h2>
             {estate.amenities && estate.amenities.length > 0 ? (
@@ -144,10 +151,10 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <Link href="/book-inspection">Book a Slot</Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
 
         {estate.videoUrl ? (
-          <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+          <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
             <h2 className="text-2xl font-bold">Estate Launch Video</h2>
             <div className="aspect-video rounded-xl overflow-hidden border">
               {estate.videoUrl.includes('youtube') || estate.videoUrl.includes('vimeo') || estate.videoUrl.includes('youtu.be') ? (
@@ -164,15 +171,15 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 </video>
               )}
             </div>
-          </div>
+          </Reveal>
         ) : null}
 
-        <div>
+        <Reveal>
           <h2 className="text-2xl font-bold mb-4">Gallery</h2>
           <EstateGallery images={estate.gallery || []} />
-        </div>
+        </Reveal>
 
-        <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+        <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
           <h2 className="text-2xl font-bold">Estate FAQs</h2>
           {estate.faqs && estate.faqs.length > 0 ? (
             <Accordion type="single" collapsible className="w-full">
@@ -188,12 +195,12 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               FAQs will be published soon. Contact us for more details.
             </p>
           )}
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal>
           <h2 className="text-2xl font-bold mb-4">Available Options</h2>
           <EstateOfferings properties={estate.properties || []} />
-        </div>
+        </Reveal>
       </div>
     </div>
   );
