@@ -68,5 +68,17 @@ export default function PropertyPanorama({ panoramaUrl }: PropertyPanoramaProps)
     };
   }, [containerId, panoramaUrl]);
 
-  return <div id={containerId} className="h-[400px] w-full rounded-lg overflow-hidden border" />;
+  // Pannellum's own stylesheet sets `.pnlm-container { height: 100% }` and
+  // applies that class directly onto this div. Loaded after Tailwind's
+  // compiled CSS, it wins the cascade at equal specificity and overrides a
+  // Tailwind height class, collapsing this against its auto-height parent.
+  // An inline style always wins regardless of stylesheet order, so the
+  // height is set here rather than via className.
+  return (
+    <div
+      id={containerId}
+      className="w-full rounded-lg overflow-hidden border"
+      style={{ height: 400 }}
+    />
+  );
 }

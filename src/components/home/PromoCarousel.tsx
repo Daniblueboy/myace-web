@@ -89,7 +89,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
       <div className="relative">
         <div
           ref={containerRef}
-          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth"
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
