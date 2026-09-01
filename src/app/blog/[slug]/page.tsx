@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20 md:py-28">
         <div className="max-w-4xl mx-auto">
           <Link href="/blog" className="inline-flex items-center gap-2 text-primary hover:opacity-80 mb-8">
             <ArrowLeft className="w-4 h-4" />

@@ -79,7 +79,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="container py-16 md:py-24">
+      <section className="container py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">How we work</p>
@@ -127,7 +127,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section id="opportunities" className="container scroll-mt-24 py-16 md:py-24">
+      <section id="opportunities" className="container scroll-mt-24 py-20 md:py-28">
         <div className="mx-auto max-w-4xl rounded-3xl border bg-card p-8 text-center shadow-sm md:p-12">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
             <MapPin className="h-7 w-7 text-primary" aria-hidden="true" />

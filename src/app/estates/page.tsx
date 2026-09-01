@@ -18,7 +18,7 @@ export default async function EstatesPage({
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      <div className="container py-16">
+      <div className="container py-20 md:py-28">
         <div className="max-w-3xl mb-10">
           <h1 className="text-4xl font-bold mb-3">Our Estates</h1>
           <p className="text-muted-foreground">

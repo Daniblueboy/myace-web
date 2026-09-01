@@ -70,7 +70,7 @@ export default function BookInspectionPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20 md:py-28">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold mb-3">Book an Inspection</h1>
