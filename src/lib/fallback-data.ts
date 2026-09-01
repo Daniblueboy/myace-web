@@ -3,68 +3,135 @@ import type { Estate, Property, TeamMember, Testimonial } from '@/shared';
 const now = '2026-01-01T00:00:00.000Z';
 const brochureUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
+// TODO(content): most estates below still use placeholder/stock imagery.
+// Real photography exists on the live site but is inconsistently organized
+// (mixed with generic stock photos even there) — needs sourcing from Daniel
+// rather than scraped, so galleries/coverImage are approximate for now.
 const estateImages = {
-  gardens: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80',
-  plains: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-  haven: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+  alphaGardenCity: 'https://aceroyalestates.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-18-at-12.31.46-1024x1024.jpeg',
+  placeholder1: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80',
+  placeholder2: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+  placeholder3: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
 };
 
 export const fallbackEstates: Estate[] = [
   {
-    id: 'fallback-estate-gardens',
-    name: 'Aceroyal Gardens',
-    slug: 'aceroyal-gardens',
-    description: 'Secure gated estate with modern infrastructure, green spaces, and flexible land ownership options.',
+    id: 'fallback-estate-alpha-garden-city',
+    name: 'Alpha Garden City',
+    slug: 'alpha-garden-city',
+    description:
+      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, built around orchard-style landscapes, wellness-focused amenities, and low-density planning. Every acre is enriched with 10-15 fruit-bearing trees, and the estate features a Central Wellness Village (holistic spa, wellness clinics, fitness studios), an integrated golf course, and a low-density model of roughly one home per acre. Residential options include wellness villas, eco lodges, retirement homes, and serviced apartments.',
+    state: 'Oyo',
+    city: 'Ibadan',
+    address: 'Ibadan, Oyo State',
+    coverImage: estateImages.alphaGardenCity,
+    brochureUrl,
+    gallery: [estateImages.alphaGardenCity],
+    status: 'ACTIVE',
+    amenities: ['Golf Course', 'Central Wellness Village', 'Nature Walking Trails', 'Yoga & Meditation Platforms', 'Cycling Paths'],
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-estate-heritage',
+    name: 'Heritage Estate',
+    slug: 'heritage-estate',
+    description:
+      'Heritage Estate (Obodo Oma) is a premium residential and commercial estate in Ekwegbe Nike, Enugu State, with an approved layout and registered survey. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.',
+    state: 'Enugu',
+    city: 'Nike',
+    address: 'Ekwegbe Nike, Enugu State',
+    coverImage: estateImages.placeholder1,
+    videoUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/Heritage-Enugu.mp4',
+    brochureUrl,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: ['Approved Layout', 'Registered Survey'],
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-estate-edo-mega-city',
+    name: 'Edo Mega City',
+    slug: 'edo-mega-city',
+    description:
+      'Edo Mega City is the biggest and most secured private residential estate in Edo State, located on the Aduduwa By-Pass and heavily guarded by the Army. Available in 100ft x 100ft (900sqm) duplex plots and one-acre (3,500sqm) country home mansion plots, titled C of O.',
+    state: 'Edo',
+    city: 'Benin City',
+    address: 'Aduduwa By-Pass, Benin City, Edo State',
+    coverImage: estateImages.placeholder2,
+    brochureUrl,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: ['Army-Guarded Security', 'C of O Title'],
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-estate-downtown-lagos-phase-2',
+    name: 'Downtown Lagos Commercial City — Phase 2',
+    slug: 'downtown-lagos-phase-2',
+    description:
+      'Downtown Commercial City Phase 2 follows the sold-out Phase 1, in Labour City, Ibeju-Lekki, on the Coastal Road — near the Lekki Free Trade Zone, Dangote Refinery, Lekki Deep Sea Port, and Lekki-Epe International Airport. Titled C of O / Government Allocation.',
     state: 'Lagos',
-    city: 'Lekki',
-    address: 'Lekki Phase 1',
-    coverImage: estateImages.gardens,
+    city: 'Ibeju-Lekki',
+    address: 'Labour City, Ibeju-Lekki, Coastal Road, Lagos State',
+    coverImage: estateImages.placeholder3,
     brochureUrl,
-    gallery: [
-      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
-    ],
+    gallery: [],
     status: 'ACTIVE',
-    amenities: ['Perimeter Fence', 'Street Lights', 'Estate Security', 'Good Road Access'],
+    amenities: ['Near Lekki Free Trade Zone', 'Near Lekki Deep Sea Port', 'Near Lekki-Epe International Airport'],
     createdAt: now,
     updatedAt: now,
   },
   {
-    id: 'fallback-estate-plains',
-    name: 'Aceroyal Plains',
-    slug: 'aceroyal-plains',
-    description: 'Affordable serviced plots with clear title documentation and an estate development roadmap.',
+    id: 'fallback-estate-downtown-lagos',
+    name: 'Downtown Lagos Commercial City — Phase 1',
+    slug: 'downtown-lagos',
+    description:
+      'Downtown Lagos is a master-planned "city within a city" in the heart of Lagos, combining premium residential apartments and smart homes, a state-of-the-art business district, world-class shopping and entertainment, and green spaces and waterways. Phase 1 has sold out.',
+    state: 'Lagos',
+    city: 'Lagos',
+    address: 'Lekki Coastal Road, Lagos',
+    coverImage: estateImages.placeholder1,
+    brochureUrl,
+    gallery: [],
+    status: 'SOLD_OUT',
+    amenities: ['Business District', 'Green Spaces & Waterways', '24/7 Power', 'High-Speed Internet'],
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-estate-eko-paragon',
+    name: 'Eko Paragon Residence',
+    slug: 'eko-paragon-residence',
+    description:
+      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.',
+    state: 'Lagos',
+    city: 'Abijo',
+    address: 'Abijo G.R.A., Lagos',
+    coverImage: estateImages.placeholder2,
+    brochureUrl,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply', 'Bio-Digester Waste System'],
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-estate-prime-annex',
+    name: 'Prime Boulevard Annex',
+    slug: 'prime-annex',
+    description:
+      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja, close to the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital. Available for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.',
     state: 'Abuja',
-    city: 'Gwarinpa',
-    address: 'Gwarinpa Extension',
-    coverImage: estateImages.plains,
+    city: 'Gwagwalada',
+    address: 'Gwagwalada, Abuja (tarred road behind Prime Boulevard 1)',
+    coverImage: estateImages.placeholder3,
     brochureUrl,
-    gallery: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
-    ],
+    gallery: [],
     status: 'ACTIVE',
-    amenities: ['Motorable Roads', 'Survey Plan', 'Clear Titles'],
-    createdAt: now,
-    updatedAt: now,
-  },
-  {
-    id: 'fallback-estate-haven',
-    name: 'Aceroyal Haven',
-    slug: 'aceroyal-haven',
-    description: 'Modern apartment options within a serene residential enclave for families and investors.',
-    state: 'Ogun',
-    city: 'Mowe',
-    address: 'Redemption Camp Road',
-    coverImage: estateImages.haven,
-    brochureUrl,
-    gallery: [
-      'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
-    ],
-    status: 'ACTIVE',
-    amenities: ['24/7 Power', 'Central Security', 'Recreational Areas'],
+    amenities: ['Perimeter Fencing', 'Maximum Security', 'Stable Electricity', 'Shopping Complex'],
     createdAt: now,
     updatedAt: now,
   },
@@ -93,7 +160,7 @@ export const fallbackProperties: Property[] = [
     images: [
       {
         id: 'fallback-property-duplex-image',
-        url: estateImages.gardens,
+        url: estateImages.placeholder2,
         altText: 'Luxury duplex exterior',
       },
     ],
@@ -141,8 +208,8 @@ export const fallbackProperties: Property[] = [
         url: brochureUrl,
       },
     ],
-    estateId: 'fallback-estate-gardens',
-    estate: fallbackEstates[0],
+    estateId: 'fallback-estate-eko-paragon',
+    estate: fallbackEstates.find((e) => e.slug === 'eko-paragon-residence'),
     createdAt: now,
     updatedAt: now,
   },
@@ -168,7 +235,7 @@ export const fallbackProperties: Property[] = [
     images: [
       {
         id: 'fallback-property-land-image',
-        url: estateImages.plains,
+        url: estateImages.placeholder3,
         altText: 'Prime estate land',
       },
     ],
@@ -199,16 +266,16 @@ export const fallbackProperties: Property[] = [
         url: brochureUrl,
       },
     ],
-    estateId: 'fallback-estate-plains',
-    estate: fallbackEstates[1],
+    estateId: 'fallback-estate-prime-annex',
+    estate: fallbackEstates.find((e) => e.slug === 'prime-annex'),
     createdAt: now,
     updatedAt: now,
   },
 ];
 
-fallbackEstates[0].properties = [fallbackProperties[0]];
-fallbackEstates[1].properties = [fallbackProperties[1]];
-fallbackEstates[2].properties = [];
+fallbackEstates.forEach((estate) => {
+  estate.properties = fallbackProperties.filter((p) => p.estateId === estate.id);
+});
 
 fallbackEstates.forEach((estate) => {
   estate.faqs = [
@@ -299,10 +366,19 @@ export const fallbackComplianceItems = [
   },
 ];
 
+// TODO(content): logos not sourced yet — using the Aceroyal mark as a
+// placeholder until real partner logos are provided.
 export const fallbackPartners = [
   {
-    id: 'fallback-partner-1',
-    name: 'Aceroyal Estates',
+    id: 'fallback-partner-aeon-trisl',
+    name: 'AEON Trisl Group',
+    logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    category: 'PARTNER',
+    active: true,
+  },
+  {
+    id: 'fallback-partner-emaar',
+    name: 'Emaar Properties',
     logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
     category: 'PARTNER',
     active: true,
@@ -315,7 +391,7 @@ export const fallbackPromos = [
     title: 'Estate Inspection Slots Open',
     message: 'Book an inspection to review available plots, apartments, and payment plans.',
     details: 'Limited weekly inspection slots are available for Lagos and Abuja estate enquiries.',
-    imageUrl: estateImages.gardens,
+    imageUrl: estateImages.placeholder1,
     linkUrl: '/book-inspection',
     placement: 'SECTION_CARD',
     priority: 1,
@@ -359,11 +435,30 @@ export const fallbackFaqs = [
 
 export const fallbackOffices = [
   {
-    id: 'fallback-office-1',
+    id: 'fallback-office-lagos',
     state: 'Lagos',
-    address: 'Lagos office details available on enquiry',
-    phones: ['+234 000 000 0000'],
-    emails: ['info@aceroyalestates.com'],
+    city: 'Lekki',
+    address: 'Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos, Nigeria.',
+    phones: ['02013300287', '09156549709'],
+    emails: ['customercare@aceroyalestates.com'],
+    openingHours: 'Mon-Fri: 9am - 5pm',
+  },
+  {
+    id: 'fallback-office-abuja',
+    state: 'Abuja',
+    city: 'Gwarimpa',
+    address: 'House A, 45 Road off Navy Quarters, By First Avenue, Gwarimpa, Abuja.',
+    phones: ['02013300287', '09156549709'],
+    emails: ['customercare@aceroyalestates.com'],
+    openingHours: 'Mon-Fri: 9am - 5pm',
+  },
+  {
+    id: 'fallback-office-benin',
+    state: 'Edo',
+    city: 'Benin City',
+    address: 'No 2 New Lagos Road, Off 2nd Junction, by Akpakpava, Benin City.',
+    phones: ['02013300287', '09156549709'],
+    emails: ['customercare@aceroyalestates.com'],
     openingHours: 'Mon-Fri: 9am - 5pm',
   },
 ];
