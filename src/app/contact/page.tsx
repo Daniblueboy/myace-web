@@ -224,7 +224,7 @@ function ContactContent() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+234 xxx xxx xxxx</p>
+                      <p className="text-muted-foreground">0201 330 0287, 0915 654 9709</p>
                     </div>
                   </div>
 
@@ -234,7 +234,7 @@ function ContactContent() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@aceroyalestates.com</p>
+                      <p className="text-muted-foreground">customercare@aceroyalestates.com</p>
                     </div>
                   </div>
 

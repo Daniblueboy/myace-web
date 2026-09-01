@@ -4,11 +4,15 @@ import Link from 'next/link';
 import { fetchAPI } from '@/lib/api';
 
 export default async function AboutPage() {
+  // TODO(content): these are the only stats we can actually back up right now
+  // (estates + states are counted from real listings). Client-facing numbers
+  // like "properties sold" or "happy clients" need real figures from Daniel —
+  // do not invent them.
   const stats = [
-    { icon: Home, label: 'Properties Listed', value: '500+' },
-    { icon: Users, label: 'Happy Clients', value: '1000+' },
-    { icon: Award, label: 'Years Experience', value: '10+' },
-    { icon: TrendingUp, label: 'Properties Sold', value: '300+' },
+    { icon: Home, label: 'Active Estates', value: '7' },
+    { icon: Award, label: 'States We Operate In', value: '5' },
+    { icon: Users, label: 'Physical Offices', value: '3' },
+    { icon: TrendingUp, label: 'Service Categories', value: '9+' },
   ];
   const values = [
     { title: 'Integrity', description: 'Clear titles, honest communication, and no hidden surprises.' },
@@ -27,8 +31,8 @@ export default async function AboutPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-bold mb-6">About Aceroyal Estates</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Your trusted partner in finding the perfect property across Nigeria. 
-              We're committed to making your real estate journey seamless and rewarding.
+              Aceroyal Estate is a subsidiary of ACEROYALPRO SERVICES, and one of the fastest growing
+              and most reliable commercial real estate firms in Lagos, Nigeria.
             </p>
           </div>
 
@@ -58,23 +62,23 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          {/* Mission & Vision */}
+          {/* What We Do & Partnerships */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+              <h2 className="text-2xl font-bold mb-4">What We Do</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To provide exceptional real estate services by connecting people with their ideal properties 
-                through innovation, transparency, and personalized support. We strive to make property 
-                ownership accessible and rewarding for everyone.
+                A wide range of real estate services, including Sales, Lease, Estate/Facility Management,
+                Renovation, Development/Construction, Investment/Consultation Brokerage, Valuation, Survey,
+                and Ratification.
               </p>
             </div>
 
             <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
+              <h2 className="text-2xl font-bold mb-4">Global Partnerships</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To become Nigeria's most trusted real estate platform, revolutionizing the property market 
-                through technology and exceptional service. We envision a future where finding and securing 
-                your dream property is simple, transparent, and stress-free.
+                Aceroyal Estate is the only Nigerian partner of the AEON Trisl Group (headquartered in Dubai,
+                with branches in London, Karachi, Lahore, and Gujrat), and partners with Emaar Properties
+                Dubai to deliver some of the best property prices to Africa and Africans in the diaspora.
               </p>
             </div>
           </div>
