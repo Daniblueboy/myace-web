@@ -8,7 +8,7 @@ const brochureUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/p
 // (mixed with generic stock photos even there) — needs sourcing from Daniel
 // rather than scraped, so galleries/coverImage are approximate for now.
 const estateImages = {
-  alphaGardenCity: 'https://aceroyalestates.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-18-at-12.31.46-1024x1024.jpeg',
+  alphaGardenCity: '/images/estates/alpha-garden-city.jpeg',
   placeholder1: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80',
   placeholder2: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
   placeholder3: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
@@ -20,7 +20,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Alpha Garden City',
     slug: 'alpha-garden-city',
     description:
-      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, built around orchard-style landscapes, wellness-focused amenities, and low-density planning. Every acre is enriched with 10-15 fruit-bearing trees, and the estate features a Central Wellness Village (holistic spa, wellness clinics, fitness studios), an integrated golf course, and a low-density model of roughly one home per acre. Residential options include wellness villas, eco lodges, retirement homes, and serviced apartments.',
+      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, built around orchard-style landscapes, wellness-focused amenities, and low-density planning. Every acre is enriched with 10-15 fruit-bearing trees, and the estate features a Central Wellness Village (holistic spa, wellness clinics, fitness studios), an integrated golf course, and a low-density model of roughly one home per acre. Residential options include wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nPrelaunch pricing: 500sqm from ₦3.5M, 1 acre (+1 plot free) from ₦12.5M. Initial deposit from ₦500K (500sqm) / ₦1.5M (1 acre). Promotional pricing — confirm current rates before publishing.',
     state: 'Oyo',
     city: 'Ibadan',
     address: 'Ibadan, Oyo State',
@@ -37,7 +37,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Heritage Estate',
     slug: 'heritage-estate',
     description:
-      'Heritage Estate (Obodo Oma) is a premium residential and commercial estate in Ekwegbe Nike, Enugu State, with an approved layout and registered survey. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.',
+      'Heritage Estate (Obodo Oma) is a premium residential and commercial estate in Ekwegbe Nike, Enugu State, with an approved layout and registered survey. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M, initial deposit ₦1M. Promotional pricing — confirm current rates before publishing.',
     state: 'Enugu',
     city: 'Nike',
     address: 'Ekwegbe Nike, Enugu State',
@@ -106,7 +106,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Eko Paragon Residence',
     slug: 'eko-paragon-residence',
     description:
-      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.',
+      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit). Promotional pricing — confirm current rates before publishing.',
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo G.R.A., Lagos',
@@ -123,7 +123,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Prime Boulevard Annex',
     slug: 'prime-annex',
     description:
-      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja, close to the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital. Available for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.',
+      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja, close to the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital. Available for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.\n\nNow selling: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit). Promotional pricing — confirm current rates before publishing.',
     state: 'Abuja',
     city: 'Gwagwalada',
     address: 'Gwagwalada, Abuja (tarred road behind Prime Boulevard 1)',
@@ -475,15 +475,63 @@ export const fallbackBlogPosts = [
   },
 ];
 
-// TODO(content): only the CEO is a confirmed real person (named in press
-// coverage). Rest of the team roster needs real names/roles/photos from
-// Daniel — do not invent additional team members.
+// Real names/roles confirmed against the live site's own "Meet The Team"
+// section (2026-09-01). Note the live site's team grid uses "Endurance
+// Cletus Agonor" with no "Dr." title — different from how a 2023 blog post
+// headline referred to him — the formal team listing is treated as the
+// more authoritative source. TODO(content): real headshots still needed
+// for everyone except the CEO; using the logo as a placeholder for now.
+// Deliberately not reproducing "Abidemi Adedoyin" appearing twice, which
+// the live site does — looks like a duplication bug there, not something
+// to carry over.
 export const fallbackTeamMembers: TeamMember[] = [
   {
     id: 'fallback-team-ceo',
-    name: 'Dr. Endurance Agonor',
-    role: 'Chief Executive Officer',
+    name: 'Dr. Endurance Cletus Agonor',
+    role: 'CEO and Founder',
     bio: 'President of the Africa Under 40 CEO Forum. Leads AceRoyal Estate Homes’ strategy, partnerships, and delivery.',
+    photoUrl: '/images/ceo.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-coo',
+    name: 'Dr. Racheal Okun Agonor',
+    role: 'Chief Operating Officer',
+    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-regional-manager',
+    name: 'Esther Udorji',
+    role: 'Regional Manager',
+    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-hr-manager',
+    name: 'Umeh Jennifer Oluchi',
+    role: 'HR Manager',
+    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-head-legal',
+    name: 'Barr. Arowolo Akinwale',
+    role: 'Head of Legal',
+    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-project-manager',
+    name: 'Abidemi Adedoyin',
+    role: 'Project Manager',
+    photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-client-service',
+    name: 'Mary A. Adekahunsi',
+    role: 'Head, Client Service/Customer Support (CSCSP, ACISCSM)',
     photoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
     active: true,
   },

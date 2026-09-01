@@ -8,7 +8,7 @@ export default function CeoWelcomeSection() {
           <div className="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-primary/10" />
           <img
             src="/images/ceo.jpg"
-            alt="Dr Endurance Agonor - CEO of Aceroyal Estates"
+            alt="Dr. Endurance Cletus Agonor - CEO of Aceroyal Estates"
             className="relative rounded-3xl w-full h-[360px] object-cover object-top shadow-xl"
           />
         </div>
@@ -25,8 +25,8 @@ export default function CeoWelcomeSection() {
               <MapPin className="h-4 w-4" />
               <span>Corporate HQ: Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos</span>
             </div>
-            <p className="font-semibold text-slate-900 dark:text-white">Dr Endurance Agonor</p>
-            <p>Chief Executive Officer</p>
+            <p className="font-semibold text-slate-900 dark:text-white">Dr. Endurance Cletus Agonor</p>
+            <p>CEO and Founder</p>
           </div>
         </div>
       </div>
