@@ -56,6 +56,7 @@ export function VirtualTourSimulator({ estateName, images }: VirtualTourSimulato
       ref={viewportRef}
       className="group relative isolate h-[360px] touch-none overflow-hidden rounded-2xl bg-[#090b10] text-white shadow-2xl md:h-[500px]"
       onPointerDown={(event) => {
+        if ((event.target as HTMLElement).closest('button')) return;
         dragStart.current = { x: event.clientX, pan };
         event.currentTarget.setPointerCapture(event.pointerId);
         setAutoRotate(false);

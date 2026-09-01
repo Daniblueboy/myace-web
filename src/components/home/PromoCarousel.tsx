@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -29,8 +29,7 @@ type Promo = {
 export default function PromoCarousel({ promos }: { promos: Promo[] }) {
   const [activePromo, setActivePromo] = useState<Promo | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const sortedPromos = useMemo(() => promos || [], [promos]);
 
@@ -41,23 +40,22 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
     return firstCard ? firstCard.offsetWidth + 24 : container.clientWidth * 0.9;
   };
 
-  const updateScrollState = () => {
+  const updateActiveIndex = () => {
     const container = containerRef.current;
-    if (!container) return;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    setCanScrollPrev(container.scrollLeft > 8);
-    setCanScrollNext(container.scrollLeft < maxScroll - 8);
+    const cardStep = step();
+    if (!container || !cardStep) return;
+    setActiveIndex(Math.round(container.scrollLeft / cardStep));
   };
 
   useEffect(() => {
-    updateScrollState();
+    updateActiveIndex();
     const container = containerRef.current;
     if (!container) return;
-    container.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    container.addEventListener("scroll", updateActiveIndex, { passive: true });
+    window.addEventListener("resize", updateActiveIndex);
     return () => {
-      container.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
+      container.removeEventListener("scroll", updateActiveIndex);
+      window.removeEventListener("resize", updateActiveIndex);
     };
   }, [sortedPromos.length]);
 
@@ -77,39 +75,15 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
     return () => clearInterval(interval);
   }, [sortedPromos.length, isPaused]);
 
-  const scrollByStep = (direction: 1 | -1) => {
-    containerRef.current?.scrollBy({ left: step() * direction, behavior: "smooth" });
+  const scrollToIndex = (index: number) => {
+    containerRef.current?.scrollTo({ left: step() * index, behavior: "smooth" });
   };
 
   return (
     <section className="container py-20 md:py-28">
-      <div className="flex items-center justify-between gap-4 mb-6">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>
-          <h2 className="text-2xl md:text-3xl font-bold">Estate Updates & Promos</h2>
-        </div>
-        {sortedPromos.length > 1 && (
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              type="button"
-              aria-label="Previous announcement"
-              onClick={() => scrollByStep(-1)}
-              disabled={!canScrollPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border bg-background text-foreground transition-colors hover:bg-muted disabled:opacity-30 disabled:pointer-events-none"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next announcement"
-              onClick={() => scrollByStep(1)}
-              disabled={!canScrollNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border bg-background text-foreground transition-colors hover:bg-muted disabled:opacity-30 disabled:pointer-events-none"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        )}
+      <div className="mb-6">
+        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>
+        <h2 className="text-2xl md:text-3xl font-bold">Estate Updates & Promos</h2>
       </div>
 
       <div className="relative">
@@ -169,27 +143,20 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
           ))}
         </div>
 
-        {/* Mobile nav — desktop uses the buttons in the header above */}
         {sortedPromos.length > 1 && (
-          <div className="mt-2 flex justify-center gap-2 md:hidden">
-            <button
-              type="button"
-              aria-label="Previous announcement"
-              onClick={() => scrollByStep(-1)}
-              disabled={!canScrollPrev}
-              className="flex h-9 w-9 items-center justify-center rounded-full border bg-background text-foreground disabled:opacity-30"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next announcement"
-              onClick={() => scrollByStep(1)}
-              disabled={!canScrollNext}
-              className="flex h-9 w-9 items-center justify-center rounded-full border bg-background text-foreground disabled:opacity-30"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
+          <div className="mt-6 flex justify-center gap-2">
+            {sortedPromos.map((promo, index) => (
+              <button
+                key={promo.id}
+                type="button"
+                aria-label={`Show announcement ${index + 1}: ${promo.title}`}
+                aria-current={index === activeIndex}
+                onClick={() => scrollToIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? "w-6 bg-primary" : "w-2 bg-primary/20 hover:bg-primary/40"
+                }`}
+              />
+            ))}
           </div>
         )}
       </div>
