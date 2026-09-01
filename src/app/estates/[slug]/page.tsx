@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
-import { MapPin, Home, ShieldCheck, ArrowLeft } from 'lucide-react';
+import { MapPin, Home, ShieldCheck, ArrowLeft, View } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import EstateOfferings from '@/components/estates/EstateOfferings';
@@ -198,6 +198,32 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
             </div>
           </Reveal>
         ) : null}
+
+        <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+          <h2 className="text-2xl font-bold">Virtual Tour</h2>
+          {estate.virtualTourUrl ? (
+            <div className="aspect-video rounded-xl overflow-hidden border">
+              <iframe
+                src={getEmbedUrl(estate.virtualTourUrl)}
+                title={`Virtual tour of ${estate.name}`}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <div className="rounded-xl border border-dashed p-8 text-center space-y-3">
+              <View className="h-8 w-8 text-muted-foreground mx-auto" />
+              <p className="text-muted-foreground">
+                A virtual walkthrough of {estate.name} isn't available yet. Book an inspection to
+                tour it in person.
+              </p>
+              <Button variant="outline" asChild>
+                <Link href="/book-inspection">Book Inspection</Link>
+              </Button>
+            </div>
+          )}
+        </Reveal>
 
         <Reveal>
           <h2 className="text-2xl font-bold mb-4">Gallery</h2>

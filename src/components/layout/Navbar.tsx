@@ -19,6 +19,7 @@ const NAV_LINKS_AFTER_ESTATES = [
 
 const RESOURCES_LINKS = [
   { href: '/blog', label: 'Insights / Blog' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '/faq', label: 'FAQs' },
   { href: '/careers', label: 'Careers' },
   { href: '/resources', label: 'Downloads' },

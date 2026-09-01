@@ -75,6 +75,17 @@ export interface PropertyMedia {
   sortOrder?: number;
 }
 
+export interface GalleryItem {
+  id: string;
+  title: string;
+  mediaType: 'image' | 'video';
+  mediaUrl: string;
+  thumbnailUrl?: string | null;
+  estateName?: string | null;
+  eventDate?: string | null;
+  active?: boolean;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -109,6 +120,7 @@ export interface Estate {
   address?: string | null;
   coverImage?: string | null;
   videoUrl?: string | null;
+  virtualTourUrl?: string | null;
   gallery?: string[];
   brochureUrl?: string | null;
   status?: string;

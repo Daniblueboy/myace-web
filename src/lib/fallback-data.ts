@@ -1,4 +1,4 @@
-import type { Estate, Property, TeamMember, Testimonial } from '@/shared';
+import type { Estate, GalleryItem, Property, TeamMember, Testimonial } from '@/shared';
 
 const now = '2026-01-01T00:00:00.000Z';
 const brochureUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
@@ -540,24 +540,52 @@ export const fallbackTeamMembers: TeamMember[] = [
   },
 ];
 
-// Sourced from the live site's About page testimonial carousel. Two other
-// quotes shown there were deliberately left out: one is a staff member
-// thanking "Chairman_ace" (an internal note to the CEO, not a client
-// testimonial about the service) and the other is attributed to "Esther
-// Udorji, Student/Digital Marketing Expert" — the same name already used
-// for the Regional Manager in the team roster, which reads like a live-site
-// data mix-up rather than two different people (same pattern as the
-// Abidemi Adedoyin duplication noted above).
+// Sourced from the live site's About page testimonial carousel (all 3 shown
+// there, per Daniel — don't silently drop live-site content, flag it for
+// validation instead).
+//
+// PRE-CUTOVER CHECKLIST: the Theodora Agbonkpolor quote is addressed to
+// "Chairman_ace" and framed as a staff member (her listed role is "Sales
+// executive") praising the CEO personally, rather than a typical client
+// testimonial about the buying experience — worth Daniel's read before this
+// ships in "What Clients Say" as-is. Also: "Esther Udorji, Student/Digital
+// Marketing Expert" here shares a name with "Esther Udorji, Regional
+// Manager" in the team roster — flagging in case that's a live-site mix-up
+// rather than two different people, not assuming either way.
 export const fallbackTestimonials: Testimonial[] = [
   {
     id: 'fallback-testimonial-momodu',
     name: 'Momodu Afegbua',
     role: 'Tech Expert/Consultant',
     message:
-      "Aceroyalestates is unarguably the best real estate company in Nigeria, I have ever dealt with them and I am speaking based on my experience and lots of other reviews. They have some of the best team in the world, very professional, experienced and helpful agents and brokers. They come highly recommended. Great environment, professional and nice people, clean and beautiful estates set up. They care about their clients and train their agents frequently so they are always updated with what's going on in the market, they thoroughly explained everything I needed to know to me. I recommend Aceroyal Estates to anyone looking to do any real estate transaction.",
+      "Let me tell you the truth, Aceroyalestates is unarguably the best real estate company in Nigeria, I have ever dealt with them and I am speaking based on my experience and lots of other reviews. They have some of the best team in the world, very professional, experienced and helpful agents and brokers. They come highly recommended. Great environment, professional and nice people, clean and beautiful estates set up. They care about their clients and train their agents frequently so they are always updated with what's going on in the market, they thoroughly explained everything I needed to know to me, and I started feeling like a guru from the lectures. I recommend Aceroyalestates to anyone looking to do any real estate transaction.",
+    active: true,
+  },
+  {
+    id: 'fallback-testimonial-esther',
+    name: 'Esther Udorji',
+    role: 'Student/Digital Marketing Expert',
+    message:
+      "Aceroyalestates is a dedicated real estate company that always keeps its clients' interests in mind and diligently ensures all facets of a transaction are attended to. They have a thorough knowledge of the job, communicates effectively and is a pleasure to work with them.",
+    active: true,
+  },
+  {
+    id: 'fallback-testimonial-theodora',
+    name: 'Theodora Agbonkpolor',
+    role: 'Sales Executive',
+    message:
+      "I've talked to the CEO of Aceroyalestates multiple times about real estate and the real estate market. He is very knowledgeable, professional and passionate about his vision. Anyone who works with him is lucky to have him on their side. It's a competitive market and he knows how to navigate the complexities to his clients advantage, he is constantly challenging the status quo, I once called him the \"robinhood\" of real estate. Was a joy to work with. He really went above and beyond in pursuit of my peculiar constraints, and worked through several challenging buying scenarios until I got just what I wanted. Thank you Chairman_ace.",
     active: true,
   },
 ];
+
+// Deliberately empty — no real allocation event photos/videos sourced yet.
+// Do not fill this with stock imagery: unlike hero/mood photography, gallery
+// items specifically claim "this happened at our allocation event," so a
+// stock substitute here would misrepresent something that didn't occur.
+// Populate once Daniel supplies real media (photos/video from an allocation
+// event, ideally hosted on Cloudinary per the earlier asset-storage decision).
+export const fallbackGalleryItems: GalleryItem[] = [];
 
 export const fallbackComplianceItems = [
   {
@@ -833,6 +861,7 @@ export function getFallbackData(endpoint: string, method = 'GET') {
 
   if (pathname === '/team') return fallbackTeamMembers;
   if (pathname === '/testimonials') return fallbackTestimonials;
+  if (pathname === '/gallery') return fallbackGalleryItems;
   if (pathname === '/compliance') return fallbackComplianceItems;
   if (pathname === '/partners') return fallbackPartners;
   if (pathname === '/promos') return fallbackPromos;
