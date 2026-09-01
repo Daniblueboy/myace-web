@@ -8,6 +8,7 @@ import EstateGallery from '@/components/estates/EstateGallery';
 import { EstateHeroCarousel } from '@/components/estates/EstateHeroCarousel';
 import { Reveal } from '@/components/motion/Reveal';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator';
 import PropertyPanorama from '@/components/properties/PropertyPanorama';
 
@@ -151,124 +152,139 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
           </div>
         </div>
 
-        <Reveal className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-            <h2 className="text-2xl font-bold">Estate Highlights</h2>
-            {estate.amenities && estate.amenities.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
-                {estate.amenities.map((amenity: string) => (
-                  <span key={amenity} className="px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-950 border dark:border-slate-800 text-sm">
-                    {amenity}
-                  </span>
-                ))}
+        <Reveal>
+          <Tabs defaultValue="overview">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="media">Media &amp; Virtual Tour</TabsTrigger>
+              <TabsTrigger value="faqs">FAQs</TabsTrigger>
+              <TabsTrigger value="units">Available Units</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="overview" className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+                <h2 className="text-2xl font-bold">Estate Highlights</h2>
+                {estate.amenities && estate.amenities.length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {estate.amenities.map((amenity: string) => (
+                      <span key={amenity} className="px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-950 border dark:border-slate-800 text-sm">
+                        {amenity}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground">
+                    Infrastructure and title details will be published here. Contact us for a full brochure.
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-muted-foreground">
-                Infrastructure and title details will be published here. Contact us for a full brochure.
-              </p>
-            )}
-          </div>
-          <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-3">
-            <h3 className="text-xl font-semibold">Inspection Schedule</h3>
-            <p className="text-muted-foreground">
-              Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
-            </p>
-            <Button variant="outline" asChild className="w-full">
-              <Link href="/book-inspection">Book a Slot</Link>
-            </Button>
-          </div>
-        </Reveal>
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-3">
+                <h3 className="text-xl font-semibold">Inspection Schedule</h3>
+                <p className="text-muted-foreground">
+                  Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
+                </p>
+                <Button variant="outline" asChild className="w-full">
+                  <Link href="/book-inspection">Book a Slot</Link>
+                </Button>
+              </div>
+            </TabsContent>
 
-        {estate.videoUrl ? (
-          <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-            <h2 className="text-2xl font-bold">Estate Launch Video</h2>
-            <div className="aspect-video rounded-xl overflow-hidden border">
-              {estate.videoUrl.includes('youtube') || estate.videoUrl.includes('vimeo') || estate.videoUrl.includes('youtu.be') ? (
-                <iframe
-                  src={getEmbedUrl(estate.videoUrl)}
-                  title={`Launch video for ${estate.name}`}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <video controls playsInline preload="metadata" className="w-full h-full">
-                  <source src={estate.videoUrl} type="video/mp4" />
-                </video>
+            <TabsContent value="media" className="mt-6 space-y-6">
+              {estate.videoUrl && (
+                <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+                  <h2 className="text-2xl font-bold">Estate Launch Video</h2>
+                  <div className="aspect-video rounded-xl overflow-hidden border">
+                    {estate.videoUrl.includes('youtube') || estate.videoUrl.includes('vimeo') || estate.videoUrl.includes('youtu.be') ? (
+                      <iframe
+                        src={getEmbedUrl(estate.videoUrl)}
+                        title={`Launch video for ${estate.name}`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video controls playsInline preload="metadata" className="w-full h-full">
+                        <source src={estate.videoUrl} type="video/mp4" />
+                      </video>
+                    )}
+                  </div>
+                </div>
               )}
-            </div>
-          </Reveal>
-        ) : null}
 
-        <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <h2 className="text-2xl font-bold">Virtual Tour</h2>
-            {!estate.panoramaUrl && !estate.virtualTourUrl && tourImages.length > 0 && (
-              <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-                Sample preview
-              </span>
-            )}
-          </div>
-          {estate.panoramaUrl ? (
-            <PropertyPanorama panoramaUrl={estate.panoramaUrl} estateName={estate.name} />
-          ) : estate.virtualTourUrl ? (
-            <div className="aspect-video rounded-xl overflow-hidden border">
-              <iframe
-                src={getEmbedUrl(estate.virtualTourUrl)}
-                title={`Virtual tour of ${estate.name}`}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
-                allowFullScreen
-              />
-            </div>
-          ) : tourImages.length > 0 ? (
-            <div className="space-y-3">
-              <VirtualTourSimulator estateName={estate.name} images={tourImages} />
-              <p className="text-sm text-muted-foreground">
-                Interactive photo simulation for feature preview. It is not captured 360° media or
-                a substitute for an in-person inspection.
-              </p>
-            </div>
-          ) : (
-            <div className="rounded-xl border border-dashed p-8 text-center space-y-3">
-              <View className="h-8 w-8 text-muted-foreground mx-auto" />
-              <p className="text-muted-foreground">
-                A virtual walkthrough of {estate.name} isn't available yet. Book an inspection to
-                tour it in person.
-              </p>
-              <Button variant="outline" asChild>
-                <Link href="/book-inspection">Book Inspection</Link>
-              </Button>
-            </div>
-          )}
-        </Reveal>
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <h2 className="text-2xl font-bold">Virtual Tour</h2>
+                  {!estate.panoramaUrls?.length && !estate.virtualTourUrl && tourImages.length > 0 && (
+                    <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                      Sample preview
+                    </span>
+                  )}
+                </div>
+                {estate.panoramaUrls?.length ? (
+                  <PropertyPanorama panoramaUrls={estate.panoramaUrls} estateName={estate.name} />
+                ) : estate.virtualTourUrl ? (
+                  <div className="aspect-video rounded-xl overflow-hidden border">
+                    <iframe
+                      src={getEmbedUrl(estate.virtualTourUrl)}
+                      title={`Virtual tour of ${estate.name}`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : tourImages.length > 0 ? (
+                  <div className="space-y-3">
+                    <VirtualTourSimulator estateName={estate.name} images={tourImages} />
+                    <p className="text-sm text-muted-foreground">
+                      Interactive photo simulation for feature preview. It is not captured 360° media or
+                      a substitute for an in-person inspection.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="rounded-xl border border-dashed p-8 text-center space-y-3">
+                    <View className="h-8 w-8 text-muted-foreground mx-auto" />
+                    <p className="text-muted-foreground">
+                      A virtual walkthrough of {estate.name} isn't available yet. Book an inspection to
+                      tour it in person.
+                    </p>
+                    <Button variant="outline" asChild>
+                      <Link href="/book-inspection">Book Inspection</Link>
+                    </Button>
+                  </div>
+                )}
+              </div>
 
-        <Reveal>
-          <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-          <EstateGallery images={estate.gallery || []} />
-        </Reveal>
+              <div>
+                <h2 className="text-2xl font-bold mb-4">Gallery</h2>
+                <EstateGallery images={estate.gallery || []} />
+              </div>
+            </TabsContent>
 
-        <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-          <h2 className="text-2xl font-bold">Estate FAQs</h2>
-          {estate.faqs && estate.faqs.length > 0 ? (
-            <Accordion type="single" collapsible className="w-full">
-              {estate.faqs.map((faq: any) => (
-                <AccordionItem key={faq.id} value={faq.id}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>{faq.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          ) : (
-            <p className="text-muted-foreground">
-              FAQs will be published soon. Contact us for more details.
-            </p>
-          )}
-        </Reveal>
+            <TabsContent value="faqs" className="mt-6">
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+                <h2 className="text-2xl font-bold">Estate FAQs</h2>
+                {estate.faqs && estate.faqs.length > 0 ? (
+                  <Accordion type="single" collapsible className="w-full">
+                    {estate.faqs.map((faq: any) => (
+                      <AccordionItem key={faq.id} value={faq.id}>
+                        <AccordionTrigger>{faq.question}</AccordionTrigger>
+                        <AccordionContent>{faq.answer}</AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                ) : (
+                  <p className="text-muted-foreground">
+                    FAQs will be published soon. Contact us for more details.
+                  </p>
+                )}
+              </div>
+            </TabsContent>
 
-        <Reveal>
-          <h2 className="text-2xl font-bold mb-4">Available Options</h2>
-          <EstateOfferings properties={estate.properties || []} />
+            <TabsContent value="units" className="mt-6">
+              <h2 className="text-2xl font-bold mb-4">Available Options</h2>
+              <EstateOfferings properties={estate.properties || []} />
+            </TabsContent>
+          </Tabs>
         </Reveal>
       </div>
     </div>

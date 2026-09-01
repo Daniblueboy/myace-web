@@ -1,8 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useId } from 'react';
-import { Info, Maximize2, MoveHorizontal, Pause, Play, Plus, Minus, RotateCcw, X } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Info,
+  Maximize2,
+  Move,
+  Pause,
+  Play,
+  Plus,
+  Minus,
+  RotateCcw,
+  X,
+} from 'lucide-react';
 
 type PanoramaViewer = {
   destroy: () => void;
@@ -14,6 +26,8 @@ type PanoramaViewer = {
   startAutoRotate: (speed?: number) => void;
   stopAutoRotate: () => void;
   toggleFullscreen: () => void;
+  loadScene: (sceneId: string, pitch?: number, yaw?: number, hfov?: number) => void;
+  getScene: () => string;
 };
 type PannellumWindow = Window & {
   pannellum?: {
@@ -22,14 +36,14 @@ type PannellumWindow = Window & {
 };
 
 interface PropertyPanoramaProps {
-  panoramaUrl: string;
+  panoramaUrls: string[];
   estateName?: string;
 }
 
 const MIN_HFOV = 50;
 const MAX_HFOV = 120;
 
-export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPanoramaProps) {
+export default function PropertyPanorama({ panoramaUrls, estateName }: PropertyPanoramaProps) {
   const containerId = useId().replace(/:/g, '');
   const wrapperRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<PanoramaViewer | null>(null);
@@ -37,6 +51,9 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
   const [ready, setReady] = useState(false);
   const [autoRotate, setAutoRotate] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [sceneIndex, setSceneIndex] = useState(0);
+
+  const sceneIds = useMemo(() => panoramaUrls.map((_, i) => `scene${i}`), [panoramaUrls]);
 
   useEffect(() => {
     const existingScript = document.querySelector<HTMLScriptElement>(
@@ -54,19 +71,24 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
       document.head.appendChild(link);
     }
 
+    const scenes = Object.fromEntries(
+      panoramaUrls.map((url, i) => [
+        sceneIds[i],
+        { type: 'equirectangular', panorama: url },
+      ]),
+    );
+
     const initViewer = () => {
       const pannellum = (window as PannellumWindow).pannellum;
       if (pannellum && document.getElementById(containerId) && !viewerRef.current) {
         const viewer = pannellum.viewer(containerId, {
-          type: 'equirectangular',
-          panorama: panoramaUrl,
-          autoLoad: true,
+          default: { firstScene: sceneIds[0], autoLoad: true },
+          scenes,
           showControls: false,
           showZoomCtrl: false,
           showFullscreenCtrl: false,
         });
         viewerRef.current = viewer;
-        // Capture the settled initial view once loaded, for the reset button.
         window.setTimeout(() => {
           try {
             initialViewRef.current = {
@@ -98,8 +120,10 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
       existingScript?.removeEventListener('load', initViewer);
       viewerRef.current?.destroy();
       viewerRef.current = null;
+      setReady(false);
     };
-  }, [containerId, panoramaUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [containerId, panoramaUrls.join('|')]);
 
   const zoom = (direction: 1 | -1) => {
     const viewer = viewerRef.current;
@@ -128,8 +152,19 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
     setAutoRotate((value) => !value);
   };
 
+  const goToScene = (index: number) => {
+    const viewer = viewerRef.current;
+    if (!viewer) return;
+    const nextIndex = (index + sceneIds.length) % sceneIds.length;
+    viewer.loadScene(sceneIds[nextIndex]);
+    setSceneIndex(nextIndex);
+    setAutoRotate(false);
+  };
+
   const controlClass =
-    'inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-sm transition hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white';
+    'inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-sm transition hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-40';
+
+  if (panoramaUrls.length === 0) return null;
 
   return (
     <div
@@ -143,7 +178,10 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
       <div className="pointer-events-none absolute left-4 right-4 top-4 flex items-start justify-between gap-3">
         <div className="pointer-events-auto rounded-xl bg-black/60 px-3 py-2 shadow-lg backdrop-blur-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">360&deg; Virtual Tour</p>
-          {estateName && <p className="mt-0.5 text-sm font-medium">{estateName}</p>}
+          <p className="mt-0.5 text-sm font-medium">
+            {estateName}
+            {sceneIds.length > 1 && ` · Scene ${sceneIndex + 1} of ${sceneIds.length}`}
+          </p>
         </div>
         <button
           type="button"
@@ -166,12 +204,38 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
             <X className="h-4 w-4" />
           </button>
           <p className="pr-6 font-semibold">Explore the space</p>
-          <p className="mt-1 text-white/75">Drag or swipe to look around. Use the controls to zoom, rotate, reset, or enter fullscreen.</p>
+          <p className="mt-1 text-white/75">
+            Drag or swipe to look around.
+            {sceneIds.length > 1 && ' Use the arrows to move between rooms/areas.'} Use the controls to zoom, rotate, reset, or enter fullscreen.
+          </p>
         </div>
       )}
 
-      <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-3">
-        <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/55 p-1.5 shadow-lg backdrop-blur-sm">
+      {sceneIds.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={() => goToScene(sceneIndex - 1)}
+            disabled={!ready}
+            className={`${controlClass} absolute left-4 top-1/2 -translate-y-1/2`}
+            aria-label="Previous scene"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => goToScene(sceneIndex + 1)}
+            disabled={!ready}
+            className={`${controlClass} absolute right-4 top-1/2 -translate-y-1/2`}
+            aria-label="Next scene"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </>
+      )}
+
+      <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-3">
+        <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/15 bg-black/55 p-1.5 shadow-lg backdrop-blur-sm">
           <button
             type="button"
             className={controlClass}
@@ -200,8 +264,8 @@ export default function PropertyPanorama({ panoramaUrl, estateName }: PropertyPa
             <Maximize2 className="h-4 w-4" />
           </button>
         </div>
-        <div className="hidden items-center gap-2 rounded-full bg-black/55 px-3 py-2 text-xs text-white/75 backdrop-blur-sm sm:flex">
-          <MoveHorizontal className="h-4 w-4" /> Drag to explore
+        <div className="pointer-events-none hidden items-center gap-2 rounded-full bg-black/55 px-3 py-2 text-xs text-white/75 backdrop-blur-sm sm:flex">
+          <Move className="h-4 w-4" /> Drag to explore
         </div>
       </div>
     </div>

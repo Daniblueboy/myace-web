@@ -1,43 +1,49 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Expand, Info, Maximize2, Minus, MoveHorizontal, Pause, Play, Plus, RotateCcw, X } from 'lucide-react';
+import { Expand, Info, Maximize2, Minus, Move, Pause, Play, Plus, RotateCcw, X } from 'lucide-react';
 
 type VirtualTourSimulatorProps = { estateName: string; images: string[] };
 
 export function VirtualTourSimulator({ estateName, images }: VirtualTourSimulatorProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const dragStart = useRef<{ x: number; pan: number } | null>(null);
+  const dragStart = useRef<{ x: number; y: number; panX: number; panY: number } | null>(null);
   const [scene, setScene] = useState(0);
-  const [pan, setPan] = useState(50);
+  const [panX, setPanX] = useState(50);
+  const [panY, setPanY] = useState(50);
   const [zoom, setZoom] = useState(1.12);
   const [autoRotate, setAutoRotate] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
   const resetView = useCallback(() => {
-    setPan(50);
+    setPanX(50);
+    setPanY(50);
     setZoom(1.12);
     setAutoRotate(false);
   }, []);
 
   const selectScene = useCallback((index: number) => {
     setScene((index + images.length) % images.length);
-    setPan(50);
+    setPanX(50);
+    setPanY(50);
     setZoom(1.12);
   }, [images.length]);
 
   useEffect(() => {
     if (!autoRotate) return;
     const timer = window.setInterval(() => {
-      setPan((current) => (current >= 88 ? 12 : current + 0.18));
+      setPanX((current) => (current >= 88 ? 12 : current + 0.18));
     }, 30);
     return () => window.clearInterval(timer);
   }, [autoRotate]);
 
-  const updatePan = (clientX: number) => {
+  const updatePan = (clientX: number, clientY: number) => {
     if (!dragStart.current || !viewportRef.current) return;
-    const delta = ((clientX - dragStart.current.x) / viewportRef.current.clientWidth) * 70;
-    setPan(Math.max(8, Math.min(92, dragStart.current.pan - delta)));
+    const { clientWidth, clientHeight } = viewportRef.current;
+    const deltaX = ((clientX - dragStart.current.x) / clientWidth) * 70;
+    const deltaY = ((clientY - dragStart.current.y) / clientHeight) * 70;
+    setPanX(Math.max(8, Math.min(92, dragStart.current.panX - deltaX)));
+    setPanY(Math.max(8, Math.min(92, dragStart.current.panY - deltaY)));
   };
 
   const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -57,16 +63,18 @@ export function VirtualTourSimulator({ estateName, images }: VirtualTourSimulato
       className="group relative isolate h-[360px] touch-none overflow-hidden rounded-2xl bg-[#090b10] text-white shadow-2xl md:h-[500px]"
       onPointerDown={(event) => {
         if ((event.target as HTMLElement).closest('button')) return;
-        dragStart.current = { x: event.clientX, pan };
+        dragStart.current = { x: event.clientX, y: event.clientY, panX, panY };
         event.currentTarget.setPointerCapture(event.pointerId);
         setAutoRotate(false);
       }}
-      onPointerMove={(event) => updatePan(event.clientX)}
+      onPointerMove={(event) => updatePan(event.clientX, event.clientY)}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
       onKeyDown={(event) => {
-        if (event.key === 'ArrowLeft') setPan((value) => Math.max(8, value - 4));
-        if (event.key === 'ArrowRight') setPan((value) => Math.min(92, value + 4));
+        if (event.key === 'ArrowLeft') setPanX((value) => Math.max(8, value - 4));
+        if (event.key === 'ArrowRight') setPanX((value) => Math.min(92, value + 4));
+        if (event.key === 'ArrowUp') setPanY((value) => Math.max(8, value - 4));
+        if (event.key === 'ArrowDown') setPanY((value) => Math.min(92, value + 4));
         if (event.key === '+' || event.key === '=') setZoom((value) => Math.min(1.55, value + 0.1));
         if (event.key === '-') setZoom((value) => Math.max(1, value - 0.1));
       }}
@@ -79,7 +87,11 @@ export function VirtualTourSimulator({ estateName, images }: VirtualTourSimulato
         alt={`${estateName} virtual tour scene ${scene + 1}`}
         draggable={false}
         className="absolute inset-0 h-full w-full select-none object-cover transition-transform duration-150 ease-out"
-        style={{ objectPosition: `${pan}% center`, transform: `scale(${zoom})` }}
+        style={{
+          objectPosition: `${panX}% ${panY}%`,
+          transformOrigin: `${panX}% ${panY}%`,
+          transform: `scale(${zoom})`,
+        }}
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/70" />
 
@@ -128,7 +140,7 @@ export function VirtualTourSimulator({ estateName, images }: VirtualTourSimulato
           <button type="button" className={controlClass} onClick={() => viewportRef.current?.requestFullscreen()} aria-label="Enter fullscreen tour"><Maximize2 className="h-4 w-4" /></button>
         </div>
         <div className="hidden items-center gap-2 rounded-full bg-black/55 px-3 py-2 text-xs text-white/75 backdrop-blur-sm sm:flex">
-          <MoveHorizontal className="h-4 w-4" /> Drag to explore
+          <Move className="h-4 w-4" /> Drag to explore
         </div>
       </div>
     </div>

@@ -4,17 +4,12 @@
 // transparent-background variant used on every dark surface.
 
 function DarkMark({ iconClassName }: { iconClassName: string }) {
-  return (
-    <span className="inline-flex items-center gap-2">
-      <img src="/images/aceroyal-mark-white.svg" alt="" className={iconClassName} />
-      <span className="whitespace-nowrap font-bold tracking-wide text-white">ACEROYAL ESTATES</span>
-    </span>
-  );
+  return <img src="/images/aceroyal-mark-white.svg" alt="Aceroyal Estates" className={iconClassName} />;
 }
 
 /**
- * `theme="auto"` (default): light logo in light mode, white mark + text in dark mode.
- * `theme="dark"`: always renders the white mark + text — for surfaces that are
+ * `theme="auto"` (default): light logo in light mode, white mark in dark mode.
+ * `theme="dark"`: always renders the white mark — for surfaces that are
  * always dark regardless of the site theme toggle (e.g. the footer).
  */
 export function BrandLogo({

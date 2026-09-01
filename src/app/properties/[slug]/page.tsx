@@ -379,7 +379,7 @@ export default function PropertyDetailPage() {
               {property.panoramaUrl && (
                 <div>
                   <h3 className="text-lg font-semibold mb-3">360° Virtual Tour</h3>
-                  <PropertyPanorama panoramaUrl={property.panoramaUrl} />
+                  <PropertyPanorama panoramaUrls={[property.panoramaUrl]} />
                 </div>
               )}
               {property.videoUrl && (
