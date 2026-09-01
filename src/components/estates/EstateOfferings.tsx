@@ -29,7 +29,13 @@ function normalizeLabel(label: string) {
   return label.replace(/\s*\(out(?:right)?\)\s*/gi, '').replace(/\s+outright$/i, '').trim();
 }
 
-export default function EstateOfferings({ properties = [] }: { properties: any[] }) {
+export default function EstateOfferings({
+  properties = [],
+  estateSlug,
+}: {
+  properties: any[];
+  estateSlug?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [activeUrl, setActiveUrl] = useState('');
   const [activeTitle, setActiveTitle] = useState('');
@@ -135,9 +141,18 @@ export default function EstateOfferings({ properties = [] }: { properties: any[]
                 <p className="text-sm text-muted-foreground">No flyers uploaded yet.</p>
               )}
             </div>
-            <Button asChild className="w-full" disabled={!option.available}>
-              <Link href="/book-inspection">Book Inspection</Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button asChild className="flex-1" disabled={!option.available}>
+                <Link href={`/contact${estateSlug ? `?estate=${estateSlug}&enquiry=PURCHASE` : '?enquiry=PURCHASE'}`}>
+                  Enquire to Purchase
+                </Link>
+              </Button>
+              <Button variant="outline" asChild className="flex-1" disabled={!option.available}>
+                <Link href={estateSlug ? `/book-inspection?estate=${estateSlug}` : '/book-inspection'}>
+                  Book Inspection
+                </Link>
+              </Button>
+            </div>
           </div>
         ))}
       </div>

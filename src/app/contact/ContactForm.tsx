@@ -116,6 +116,11 @@ export default function ContactForm() {
             Have questions? We'd love to hear from you. Send us a message and we'll respond as
             soon as possible.
           </p>
+          {estateName && (
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-1.5 text-sm font-medium">
+              Regarding {estateName}
+            </p>
+          )}
         </div>
       </section>
 

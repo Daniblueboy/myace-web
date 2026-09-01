@@ -129,6 +129,9 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild>
+                  <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
+                </Button>
+                <Button variant="outline" asChild>
                   <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
                 </Button>
                 <Button variant="outline" asChild>
@@ -301,7 +304,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
 
             <TabsContent value="units" className="mt-6">
               <h2 className="text-2xl font-bold mb-4">Available Options</h2>
-              <EstateOfferings properties={estate.properties || []} />
+              <EstateOfferings properties={estate.properties || []} estateSlug={estate.slug} />
             </TabsContent>
           </Tabs>
         </Reveal>
