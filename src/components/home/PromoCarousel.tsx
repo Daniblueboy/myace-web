@@ -128,7 +128,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
               <DialogDescription>{activePromo.message}</DialogDescription>
             </DialogHeader>
             {(activePromo.videoUrl || activePromo.imageUrl) && (
-              <div className="rounded-xl overflow-hidden border">
+              <div className="h-48 md:h-64 rounded-xl overflow-hidden border shrink-0">
                 {activePromo.videoUrl ? (
                   <video
                     className="w-full h-full object-cover"

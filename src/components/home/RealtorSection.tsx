@@ -39,7 +39,7 @@ export default function RealtorSection() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
+    <section id="realtor" className="py-20 md:py-28 bg-white dark:bg-slate-950 scroll-mt-24">
       <div className="container">
         <div className="rounded-3xl border bg-gradient-to-br from-primary/5 to-transparent dark:border-slate-800 p-8 md:p-12 grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-4">

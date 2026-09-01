@@ -557,6 +557,28 @@ export const fallbackPartners = [
 
 export const fallbackPromos = [
   {
+    id: 'fallback-promo-app-launch',
+    title: 'Our Portals & App Are Launching Soon',
+    message: 'Track estate updates, view payment plans, and book inspections from your phone. Join the waitlist for early access.',
+    details: 'The Aceroyal customer portal and mobile app are on the way, bringing verified estate updates, payment plan flyers, inspection booking, and secure client support messaging. Join the waitlist below the app section to get notified the moment it goes live.',
+    imageUrl: estateImages.placeholder2,
+    linkUrl: '/#app-download',
+    placement: 'SECTION_CARD',
+    priority: 1,
+    active: true,
+  },
+  {
+    id: 'fallback-promo-realtor',
+    title: 'Are You a Realtor? Join Aceroyal Realtor',
+    message: 'Earn commissions helping clients find their next estate, land, or apartment — with real-time listing access and dedicated support.',
+    details: 'Aceroyal Realtor gives partner agents real-time listing access, payment tracking, and dedicated support for every client they bring on. Fill out the form in the Aceroyal Realtor section below to get started.',
+    imageUrl: estateImages.placeholder3,
+    linkUrl: '/#realtor',
+    placement: 'SECTION_CARD',
+    priority: 2,
+    active: true,
+  },
+  {
     id: 'fallback-promo-1',
     title: 'Estate Inspection Slots Open',
     message: 'Book an inspection to review available plots, apartments, and payment plans.',
@@ -564,7 +586,7 @@ export const fallbackPromos = [
     imageUrl: estateImages.placeholder1,
     linkUrl: '/book-inspection',
     placement: 'SECTION_CARD',
-    priority: 1,
+    priority: 3,
     active: true,
   },
 ];

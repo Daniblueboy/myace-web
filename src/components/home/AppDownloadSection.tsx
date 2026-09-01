@@ -27,7 +27,7 @@ export default function AppDownloadSection() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-950">
+    <section id="app-download" className="py-20 md:py-28 bg-slate-50 dark:bg-slate-950 scroll-mt-24">
       <div className="container">
         <div className="rounded-3xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-8 md:p-12 grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
           <div className="space-y-4">
