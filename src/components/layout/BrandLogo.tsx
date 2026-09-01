@@ -1,15 +1,13 @@
 // The source logo is a JPEG with a solid white background, which shows as an
 // ugly white box on dark surfaces (the footer, which is always dark, and the
-// navbar in dark mode). aceroyal-mark-dark-mode.png is a processed variant —
-// background keyed to transparent, the mark's black swoosh recolored to
-// white, the red gradient left untouched — paired with real white text so it
-// reads cleanly on dark backgrounds.
+// navbar in dark mode). aceroyal-mark-white.svg is the fully white,
+// transparent-background variant used on every dark surface.
 
 function DarkMark({ iconClassName }: { iconClassName: string }) {
   return (
     <span className="inline-flex items-center gap-2">
-      <img src="/images/aceroyal-mark-dark-mode.png" alt="" className={iconClassName} />
-      <span className="font-bold tracking-wide text-white whitespace-nowrap">ACEROYAL ESTATES</span>
+      <img src="/images/aceroyal-mark-white.svg" alt="" className={iconClassName} />
+      <span className="whitespace-nowrap font-bold tracking-wide text-white">ACEROYAL ESTATES</span>
     </span>
   );
 }

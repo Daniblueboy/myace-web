@@ -8,6 +8,8 @@ import EstateGallery from '@/components/estates/EstateGallery';
 import { EstateHeroCarousel } from '@/components/estates/EstateHeroCarousel';
 import { Reveal } from '@/components/motion/Reveal';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator';
+import PropertyPanorama from '@/components/properties/PropertyPanorama';
 
 function getEmbedUrl(url: string) {
   if (!url) return url;
@@ -201,13 +203,17 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
         <Reveal className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <h2 className="text-2xl font-bold">Virtual Tour</h2>
-            {!estate.virtualTourUrl && tourImages.length > 0 && (
+            {!estate.panoramaUrl && !estate.virtualTourUrl && tourImages.length > 0 && (
               <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
                 Sample preview
               </span>
             )}
           </div>
-          {estate.virtualTourUrl ? (
+          {estate.panoramaUrl ? (
+            <div className="overflow-hidden rounded-xl border">
+              <PropertyPanorama panoramaUrl={estate.panoramaUrl} />
+            </div>
+          ) : estate.virtualTourUrl ? (
             <div className="aspect-video rounded-xl overflow-hidden border">
               <iframe
                 src={getEmbedUrl(estate.virtualTourUrl)}
@@ -219,12 +225,10 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
             </div>
           ) : tourImages.length > 0 ? (
             <div className="space-y-3">
-              <div className="rounded-xl overflow-hidden border h-[320px] md:h-[420px]">
-                <EstateHeroCarousel images={tourImages} alt={`${estate.name} sample walkthrough`} />
-              </div>
+              <VirtualTourSimulator estateName={estate.name} images={tourImages} />
               <p className="text-sm text-muted-foreground">
-                This is a photo-based preview, not a real 360° tour yet. Book an inspection to walk
-                the estate in person.
+                Interactive photo simulation for feature preview. It is not captured 360° media or
+                a substitute for an in-person inspection.
               </p>
             </div>
           ) : (

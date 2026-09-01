@@ -121,6 +121,7 @@ export interface Estate {
   coverImage?: string | null;
   videoUrl?: string | null;
   virtualTourUrl?: string | null;
+  panoramaUrl?: string | null;
   gallery?: string[];
   brochureUrl?: string | null;
   status?: string;

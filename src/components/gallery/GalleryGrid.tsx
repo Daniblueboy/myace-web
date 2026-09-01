@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { PlayCircle, ImageIcon } from 'lucide-react';
+import { PlayCircle, ImageIcon, Images, Video } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import type { GalleryItem } from '@/shared';
 
@@ -28,6 +28,7 @@ function getEmbedUrl(url: string) {
 export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [videoItem, setVideoItem] = useState<GalleryItem | null>(null);
+  const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
 
   if (!items || items.length === 0) {
     return (
@@ -35,7 +36,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         <ImageIcon className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
         <h3 className="text-lg font-semibold mb-2">Photos and videos coming soon</h3>
         <p className="text-muted-foreground">
-          We'll be sharing photos and videos here as they happen. Follow us on social media or
+          We&apos;ll be sharing photos and videos here as they happen. Follow us on social media or
           check back soon.
         </p>
       </div>
@@ -44,15 +45,31 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   const images = items.filter((item) => item.mediaType === 'image');
   const imageSlides = images.map((item) => ({ src: item.mediaUrl, title: item.title }));
+  const visibleItems = filter === 'all' ? items : items.filter((item) => item.mediaType === filter);
+  const filters = [
+    { value: 'all' as const, label: 'All media', icon: Images, count: items.length },
+    { value: 'image' as const, label: 'Photos', icon: ImageIcon, count: images.length },
+    { value: 'video' as const, label: 'Videos', icon: Video, count: items.length - images.length },
+  ];
 
   return (
     <>
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm text-muted-foreground" aria-live="polite">Showing {visibleItems.length} {visibleItems.length === 1 ? 'moment' : 'moments'}</p>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
+          {filters.map(({ value, label, icon: Icon, count }) => (
+            <button key={value} type="button" onClick={() => setFilter(value)} className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${filter === value ? 'border-primary bg-primary text-primary-foreground shadow-sm' : 'bg-background hover:border-primary/50 hover:text-primary'}`} aria-pressed={filter === value}>
+              <Icon className="h-4 w-4" /> {label} <span className="opacity-70">{count}</span>
+            </button>
+          ))}
+        </div>
+      </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((item) => (
+        {visibleItems.map((item, index) => (
           <button
             key={item.id}
             type="button"
-            className="group relative h-64 w-full overflow-hidden rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800"
+            className={`group relative w-full overflow-hidden rounded-2xl border bg-slate-50 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:bg-slate-900 dark:border-slate-800 ${index % 5 === 0 ? 'h-80 sm:row-span-2 sm:h-full sm:min-h-[344px]' : 'h-64'}`}
             onClick={() => {
               if (item.mediaType === 'video') {
                 setVideoItem(item);
@@ -60,17 +77,19 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 setLightboxIndex(images.findIndex((img) => img.id === item.id));
               }
             }}
+            aria-label={`${item.mediaType === 'video' ? 'Play' : 'View'} ${item.title}`}
           >
             <img
               src={item.mediaType === 'video' ? item.thumbnailUrl || item.mediaUrl : item.mediaUrl}
               alt={item.title}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading={index > 2 ? 'lazy' : 'eager'}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
             {item.mediaType === 'video' && (
               <PlayCircle className="absolute inset-0 m-auto h-12 w-12 text-white/90 drop-shadow-lg" />
             )}
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-left">
               <p className="text-sm font-semibold text-white">{item.title}</p>
               {item.estateName && <p className="text-xs text-white/80">{item.estateName}</p>}
             </div>

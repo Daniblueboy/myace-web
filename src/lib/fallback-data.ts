@@ -25,6 +25,7 @@ export const fallbackEstates: Estate[] = [
     city: 'Ibadan',
     address: 'Ibadan, Oyo State',
     coverImage: estateImages.alphaGardenCity,
+    panoramaUrl: '/images/virtual-tours/alpha-garden-city-360.png',
     brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
     gallery: [estateImages.alphaGardenCity],
     status: 'ACTIVE',

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 727 430" role="img" aria-labelledby="title">
+  <title id="title">Aceroyal Estates mark</title>
+  <defs>
+    <filter id="white" color-interpolation-filters="sRGB">
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/>
+    </filter>
+  </defs>
+  <image href="/images/aceroyal-mark-dark-mode.png" width="727" height="430" filter="url(#white)"/>
+</svg>
