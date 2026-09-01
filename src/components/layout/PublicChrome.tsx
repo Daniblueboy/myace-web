@@ -54,11 +54,6 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
   const estateLabel = estateLabelFromPath(pathname);
   const context = estateLabel ? ` regarding ${estateLabel}` : '';
 
-  const openWhatsApp = (buildMessage: (context: string) => string) => {
-    const text = encodeURIComponent(buildMessage(context));
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -76,12 +71,14 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" side="top">
           {ENQUIRY_OPTIONS.map((option) => (
-            <DropdownMenuItem
-              key={option.label}
-              onClick={() => openWhatsApp(option.message)}
-              className="gap-2 cursor-pointer"
-            >
-              <option.icon className="h-4 w-4" /> {option.label}
+            <DropdownMenuItem key={option.label} asChild className="gap-2 cursor-pointer">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(option.message(context))}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <option.icon className="h-4 w-4" /> {option.label}
+              </a>
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>

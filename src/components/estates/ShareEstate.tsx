@@ -32,15 +32,8 @@ export function ShareEstate({ name, url }: { name: string; url: string }) {
     }
   };
 
-  const shareWhatsApp = () => {
-    const text = encodeURIComponent(`${shareText} — ${url}`);
-    window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener,noreferrer');
-  };
-
-  const shareX = () => {
-    const text = encodeURIComponent(shareText);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
-  };
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareText} — ${url}`)}`;
+  const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`;
 
   const shareEmail = () => {
     const subject = encodeURIComponent(shareText);
@@ -80,11 +73,15 @@ export function ShareEstate({ name, url }: { name: string; url: string }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        <DropdownMenuItem onClick={shareWhatsApp} className="gap-2 cursor-pointer">
-          <MessageCircle className="h-4 w-4" /> Share on WhatsApp
+        <DropdownMenuItem asChild className="gap-2 cursor-pointer">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="h-4 w-4" /> Share on WhatsApp
+          </a>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={shareX} className="gap-2 cursor-pointer">
-          <Twitter className="h-4 w-4" /> Share on X
+        <DropdownMenuItem asChild className="gap-2 cursor-pointer">
+          <a href={xHref} target="_blank" rel="noopener noreferrer">
+            <Twitter className="h-4 w-4" /> Share on X
+          </a>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={shareEmail} className="gap-2 cursor-pointer">
           <Mail className="h-4 w-4" /> Share via Email
