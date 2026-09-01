@@ -25,6 +25,8 @@ const NAV_LINKS_AFTER_ESTATES = [
 
 const ALL_NAV_LINKS = [...NAV_LINKS_BEFORE_ESTATES, { href: '/estates', label: 'Estates' }, ...NAV_LINKS_AFTER_ESTATES];
 
+const CUSTOMER_PORTAL_URL = 'https://app.myaceroyal.com';
+
 function isActivePath(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -164,13 +166,11 @@ export function Navbar() {
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
-          {/* Hidden until NEXT_PUBLIC_CUSTOMER_PORTAL_URL is set to a real URL —
-              a dead "#" login link is worse than no login link at all. */}
-          {process.env.NEXT_PUBLIC_CUSTOMER_PORTAL_URL && (
-            <Button variant="ghost" asChild>
-              <a href={process.env.NEXT_PUBLIC_CUSTOMER_PORTAL_URL}>Customer Login</a>
-            </Button>
-          )}
+          <Button variant="ghost" asChild>
+            <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
+              Customer Login
+            </a>
+          </Button>
           <Button asChild><Link href="/book-inspection">Book Inspection</Link></Button>
         </div>
 
@@ -195,6 +195,11 @@ export function Navbar() {
                             </Link>
                           );
                         })}
+                        <Button variant="outline" className="w-full" asChild>
+                          <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
+                            Customer Login
+                          </a>
+                        </Button>
                         <Button className="w-full" asChild><Link href="/book-inspection">Book Inspection</Link></Button>
                     </div>
                 </SheetContent>

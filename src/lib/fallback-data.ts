@@ -537,9 +537,24 @@ export const fallbackTeamMembers: TeamMember[] = [
   },
 ];
 
-// Deliberately empty — do not add placeholder/invented testimonials. Only
-// populate this once Aceroyal supplies genuine, approved customer quotes.
-export const fallbackTestimonials: Testimonial[] = [];
+// Sourced from the live site's About page testimonial carousel. Two other
+// quotes shown there were deliberately left out: one is a staff member
+// thanking "Chairman_ace" (an internal note to the CEO, not a client
+// testimonial about the service) and the other is attributed to "Esther
+// Udorji, Student/Digital Marketing Expert" — the same name already used
+// for the Regional Manager in the team roster, which reads like a live-site
+// data mix-up rather than two different people (same pattern as the
+// Abidemi Adedoyin duplication noted above).
+export const fallbackTestimonials: Testimonial[] = [
+  {
+    id: 'fallback-testimonial-momodu',
+    name: 'Momodu Afegbua',
+    role: 'Tech Expert/Consultant',
+    message:
+      "Aceroyalestates is unarguably the best real estate company in Nigeria, I have ever dealt with them and I am speaking based on my experience and lots of other reviews. They have some of the best team in the world, very professional, experienced and helpful agents and brokers. They come highly recommended. Great environment, professional and nice people, clean and beautiful estates set up. They care about their clients and train their agents frequently so they are always updated with what's going on in the market, they thoroughly explained everything I needed to know to me. I recommend Aceroyal Estates to anyone looking to do any real estate transaction.",
+    active: true,
+  },
+];
 
 export const fallbackComplianceItems = [
   {

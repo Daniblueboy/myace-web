@@ -69,6 +69,7 @@ export function Footer() {
         <div className="flex items-center gap-4">
           <Link href="/terms" className="hover:text-white">Terms &amp; Conditions</Link>
           <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
+          <Link href="/account-deletion" className="hover:text-white">Account Deletion</Link>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Award, Users, Home, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { fetchAPI } from '@/lib/api';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 
 export default async function AboutPage() {
   // TODO(content): these are the only stats we can actually back up right now
@@ -47,6 +48,25 @@ export default async function AboutPage() {
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Mission & Vision */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16 md:mb-20">
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold mb-4 text-primary">Mission Statement</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                To create affordable housing for all and reduce the housing deficit on a global
+                scale, in line with the UN Sustainable Development Goals — because we believe
+                everyone deserves a decent place to call home.
+              </p>
+            </div>
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold mb-4 text-primary">Vision Statement</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                To deliver quality-assured housing for all, irrespective of income — our dream is
+                to see our clients' dreams come through.
+              </p>
+            </div>
           </div>
 
           {/* Our Values */}
@@ -153,6 +173,7 @@ export default async function AboutPage() {
           )}
         </div>
       </div>
+      <TestimonialsSection />
     </div>
   );
 }

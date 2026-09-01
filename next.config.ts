@@ -64,10 +64,6 @@ const nextConfig: NextConfig = {
       { source: "/contact-2", destination: "/contact", permanent: true },
       { source: "/policy", destination: "/privacy", permanent: true },
       { source: "/newsletter", destination: "/", permanent: true },
-      // TODO: confirm with Daniel whether this needs to stay a distinct
-      // page (app-store account-deletion compliance pages are sometimes
-      // required) before retiring it - redirecting to /contact for now.
-      { source: "/account-deletion", destination: "/contact", permanent: true },
     ];
   },
 };

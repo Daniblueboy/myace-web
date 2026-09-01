@@ -5,11 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { fetchAPI } from '@/lib/api';
 
-/**
- * NOT mounted on any page yet — built ahead of the Aceroyal Realtor portal
- * going live so the section is ready to drop in. See page.tsx for where
- * this is commented out; uncomment once the realtor portal/app is public.
- */
+const REALTOR_PORTAL_URL = 'https://realtor.myaceroyal.com';
+
 export default function RealtorSection() {
   const [form, setForm] = useState({ fullName: '', email: '', phone: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -50,9 +47,17 @@ export default function RealtorSection() {
               land, or apartment — with real-time listing access, payment tracking, and dedicated
               support.
             </p>
+            <Button size="lg" className="gap-2" asChild>
+              <a href={REALTOR_PORTAL_URL} target="_blank" rel="noopener noreferrer">
+                Go to Realtor Portal
+              </a>
+            </Button>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-3 rounded-2xl bg-white dark:bg-slate-900 border dark:border-slate-800 p-6">
+            <p className="text-sm font-medium text-muted-foreground">
+              Not registered yet? Leave your details and our team will help you get set up.
+            </p>
             <Input
               required
               placeholder="Full name"
@@ -72,8 +77,8 @@ export default function RealtorSection() {
               value={form.phone}
               onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             />
-            <Button type="submit" className="w-full" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Submitting...' : 'Join Aceroyal Realtor'}
+            <Button type="submit" variant="outline" className="w-full" disabled={status === 'loading'}>
+              {status === 'loading' ? 'Submitting...' : 'Request a callback'}
             </Button>
             {status === 'success' && (
               <p className="text-sm text-muted-foreground">
