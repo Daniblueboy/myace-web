@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export function CtaSection() {
   return (
-    <section className="py-16 bg-primary text-primary-foreground">
+    <section className="py-20 md:py-28 bg-primary text-primary-foreground">
       <div className="container grid gap-6 md:grid-cols-2 items-center">
         <div>
           <h2 className="text-3xl font-bold mb-3">Ready to book an inspection?</h2>

@@ -7,7 +7,7 @@ export default async function TestimonialsSection() {
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-950">
       <div className="container">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold">What Clients Say</h2>

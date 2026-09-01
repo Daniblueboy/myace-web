@@ -47,7 +47,7 @@ export default function PartnersSection() {
   if (!partners || partners.length === 0) return null;
 
   return (
-    <section className="py-16">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Our Partners & Clients</h2>

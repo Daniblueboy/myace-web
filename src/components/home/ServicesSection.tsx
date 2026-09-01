@@ -25,7 +25,7 @@ export function ServicesSection() {
   ];
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-3">Our Services</h2>

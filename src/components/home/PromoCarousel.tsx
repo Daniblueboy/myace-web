@@ -51,7 +51,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
   }, [sortedPromos.length, isPaused]);
 
   return (
-    <section className="container py-16">
+    <section className="container py-20 md:py-28">
       <div className="flex items-center justify-between gap-4 mb-6">
         <div>
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>

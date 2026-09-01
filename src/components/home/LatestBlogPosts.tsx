@@ -9,7 +9,7 @@ export default async function LatestBlogPosts() {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -28,14 +28,16 @@ export default async function LatestBlogPosts() {
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow"
+              className="group rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               {post.coverImageUrl && (
-                <img
-                  src={post.coverImageUrl}
-                  alt={post.title}
-                  className="h-44 w-full object-cover"
-                />
+                <div className="h-44 overflow-hidden">
+                  <img
+                    src={post.coverImageUrl}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  />
+                </div>
               )}
               <div className="p-5">
                 <h3 className="font-semibold text-lg mb-2">{post.title}</h3>

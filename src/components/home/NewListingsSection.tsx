@@ -10,7 +10,7 @@ export default async function NewListingsSection() {
   if (!properties || properties.length === 0) return null;
 
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-900">
+    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-12">
           <div>

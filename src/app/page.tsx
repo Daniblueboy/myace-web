@@ -12,24 +12,30 @@ import { StatesSection } from '@/components/home/StatesSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
 import { CtaSection } from '@/components/home/CtaSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import { Reveal } from '@/components/motion/Reveal';
+// Built and ready, not live yet — uncomment once Aceroyal Realtor portal/app is public.
+// import RealtorSection from '@/components/home/RealtorSection';
 
 export default function HomePage() {
   return (
     <div>
       <HeroSection />
-      <PromoSection />
-      <CeoWelcomeSection />
-      <EstateSections />
-      <WhyChooseUs />
-      <ServicesSection />
-      <StatesSection />
-      <ComplianceSection />
-      <PartnersSection />
-      <TestimonialsSection />
-      <AppDownloadSection />
-      <NewsletterSection />
-      <LatestBlogPosts />
-      <CtaSection />
+      <Reveal><PromoSection /></Reveal>
+      <Reveal><CeoWelcomeSection /></Reveal>
+      <Reveal><EstateSections /></Reveal>
+      <Reveal><WhyChooseUs /></Reveal>
+      <Reveal><ServicesSection /></Reveal>
+      <Reveal><StatesSection /></Reveal>
+      <Reveal><ComplianceSection /></Reveal>
+      <Reveal><PartnersSection /></Reveal>
+      <Reveal><TestimonialsSection /></Reveal>
+      {/* Built and ready, not live yet — uncomment once Aceroyal Realtor portal/app is public.
+      <Reveal><RealtorSection /></Reveal>
+      */}
+      <Reveal><AppDownloadSection /></Reveal>
+      <Reveal><NewsletterSection /></Reveal>
+      <Reveal><LatestBlogPosts /></Reveal>
+      <Reveal><CtaSection /></Reveal>
     </div>
   );
 }

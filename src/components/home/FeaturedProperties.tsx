@@ -32,7 +32,7 @@ export default function FeaturedProperties() {
   }
 
   return (
-    <section className="container py-16">
+    <section className="container py-20 md:py-28">
       <div className="flex justify-between items-end mb-8">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Featured Estate Offerings</h2>

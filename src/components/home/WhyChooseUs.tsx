@@ -9,7 +9,7 @@ export function WhyChooseUs() {
   ];
 
   return (
-    <section className="bg-slate-50 dark:bg-slate-950 py-20">
+    <section className="bg-slate-50 dark:bg-slate-950 py-20 md:py-28">
       <div className="container text-center">
         <h2 className="text-3xl font-bold tracking-tight mb-4">Why Choose AceRoyal?</h2>
         <p className="text-slate-500 max-w-2xl mx-auto mb-12">We are redefining the real estate experience in Nigeria with transparency, speed, and integrity.</p>

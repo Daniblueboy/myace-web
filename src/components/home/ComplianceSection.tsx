@@ -18,7 +18,7 @@ export default async function ComplianceSection() {
   };
 
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-900">
+    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Trusted & Certified</h2>

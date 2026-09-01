@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
+import { HeroParticles } from '@/components/home/HeroParticles';
 
 export default function HeroSection() {
   const router = useRouter();
@@ -88,8 +90,14 @@ export default function HeroSection() {
         </div>
       ))}
       <div className="absolute inset-0 bg-slate-900/40" />
+      <HeroParticles />
 
-      <div className="container relative z-10 text-center space-y-6">
+      <motion.div
+        className="container relative z-10 text-center space-y-6"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
           Premium Estates, <br /> Trusted Ownership
         </h1>
@@ -97,14 +105,14 @@ export default function HeroSection() {
           We develop and sell estates across Nigeria — land allocations and completed apartments with clear titles.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className="transition-transform hover:scale-[1.03] active:scale-[0.98]">
             <Link href="/estates">Explore Estates</Link>
           </Button>
-          <Button size="lg" variant="outline" className="bg-transparent !text-white border-white hover:bg-white hover:!text-primary" asChild>
+          <Button size="lg" variant="outline" className="bg-transparent !text-white border-white hover:bg-white hover:!text-primary transition-transform hover:scale-[1.03] active:scale-[0.98]" asChild>
             <Link href="/book-inspection">Book Inspection</Link>
           </Button>
         </div>
-        
+
         {/* Search Box */}
         <form
           onSubmit={handleSearch}
@@ -153,7 +161,7 @@ export default function HeroSection() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

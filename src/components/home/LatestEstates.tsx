@@ -9,7 +9,7 @@ type LatestEstatesProps = {
 
 export default function LatestEstates({ estates }: LatestEstatesProps) {
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-950">
       <div className="container space-y-8">
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -29,13 +29,13 @@ export default function LatestEstates({ estates }: LatestEstatesProps) {
             <Link
               key={estate.id}
               href={`/estates/${estate.slug}`}
-              className="group rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow"
+              className="group rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               {estate.coverImage ? (
                 <img
                   src={estate.coverImage}
                   alt={estate.name}
-                  className="h-40 w-full object-cover transition-transform group-hover:scale-[1.03]"
+                  className="h-40 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               ) : (
                 <div className="h-40 w-full bg-slate-200" />

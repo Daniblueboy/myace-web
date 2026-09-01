@@ -26,7 +26,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="rounded-3xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-8 md:p-12 grid gap-6 md:grid-cols-[1.2fr_0.8fr] items-center">
           <div className="space-y-4">

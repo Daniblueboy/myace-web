@@ -11,7 +11,7 @@ const states = [
 
 export function StatesSection() {
   return (
-    <section className="py-16 bg-slate-50 dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-slate-50 dark:bg-slate-950">
       <div className="container">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-3">States We Operate In</h2>

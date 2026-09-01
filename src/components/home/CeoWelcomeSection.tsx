@@ -2,7 +2,7 @@ import { MapPin } from 'lucide-react';
 
 export default function CeoWelcomeSection() {
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
       <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-center">
         <div className="relative">
           <div className="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-primary/10" />
