@@ -210,9 +210,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
             )}
           </div>
           {estate.panoramaUrl ? (
-            <div className="overflow-hidden rounded-xl border">
-              <PropertyPanorama panoramaUrl={estate.panoramaUrl} />
-            </div>
+            <PropertyPanorama panoramaUrl={estate.panoramaUrl} estateName={estate.name} />
           ) : estate.virtualTourUrl ? (
             <div className="aspect-video rounded-xl overflow-hidden border">
               <iframe
