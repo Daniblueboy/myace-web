@@ -4,7 +4,8 @@ import { Calendar, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import DOMPurify from 'isomorphic-dompurify';
+import sanitizeHtml from 'sanitize-html';
+import { SANITIZE_OPTIONS } from '@/lib/sanitize';
 
 export async function generateMetadata({
   params,
@@ -104,7 +105,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 {/<\/?[a-z][\s\S]*>/i.test(post.content) ? (
-                  <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }} />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content, SANITIZE_OPTIONS) }} />
                 ) : (
                   post.content.split('\n').map((line: string, index: number) => {
                     const imageMatch = line.match(/^!\[(.*)\]\((.+)\)$/);

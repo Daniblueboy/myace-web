@@ -74,6 +74,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* InitialPreloader shows the real logo once it loads, with an "AR"
+            monogram as a placeholder until then. It's a client component, so
+            its own `priority` prop on next/image can't inject a preload hint
+            into the server-rendered <head> early enough to avoid a visible
+            flash of the monogram — this does, from the very first byte. */}
+        <link rel="preload" as="image" href="/images/cropped-cropped-logo-jpeg.jpg" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
