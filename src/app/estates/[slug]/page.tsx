@@ -145,7 +145,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Home className="h-4 w-4" /> Available Units
+                    <Home className="h-4 w-4" /> {estate.properties?.length ? 'Available Units' : 'Availability'}
                   </div>
                   {estate.properties?.length ? (
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
