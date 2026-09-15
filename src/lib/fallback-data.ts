@@ -602,8 +602,11 @@ export const fallbackTestimonials: Testimonial[] = [
   // every section during development with placeholders rather than gate on
   // final content, and swap/remove before go-live. Replace name/role/
   // message/imageUrl/videoUrl with real, approved client content; the
-  // Google-hosted sample clip below is a stable public-domain placeholder,
-  // not a real client video.
+  // YouTube clip below (Blender Foundation's Creative Commons "Big Buck
+  // Bunny") is a stable, always-available placeholder, not a real client
+  // video. An earlier direct-link (Google Cloud Storage sample bucket) was
+  // swapped for this after its bucket permissions started returning
+  // AccessDenied — embed URLs don't expire the way that link did.
   {
     id: 'fallback-testimonial-dummy-image',
     name: 'Adaeze Okafor',
@@ -621,7 +624,7 @@ export const fallbackTestimonials: Testimonial[] = [
     message:
       "I've bought land before and dealt with a lot of back and forth. With Aceroyal, the inspection was organized, the documentation was ready when they said it would be, and allocation happened on schedule. Watch how it went for me.",
     rating: 5,
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    videoUrl: 'https://www.youtube.com/watch?v=YE7VzlLtp-4',
     active: true,
   },
 ];
@@ -671,7 +674,7 @@ export const fallbackGalleryItems: GalleryItem[] = [
     id: 'fallback-gallery-5',
     title: 'Allocation Day Walkthrough',
     mediaType: 'video',
-    mediaUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    mediaUrl: 'https://www.youtube.com/watch?v=YE7VzlLtp-4',
     thumbnailUrl: estateImages.placeholder1,
     estateName: 'Heritage Estate',
     active: true,
