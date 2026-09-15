@@ -5,7 +5,6 @@ import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { PlayCircle, ImageIcon, Images, Video } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-import { useAutoScrollRow } from '@/hooks/useAutoScrollRow';
 import type { GalleryItem } from '@/shared';
 
 function getEmbedUrl(url: string) {
@@ -26,14 +25,10 @@ function getEmbedUrl(url: string) {
   return url;
 }
 
-export function GalleryGrid({ items, autoScroll = false }: { items: GalleryItem[]; autoScroll?: boolean }) {
+export function GalleryGrid({ items }: { items: GalleryItem[] }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [videoItem, setVideoItem] = useState<GalleryItem | null>(null);
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
-  const { ref: rowRef, handlers: rowHandlers } = useAutoScrollRow<HTMLDivElement>({
-    enabled: autoScroll,
-    itemCount: items?.length ?? 0,
-  });
 
   if (!items || items.length === 0) {
     return (
@@ -70,41 +65,47 @@ export function GalleryGrid({ items, autoScroll = false }: { items: GalleryItem[
           ))}
         </div>
       </div>
-      <div
-        ref={rowRef}
-        {...rowHandlers}
-        className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {visibleItems.map((item, index) => (
-          <button
-            key={item.id}
-            type="button"
-            className={`glass-card backdrop-blur-lg group relative shrink-0 w-[78%] snap-center overflow-hidden rounded-2xl border bg-slate-50 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:bg-slate-900 dark:border-slate-800 sm:w-auto sm:shrink h-64 ${index % 5 === 0 ? 'sm:row-span-2 sm:h-full sm:min-h-[344px]' : ''}`}
-            onClick={() => {
-              if (item.mediaType === 'video') {
-                setVideoItem(item);
-              } else {
-                setLightboxIndex(images.findIndex((img) => img.id === item.id));
-              }
-            }}
-            aria-label={`${item.mediaType === 'video' ? 'Play' : 'View'} ${item.title}`}
-          >
-            <img
-              src={item.mediaType === 'video' ? item.thumbnailUrl || item.mediaUrl : item.mediaUrl}
-              alt={item.title}
-              loading={index > 2 ? 'lazy' : 'eager'}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
-            {item.mediaType === 'video' && (
-              <PlayCircle className="absolute inset-0 m-auto h-12 w-12 text-white/90 drop-shadow-lg" />
-            )}
-            <div className="absolute bottom-0 left-0 right-0 p-5 text-left">
-              <p className="text-sm font-semibold text-white">{item.title}</p>
-              {item.estateName && <p className="text-xs text-white/80">{item.estateName}</p>}
-            </div>
-          </button>
-        ))}
+      {/* Instagram/Snapchat-style explore grid: a dense, uniform 3-up mosaic
+          with an occasional larger featured tile, scrolling with the page
+          (not its own horizontal row) — every tile is a plain CSS aspect
+          box, so grid-flow-dense just packs around the bigger ones without
+          any JS masonry layout. */}
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-0.5 sm:gap-1 grid-flow-dense">
+        {visibleItems.map((item, index) => {
+          const featured = index % 7 === 0;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              className={`group relative overflow-hidden bg-slate-100 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary dark:bg-slate-900 ${
+                featured ? 'col-span-2 row-span-2' : 'aspect-square'
+              }`}
+              onClick={() => {
+                if (item.mediaType === 'video') {
+                  setVideoItem(item);
+                } else {
+                  setLightboxIndex(images.findIndex((img) => img.id === item.id));
+                }
+              }}
+              aria-label={`${item.mediaType === 'video' ? 'Play' : 'View'} ${item.title}`}
+            >
+              <img
+                src={item.mediaType === 'video' ? item.thumbnailUrl || item.mediaUrl : item.mediaUrl}
+                alt={item.title}
+                loading={index > 8 ? 'lazy' : 'eager'}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              {item.mediaType === 'video' && (
+                <>
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/25" />
+                  <PlayCircle
+                    className={`absolute inset-0 m-auto text-white/90 drop-shadow-lg ${featured ? 'h-14 w-14' : 'h-7 w-7'}`}
+                  />
+                </>
+              )}
+            </button>
+          );
+        })}
       </div>
 
       <Lightbox

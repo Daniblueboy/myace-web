@@ -38,7 +38,7 @@ export default async function TestimonialsSection() {
             <h3 className="text-xl font-semibold text-center mb-8">
               Moments From Allocation, Inspection &amp; Handover
             </h3>
-            <GalleryGrid items={moments} autoScroll />
+            <GalleryGrid items={moments} />
             <div className="mt-8 text-center">
               <Button variant="outline" asChild>
                 <Link href="/gallery" className="gap-2">

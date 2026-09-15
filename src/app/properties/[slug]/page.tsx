@@ -304,11 +304,11 @@ export default function PropertyDetailPage() {
             </TabsContent>
             <TabsContent value="payment" className="mt-4 space-y-4">
               {paymentFlyers.length > 0 ? (
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2">
                   {paymentFlyers.map((item: any, index: number) => (
                       <div
                         key={item.id}
-                        className="rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow"
+                        className="glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow md:w-auto md:shrink"
                       >
                         <div className="mb-3">
                           <p className="font-semibold">{item.title || 'Payment Plan'}</p>
@@ -467,9 +467,9 @@ export default function PropertyDetailPage() {
           {related.length > 0 && (
             <div>
               <h2 className="text-2xl font-bold mb-4">Related Properties</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-2 md:gap-6">
                 {related.map((item) => (
-                  <Link key={item.id} href={`/properties/${item.slug}`} className="block">
+                  <Link key={item.id} href={`/properties/${item.slug}`} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                     <Card className="glass-card backdrop-blur-lg overflow-hidden hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <h3 className="font-semibold">{item.title}</h3>
