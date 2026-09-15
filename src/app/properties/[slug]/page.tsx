@@ -203,14 +203,20 @@ export default function PropertyDetailPage() {
 
           {/* Tabs */}
           <Tabs defaultValue="location">
-            <TabsList>
-              <TabsTrigger value="location">Location</TabsTrigger>
-              <TabsTrigger value="amenities">Amenities</TabsTrigger>
-              <TabsTrigger value="faqs">FAQs</TabsTrigger>
-              <TabsTrigger value="resources">Resources</TabsTrigger>
-              <TabsTrigger value="payment">Payment Plan</TabsTrigger>
-              <TabsTrigger value="media">Media</TabsTrigger>
-            </TabsList>
+            {/* TabsList is w-fit by design (shadcn default) and doesn't wrap
+                its 6 labels — on mobile that's wider than the viewport, and
+                with nothing to contain it the overflow leaks into the whole
+                page body instead of just this row. Scope the scroll here. */}
+            <div className="overflow-x-auto scroll-hide -mx-4 px-4 md:mx-0 md:px-0">
+              <TabsList>
+                <TabsTrigger value="location">Location</TabsTrigger>
+                <TabsTrigger value="amenities">Amenities</TabsTrigger>
+                <TabsTrigger value="faqs">FAQs</TabsTrigger>
+                <TabsTrigger value="resources">Resources</TabsTrigger>
+                <TabsTrigger value="payment">Payment Plan</TabsTrigger>
+                <TabsTrigger value="media">Media</TabsTrigger>
+              </TabsList>
+            </div>
             <TabsContent value="location" className="mt-4">
               <PropertyMap
                 latitude={property.latitude}
