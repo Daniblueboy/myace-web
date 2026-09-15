@@ -160,20 +160,13 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <AnimatePresence mode="wait">
-          <motion.h1
-            key={slideIndex}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="text-4xl md:text-6xl font-bold tracking-tight"
-          >
-            {activeSlide.headline[0]} <br /> {activeSlide.headline[1]}
-          </motion.h1>
-        </AnimatePresence>
+        <HeroHeadline />
 
-        <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto">
+        <p
+          className={`text-lg md:text-xl max-w-2xl mx-auto ${
+            isCenteredLayout ? 'text-slate-700' : 'text-slate-200'
+          }`}
+        >
           We develop and sell estates across Nigeria — land allocations and completed apartments with clear titles.
         </p>
 
@@ -181,7 +174,16 @@ export default function HeroSection() {
           <Button size="lg" asChild className="transition-transform hover:scale-[1.03] active:scale-[0.98]">
             <Link href="/estates">Explore Estates</Link>
           </Button>
-          <Button size="lg" variant="outline" className="bg-transparent !text-white border-white hover:bg-white hover:!text-primary transition-transform hover:scale-[1.03] active:scale-[0.98]" asChild>
+          <Button
+            size="lg"
+            variant="outline"
+            className={`bg-transparent transition-transform hover:scale-[1.03] active:scale-[0.98] ${
+              isCenteredLayout
+                ? '!text-slate-900 border-slate-900 hover:bg-slate-900 hover:!text-white'
+                : '!text-white border-white hover:bg-white hover:!text-primary'
+            }`}
+            asChild
+          >
             <Link href="/book-inspection">Book Inspection</Link>
           </Button>
         </div>
@@ -238,7 +240,11 @@ export default function HeroSection() {
 
       {/* Mobile-only scroll indicator, pinned to the bottom of the hero. */}
       <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center md:hidden">
-        <div className="flex flex-col items-center gap-1 text-white/70 animate-hero-scroll-cue">
+        <div
+          className={`flex flex-col items-center gap-1 animate-hero-scroll-cue ${
+            isCenteredLayout ? 'text-slate-900/70' : 'text-white/70'
+          }`}
+        >
           <span className="text-[11px] font-medium uppercase tracking-[0.2em]">Scroll</span>
           <ChevronDown className="h-5 w-5" />
         </div>

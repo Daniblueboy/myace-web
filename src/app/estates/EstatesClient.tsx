@@ -4,28 +4,40 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { fetchAPI } from '@/lib/api';
-import { MapPin, ArrowRight, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { MapPin, ArrowRight, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { FilterPills } from '@/components/ui/filter-pills';
 import { Reveal } from '@/components/motion/Reveal';
 
-const PAGE_SIZE = 6;
+const OFFERING_OPTIONS = [
+  { value: 'ALL', label: 'Land & Apartments' },
+  { value: 'LAND', label: 'Land' },
+  { value: 'APARTMENT', label: 'Apartments' },
+];
 
 export default function EstatesClient() {
   const searchParams = useSearchParams();
   const [estates, setEstates] = useState<any[]>([]);
+  const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [state, setState] = useState(searchParams.get('state') || 'ALL');
   const [status, setStatus] = useState(searchParams.get('status') || 'ALL');
-  const [page, setPage] = useState(1);
+  const [offering, setOffering] = useState(searchParams.get('type') || 'ALL');
 
   useEffect(() => {
     fetchAPI('/estates?take=100')
       .then((data) => setEstates(data?.items || data || []))
       .catch(() => setEstates([]))
       .finally(() => setLoading(false));
+    // The estates list endpoint doesn't reliably embed each estate's
+    // properties, so pull properties separately to know which estates
+    // offer land vs apartments for the offering-type filter below.
+    fetchAPI('/properties?take=200')
+      .then((data) => setProperties(Array.isArray(data) ? data : data?.items || []))
+      .catch(() => setProperties([]));
   }, []);
 
   // Total estate count is small enough that fetching once and filtering
@@ -36,43 +48,55 @@ export default function EstatesClient() {
     [estates]
   );
 
+  const estateOfferingTypes = useMemo(() => {
+    const map = new Map<string, Set<string>>();
+    const add = (estateId: string | null | undefined, type: string | null | undefined) => {
+      if (!estateId || !type) return;
+      if (!map.has(estateId)) map.set(estateId, new Set());
+      map.get(estateId)!.add(type);
+    };
+    properties.forEach((p: any) => add(p.estateId, p.type));
+    estates.forEach((e: any) => (e.properties || []).forEach((p: any) => add(e.id, p.type)));
+    return map;
+  }, [properties, estates]);
+
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
     return estates.filter((estate) => {
       if (state !== 'ALL' && estate.state !== state) return false;
       if (status !== 'ALL' && estate.status !== status) return false;
+      if (offering !== 'ALL' && !estateOfferingTypes.get(estate.id)?.has(offering)) return false;
       if (term) {
         const haystack = `${estate.name} ${estate.description || ''} ${estate.city} ${estate.state}`.toLowerCase();
         if (!haystack.includes(term)) return false;
       }
       return true;
     });
-  }, [estates, search, state, status]);
+  }, [estates, search, state, status, offering, estateOfferingTypes]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  const hasActiveFilters = Boolean(search) || state !== 'ALL' || status !== 'ALL';
+  const hasActiveFilters = Boolean(search) || state !== 'ALL' || status !== 'ALL' || offering !== 'ALL';
 
   const handleSearchChange = (value: string) => {
     setSearch(value);
-    setPage(1);
   };
 
   const handleStateChange = (value: string) => {
     setState(value);
-    setPage(1);
   };
 
   const handleStatusChange = (value: string) => {
     setStatus(value);
-    setPage(1);
+  };
+
+  const handleOfferingChange = (value: string) => {
+    setOffering(value);
   };
 
   const clearFilters = () => {
     setSearch('');
     setState('ALL');
     setStatus('ALL');
-    setPage(1);
+    setOffering('ALL');
   };
 
   return (
@@ -90,6 +114,8 @@ export default function EstatesClient() {
       </div>
 
       <div className="container py-12 md:py-16">
+        <FilterPills options={OFFERING_OPTIONS} value={offering} onChange={handleOfferingChange} className="mb-4" />
+
         <div className="mb-10 flex flex-col gap-3 rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 md:flex-row md:items-center">
           <div className="relative flex-1">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -147,7 +173,7 @@ export default function EstatesClient() {
               />
             ))}
           </div>
-        ) : paged.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <div className="rounded-2xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-10 text-center text-muted-foreground">
             {hasActiveFilters ? (
               <>
@@ -166,7 +192,7 @@ export default function EstatesClient() {
           </div>
         ) : (
           <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {paged.map((estate: any, i: number) => (
+            {filtered.map((estate: any, i: number) => (
               <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
@@ -216,32 +242,6 @@ export default function EstatesClient() {
               </Reveal>
             ))}
           </div>
-        )}
-
-        {totalPages > 1 && (
-          <nav className="mt-14 flex items-center justify-center gap-2" aria-label="Estates pagination">
-            <Button
-              variant="outline"
-              size="icon"
-              disabled={page <= 1}
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              aria-label="Previous page"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <span className="px-4 text-sm text-muted-foreground">
-              Page {page} of {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="icon"
-              disabled={page >= totalPages}
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              aria-label="Next page"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </nav>
         )}
       </div>
     </div>

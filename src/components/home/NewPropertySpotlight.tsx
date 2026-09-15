@@ -3,6 +3,7 @@ import { fetchAPI } from '@/lib/api';
 import { Property } from '@/shared';
 import { MapPin, Bed, Bath, Square, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import NewPropertyImageCarousel from '@/components/home/NewPropertyImageCarousel';
 
 // Single most-recently-added property, not a grid — "spotlight the latest
 // unveiled property" is one listing, deliberately distinct from the
@@ -37,15 +38,7 @@ export default async function NewPropertySpotlight() {
           className="glass-card backdrop-blur-lg group grid overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:shadow-xl md:grid-cols-2 max-w-5xl mx-auto"
         >
           <div className="relative h-64 md:h-full overflow-hidden">
-            {latest.images?.[0] ? (
-              <img
-                src={latest.images[0].url}
-                alt={latest.title}
-                className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              />
-            ) : (
-              <div className="h-full w-full bg-slate-200 dark:bg-slate-800" />
-            )}
+            <NewPropertyImageCarousel images={latest.images || []} alt={latest.title} />
             <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
               New
             </span>

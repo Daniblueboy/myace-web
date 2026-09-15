@@ -170,6 +170,16 @@ export const fallbackProperties: Property[] = [
         url: estateImages.placeholder2,
         altText: 'Luxury duplex exterior',
       },
+      {
+        id: 'fallback-property-duplex-image-2',
+        url: estateImages.placeholder1,
+        altText: 'Luxury duplex living area',
+      },
+      {
+        id: 'fallback-property-duplex-image-3',
+        url: estateImages.placeholder3,
+        altText: 'Luxury duplex street view',
+      },
     ],
     variants: [
       {

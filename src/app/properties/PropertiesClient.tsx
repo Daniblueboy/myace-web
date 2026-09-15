@@ -8,7 +8,14 @@ import { PropertyCard } from '@/components/properties/PropertyCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { FilterPills } from '@/components/ui/filter-pills';
 import { Filter } from 'lucide-react';
+
+const TYPE_OPTIONS = [
+  { value: 'ALL', label: 'Any Type' },
+  { value: 'LAND', label: 'Land' },
+  { value: 'APARTMENT', label: 'Apartment' },
+];
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useSearchParams } from 'next/navigation';
 
@@ -252,16 +259,11 @@ function FilterControls({ filters, onChange, onApply, onClear, estates }: any) {
 
       <div className="space-y-2">
         <label className="text-sm font-medium">Property Type</label>
-        <Select value={filters.type} onValueChange={(val) => onChange('type', val)}>
-          <SelectTrigger>
-            <SelectValue placeholder="Any Type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="ALL">Any Type</SelectItem>
-            <SelectItem value="APARTMENT">Apartment</SelectItem>
-            <SelectItem value="LAND">Land</SelectItem>
-          </SelectContent>
-        </Select>
+        <FilterPills
+          options={TYPE_OPTIONS}
+          value={filters.type || 'ALL'}
+          onChange={(val) => onChange('type', val)}
+        />
       </div>
 
       <div className="space-y-2">

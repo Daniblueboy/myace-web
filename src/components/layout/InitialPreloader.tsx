@@ -41,22 +41,41 @@ export function InitialPreloader() {
     >
       <div className="initial-preloader__glow" aria-hidden="true" />
       <div className="initial-preloader__mark">
-        <div className="initial-preloader__ring" aria-hidden="true" />
-        <div className="initial-preloader__logo">
+        <Image
+          src="/images/aceroyal-symbol-colour.png"
+          alt=""
+          width={56}
+          height={54}
+          priority
+          unoptimized
+          aria-hidden="true"
+          className="initial-preloader__symbol dark:hidden"
+        />
+        <Image
+          src="/images/aceroyal-symbol-white.png"
+          alt=""
+          width={56}
+          height={54}
+          priority
+          unoptimized
+          aria-hidden="true"
+          className="initial-preloader__symbol hidden dark:block"
+        />
+        <div className="initial-preloader__wordmark">
           <Image
-            src="/images/aceroyal-symbol-colour.png"
+            src="/images/aceroyal-wordmark-colour.png"
             alt="Aceroyal Estates"
-            width={100}
-            height={97}
+            width={375}
+            height={65}
             priority
             unoptimized
             className="dark:hidden"
           />
           <Image
-            src="/images/aceroyal-symbol-white.png"
+            src="/images/aceroyal-wordmark-white.png"
             alt="Aceroyal Estates"
-            width={100}
-            height={97}
+            width={245}
+            height={58}
             priority
             unoptimized
             className="hidden dark:block"
