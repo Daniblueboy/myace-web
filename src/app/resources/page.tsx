@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, FileSpreadsheet, FileImage, File, Sparkles } from 'lucide-react';
 import { SearchInput } from '@/components/ui/search-input';
@@ -129,9 +129,21 @@ export default async function ResourcesPage({
                         <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                           <FileIcon className="w-5 h-5" />
                         </div>
-                        <Badge variant="secondary" className="font-mono text-xs">
-                          {resource.fileType || 'PDF'}
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="secondary" className="font-mono text-xs">
+                            {resource.fileType || 'PDF'}
+                          </Badge>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-full text-primary hover:bg-primary/10 hover:text-primary"
+                            asChild
+                          >
+                            <a href={resource.url} target="_blank" rel="noopener noreferrer" aria-label={`Download ${resource.title}`}>
+                              <Download className="w-4 h-4" />
+                            </a>
+                          </Button>
+                        </div>
                       </div>
                       <CardTitle className="mt-4 text-lg leading-tight line-clamp-2 group-hover:text-primary transition-colors">
                         {resource.title}
@@ -143,25 +155,12 @@ export default async function ResourcesPage({
                         </CardDescription>
                       )}
                     </CardHeader>
-                    
+
                     <CardContent className="grow pb-4">
                       <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
                         {resource.description || 'Download this document for detailed information.'}
                       </p>
                     </CardContent>
-                    
-                    <CardFooter className="pt-0 flex justify-end">
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="rounded-full text-primary hover:bg-primary/10 hover:text-primary"
-                        asChild
-                      >
-                        <a href={resource.url} target="_blank" rel="noopener noreferrer" aria-label={`Download ${resource.title}`}>
-                          <Download className="w-5 h-5" />
-                        </a>
-                      </Button>
-                    </CardFooter>
                   </Card>
                 );
               })}
