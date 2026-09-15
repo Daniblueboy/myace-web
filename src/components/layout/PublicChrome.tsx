@@ -22,7 +22,7 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
     // Bottom tab bar is fixed on mobile, so the page needs matching bottom
     // padding here (after the Footer, not just after <main>) or the fixed
     // bar would sit on top of the Footer's own bottom edge.
-    <div className="flex flex-col min-h-screen pb-[var(--bottom-nav-h)] md:pb-0">
+    <div className="flex flex-col min-h-screen pb-[var(--bottom-nav-h)] lg:pb-0">
       <Navbar />
       <main className="grow">{children}</main>
 
@@ -32,7 +32,7 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
         <DropdownMenuTrigger asChild>
           <button
             type="button"
-            className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110 md:flex"
+            className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110 lg:flex"
             aria-label="Chat with us on WhatsApp"
           >
             <MessageCircle className="h-5 w-5" />

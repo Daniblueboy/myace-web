@@ -128,7 +128,7 @@ export default function ContactForm() {
       <Reveal>
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container">
-            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 max-w-5xl mx-auto">
               {/* Contact Form */}
               <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-8">
                 <h2 className="text-2xl font-bold mb-6">Send us a message</h2>

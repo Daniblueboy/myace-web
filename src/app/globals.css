@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+/* Landscape phones: short viewport height regardless of width. The mobile
+   hero's headline (top zone) and mark (bottom zone) need less padding to
+   avoid visually colliding when there's this little vertical room. */
+@custom-variant short (@media (max-height: 500px));
 
 @theme inline {
   --color-background: var(--background);
@@ -54,8 +58,18 @@
      components. Scales smoothly from 90% of the authored size at a small
      360px phone up to the full authored size by ~430px (large phones) and
      beyond — mobile screens vary a lot (320–480px+) and previously every
-     one of them got the exact same fixed rem value regardless of width. */
-  --fluid-type-scale: clamp(0.9, calc(0.9 + (100vw - 360px) / 70px * 0.1), 1);
+     one of them got the exact same fixed rem value regardless of width.
+     min()'d against a second, height-based factor: on its own the width
+     factor reads a landscape phone (e.g. 844x390) as "wide", so it scaled
+     text up to full desktop size even though there's far less vertical
+     room than portrait mobile to fit it in. The height factor only starts
+     shrinking below ~700px tall — normal portrait phones and desktop
+     windows are taller than that and stay at 1 (no effect); only short
+     (mostly landscape-phone) viewports get pulled down toward 0.85. */
+  --fluid-type-scale: min(
+    clamp(0.9, calc(0.9 + (100vw - 360px) / 70px * 0.1), 1),
+    clamp(0.85, calc(0.85 + (100vh - 380px) / 320px * 0.15), 1)
+  );
   --text-xs: calc(0.75rem * var(--fluid-type-scale));
   --text-sm: calc(0.875rem * var(--fluid-type-scale));
   --text-base: calc(1rem * var(--fluid-type-scale));

@@ -168,7 +168,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden lg:flex gap-6 items-center">
           {NAV_LINKS_BEFORE_ESTATES.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
           ))}
@@ -195,7 +195,7 @@ export function Navbar() {
           </Button>
           <Button variant="ghost" asChild>
             <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
-              Customer Login
+              Login
             </a>
           </Button>
           <Button asChild><Link href="/book-inspection">Book Inspection</Link></Button>

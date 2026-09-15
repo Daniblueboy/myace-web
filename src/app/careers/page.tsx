@@ -111,7 +111,7 @@ export default function CareersPage() {
       </section>
 
       <section className="border-y bg-black py-16 text-white md:py-24">
-        <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="container grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
               <Users className="h-6 w-6" aria-hidden="true" />

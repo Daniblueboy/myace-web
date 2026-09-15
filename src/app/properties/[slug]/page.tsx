@@ -96,9 +96,9 @@ export default function PropertyDetailPage() {
         <PropertyGallery images={property.images || []} />
       </div>
 
-      <div className="container grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="md:col-span-2 space-y-6">
           {/* Header */}
           <div>
             <div className="flex gap-2 mb-3">

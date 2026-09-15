@@ -5,7 +5,7 @@ import { BrandLogo } from '@/components/layout/BrandLogo';
 export function Footer() {
   return (
     <footer className="premium-footer py-12 text-[#d5d0c8]">
-      <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
         <div className="space-y-4">
           <BrandLogo theme="dark" size="lg" />
@@ -58,7 +58,7 @@ export function Footer() {
             </li>
             <li className="flex gap-3">
               <Mail className="w-5 h-5 text-primary shrink-0" />
-              <span>customercare@aceroyalestates.com</span>
+              <span className="min-w-0 break-words">customercare@aceroyalestates.com</span>
             </li>
           </ul>
         </div>

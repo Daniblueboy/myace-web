@@ -88,7 +88,7 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="premium-navigation backdrop-blur-xl backdrop-saturate-150 fixed inset-x-0 bottom-0 z-50 flex items-stretch border-t md:hidden"
+      className="premium-navigation backdrop-blur-xl backdrop-saturate-150 fixed inset-x-0 bottom-0 z-50 flex items-stretch border-t lg:hidden"
       style={{ height: 'var(--bottom-nav-h)', paddingBottom: 'env(safe-area-inset-bottom)' }}
       aria-label="Primary"
     >
@@ -216,7 +216,7 @@ export function MobileBottomNav() {
             <SheetClose asChild>
               <Button variant="outline" className="w-full mt-2" asChild>
                 <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
-                  Customer Login
+                  Login
                 </a>
               </Button>
             </SheetClose>

@@ -1,13 +1,13 @@
 export default function CeoWelcomeSection() {
   return (
     <section className="py-12 md:py-28 bg-white dark:bg-slate-950">
-      <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-center">
-        <div className="relative">
+      <div className="container grid gap-10 md:grid-cols-[0.9fr_1.1fr] items-center">
+        <div className="relative max-w-sm mx-auto w-full md:max-w-none md:mx-0">
           <div className="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-primary/10" />
           <img
             src="/images/ceo.jpg"
             alt="Dr. Endurance Cletus Agonor - CEO of Aceroyal Estates"
-            className="relative rounded-3xl w-full h-[360px] object-cover object-top shadow-xl"
+            className="relative rounded-3xl w-full aspect-[3/4] md:aspect-auto md:h-[360px] object-cover object-top shadow-xl"
           />
         </div>
         <div className="space-y-5">

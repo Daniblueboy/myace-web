@@ -101,7 +101,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
           </Button>
         </div>
         <div className="rounded-3xl bg-white dark:bg-slate-900 border dark:border-slate-800 overflow-hidden">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
             <div className="p-8 space-y-5">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3">
@@ -185,7 +185,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <TabsTrigger value="units">Available Units</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="overview" className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <TabsContent value="overview" className="mt-6 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
               <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
                 <h2 className="text-2xl font-bold">Estate Highlights</h2>
                 {estate.amenities && estate.amenities.length > 0 ? (

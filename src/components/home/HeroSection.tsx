@@ -72,7 +72,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`text-4xl md:text-6xl font-bold tracking-tight ${
+        className={`text-4xl short:text-2xl md:text-6xl font-bold tracking-tight ${
           isCenteredLayout ? 'text-slate-900' : 'text-white'
         }`}
       >
@@ -87,11 +87,11 @@ export default function HeroSection() {
   // on slide 0's background; slide 2's photo washes the colour symbol out,
   // so it alone uses the white variant.
   const HeroMark = ({ large = false }: { large?: boolean }) => (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-2 short:gap-1">
       <img
         src={slideIndex === 2 ? '/images/aceroyal-symbol-white.png' : '/images/aceroyal-symbol-colour.png'}
         alt=""
-        className={`${large ? 'h-28 w-28' : 'h-16 w-16'} object-contain`}
+        className={`${large ? 'h-28 w-28 short:h-16 short:w-16' : 'h-16 w-16 short:h-10 short:w-10'} object-contain`}
       />
       <img
         src={isCenteredLayout ? '/images/aceroyal-wordmark-colour.png' : '/images/aceroyal-wordmark-white.png'}
@@ -103,7 +103,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex items-center justify-center bg-slate-900 text-white overflow-hidden min-h-[calc(100dvh-var(--nav-h)-var(--bottom-nav-h))] md:min-h-[min(750px,calc(100dvh-var(--nav-h)))] py-0 md:py-0"
+      className="relative flex items-center justify-center bg-slate-900 text-white overflow-hidden min-h-[calc(100dvh-var(--nav-h)-var(--bottom-nav-h))] lg:min-h-[min(750px,calc(100dvh-var(--nav-h)))] py-0 lg:py-0"
       onTouchStart={(e) => {
         touchStartX.current = e.touches[0].clientX;
       }}
@@ -146,7 +146,7 @@ export default function HeroSection() {
           put the headline up top and the mark near the bottom. justify-between
           keeps the top/bottom zones pinned to the edges regardless of
           whether the (empty) middle zone has content. */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-16 pb-24 text-center md:hidden">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-16 pb-24 short:pt-6 short:pb-12 text-center lg:hidden">
         <div className="flex w-full justify-center">{!isCenteredLayout && <HeroHeadline />}</div>
         <div className="flex w-full justify-center">{isCenteredLayout && <HeroMark large />}</div>
         <div className="flex w-full justify-center">
@@ -155,7 +155,7 @@ export default function HeroSection() {
       </div>
 
       <motion.div
-        className="hidden md:block container relative z-10 text-center space-y-6"
+        className="hidden lg:block container relative z-10 text-center space-y-6"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -238,8 +238,11 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Mobile-only scroll indicator, pinned to the bottom of the hero. */}
-      <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center md:hidden">
+      {/* Mobile-only scroll indicator, pinned to the bottom of the hero.
+          Hidden on short (landscape phone) viewports — there isn't enough
+          room between the headline and mark zones for it not to collide
+          with one of them there, and scrolling is obvious enough anyway. */}
+      <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center short:hidden lg:hidden">
         <div
           className={`flex flex-col items-center gap-1 animate-hero-scroll-cue ${
             isCenteredLayout ? 'text-slate-900/70' : 'text-white/70'
