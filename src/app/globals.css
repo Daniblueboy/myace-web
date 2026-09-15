@@ -321,17 +321,25 @@
     animation: preloader-pulse 1.8s ease-in-out infinite;
   }
 
+  /* Sized to the white wordmark file's own aspect ratio (245/58) so both
+     the light- and dark-mode logos share one bounding box — the colour
+     file is a wider crop (375/65) and would otherwise render visibly
+     bigger at the same fixed height. */
   .initial-preloader__wordmark {
     position: relative;
     overflow: hidden;
+    height: 2.5rem;
+    aspect-ratio: 245 / 58;
   }
 
   /* No `display` here on purpose — it would out-specificity Tailwind's
      hidden/dark:hidden classes on the two <img> variants below and force
      both the colour and white wordmark to render at once. */
   .initial-preloader__wordmark img {
-    height: 2.5rem;
-    width: auto;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: left center;
     animation: preloader-reveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
   }
 
