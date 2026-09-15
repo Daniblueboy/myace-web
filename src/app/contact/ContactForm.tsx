@@ -315,7 +315,7 @@ export default function ContactForm() {
           <div className="container">
             <h2 className="text-3xl font-bold mb-12 text-center">Our Offices</h2>
             {offices.length > 0 ? (
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-5xl md:mx-auto">
+              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {offices.map((office: any) => (
                   <div key={office.id} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 md:w-auto md:shrink">
                     <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">

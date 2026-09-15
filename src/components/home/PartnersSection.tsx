@@ -50,7 +50,7 @@ export default function PartnersSection() {
           </p>
         </div>
 
-        <div className="flex gap-8 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center md:mx-0">
+        <div className="flex gap-8 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center lg:mx-0">
           {partners.map((partner) => (
             <div
               key={partner.id}

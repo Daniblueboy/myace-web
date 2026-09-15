@@ -167,7 +167,7 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
           <div className="container">
             <h2 className="text-3xl font-bold mb-12 text-center">Our Values</h2>
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-5xl md:mx-auto">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {values.map((value) => (
                 <div key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 md:w-auto md:shrink">
                   <h3 className="text-xl font-semibold mb-2 text-primary">{value.title}</h3>
@@ -184,7 +184,7 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container">
             <h2 className="text-3xl font-bold mb-12 text-center">What We Do</h2>
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl sm:mx-auto">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {services.map((service) => (
                 <div key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-white dark:bg-slate-900 rounded-lg shadow-sm p-6 sm:w-auto sm:shrink">
                   <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
@@ -210,7 +210,7 @@ export default async function AboutPage() {
           <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
             <div className="container">
               <h2 className="text-3xl font-bold mb-12 text-center">Leadership & Team</h2>
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-5xl md:mx-auto">
+              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {teamMembers.map((member: any) => (
                   <div key={member.id} className="glass-card backdrop-blur-lg shrink-0 w-[65%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 text-center md:w-auto md:shrink">
                     {member.photoUrl ? (

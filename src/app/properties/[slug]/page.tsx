@@ -304,7 +304,7 @@ export default function PropertyDetailPage() {
             </TabsContent>
             <TabsContent value="payment" className="mt-4 space-y-4">
               {paymentFlyers.length > 0 ? (
-                <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2">
+                <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2">
                   {paymentFlyers.map((item: any, index: number) => (
                       <div
                         key={item.id}
@@ -467,7 +467,7 @@ export default function PropertyDetailPage() {
           {related.length > 0 && (
             <div>
               <h2 className="text-2xl font-bold mb-4">Related Properties</h2>
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-2 md:gap-6">
+              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 lg:gap-6">
                 {related.map((item) => (
                   <Link key={item.id} href={`/properties/${item.slug}`} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                     <Card className="glass-card backdrop-blur-lg overflow-hidden hover:shadow-md transition-shadow">

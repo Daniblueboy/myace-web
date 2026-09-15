@@ -12,7 +12,7 @@ export function StatesSection() {
             Nationwide coverage with strong local presence.
           </p>
         </div>
-        <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-4 lg:grid-cols-2 xl:grid-cols-4">
           {states.map((state) => (
             <div
               key={state}

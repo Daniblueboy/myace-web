@@ -197,7 +197,7 @@ export default function PropertiesClient() {
           {loading ? (
             <div className="min-h-64" aria-label="Updating estate offerings" />
           ) : properties.length > 0 ? (
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 xl:grid-cols-3 lg:gap-8">
               {properties.map(property => (
                 <div key={property.id} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                   <PropertyCard property={property} />

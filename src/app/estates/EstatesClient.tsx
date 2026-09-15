@@ -165,7 +165,7 @@ export default function EstatesClient() {
         )}
 
         {loading ? (
-          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-8 lg:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
@@ -191,7 +191,7 @@ export default function EstatesClient() {
             )}
           </div>
         ) : (
-          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-8 lg:grid-cols-2 xl:grid-cols-3">
             {filtered.map((estate: any, i: number) => (
               <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                 <Link

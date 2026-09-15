@@ -26,7 +26,7 @@ export default function EstateGallery({ images = [] }: { images: string[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-4 md:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-4 lg:grid-cols-3">
         {images.map((image, idx) => (
           <button
             key={`${image}-${idx}`}

@@ -146,7 +146,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
               </div>
               <div
-                className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-3 ${estate.properties?.length ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}
+                className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 ${estate.properties?.length ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}
               >
                 {estate.properties?.length ? (
                   <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">

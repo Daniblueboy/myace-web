@@ -22,7 +22,7 @@ export async function RelatedEstates({ currentSlug, state }: { currentSlug: stri
   return (
     <section className="mt-4">
       <h2 className="text-2xl font-bold mb-6">You May Also Be Interested In</h2>
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {related.map((estate: any) => (
           <Link
             key={estate.id}

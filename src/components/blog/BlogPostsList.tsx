@@ -52,7 +52,7 @@ export function BlogPostsList({
 
   return (
     <>
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-3 md:gap-6">
+      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-3 lg:gap-6">
         {posts.map((post) => (
           <Card
             key={post.id}

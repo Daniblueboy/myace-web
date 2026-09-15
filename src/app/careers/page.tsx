@@ -96,7 +96,7 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="mt-10 flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-3">
+          <div className="mt-10 flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-3">
             {values.map((value) => (
               <article key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center rounded-2xl border bg-card p-7 text-card-foreground shadow-sm md:w-auto md:shrink">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
@@ -122,7 +122,7 @@ export default function CareersPage() {
               technical expertise. Opportunities may open across these teams as we grow.
             </p>
           </div>
-          <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:grid-cols-2">
+          <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2">
             {teams.map((team) => (
               <div key={team} className="flex shrink-0 w-[70%] snap-center items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-4 sm:w-auto sm:shrink">
                 <Building2 className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />

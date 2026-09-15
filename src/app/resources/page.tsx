@@ -115,7 +115,7 @@ export default async function ResourcesPage({
               </p>
             </div>
 
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 xl:grid-cols-3 lg:gap-6">
               {resources.map((resource: any, index: number) => {
                 const FileIcon = getFileIcon(resource.fileType);
 

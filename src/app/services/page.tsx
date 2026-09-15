@@ -76,7 +76,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Services Grid */}
-        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 mb-16">
+        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-8 lg:grid-cols-2 mb-16">
           {services.map((service) => (
             <Card key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center p-8 hover:shadow-xl transition-shadow md:w-auto md:shrink">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg mb-6">
