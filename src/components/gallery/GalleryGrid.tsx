@@ -5,6 +5,7 @@ import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { PlayCircle, ImageIcon, Images, Video } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { useAutoScrollRow } from '@/hooks/useAutoScrollRow';
 import type { GalleryItem } from '@/shared';
 
 function getEmbedUrl(url: string) {
@@ -25,10 +26,14 @@ function getEmbedUrl(url: string) {
   return url;
 }
 
-export function GalleryGrid({ items }: { items: GalleryItem[] }) {
+export function GalleryGrid({ items, autoScroll = false }: { items: GalleryItem[]; autoScroll?: boolean }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [videoItem, setVideoItem] = useState<GalleryItem | null>(null);
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
+  const { ref: rowRef, handlers: rowHandlers } = useAutoScrollRow<HTMLDivElement>({
+    enabled: autoScroll,
+    itemCount: items?.length ?? 0,
+  });
 
   if (!items || items.length === 0) {
     return (
@@ -65,7 +70,11 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           ))}
         </div>
       </div>
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        ref={rowRef}
+        {...rowHandlers}
+        className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {visibleItems.map((item, index) => (
           <button
             key={item.id}
