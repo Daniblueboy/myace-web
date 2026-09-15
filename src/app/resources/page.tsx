@@ -150,11 +150,15 @@ export default async function ResourcesPage({
                       </p>
                     </CardContent>
                     
-                    <CardFooter className="pt-0">
-                      <Button className="w-full gap-2" asChild>
-                        <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                          <Download className="w-4 h-4" />
-                          Download
+                    <CardFooter className="pt-0 flex justify-end">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="rounded-full text-primary hover:bg-primary/10 hover:text-primary"
+                        asChild
+                      >
+                        <a href={resource.url} target="_blank" rel="noopener noreferrer" aria-label={`Download ${resource.title}`}>
+                          <Download className="w-5 h-5" />
                         </a>
                       </Button>
                     </CardFooter>
