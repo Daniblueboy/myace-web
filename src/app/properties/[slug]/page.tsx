@@ -81,7 +81,7 @@ export default function PropertyDetailPage() {
   if (!property) return <div className="container py-24 text-center">Property not found.</div>;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20">
+    <div className="min-h-screen pb-20">
       {/* Back Button */}
       <div className="container py-4">
         <Link href="/properties">

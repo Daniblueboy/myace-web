@@ -100,7 +100,7 @@ export default function EstatesClient() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen">
       <div className="relative overflow-hidden border-b bg-white dark:bg-slate-900 dark:border-slate-800">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
         <div className="container relative py-16 md:py-20">

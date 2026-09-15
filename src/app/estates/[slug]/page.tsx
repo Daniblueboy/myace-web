@@ -91,7 +91,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
   const tourImages: string[] = [...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen">
       <div className="container py-12 md:py-16 space-y-10">
         <div>
           <Button variant="ghost" asChild className="gap-2">
