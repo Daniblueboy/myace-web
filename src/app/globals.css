@@ -326,10 +326,12 @@
     overflow: hidden;
   }
 
+  /* No `display` here on purpose — it would out-specificity Tailwind's
+     hidden/dark:hidden classes on the two <img> variants below and force
+     both the colour and white wordmark to render at once. */
   .initial-preloader__wordmark img {
     height: 2.5rem;
     width: auto;
-    display: block;
     animation: preloader-reveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
   }
 

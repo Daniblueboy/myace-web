@@ -69,7 +69,7 @@ export function InitialPreloader() {
             height={65}
             priority
             unoptimized
-            className="dark:hidden"
+            className="block dark:hidden"
           />
           <Image
             src="/images/aceroyal-wordmark-white.png"
