@@ -65,12 +65,12 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           ))}
         </div>
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visibleItems.map((item, index) => (
           <button
             key={item.id}
             type="button"
-            className={`group relative w-full overflow-hidden rounded-2xl border bg-slate-50 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:bg-slate-900 dark:border-slate-800 ${index % 5 === 0 ? 'h-80 sm:row-span-2 sm:h-full sm:min-h-[344px]' : 'h-64'}`}
+            className={`glass-card backdrop-blur-lg group relative shrink-0 w-[78%] snap-center overflow-hidden rounded-2xl border bg-slate-50 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:bg-slate-900 dark:border-slate-800 sm:w-auto sm:shrink h-64 ${index % 5 === 0 ? 'sm:row-span-2 sm:h-full sm:min-h-[344px]' : ''}`}
             onClick={() => {
               if (item.mediaType === 'video') {
                 setVideoItem(item);

@@ -2,7 +2,8 @@
 
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { MessageCircle, Home, ShoppingBag, HelpCircle, LifeBuoy } from 'lucide-react';
+import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
+import { MessageCircle } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import {
   DropdownMenu,
@@ -10,44 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-
-const WHATSAPP_NUMBER = '2349156549709';
-
-const ENQUIRY_OPTIONS = [
-  {
-    label: 'General Enquiry',
-    icon: HelpCircle,
-    message: (context: string) => `Hello Aceroyal Estates, I have a question${context}.`,
-  },
-  {
-    label: 'Book an Inspection',
-    icon: Home,
-    message: (context: string) => `Hello Aceroyal Estates, I'd like to book an inspection${context}.`,
-  },
-  {
-    label: 'Enquire to Purchase',
-    icon: ShoppingBag,
-    message: (context: string) => `Hello Aceroyal Estates, I'm interested in purchasing a property${context}.`,
-  },
-  {
-    label: 'Support',
-    icon: LifeBuoy,
-    message: (context: string) => `Hello Aceroyal Estates, I need some support${context}.`,
-  },
-];
-
-// Approximates the estate name from its slug (e.g. "alpha-garden-city" ->
-// "Alpha Garden City") rather than fetching it — this is a global layout
-// component mounted on every page, so a data fetch just to personalize a
-// WhatsApp message isn't worth the added latency/complexity.
-function estateLabelFromPath(pathname: string) {
-  const match = pathname.match(/^\/estates\/([^/]+)$/);
-  if (!match) return null;
-  return match[1]
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
+import { WHATSAPP_NUMBER, ENQUIRY_OPTIONS, estateLabelFromPath } from '@/components/layout/whatsapp-enquiry';
 
 export function PublicChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -55,21 +19,27 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
   const context = estateLabel ? ` regarding ${estateLabel}` : '';
 
   return (
-    <div className="flex flex-col min-h-screen">
+    // Bottom tab bar is fixed on mobile, so the page needs matching bottom
+    // padding here (after the Footer, not just after <main>) or the fixed
+    // bar would sit on top of the Footer's own bottom edge.
+    <div className="flex flex-col min-h-screen pb-[var(--bottom-nav-h)] md:pb-0">
       <Navbar />
       <main className="grow">{children}</main>
+
+      {/* Desktop-only floating WhatsApp button — mobile reaches the same
+          enquiry options via the bottom nav's "Chat" tab instead. */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
             type="button"
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+            className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110 md:flex"
             aria-label="Chat with us on WhatsApp"
           >
             <MessageCircle className="h-5 w-5" />
             Chat with us
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" side="top">
+        <DropdownMenuContent align="end" side="top" className="glass-panel backdrop-blur-xl backdrop-saturate-150">
           {ENQUIRY_OPTIONS.map((option) => (
             <DropdownMenuItem key={option.label} asChild className="gap-2 cursor-pointer">
               <a
@@ -83,6 +53,8 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <MobileBottomNav />
       <Footer />
     </div>
   );

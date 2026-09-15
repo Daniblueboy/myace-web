@@ -21,7 +21,7 @@ export function EstateHeroCarousel({ images, alt }: EstateHeroCarouselProps) {
 
   if (images.length === 0) {
     return (
-      <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center text-slate-500">
+      <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 dark:bg-slate-900 dark:bg-none flex items-center justify-center text-slate-500">
         Estate Preview Coming Soon
       </div>
     );

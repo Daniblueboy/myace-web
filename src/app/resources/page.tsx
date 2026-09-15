@@ -115,14 +115,14 @@ export default async function ResourcesPage({
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
               {resources.map((resource: any, index: number) => {
                 const FileIcon = getFileIcon(resource.fileType);
-                
+
                 return (
                   <Card
                     key={resource.id || index}
-                    className="group flex flex-col overflow-hidden border hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    className="glass-card backdrop-blur-lg group shrink-0 w-[78%] snap-center flex flex-col overflow-hidden border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 sm:w-auto sm:shrink"
                   >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-3">

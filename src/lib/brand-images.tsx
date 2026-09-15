@@ -1,29 +1,22 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-// The source lockup is a 727x541 rectangle: the "A" mark on top, the
-// "ACEROYAL ESTATES" wordmark underneath. For icon use we only want the
-// mark, so we render the full image scaled to the target width, then clip
-// the container to just the top slice (before the wordmark starts) —
-// letting overflow:hidden do the crop instead of needing a raster editor.
-let logoDataUri: string | null = null;
-function getLogoDataUri() {
-  if (!logoDataUri) {
-    const filePath = path.join(process.cwd(), 'public/images/cropped-cropped-logo-jpeg.jpg');
+// aceroyal-symbol-white.png is already the mark alone (no wordmark to crop
+// away) with a real transparent background, so this just needs to composite
+// it onto a solid brand color for contexts (favicon, OG image) that can't
+// rely on transparency.
+let markDataUri: string | null = null;
+function getMarkDataUri() {
+  if (!markDataUri) {
+    const filePath = path.join(process.cwd(), 'public/images/aceroyal-symbol-white.png');
     const base64 = fs.readFileSync(filePath).toString('base64');
-    logoDataUri = `data:image/jpeg;base64,${base64}`;
+    markDataUri = `data:image/png;base64,${base64}`;
   }
-  return logoDataUri;
+  return markDataUri;
 }
 
-const SOURCE_WIDTH = 727;
-const SOURCE_HEIGHT = 541;
-const MARK_HEIGHT = 430; // crop above the wordmark, mark-only
-
-export function MarkIcon({ size, background = '#ffffff' }: { size: number; background?: string }) {
-  const scale = size / SOURCE_WIDTH;
-  const cropHeight = MARK_HEIGHT * scale;
-  const imgHeight = SOURCE_HEIGHT * scale;
+export function MarkIcon({ size, background = '#bb1e15' }: { size: number; background?: string }) {
+  const markSize = Math.round(size * 0.62);
 
   return (
     <div
@@ -36,14 +29,7 @@ export function MarkIcon({ size, background = '#ffffff' }: { size: number; backg
         background,
       }}
     >
-      <div style={{ width: size, height: cropHeight, overflow: 'hidden', display: 'flex' }}>
-        <img
-          src={getLogoDataUri()}
-          width={size}
-          height={imgHeight}
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
+      <img alt="" src={getMarkDataUri()} width={markSize} height={markSize} style={{ objectFit: 'contain' }} />
     </div>
   );
 }
@@ -62,7 +48,7 @@ export function ShareImage() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #3a0d0f 55%, #B5161C 100%)',
+        background: 'linear-gradient(135deg, #000000 0%, #260805 55%, #bb1e15 100%)',
         fontFamily: 'sans-serif',
       }}
     >

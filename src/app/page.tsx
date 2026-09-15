@@ -1,36 +1,41 @@
 import HeroSection from '@/components/home/HeroSection';
-import EstateSections from '@/components/home/EstateSections';
-import ComplianceSection from '@/components/home/ComplianceSection';
-import PartnersSection from '@/components/home/PartnersSection';
-import PromoSection from '@/components/home/PromoSection';
+import { WhoWeAreSection } from '@/components/home/WhoWeAreSection';
 import CeoWelcomeSection from '@/components/home/CeoWelcomeSection';
-import AppDownloadSection from '@/components/home/AppDownloadSection';
-import NewsletterSection from '@/components/home/NewsletterSection';
-import { WhyChooseUs } from '@/components/home/WhyChooseUs';
-import { ServicesSection } from '@/components/home/ServicesSection';
+import EstateSections from '@/components/home/EstateSections';
+import NewPropertySpotlight from '@/components/home/NewPropertySpotlight';
 import { StatesSection } from '@/components/home/StatesSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
+import PartnersSection from '@/components/home/PartnersSection';
+import ComplianceSection from '@/components/home/ComplianceSection';
+import PromoSection from '@/components/home/PromoSection';
+import AppDownloadSection from '@/components/home/AppDownloadSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
 import { CtaSection } from '@/components/home/CtaSection';
 import { Reveal } from '@/components/motion/Reveal';
-import RealtorSection from '@/components/home/RealtorSection';
 
+// Section order follows Daniel's specified homepage flow: Hero, Who We Are,
+// CEO message, Our Developments, New Property spotlight, Our Success
+// (testimonials), Our Partnership, Announcement, App Launch, Insights.
+// Why Choose Us and Services were folded into/removed in favor of Who We
+// Are (see that component), the Realtor CTA was removed outright, and the
+// Newsletter section was folded into App Launch (both posted to the same
+// /newsletter endpoint) — rather than kept as separate near-duplicate
+// sections. Everything else already on the homepage (States, Compliance,
+// final CTA) stays, woven in around that backbone.
 export default function HomePage() {
   return (
     <div>
       <HeroSection />
-      <Reveal><PromoSection /></Reveal>
+      <Reveal><WhoWeAreSection /></Reveal>
       <Reveal><CeoWelcomeSection /></Reveal>
       <Reveal><EstateSections /></Reveal>
-      <Reveal><WhyChooseUs /></Reveal>
-      <Reveal><ServicesSection /></Reveal>
+      <Reveal><NewPropertySpotlight /></Reveal>
       <Reveal><StatesSection /></Reveal>
-      <Reveal><ComplianceSection /></Reveal>
+      <Reveal><TestimonialsSection /></Reveal>
       <Reveal><PartnersSection /></Reveal>
-      {/* Testimonials removed until Aceroyal provides genuine, approved
-          customer testimonials — do not ship placeholder social proof. */}
-      <Reveal><RealtorSection /></Reveal>
+      <Reveal><ComplianceSection /></Reveal>
+      <Reveal><PromoSection /></Reveal>
       <Reveal><AppDownloadSection /></Reveal>
-      <Reveal><NewsletterSection /></Reveal>
       <Reveal><LatestBlogPosts /></Reveal>
       <Reveal><CtaSection /></Reveal>
     </div>

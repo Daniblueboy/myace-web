@@ -9,7 +9,7 @@ type FeaturedEstatesProps = {
 
 export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
+    <section className="py-12 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -23,12 +23,12 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
           </Button>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {estates.slice(0, 3).map((estate) => (
             <Link
               key={estate.id}
               href={`/estates/${estate.slug}`}
-              className="group rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="glass-card backdrop-blur-lg group shrink-0 w-[82%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:w-auto md:shrink"
             >
               {estate.coverImage && (
                 <div className="h-44 overflow-hidden">

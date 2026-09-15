@@ -2,37 +2,13 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
+import { Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { fetchAPI } from '@/lib/api';
+import { fallbackEstates } from '@/lib/fallback-data';
 import { BrandLogo } from '@/components/layout/BrandLogo';
-
-const NAV_LINKS_BEFORE_ESTATES = [{ href: '/', label: 'Home' }];
-
-const NAV_LINKS_AFTER_ESTATES = [
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-];
-
-const RESOURCES_LINKS = [
-  { href: '/blog', label: 'Insights / Blog' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/faq', label: 'FAQs' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/resources', label: 'Downloads' },
-];
-
-const NAV_LINKS_TAIL = [{ href: '/contact', label: 'Contact' }];
-
-const CUSTOMER_PORTAL_URL = 'https://app.myaceroyal.com';
-
-function isActivePath(pathname: string, href: string) {
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
+import { isActivePath } from '@/components/layout/nav-utils';
+import { NAV_LINKS_BEFORE_ESTATES, NAV_LINKS_AFTER_ESTATES, RESOURCES_LINKS, NAV_LINKS_TAIL, CUSTOMER_PORTAL_URL } from '@/components/layout/nav-links';
 
 function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
@@ -55,12 +31,7 @@ function EstatesMegaMenu({ active }: { active: boolean }) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const { data } = useQuery({
-    queryKey: ['nav-estates'],
-    queryFn: () => fetchAPI('/estates?take=8').then((res) => res.items || res || []),
-    staleTime: 5 * 60 * 1000,
-  });
-  const estates = Array.isArray(data) ? data : [];
+  const estates = fallbackEstates.slice(0, 6);
 
   const openNow = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -94,13 +65,9 @@ function EstatesMegaMenu({ active }: { active: boolean }) {
           open ? 'pointer-events-auto translate-y-0 opacity-100 scale-100' : 'pointer-events-none -translate-y-1 opacity-0 scale-95'
         }`}
       >
-        <div className="rounded-2xl border bg-popover text-popover-foreground shadow-xl p-4">
+        <div className="glass-panel backdrop-blur-xl backdrop-saturate-150 rounded-2xl border text-popover-foreground shadow-xl p-4">
           <div className="grid grid-cols-2 gap-2">
-            {estates.length === 0
-              ? Array.from({ length: 4 }).map((_, i) => (
-                  <div key={i} className="h-16 animate-pulse rounded-xl bg-muted" />
-                ))
-              : estates.slice(0, 6).map((estate: any) => (
+            {estates.map((estate) => (
                   <Link
                     key={estate.id}
                     href={`/estates/${estate.slug}`}
@@ -173,7 +140,7 @@ function ResourcesMenu({ active }: { active: boolean }) {
           open ? 'pointer-events-auto translate-y-0 opacity-100 scale-100' : 'pointer-events-none -translate-y-1 opacity-0 scale-95'
         }`}
       >
-        <div className="rounded-2xl border bg-popover text-popover-foreground shadow-xl p-2">
+        <div className="glass-panel backdrop-blur-xl backdrop-saturate-150 rounded-2xl border text-popover-foreground shadow-xl p-2">
           {RESOURCES_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -194,10 +161,10 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="premium-navigation sticky top-0 z-50 border-b">
+    <nav className="premium-navigation backdrop-blur-xl backdrop-saturate-150 sticky top-0 z-50 border-b">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <BrandLogo className="h-10" />
+          <BrandLogo size="sm" />
         </Link>
 
         {/* Desktop Menu */}
@@ -232,93 +199,6 @@ export function Navbar() {
             </a>
           </Button>
           <Button asChild><Link href="/book-inspection">Book Inspection</Link></Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className="md:hidden">
-            <Sheet>
-                <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon"><Menu className="h-5 w-5"/></Button>
-                </SheetTrigger>
-                <SheetContent className="px-6">
-                    <div className="flex items-center justify-between mt-8">
-                      <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Menu</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        aria-label="Toggle theme"
-                      >
-                        <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                      </Button>
-                    </div>
-                    <div className="flex flex-col gap-5 mt-4">
-                        {[...NAV_LINKS_BEFORE_ESTATES, { href: '/estates', label: 'Estates' }, ...NAV_LINKS_AFTER_ESTATES].map((link) => {
-                          const active = isActivePath(pathname, link.href);
-                          return (
-                            <SheetClose asChild key={link.href}>
-                              <Link
-                                href={link.href}
-                                aria-current={active ? 'page' : undefined}
-                                className={`text-lg font-medium ${active ? 'text-primary' : ''}`}
-                              >
-                                {link.label}
-                              </Link>
-                            </SheetClose>
-                          );
-                        })}
-
-                        <div className="pt-1 border-t dark:border-slate-800">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-4 mb-3">
-                            Resources
-                          </p>
-                          <div className="flex flex-col gap-4 pl-2">
-                            {RESOURCES_LINKS.map((link) => {
-                              const active = isActivePath(pathname, link.href);
-                              return (
-                                <SheetClose asChild key={link.href}>
-                                  <Link
-                                    href={link.href}
-                                    aria-current={active ? 'page' : undefined}
-                                    className={`text-base font-medium ${active ? 'text-primary' : 'text-muted-foreground'}`}
-                                  >
-                                    {link.label}
-                                  </Link>
-                                </SheetClose>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {NAV_LINKS_TAIL.map((link) => {
-                          const active = isActivePath(pathname, link.href);
-                          return (
-                            <SheetClose asChild key={link.href}>
-                              <Link
-                                href={link.href}
-                                aria-current={active ? 'page' : undefined}
-                                className={`text-lg font-medium border-t dark:border-slate-800 pt-4 ${active ? 'text-primary' : ''}`}
-                              >
-                                {link.label}
-                              </Link>
-                            </SheetClose>
-                          );
-                        })}
-
-                        <SheetClose asChild>
-                          <Button variant="outline" className="w-full mt-2" asChild>
-                            <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
-                              Customer Login
-                            </a>
-                          </Button>
-                        </SheetClose>
-                        <SheetClose asChild>
-                          <Button className="w-full" asChild><Link href="/book-inspection">Book Inspection</Link></Button>
-                        </SheetClose>
-                    </div>
-                </SheetContent>
-            </Sheet>
         </div>
       </div>
     </nav>

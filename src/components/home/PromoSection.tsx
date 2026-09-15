@@ -1,10 +1,6 @@
-import { fetchAPI } from '@/lib/api';
+import { fallbackPromos } from '@/lib/fallback-data';
 import PromoCarousel from '@/components/home/PromoCarousel';
 
-export default async function PromoSection() {
-  const promos = await fetchAPI('/promos').catch(() => []);
-
-  if (!promos || promos.length === 0) return null;
-
-  return <PromoCarousel promos={promos} />;
+export default function PromoSection() {
+  return <PromoCarousel promos={fallbackPromos} />;
 }

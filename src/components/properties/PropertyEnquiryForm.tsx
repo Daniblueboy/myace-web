@@ -111,7 +111,7 @@ export default function PropertyEnquiryForm({
           <div>
             <label className="block text-sm font-medium mb-2">Property Option</label>
             <select
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-900"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
               value={formData.variantId}
               onChange={(e) => setFormData({ ...formData, variantId: e.target.value })}
             >

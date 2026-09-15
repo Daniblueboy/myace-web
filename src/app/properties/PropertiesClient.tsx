@@ -112,7 +112,7 @@ export default function PropertiesClient() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Estate Offerings</h1>
-          <p className="text-slate-500 mt-1">
+          <p className="text-slate-500 dark:text-muted-foreground mt-1">
             Land allocations and apartment sales within our master-planned estates.
           </p>
         </div>
@@ -155,7 +155,7 @@ export default function PropertiesClient() {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Desktop Sidebar */}
         <aside className="hidden md:block w-64 shrink-0 space-y-6 sticky top-24 self-start">
-          <div className="bg-slate-50 p-6 rounded-lg border">
+          <div className="bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-lg border">
             <h3 className="font-semibold mb-4 flex items-center"><Filter className="mr-2 h-4 w-4" /> Filters</h3>
             <FilterControls
               filters={filters}
@@ -190,15 +190,17 @@ export default function PropertiesClient() {
           {loading ? (
             <div className="min-h-64" aria-label="Updating estate offerings" />
           ) : properties.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-2 lg:grid-cols-3 md:gap-8">
               {properties.map(property => (
-                <PropertyCard key={property.id} property={property} />
+                <div key={property.id} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
+                  <PropertyCard property={property} />
+                </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-24 bg-slate-50 rounded-xl border border-dashed">
-              <h3 className="text-lg font-medium text-slate-900">No estate offerings found</h3>
-              <p className="text-slate-500 mt-1">Try adjusting your filters or search criteria.</p>
+            <div className="text-center py-24 bg-slate-50 dark:bg-slate-900 dark:border-slate-800 rounded-xl border border-dashed">
+              <h3 className="text-lg font-medium text-slate-900 dark:text-white">No estate offerings found</h3>
+              <p className="text-slate-500 dark:text-muted-foreground mt-1">Try adjusting your filters or search criteria.</p>
               <Button variant="link" onClick={clearFilters} className="mt-2 text-primary">Clear all filters</Button>
             </div>
           )}

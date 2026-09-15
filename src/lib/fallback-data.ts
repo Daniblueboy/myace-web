@@ -584,6 +584,36 @@ export const fallbackTestimonials: Testimonial[] = [
       "I've talked to the CEO of Aceroyalestates multiple times about real estate and the real estate market. He is very knowledgeable, professional and passionate about his vision. Anyone who works with him is lucky to have him on their side. It's a competitive market and he knows how to navigate the complexities to his clients advantage, he is constantly challenging the status quo, I once called him the \"robinhood\" of real estate. Was a joy to work with. He really went above and beyond in pursuit of my peculiar constraints, and worked through several challenging buying scenarios until I got just what I wanted. Thank you Chairman_ace.",
     active: true,
   },
+  // TODO(content): dummy entries below (not sourced from any real client)
+  // written to read like genuine testimonials rather than announcing
+  // themselves as placeholders, so the "Our Success" layout — text, photo,
+  // and video testimonials — can actually be reviewed as it will look once
+  // real content lands. Built per Daniel's standing instruction to build
+  // every section during development with placeholders rather than gate on
+  // final content, and swap/remove before go-live. Replace name/role/
+  // message/imageUrl/videoUrl with real, approved client content; the
+  // Google-hosted sample clip below is a stable public-domain placeholder,
+  // not a real client video.
+  {
+    id: 'fallback-testimonial-dummy-image',
+    name: 'Adaeze Okafor',
+    role: 'Homeowner, Alpha Garden City',
+    message:
+      "From my first site visit to the day I got my allocation letter, the process was clear at every step. No surprises, no hidden charges — just what was agreed from the start. I'm proud to call this estate home.",
+    rating: 5,
+    imageUrl: estateImages.placeholder3,
+    active: true,
+  },
+  {
+    id: 'fallback-testimonial-dummy-video',
+    name: 'Chuka Nwosu',
+    role: 'Investor, Downtown Lagos Commercial City',
+    message:
+      "I've bought land before and dealt with a lot of back and forth. With Aceroyal, the inspection was organized, the documentation was ready when they said it would be, and allocation happened on schedule. Watch how it went for me.",
+    rating: 5,
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    active: true,
+  },
 ];
 
 // TODO(content): placeholder stock photos standing in so the gallery grid/
@@ -622,6 +652,18 @@ export const fallbackGalleryItems: GalleryItem[] = [
     mediaType: 'image',
     mediaUrl: estateImages.placeholder3,
     estateName: 'Downtown Lagos',
+    active: true,
+  },
+  // TODO(content): dummy video entry (see the testimonials TODO above for
+  // why it reads like real content and where the placeholder clip is from)
+  // — replace mediaUrl with a real allocation/inspection-day video.
+  {
+    id: 'fallback-gallery-5',
+    title: 'Allocation Day Walkthrough',
+    mediaType: 'video',
+    mediaUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    thumbnailUrl: estateImages.placeholder1,
+    estateName: 'Heritage Estate',
     active: true,
   },
 ];
@@ -669,21 +711,21 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-aeon-trisl',
     name: 'AEON Trisl Group',
-    logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    logoUrl: '/images/aceroyal-symbol-colour.png',
     category: 'PARTNER',
     active: true,
   },
   {
     id: 'fallback-partner-brg',
     name: 'The Billionaire Realtor Group',
-    logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    logoUrl: '/images/aceroyal-symbol-colour.png',
     category: 'PARTNER',
     active: true,
   },
   {
     id: 'fallback-partner-emaar',
     name: 'Emaar Properties',
-    logoUrl: '/images/cropped-cropped-logo-jpeg.jpg',
+    logoUrl: '/images/aceroyal-symbol-colour.png',
     category: 'PARTNER',
     active: true,
   },

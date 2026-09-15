@@ -108,7 +108,7 @@ export function NavigationProgress() {
         isActive ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div className="h-full w-full origin-left animate-navigation-progress bg-primary shadow-[0_0_14px_rgba(224,28,36,0.5)]" />
+      <div className="h-full w-full origin-left animate-navigation-progress bg-primary shadow-[0_0_14px_color-mix(in_srgb,var(--primary)_50%,transparent)]" />
       <span className="sr-only">{isActive ? 'Loading content' : ''}</span>
     </div>
   );

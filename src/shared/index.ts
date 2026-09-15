@@ -106,6 +106,10 @@ export interface Testimonial {
   message: string;
   rating?: number | null;
   photoUrl?: string | null;
+  /** Larger showcase image — e.g. from an allocation or inspection event. */
+  imageUrl?: string | null;
+  /** Direct video file or YouTube/Vimeo URL for a video testimonial. */
+  videoUrl?: string | null;
   displayOrder?: number;
   active?: boolean;
 }

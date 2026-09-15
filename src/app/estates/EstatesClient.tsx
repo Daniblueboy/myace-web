@@ -139,11 +139,11 @@ export default function EstatesClient() {
         )}
 
         {loading ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="h-96 animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800"
+                className="h-96 shrink-0 w-[82%] animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 md:w-auto md:shrink"
               />
             ))}
           </div>
@@ -165,12 +165,12 @@ export default function EstatesClient() {
             )}
           </div>
         ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {paged.map((estate: any, i: number) => (
-              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06}>
+              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+                  className="glass-card backdrop-blur-lg group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
                 >
                   <div className="relative h-56 overflow-hidden">
                     {estate.coverImage ? (

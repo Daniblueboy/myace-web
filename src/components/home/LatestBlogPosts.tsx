@@ -1,15 +1,12 @@
 import Link from 'next/link';
-import { fetchAPI } from '@/lib/api';
+import { fallbackBlogPosts } from '@/lib/fallback-data';
 import { Calendar } from 'lucide-react';
 
-export default async function LatestBlogPosts() {
-  const data = await fetchAPI('/blog?take=3').catch(() => ({ items: [] }));
-  const posts = data?.items || data || [];
-
-  if (!posts || posts.length === 0) return null;
+export default function LatestBlogPosts() {
+  const posts = fallbackBlogPosts.slice(0, 3);
 
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-slate-950">
+    <section className="py-12 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -23,12 +20,12 @@ export default async function LatestBlogPosts() {
           </Link>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((post: any) => (
+        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-3">
+          {posts.map((post) => (
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="group rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="glass-card backdrop-blur-lg group shrink-0 w-[82%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:w-auto md:shrink"
             >
               {post.coverImageUrl && (
                 <div className="h-44 overflow-hidden">

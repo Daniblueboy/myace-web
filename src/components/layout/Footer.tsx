@@ -4,12 +4,12 @@ import { BrandLogo } from '@/components/layout/BrandLogo';
 
 export function Footer() {
   return (
-    <footer className="premium-footer py-12 text-slate-200">
+    <footer className="premium-footer py-12 text-[#d5d0c8]">
       <div className="container grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand */}
         <div className="space-y-4">
-          <BrandLogo theme="dark" className="h-12" />
-          <p className="text-sm text-slate-400">
+          <BrandLogo theme="dark" size="lg" />
+          <p className="text-sm text-white/75">
             Premium real estate solutions in Nigeria. Helping you find your dream property with ease and trust.
           </p>
           <div className="flex gap-4">
@@ -63,7 +63,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container mt-8 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+      <div className="container mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/65">
         <div>
           &copy; {new Date().getFullYear()} Aceroyal Estates. All rights reserved. Made with passion by{' '}
           <a

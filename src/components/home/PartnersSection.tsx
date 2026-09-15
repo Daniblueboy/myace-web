@@ -1,13 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { fetchAPI } from '@/lib/api';
+import { useState } from 'react';
+import { fallbackPartners } from '@/lib/fallback-data';
 
-function PartnerLogo({ partner }: { partner: any }) {
+type Partner = (typeof fallbackPartners)[number] & { websiteUrl?: string | null };
+
+function PartnerLogo({ partner }: { partner: Partner }) {
   const [failed, setFailed] = useState(false);
 
   const content = failed ? (
-    <div className="h-12 min-w-[120px] rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold flex items-center justify-center px-3">
+    <div className="h-12 min-w-[120px] rounded-lg bg-slate-100 text-slate-600 dark:bg-[#191919] dark:text-[#d0ccc6] text-xs font-semibold flex items-center justify-center px-3">
       {partner.name}
     </div>
   ) : (
@@ -36,31 +38,23 @@ function PartnerLogo({ partner }: { partner: any }) {
 }
 
 export default function PartnersSection() {
-  const [partners, setPartners] = useState<any[]>([]);
-
-  useEffect(() => {
-    fetchAPI('/partners')
-      .then((data) => setPartners(data))
-      .catch(() => setPartners([]));
-  }, []);
-
-  if (!partners || partners.length === 0) return null;
+  const partners = fallbackPartners;
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-12 md:py-28">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl font-bold mb-4">Our Partners & Clients</h2>
           <p className="text-muted-foreground">
             Trusted by leading organizations across Nigeria
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-          {partners.map((partner: any) => (
+        <div className="flex gap-8 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center md:mx-0">
+          {partners.map((partner) => (
             <div
               key={partner.id}
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
+              className="flex shrink-0 w-[30%] snap-center items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 md:w-40"
             >
               <PartnerLogo partner={partner} />
             </div>

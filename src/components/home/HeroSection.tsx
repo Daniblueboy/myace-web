@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, ChevronDown } from 'lucide-react';
 import { HeroParticles } from '@/components/home/HeroParticles';
 
 export default function HeroSection() {
@@ -17,21 +17,33 @@ export default function HeroSection() {
   const [slideIndex, setSlideIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
+  // Dark, moody architecture photography + a grayscale filter (rather than
+  // depending on finding exactly-right stock photos) to match the
+  // three-slide "story" reference Daniel shared — each slide carries its
+  // own tagline, synced to the background.
   const slides = [
     {
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1920&q=80',
+      type: 'image' as const,
+      url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
+      headline: ['Build Legacies', 'Live with Purpose.'],
     },
     {
-      type: 'video',
-      url: 'https://cdn.coverr.co/videos/coverr-modern-house-1502/1080p.mp4',
-      poster: 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1920&q=80',
+      type: 'image' as const,
+      url: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1920&q=80',
+      headline: ['Strategic Investments', 'Better Living'],
     },
     {
-      type: 'image',
-      url: 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1920&q=80',
+      type: 'image' as const,
+      url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1920&q=80',
+      headline: ['Smart Investment', 'Premium Value'],
     },
   ];
+
+  const activeSlide = slides[slideIndex];
+  // Slide 1 ("Strategic Investments") gets the centered-mark layout from
+  // the reference; the other two slides put the headline up top and the
+  // mark near the bottom instead.
+  const isCenteredLayout = slideIndex === 1;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,9 +61,49 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  // Slide 1 reads with black text (the others stay white) — a light
+  // gradient built into that slide's own background (see the slides loop
+  // below) creates the contrast, not a boxed panel behind the text.
+  const HeroHeadline = () => (
+    <AnimatePresence mode="wait">
+      <motion.h1
+        key={slideIndex}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className={`text-4xl md:text-6xl font-bold tracking-tight ${
+          isCenteredLayout ? 'text-slate-900' : 'text-white'
+        }`}
+      >
+        {activeSlide.headline[0]} <br /> {activeSlide.headline[1]}
+      </motion.h1>
+    </AnimatePresence>
+  );
+
+  // The real wordmark artwork (not text) — the brand guide is explicit that
+  // it shouldn't be rebuilt with a substitute font. -colour reads dark
+  // enough to work on the light gradient of the centered-layout slide and
+  // on slide 0's background; slide 2's photo washes the colour symbol out,
+  // so it alone uses the white variant.
+  const HeroMark = ({ large = false }: { large?: boolean }) => (
+    <div className="flex flex-col items-center gap-3">
+      <img
+        src={slideIndex === 2 ? '/images/aceroyal-symbol-white.png' : '/images/aceroyal-symbol-colour.png'}
+        alt=""
+        className={`${large ? 'h-28 w-28' : 'h-16 w-16'} object-contain`}
+      />
+      <img
+        src={isCenteredLayout ? '/images/aceroyal-wordmark-colour.png' : '/images/aceroyal-wordmark-white.png'}
+        alt="Aceroyal"
+        className={large ? 'h-6 w-auto' : 'h-4 w-auto'}
+      />
+    </div>
+  );
+
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[750px] flex items-center justify-center bg-slate-900 text-white overflow-hidden py-24 md:py-0"
+      className="relative flex items-center justify-center bg-slate-900 text-white overflow-hidden min-h-[calc(100dvh-var(--nav-h)-var(--bottom-nav-h))] md:min-h-[750px] py-0 md:py-0"
       onTouchStart={(e) => {
         touchStartX.current = e.touches[0].clientX;
       }}
@@ -69,45 +121,62 @@ export default function HeroSection() {
       {slides.map((slide, idx) => (
         <div
           key={slide.url}
-          className={`absolute inset-0 transition-opacity duration-700 ${idx === slideIndex ? 'opacity-60' : 'opacity-0'}`}
+          className={`absolute inset-0 transition-opacity duration-700 ${idx === slideIndex ? 'opacity-100' : 'opacity-0'}`}
         >
-          {slide.type === 'video' ? (
-            <video
-              key={slide.url}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={slide.poster}
-              className="w-full h-full object-cover"
-            >
-              <source src={slide.url} type="video/mp4" />
-            </video>
+          <img
+            src={slide.url}
+            alt="Hero slide"
+            className="w-full h-full object-cover grayscale animate-hero-kenburns"
+          />
+          {/* Slide 1 (centered layout, black text/wordmark) gets its own
+              light gradient instead of the uniform dark one — whitens the
+              lower half where that text sits, dark text needs a light area
+              under it, not a boxed panel. */}
+          {idx === 1 ? (
+            <div className="absolute inset-0 bg-gradient-to-t from-white/85 via-white/30 to-black/40" />
           ) : (
-            <img
-              src={slide.url}
-              alt="Hero slide"
-              className="w-full h-full object-cover animate-hero-kenburns"
-            />
+            <div className="absolute inset-0 bg-black/50" />
           )}
         </div>
       ))}
-      <div className="absolute inset-0 bg-slate-900/40" />
       <HeroParticles />
 
+      {/* Mobile-only: three-zone layout matching the reference — slide 1
+          centers the mark with the headline below it; the other two slides
+          put the headline up top and the mark near the bottom. justify-between
+          keeps the top/bottom zones pinned to the edges regardless of
+          whether the (empty) middle zone has content. */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-16 pb-24 text-center md:hidden">
+        <div className="flex w-full justify-center">{!isCenteredLayout && <HeroHeadline />}</div>
+        <div className="flex w-full justify-center">{isCenteredLayout && <HeroMark large />}</div>
+        <div className="flex w-full justify-center">
+          {isCenteredLayout ? <HeroHeadline /> : <HeroMark />}
+        </div>
+      </div>
+
       <motion.div
-        className="container relative z-10 text-center space-y-6"
+        className="hidden md:block container relative z-10 text-center space-y-6"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-          Premium Estates, <br /> Trusted Ownership
-        </h1>
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={slideIndex}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="text-4xl md:text-6xl font-bold tracking-tight"
+          >
+            {activeSlide.headline[0]} <br /> {activeSlide.headline[1]}
+          </motion.h1>
+        </AnimatePresence>
+
         <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto">
           We develop and sell estates across Nigeria — land allocations and completed apartments with clear titles.
         </p>
+
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Button size="lg" asChild className="transition-transform hover:scale-[1.03] active:scale-[0.98]">
             <Link href="/estates">Explore Estates</Link>
@@ -120,7 +189,7 @@ export default function HeroSection() {
         {/* Search Box */}
         <form
           onSubmit={handleSearch}
-          className="bg-white/95 dark:bg-slate-900/90 p-4 rounded-lg shadow-lg max-w-3xl mx-auto flex flex-col md:flex-row gap-4"
+          className="flex bg-white/95 dark:bg-slate-900/90 p-4 rounded-lg shadow-lg max-w-3xl mx-auto flex-col md:flex-row gap-4"
         >
           <Input
             type="text"
@@ -166,6 +235,14 @@ export default function HeroSection() {
           ))}
         </div>
       </motion.div>
+
+      {/* Mobile-only scroll indicator, pinned to the bottom of the hero. */}
+      <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center md:hidden">
+        <div className="flex flex-col items-center gap-1 text-white/70 animate-hero-scroll-cue">
+          <span className="text-[11px] font-medium uppercase tracking-[0.2em]">Scroll</span>
+          <ChevronDown className="h-5 w-5" />
+        </div>
+      </div>
     </section>
   );
 }

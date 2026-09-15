@@ -81,7 +81,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
   };
 
   return (
-    <section className="container py-20 md:py-28">
+    <section className="container py-12 md:py-28">
       <div className="mb-6">
         <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>
         <h2 className="text-2xl md:text-3xl font-bold">Estate Updates & Promos</h2>
@@ -100,9 +100,9 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
             <div
               key={promo.id}
               data-promo-card
-              className="min-w-[320px] md:min-w-[520px] lg:min-w-[640px] bg-primary rounded-2xl overflow-hidden shadow-2xl snap-start"
+              className="min-w-[86vw] md:min-w-[520px] lg:min-w-[640px] bg-primary rounded-2xl overflow-hidden shadow-2xl snap-start"
             >
-              <div className="grid md:grid-cols-[1.1fr_0.9fr] min-h-[340px]">
+              <div className="grid md:grid-cols-[1.1fr_0.9fr] min-h-[300px] md:min-h-[340px]">
                 <div className="p-8 flex flex-col justify-center text-white space-y-4">
                   <h2 className="text-2xl md:text-3xl font-bold">{promo.title}</h2>
                   <p className="text-primary-foreground/90 text-base md:text-lg">

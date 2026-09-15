@@ -1,6 +1,5 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -8,8 +7,6 @@ import { QueryProvider } from '@/components/query-provider';
 import { PublicChrome } from '@/components/layout/PublicChrome';
 import { NavigationProgress } from '@/components/layout/NavigationProgress';
 import { InitialPreloader } from '@/components/layout/InitialPreloader';
-
-const inter = Inter({ subsets: ['latin'] });
 
 const SITE_URL = 'https://aceroyalestates.com';
 const SITE_NAME = 'Aceroyal Estates';
@@ -45,12 +42,20 @@ export const metadata: Metadata = {
   },
 };
 
+// viewportFit: 'cover' lets the mobile hero and bottom tab bar extend under
+// the notch/home-indicator safe areas instead of leaving a hard cut there —
+// needed for the full-screen "app" hero and fixed bottom nav.
+export const viewport: Viewport = {
+  viewportFit: 'cover',
+  themeColor: '#000000',
+};
+
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/cropped-cropped-logo-jpeg.jpg`,
+  logo: `${SITE_URL}/images/aceroyal-symbol-colour.png`,
   email: 'customercare@aceroyalestates.com',
   telephone: ['+234-201-330-0287', '+234-915-654-9709'],
   address: {
@@ -74,20 +79,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* InitialPreloader shows the real logo once it loads, with an "AR"
-            monogram as a placeholder until then. It's a client component, so
-            its own `priority` prop on next/image can't inject a preload hint
-            into the server-rendered <head> early enough to avoid a visible
-            flash of the monogram — this does, from the very first byte. */}
-        <link rel="preload" as="image" href="/images/cropped-cropped-logo-jpeg.jpg" fetchPriority="high" />
+        {/* InitialPreloader is a client component, so its own `priority` prop
+            on next/image can't inject a preload hint into the server-rendered
+            <head> early enough to avoid a flash of no logo — this does, from
+            the very first byte. Dark is the default theme, so it's the
+            higher-priority fetch; light-mode visitors still get theirs early
+            via the second, non-blocking preload. */}
+        <link rel="preload" as="image" href="/images/aceroyal-symbol-white.png" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/aceroyal-symbol-colour.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className={inter.className}>
+      <body>
         <QueryProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
             <InitialPreloader />
             <Suspense fallback={null}>
               <NavigationProgress />

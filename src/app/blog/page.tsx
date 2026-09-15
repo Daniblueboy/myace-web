@@ -47,9 +47,9 @@ export default async function BlogPage({
         </div>
       ) : (
         <>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:grid-cols-3 md:gap-6">
             {posts.map((post: any) => (
-              <Card key={post.id} className="group h-full flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <Card key={post.id} className="glass-card backdrop-blur-lg group h-full shrink-0 w-[82%] snap-center flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:w-auto md:shrink">
                 {post.coverImageUrl && (
                   <div className="h-48 overflow-hidden rounded-t-lg">
                     <img src={post.coverImageUrl} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />

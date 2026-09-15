@@ -56,9 +56,9 @@ const teams = [
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(224,28,36,0.18),transparent_42%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_42%)]" />
         <div className="container relative py-12 md:py-16">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
@@ -96,9 +96,9 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-3">
             {values.map((value) => (
-              <article key={value.title} className="rounded-2xl border bg-card p-7 text-card-foreground shadow-sm">
+              <article key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center rounded-2xl border bg-card p-7 text-card-foreground shadow-sm md:w-auto md:shrink">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <value.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
@@ -110,7 +110,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="border-y bg-slate-950 py-16 text-white md:py-24">
+      <section className="border-y bg-black py-16 text-white md:py-24">
         <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
@@ -122,9 +122,9 @@ export default function CareersPage() {
               technical expertise. Opportunities may open across these teams as we grow.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:grid-cols-2">
             {teams.map((team) => (
-              <div key={team} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-4">
+              <div key={team} className="flex shrink-0 w-[70%] snap-center items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-4 sm:w-auto sm:shrink">
                 <Building2 className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                 <span className="font-medium">{team}</span>
               </div>

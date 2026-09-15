@@ -79,7 +79,7 @@ export default function EstateOfferings({
 
   if (options.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed bg-white p-8 text-muted-foreground">
+      <div className="rounded-xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-8 text-muted-foreground">
         No active offerings listed yet. Book an inspection to get early access.
       </div>
     );
@@ -87,18 +87,18 @@ export default function EstateOfferings({
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {options.map((option) => (
           <div
             key={option.id}
-            className={`rounded-2xl border bg-white p-5 space-y-4 ${option.available ? '' : 'opacity-60'}`}
+            className={`glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-5 space-y-4 md:w-auto md:shrink ${option.available ? '' : 'opacity-60'}`}
           >
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Available Option</p>
               <div className="flex items-center gap-2">
                 <h3 className="text-xl font-semibold">{option.label}</h3>
                 {!option.available && (
-                  <span className="text-xs uppercase tracking-widest bg-slate-200 text-slate-700 px-2 py-1 rounded-full">
+                  <span className="text-xs uppercase tracking-widest bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-2 py-1 rounded-full">
                     Sold Out
                   </span>
                 )}
@@ -116,7 +116,7 @@ export default function EstateOfferings({
                     <button
                       key={flyer.url}
                       type="button"
-                      className="relative h-20 w-full overflow-hidden rounded-lg border bg-slate-50"
+                      className="relative h-20 w-full overflow-hidden rounded-lg border bg-slate-50 dark:bg-slate-800"
                       onClick={() => {
                         setActiveUrl(flyer.url);
                         setActiveTitle(flyer.title || option.label);
@@ -159,14 +159,14 @@ export default function EstateOfferings({
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6">
-          <div className="max-w-3xl w-full rounded-2xl bg-white p-4 space-y-3">
+          <div className="max-w-3xl w-full rounded-2xl bg-white dark:bg-slate-900 p-4 space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-lg font-semibold">{activeTitle}</h4>
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Close
               </Button>
             </div>
-            <div className="rounded-lg overflow-hidden border bg-slate-50">
+            <div className="rounded-lg overflow-hidden border bg-slate-50 dark:bg-slate-800">
               {isImage(activeUrl) ? (
                 <img src={activeUrl} alt={activeTitle} className="w-full h-auto" />
               ) : (

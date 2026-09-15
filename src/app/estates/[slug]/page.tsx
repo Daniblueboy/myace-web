@@ -145,22 +145,24 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 </Button>
                 <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
               </div>
-              <div className={`grid gap-3 ${estate.properties?.length ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+              <div
+                className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:overflow-visible sm:gap-3 ${estate.properties?.length ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}
+              >
                 {estate.properties?.length ? (
-                  <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                  <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Home className="h-4 w-4" /> Available Units
                     </div>
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
                   </div>
                 ) : null}
-                <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <ShieldCheck className="h-4 w-4" /> Amenities
                   </div>
                   <div className="text-2xl font-semibold mt-1">{estate.amenities?.length || 0}</div>
                 </div>
-                <div className="rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
                   <div className="text-sm text-muted-foreground">Status</div>
                   <div className="text-lg font-semibold mt-1">
                     {estate.status || 'Available'}

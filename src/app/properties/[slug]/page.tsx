@@ -20,7 +20,7 @@ import 'yet-another-react-lightbox/styles.css';
 // Dynamically import map to avoid SSR issues with Leaflet
 const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'), {
   ssr: false,
-  loading: () => <div className="h-[400px] rounded-lg bg-slate-100" />,
+  loading: () => <div className="h-[400px] rounded-lg bg-slate-100 dark:bg-slate-800" />,
 });
 
 export default function PropertyDetailPage() {
@@ -81,7 +81,7 @@ export default function PropertyDetailPage() {
   if (!property) return <div className="container py-24 text-center">Property not found.</div>;
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20">
       {/* Back Button */}
       <div className="container py-4">
         <Link href="/properties">
@@ -108,12 +108,12 @@ export default function PropertyDetailPage() {
               <Badge variant="outline">{property.type}</Badge>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{property.title}</h1>
-            <div className="flex items-center text-slate-600 text-lg">
+            <div className="flex items-center text-slate-600 dark:text-slate-300 text-lg">
               <MapPin className="w-5 h-5 mr-2" />
               {property.address}, {property.city}, {property.state}
             </div>
             {property.estate && (
-              <div className="mt-2 text-sm text-slate-500">
+              <div className="mt-2 text-sm text-slate-500 dark:text-muted-foreground">
                 Estate: <Link href={`/estates/${property.estate.slug}`} className="text-primary font-medium">
                   {property.estate.name}
                 </Link>
@@ -136,30 +136,30 @@ export default function PropertyDetailPage() {
           </div>
 
           {/* Overview Stats */}
-          <Card>
+          <Card className="glass-card backdrop-blur-lg">
             <CardContent className="p-6">
               <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center p-4 bg-slate-50 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                   <Bed className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.bedrooms || 'N/A'}</span>
-                  <span className="text-sm text-slate-500">Bedrooms</span>
+                  <span className="text-sm text-slate-500 dark:text-muted-foreground">Bedrooms</span>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-slate-50 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                   <Bath className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.bathrooms || 'N/A'}</span>
-                  <span className="text-sm text-slate-500">Bathrooms</span>
+                  <span className="text-sm text-slate-500 dark:text-muted-foreground">Bathrooms</span>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-slate-50 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
                   <Square className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.size || 'N/A'}</span>
-                  <span className="text-sm text-slate-500">Sq Meters</span>
+                  <span className="text-sm text-slate-500 dark:text-muted-foreground">Sq Meters</span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {variants.length > 0 && (
-            <Card>
+            <Card className="glass-card backdrop-blur-lg">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">Pricing Options</h2>
                 <div className="space-y-3">
@@ -170,7 +170,7 @@ export default function PropertyDetailPage() {
                     >
                       <div>
                         <p className="font-semibold">{variant.label}</p>
-                        <p className="text-sm text-slate-500">
+                        <p className="text-sm text-slate-500 dark:text-muted-foreground">
                           {variant.bedrooms ? `${variant.bedrooms} bed` : null}
                           {variant.bathrooms ? ` · ${variant.bathrooms} bath` : null}
                           {variant.size ? ` · ${variant.size}` : null}
@@ -182,7 +182,7 @@ export default function PropertyDetailPage() {
                     </div>
                   ))}
                   {outrightVariants.length === 0 && (
-                    <div className="rounded-lg border p-4 text-slate-500">
+                    <div className="rounded-lg border p-4 text-slate-500 dark:text-muted-foreground">
                       No outright pricing options listed.
                     </div>
                   )}
@@ -192,10 +192,10 @@ export default function PropertyDetailPage() {
           )}
 
           {/* Description */}
-          <Card>
+          <Card className="glass-card backdrop-blur-lg">
             <CardContent className="p-6">
               <h2 className="text-2xl font-bold mb-4">Description</h2>
-              <p className="text-slate-600 leading-relaxed whitespace-pre-wrap">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">
                 {property.description}
               </p>
             </CardContent>
@@ -232,10 +232,10 @@ export default function PropertyDetailPage() {
               </div>
             </TabsContent>
             <TabsContent value="amenities" className="mt-4">
-              <Card>
+              <Card className="glass-card backdrop-blur-lg">
                 <CardContent className="p-6">
                   {property.amenities && property.amenities.length > 0 ? (
-                    <ul className="grid grid-cols-2 gap-3 text-sm text-slate-600">
+                    <ul className="grid grid-cols-2 gap-3 text-sm text-slate-600 dark:text-slate-300">
                       {property.amenities.map((amenity, index) => (
                         <li key={index} className="flex items-center gap-2">
                           <span className="h-2 w-2 rounded-full bg-primary" />
@@ -244,33 +244,33 @@ export default function PropertyDetailPage() {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-slate-500">No amenities listed for this property.</p>
+                    <p className="text-slate-500 dark:text-muted-foreground">No amenities listed for this property.</p>
                   )}
                 </CardContent>
               </Card>
             </TabsContent>
             <TabsContent value="faqs" className="mt-4">
               {property.faqs && property.faqs.length > 0 ? (
-                <Card>
+                <Card className="glass-card backdrop-blur-lg">
                   <CardContent className="p-6 space-y-4">
                     {property.faqs.map((faq: any) => (
                       <div key={faq.id}>
                         <h4 className="font-semibold mb-2">{faq.question}</h4>
-                        <p className="text-slate-600">{faq.answer}</p>
+                        <p className="text-slate-600 dark:text-slate-300">{faq.answer}</p>
                       </div>
                     ))}
                   </CardContent>
                 </Card>
               ) : (
-                <Card>
-                  <CardContent className="p-6 text-center text-slate-500">
+                <Card className="glass-card backdrop-blur-lg">
+                  <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
                     No FAQs available for this property
                   </CardContent>
                 </Card>
               )}
             </TabsContent>
             <TabsContent value="resources" className="mt-4">
-              <Card>
+              <Card className="glass-card backdrop-blur-lg">
                 <CardContent className="p-6">
                   {property.resources && property.resources.length > 0 ? (
                     <div className="space-y-3">
@@ -280,18 +280,18 @@ export default function PropertyDetailPage() {
                           href={resource.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between rounded-lg border p-4 hover:bg-slate-50 transition-colors"
+                          className="flex items-center justify-between rounded-lg border p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         >
                           <div>
                             <p className="font-medium">{resource.title}</p>
-                            <p className="text-sm text-slate-500">{resource.fileType}</p>
+                            <p className="text-sm text-slate-500 dark:text-muted-foreground">{resource.fileType}</p>
                           </div>
-                          <FileText className="w-5 h-5 text-slate-400" />
+                          <FileText className="w-5 h-5 text-slate-400 dark:text-slate-500" />
                         </a>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-slate-500">No resources available for this property.</p>
+                    <p className="text-slate-500 dark:text-muted-foreground">No resources available for this property.</p>
                   )}
                 </CardContent>
               </Card>
@@ -302,11 +302,11 @@ export default function PropertyDetailPage() {
                   {paymentFlyers.map((item: any, index: number) => (
                       <div
                         key={item.id}
-                        className="rounded-lg border bg-white p-4 text-left hover:shadow-md transition-shadow"
+                        className="rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow"
                       >
                         <div className="mb-3">
                           <p className="font-semibold">{item.title || 'Payment Plan'}</p>
-                          <p className="text-sm text-slate-500">{item.type}</p>
+                          <p className="text-sm text-slate-500 dark:text-muted-foreground">{item.type}</p>
                         </div>
                         {/\.(png|jpe?g|webp)$/i.test(item.url) ? (
                           <button
@@ -347,14 +347,14 @@ export default function PropertyDetailPage() {
                     ))}
                 </div>
               ) : installmentVariants.length > 0 ? (
-                <Card>
+                <Card className="glass-card backdrop-blur-lg">
                   <CardContent className="p-6 space-y-4">
                     {installmentVariants.map((variant: any) => (
                       <div key={variant.id} className="rounded-lg border p-4">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                           <div>
                             <p className="font-semibold">{variant.label}</p>
-                            <p className="text-sm text-slate-500">
+                            <p className="text-sm text-slate-500 dark:text-muted-foreground">
                               Upfront {variant.upfrontPercent || 0}% · {variant.installmentMonths || '-'} months ·
                               {` ${variant.currency} ${Number(variant.installmentAmount || 0).toLocaleString()}/mo`}
                             </p>
@@ -368,8 +368,8 @@ export default function PropertyDetailPage() {
                   </CardContent>
                 </Card>
               ) : (
-                <Card>
-                  <CardContent className="p-6 text-center text-slate-500">
+                <Card className="glass-card backdrop-blur-lg">
+                  <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
                     No payment plan available for this property.
                   </CardContent>
                 </Card>
@@ -413,7 +413,7 @@ export default function PropertyDetailPage() {
                       <div className="flex items-center justify-between gap-4">
                         <div>
                           <p className="font-medium">{item.title || item.type}</p>
-                          <p className="text-sm text-slate-500">{item.type}</p>
+                          <p className="text-sm text-slate-500 dark:text-muted-foreground">{item.type}</p>
                         </div>
                         <a
                           href={item.url}
@@ -449,8 +449,8 @@ export default function PropertyDetailPage() {
                 !property.videoUrl &&
                 (!property.media ||
                   property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length === 0) && (
-                <Card>
-                  <CardContent className="p-6 text-center text-slate-500">
+                <Card className="glass-card backdrop-blur-lg">
+                  <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
                     No media available for this property.
                   </CardContent>
                 </Card>
@@ -464,10 +464,10 @@ export default function PropertyDetailPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {related.map((item) => (
                   <Link key={item.id} href={`/properties/${item.slug}`} className="block">
-                    <Card className="overflow-hidden hover:shadow-md transition-shadow">
+                    <Card className="glass-card backdrop-blur-lg overflow-hidden hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <h3 className="font-semibold">{item.title}</h3>
-                        <p className="text-sm text-slate-500">
+                        <p className="text-sm text-slate-500 dark:text-muted-foreground">
                           {item.city}, {item.state}
                         </p>
                         <p className="text-sm font-medium text-primary mt-2">
@@ -505,12 +505,12 @@ export default function PropertyDetailPage() {
           aria-modal="true"
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4"
         >
-          <div className="w-full max-w-5xl rounded-lg bg-white shadow-lg overflow-hidden">
+          <div className="w-full max-w-5xl rounded-lg bg-white dark:bg-slate-900 shadow-lg overflow-hidden">
             <div className="flex items-center justify-between border-b px-4 py-3">
               <h4 className="text-sm font-semibold">{docTitle}</h4>
               <button
                 type="button"
-                className="text-sm font-medium text-slate-600 hover:text-slate-900"
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 onClick={() => setDocOpen(false)}
               >
                 Close

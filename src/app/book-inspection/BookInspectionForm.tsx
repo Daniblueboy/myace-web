@@ -130,7 +130,7 @@ export default function BookInspectionForm() {
   const today = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">

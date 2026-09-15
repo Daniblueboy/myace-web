@@ -76,9 +76,9 @@ export default function ServicesPage() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 md:grid md:overflow-visible md:gap-8 md:grid-cols-2 mb-16">
           {services.map((service) => (
-            <Card key={service.title} className="p-8 hover:shadow-xl transition-shadow">
+            <Card key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center p-8 hover:shadow-xl transition-shadow md:w-auto md:shrink">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg mb-6">
                 <service.icon className="w-8 h-8 text-primary" />
               </div>
@@ -97,7 +97,7 @@ export default function ServicesPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-[#E01C24] to-[#B5161C] rounded-lg shadow-lg p-12 text-white text-center">
+        <div className="bg-gradient-to-r from-primary to-[#7d150f] rounded-lg shadow-lg p-12 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
             Let us help you find the perfect property or provide expert consultation for your real estate needs

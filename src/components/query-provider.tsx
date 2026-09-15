@@ -20,7 +20,11 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* Dev-only button. bottom-right (the default) sits on top of the
+          desktop floating WhatsApp button AND the mobile bottom tab bar's
+          rightmost tabs; top-right collides with the mobile menu drawer's
+          close/theme-toggle controls. bottom-left avoids all of those. */}
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
     </QueryClientProvider>
   );
 }

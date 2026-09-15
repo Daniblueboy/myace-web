@@ -18,13 +18,13 @@ export function PropertyCard({ property }: PropertyCardProps) {
   const displayPrice = minVariantPrice ?? Number(property.price);
 
   return (
-    <Card className="overflow-hidden group flex flex-col h-full">
-      <div className="relative h-60 bg-slate-200">
+    <Card className="glass-card backdrop-blur-lg overflow-hidden group flex flex-col h-full">
+      <div className="relative h-60 bg-slate-200 dark:bg-slate-800">
          {/* Image Placeholder */}
          {property.images && property.images[0] ? (
            <img src={property.images[0].url} alt={property.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
          ) : (
-           <div className="w-full h-full flex items-center justify-center text-slate-400">No Image</div>
+           <div className="w-full h-full flex items-center justify-center text-slate-400 dark:text-slate-500">No Image</div>
          )}
          <div className="absolute top-4 left-4">
            <span className={`px-3 py-1 rounded-full text-xs font-bold ${property.status === 'AVAILABLE' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
@@ -42,7 +42,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
          {property.estate?.name && (
            <p className="text-xs text-muted-foreground">{property.estate.name}</p>
          )}
-         <div className="flex items-center text-slate-500 text-sm">
+         <div className="flex items-center text-slate-500 dark:text-muted-foreground text-sm">
            <MapPin className="w-4 h-4 mr-1 shrink-0" />
            <span className="truncate">{property.city}, {property.state}</span>
          </div>
@@ -52,7 +52,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
           {minVariantPrice !== null ? 'From ' : ''}
           {property.currency} {displayPrice.toLocaleString()}
         </div>
-        <div className="flex justify-between text-sm text-slate-600 border-t pt-4">
+        <div className="flex justify-between text-sm text-slate-600 dark:text-slate-300 border-t dark:border-slate-800 pt-4">
            <div className="flex items-center gap-1" title="Bedrooms"><Bed className="w-4 h-4"/> {property.bedrooms || '-'}</div>
            <div className="flex items-center gap-1" title="Bathrooms"><Bath className="w-4 h-4"/> {property.bathrooms || '-'}</div>
            <div className="flex items-center gap-1" title="Size"><Square className="w-4 h-4"/> {property.size || '-'}</div>

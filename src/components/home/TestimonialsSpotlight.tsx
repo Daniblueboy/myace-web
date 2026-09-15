@@ -11,6 +11,12 @@ interface TestimonialItem {
   message: string;
   rating?: number | null;
   photoUrl?: string | null;
+  imageUrl?: string | null;
+  videoUrl?: string | null;
+}
+
+function isEmbeddableVideo(url: string) {
+  return url.includes('youtube') || url.includes('youtu.be') || url.includes('vimeo');
 }
 
 const EXCERPT_LENGTH = 200;
@@ -81,6 +87,28 @@ export default function TestimonialsSpotlight({ items }: { items: TestimonialIte
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="relative text-center"
           >
+            {active.videoUrl ? (
+              <div className="mb-6 aspect-video overflow-hidden rounded-2xl border dark:border-slate-800">
+                {isEmbeddableVideo(active.videoUrl) ? (
+                  <iframe
+                    src={active.videoUrl}
+                    title={`Video testimonial from ${active.name}`}
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video controls poster={active.imageUrl || undefined} className="h-full w-full">
+                    <source src={active.videoUrl} />
+                  </video>
+                )}
+              </div>
+            ) : active.imageUrl ? (
+              <div className="mb-6 overflow-hidden rounded-2xl border dark:border-slate-800">
+                <img src={active.imageUrl} alt="" className="h-56 w-full object-cover md:h-72" />
+              </div>
+            ) : null}
+
             {active.rating ? (
               <div className="mb-5 flex items-center justify-center gap-1 text-amber-500">
                 {Array.from({ length: active.rating }).map((_, i) => (

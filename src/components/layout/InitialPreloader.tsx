@@ -44,12 +44,22 @@ export function InitialPreloader() {
         <div className="initial-preloader__ring" aria-hidden="true" />
         <div className="initial-preloader__logo">
           <Image
-            src="/images/cropped-cropped-logo-jpeg.jpg"
+            src="/images/aceroyal-symbol-colour.png"
             alt="Aceroyal Estates"
-            width={156}
-            height={64}
+            width={100}
+            height={97}
             priority
             unoptimized
+            className="dark:hidden"
+          />
+          <Image
+            src="/images/aceroyal-symbol-white.png"
+            alt="Aceroyal Estates"
+            width={100}
+            height={97}
+            priority
+            unoptimized
+            className="hidden dark:block"
           />
         </div>
       </div>
