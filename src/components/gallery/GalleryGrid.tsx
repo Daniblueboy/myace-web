@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
+import Captions from 'yet-another-react-lightbox/plugins/captions';
 import 'yet-another-react-lightbox/styles.css';
+import 'yet-another-react-lightbox/plugins/captions.css';
 import { PlayCircle, ImageIcon, Images, Video } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import type { GalleryItem } from '@/shared';
@@ -45,7 +47,11 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   const images = items.filter((item) => item.mediaType === 'image');
   const videoCount = items.length - images.length;
-  const imageSlides = images.map((item) => ({ src: item.mediaUrl, title: item.title }));
+  const imageSlides = images.map((item) => ({
+    src: item.mediaUrl,
+    title: item.title,
+    description: item.estateName || undefined,
+  }));
   const visibleItems = filter === 'all' ? items : items.filter((item) => item.mediaType === filter);
   const filters = [
     { value: 'all' as const, label: 'All media', icon: Images, count: items.length },
@@ -95,6 +101,7 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 loading={index > 8 ? 'lazy' : 'eager'}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
               {item.mediaType === 'video' && (
                 <>
                   <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/25" />
@@ -103,6 +110,16 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
                   />
                 </>
               )}
+              <div className={`absolute inset-x-0 bottom-0 text-left ${featured ? 'p-4' : 'p-1.5'}`}>
+                <p className={`font-semibold text-white line-clamp-1 ${featured ? 'text-sm' : 'text-[10px] leading-tight'}`}>
+                  {item.title}
+                </p>
+                {item.estateName && (
+                  <p className={`text-white/75 line-clamp-1 ${featured ? 'text-xs mt-0.5' : 'text-[9px]'}`}>
+                    {item.estateName}
+                  </p>
+                )}
+              </div>
             </button>
           );
         })}
@@ -113,12 +130,18 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
         close={() => setLightboxIndex(null)}
         index={lightboxIndex ?? 0}
         slides={imageSlides}
+        plugins={[Captions]}
         on={{ view: ({ index }) => setLightboxIndex(index) }}
       />
 
       <Dialog open={!!videoItem} onOpenChange={(open) => !open && setVideoItem(null)}>
         <DialogContent className="max-w-3xl p-0 overflow-hidden">
-          <DialogTitle className="sr-only">{videoItem?.title}</DialogTitle>
+          <div className="px-4 pt-4 pb-2">
+            <DialogTitle className="text-base font-semibold leading-tight">{videoItem?.title}</DialogTitle>
+            {videoItem?.estateName && (
+              <p className="text-sm text-muted-foreground mt-0.5">{videoItem.estateName}</p>
+            )}
+          </div>
           {videoItem && (
             <div className="aspect-video w-full">
               <iframe
