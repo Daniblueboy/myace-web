@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 // confirmed (estates/states/offices) — do not add a vanity stat here either
 // without a verified number.
 const stats = [
-  { icon: Home, label: 'Active Estates', value: '7' },
+  { icon: Home, label: 'Active Estates', value: '10' },
   { icon: Award, label: 'States We Operate In', value: '5' },
   { icon: Users, label: 'Physical Offices', value: '3' },
 ];

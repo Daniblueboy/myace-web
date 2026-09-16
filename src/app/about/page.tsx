@@ -35,7 +35,7 @@ export default async function AboutPage() {
   // a fourth "vanity" stat (e.g. years in operation, clients served) until
   // Daniel supplies a verified number.
   const stats = [
-    { icon: Home, label: 'Active Estates', value: '7' },
+    { icon: Home, label: 'Active Estates', value: '10' },
     { icon: Award, label: 'States We Operate In', value: '5' },
     { icon: Users, label: 'Physical Offices', value: '3' },
   ];
