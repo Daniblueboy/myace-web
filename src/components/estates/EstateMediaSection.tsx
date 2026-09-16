@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { View, FileText, Play, X } from 'lucide-react';
-import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator';
+import { FileText, Play, X } from 'lucide-react';
 import PropertyPanorama from '@/components/properties/PropertyPanorama';
 
 export type FlyerItem = { id: string; title: string; url: string };
@@ -13,8 +12,6 @@ type EstateMediaSectionProps = {
   estateName: string;
   panoramaUrls?: string[];
   virtualTourEmbedUrl?: string | null;
-  tourImages: string[];
-  isSamplePreviewTour: boolean;
   photos: string[];
   flyers: FlyerItem[];
 };
@@ -34,8 +31,6 @@ export function EstateMediaSection({
   estateName,
   panoramaUrls,
   virtualTourEmbedUrl,
-  tourImages,
-  isSamplePreviewTour,
   photos,
   flyers,
 }: EstateMediaSectionProps) {
@@ -44,7 +39,10 @@ export function EstateMediaSection({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const hasTour = true; // always has at least an empty-state fallback
+  // Only a real 360 panorama or a real virtual-tour embed counts — no
+  // simulated/sample-photo fallback pretending to be a tour that doesn't
+  // exist yet.
+  const hasTour = Boolean(panoramaUrls?.length || virtualTourEmbedUrl);
   const items: MediaTile[] = [
     ...(hasTour ? [{ kind: 'tour' as const }] : []),
     ...photos.map((url, index) => ({ kind: 'photo' as const, url, index })),
@@ -64,7 +62,8 @@ export function EstateMediaSection({
   const slideIndexFor = (key: string) => imageSlides.findIndex((s) => s.key === key);
 
   const availableFilters = FILTERS.filter((f) => {
-    if (f === 'All' || f === 'Virtual Tour') return true;
+    if (f === 'All') return true;
+    if (f === 'Virtual Tour') return hasTour;
     if (f === 'Photos') return photos.length > 0;
     if (f === 'Flyers') return flyers.length > 0;
     return false;
@@ -78,7 +77,9 @@ export function EstateMediaSection({
     return true;
   });
 
-  const tourPreviewImage = tourImages[0] || photos[0];
+  const tourPreviewImage = photos[0];
+
+  if (items.length === 0) return null;
 
   return (
     <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
@@ -125,9 +126,7 @@ export function EstateMediaSection({
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                    <View className="h-8 w-8" />
-                  </div>
+                  <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800" />
                 )}
                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-900">
@@ -213,18 +212,11 @@ export function EstateMediaSection({
         />
       )}
 
-      {tourOpen && (
+      {tourOpen && hasTour && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6">
           <div className="relative w-full max-w-3xl rounded-2xl bg-white dark:bg-slate-900 p-4 sm:p-6 space-y-3 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold">Virtual Tour</h3>
-                {isSamplePreviewTour && (
-                  <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-                    Sample preview
-                  </span>
-                )}
-              </div>
+              <h3 className="text-lg font-semibold">Virtual Tour</h3>
               <button
                 type="button"
                 onClick={() => setTourOpen(false)}
@@ -236,31 +228,15 @@ export function EstateMediaSection({
             </div>
             {panoramaUrls?.length ? (
               <PropertyPanorama panoramaUrls={panoramaUrls} estateName={estateName} />
-            ) : virtualTourEmbedUrl ? (
+            ) : (
               <div className="aspect-video rounded-xl overflow-hidden border">
                 <iframe
-                  src={virtualTourEmbedUrl}
+                  src={virtualTourEmbedUrl!}
                   title={`Virtual tour of ${estateName}`}
                   className="w-full h-full"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
                   allowFullScreen
                 />
-              </div>
-            ) : tourImages.length > 0 ? (
-              <div className="space-y-3">
-                <VirtualTourSimulator estateName={estateName} images={tourImages} />
-                <p className="text-sm text-muted-foreground">
-                  Interactive photo simulation for feature preview. It is not captured 360° media or
-                  a substitute for an in-person inspection.
-                </p>
-              </div>
-            ) : (
-              <div className="rounded-xl border border-dashed p-8 text-center space-y-3">
-                <View className="h-8 w-8 text-muted-foreground mx-auto" />
-                <p className="text-muted-foreground">
-                  A virtual walkthrough of {estateName} isn't available yet. Book an inspection to
-                  tour it in person.
-                </p>
               </div>
             )}
           </div>

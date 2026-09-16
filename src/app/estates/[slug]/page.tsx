@@ -264,8 +264,6 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 estateName={estate.name}
                 panoramaUrls={estate.panoramaUrls}
                 virtualTourEmbedUrl={estate.virtualTourUrl ? getEmbedUrl(estate.virtualTourUrl) : null}
-                tourImages={tourImages}
-                isSamplePreviewTour={!estate.panoramaUrls?.length && !estate.virtualTourUrl && tourImages.length > 0}
                 photos={estate.gallery || []}
                 flyers={flyers}
               />

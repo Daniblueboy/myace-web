@@ -35,7 +35,9 @@ export const fallbackEstates: Estate[] = [
     coverImage: estateImages.alphaGardenCity,
     panoramaUrls: ['/images/virtual-tours/alpha-garden-city-360.png'],
     brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
-    gallery: [estateImages.alphaGardenCity, estateImages.placeholder4, estateImages.placeholder1],
+    // Only the one real photo we have — removed the generic stock photos
+    // that were standing in here, now that real flyers/pricing exist below.
+    gallery: [estateImages.alphaGardenCity],
     status: 'ACTIVE',
     amenities: ['Golf Course', 'Wellness Spa', 'Yoga Hall', 'Healthy Restaurants', 'Gym Studio', 'Swimming Pool', 'Orchard Garden'],
     createdAt: now,
@@ -87,10 +89,14 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Ibeju-Lekki',
     address: 'Labour City, Ibeju-Lekki, Coastal Road, Lagos State',
-    coverImage: estateImages.placeholder3,
+    // Real pricing flyer as the cover — no clean non-flyer photography for
+    // this one yet, so no generic stock stand-ins; gallery stays empty
+    // rather than showing unrelated stock photos (the flyers/video cover
+    // the Media section instead).
+    coverImage: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg',
     videoUrl: '/videos/downtown-lagos-phase-2.mp4',
     brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2025/03/Downtown-Brochure.pdf',
-    gallery: [estateImages.placeholder3, estateImages.placeholder5, estateImages.placeholder2],
+    gallery: [],
     status: 'ACTIVE',
     amenities: ['Office Spaces', 'Health Care Facilities', 'Shopping Mall', 'Financial Districts', 'Exclusive Membership', 'Helipad', 'Restaurants'],
     offeringType: 'LAND',
@@ -120,7 +126,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Eko Paragon Residence',
     slug: 'eko-paragon-residence',
     description:
-      'Eko Paragon Residence is a premium hotel-residence development in Abijo G.R.A., Lagos, developed in partnership with the Lagos State Development & Property Corporation (LSDPC). Unit types include 1-bedroom business suites, 2-bedroom signature suites, and 3-bedroom presidential terrace duplexes with BQ.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit).',
+      'A development by AceRoyal Estate Homes, in partnership with Lagos State Development & Property Corporation (LSDPC). Eko Paragon Residence is a premium hotel-residence development designed to deliver comfort, elegance, and modern convenience in one exceptional environment.\n\nLocated in the serene and secure Abijo G.R.A., Lagos, the estate offers a peaceful lifestyle with seamless access to the Lekki-Epe Expressway and major commercial hubs.\n\nThe development features thoughtfully designed 1-bedroom business suite apartments, 2-bedroom signature suite apartments, and 3-bedroom presidential terrace duplexes with BQ, each crafted with contemporary architecture, spacious interiors, quality finishes, and dedicated parking. Eko Paragon Residence offers a hotel-style living experience for homeowners, professionals, and investors seeking a refined lifestyle in Lagos.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit).',
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo G.R.A., Lagos',
