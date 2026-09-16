@@ -28,7 +28,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
             <Link
               key={estate.id}
               href={`/estates/${estate.slug}`}
-              className="glass-card backdrop-blur-lg group shrink-0 w-[82%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:w-auto md:shrink"
+              className="glass-card backdrop-blur-lg group shrink-0 w-[82%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:shrink"
             >
               {estate.coverImage && (
                 <div className="h-44 overflow-hidden">

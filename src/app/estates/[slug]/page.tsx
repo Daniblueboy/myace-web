@@ -149,20 +149,20 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 ${estate.properties?.length ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}
               >
                 {estate.properties?.length ? (
-                  <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
+                  <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Home className="h-4 w-4" /> Available Units
                     </div>
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
                   </div>
                 ) : null}
-                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
+                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <ShieldCheck className="h-4 w-4" /> Amenities
                   </div>
                   <div className="text-2xl font-semibold mt-1">{estate.amenities?.length || 0}</div>
                 </div>
-                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 sm:w-auto sm:shrink">
+                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
                   <div className="text-sm text-muted-foreground">Status</div>
                   <div className="text-lg font-semibold mt-1">
                     {estate.status || 'Available'}

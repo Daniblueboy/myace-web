@@ -16,7 +16,7 @@ export function StatesSection() {
           {states.map((state) => (
             <div
               key={state}
-              className="shrink-0 w-[45%] snap-center rounded-xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-center font-medium text-slate-700 dark:text-slate-100 shadow-sm sm:w-auto sm:shrink"
+              className="shrink-0 w-[45%] snap-center rounded-xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-center font-medium text-slate-700 dark:text-slate-100 shadow-sm lg:w-auto lg:shrink"
             >
               {state}
             </div>

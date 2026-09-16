@@ -62,7 +62,7 @@ export default function AccountDeletionPage() {
           </div>
 
           <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 mb-12">
-            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 sm:w-auto sm:shrink">
+            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 lg:w-auto lg:shrink">
               <Clock className="h-6 w-6 text-primary shrink-0" />
               <div>
                 <h3 className="font-semibold mb-1">Processing time</h3>
@@ -71,7 +71,7 @@ export default function AccountDeletionPage() {
                 </p>
               </div>
             </div>
-            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 sm:w-auto sm:shrink">
+            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 lg:w-auto lg:shrink">
               <ShieldAlert className="h-6 w-6 text-primary shrink-0" />
               <div>
                 <h3 className="font-semibold mb-1">This is permanent</h3>

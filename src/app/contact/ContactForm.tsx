@@ -317,7 +317,7 @@ export default function ContactForm() {
             {offices.length > 0 ? (
               <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {offices.map((office: any) => (
-                  <div key={office.id} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 md:w-auto md:shrink">
+                  <div key={office.id} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
                     <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
                       <Building2 className="w-5 h-5 text-primary" />
                     </div>

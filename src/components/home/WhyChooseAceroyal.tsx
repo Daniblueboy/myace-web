@@ -26,7 +26,7 @@ export function WhyChooseAceroyal() {
       {differentiators.map((item) => (
         <div
           key={item.title}
-          className="glass-card backdrop-blur-lg shrink-0 w-[70%] snap-center bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border text-center md:w-auto md:shrink"
+          className="glass-card backdrop-blur-lg shrink-0 w-[70%] max-w-64 snap-center bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border text-center lg:w-auto lg:max-w-none lg:shrink"
         >
           <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
             <item.icon className="w-6 h-6" />

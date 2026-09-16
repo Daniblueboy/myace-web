@@ -91,7 +91,7 @@ export default function EstateOfferings({
         {options.map((option) => (
           <div
             key={option.id}
-            className={`glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-5 space-y-4 md:w-auto md:shrink ${option.available ? '' : 'opacity-60'}`}
+            className={`glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-5 space-y-4 lg:w-auto lg:shrink ${option.available ? '' : 'opacity-60'}`}
           >
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Available Option</p>

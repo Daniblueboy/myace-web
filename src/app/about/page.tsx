@@ -169,7 +169,7 @@ export default async function AboutPage() {
             <h2 className="text-3xl font-bold mb-12 text-center">Our Values</h2>
             <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {values.map((value) => (
-                <div key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 md:w-auto md:shrink">
+                <div key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
                   <h3 className="text-xl font-semibold mb-2 text-primary">{value.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
                 </div>
@@ -186,7 +186,7 @@ export default async function AboutPage() {
             <h2 className="text-3xl font-bold mb-12 text-center">What We Do</h2>
             <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {services.map((service) => (
-                <div key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-white dark:bg-slate-900 rounded-lg shadow-sm p-6 sm:w-auto sm:shrink">
+                <div key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-white dark:bg-slate-900 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
                   <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
                     <service.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -212,7 +212,7 @@ export default async function AboutPage() {
               <h2 className="text-3xl font-bold mb-12 text-center">Leadership & Team</h2>
               <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {teamMembers.map((member: any) => (
-                  <div key={member.id} className="glass-card backdrop-blur-lg shrink-0 w-[65%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 text-center md:w-auto md:shrink">
+                  <div key={member.id} className="glass-card backdrop-blur-lg shrink-0 w-[65%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 text-center lg:w-auto lg:shrink">
                     {member.photoUrl ? (
                       <img
                         src={member.photoUrl}

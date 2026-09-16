@@ -308,7 +308,7 @@ export default function PropertyDetailPage() {
                   {paymentFlyers.map((item: any, index: number) => (
                       <div
                         key={item.id}
-                        className="glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow md:w-auto md:shrink"
+                        className="glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow lg:w-auto lg:shrink"
                       >
                         <div className="mb-3">
                           <p className="font-semibold">{item.title || 'Payment Plan'}</p>
@@ -469,7 +469,7 @@ export default function PropertyDetailPage() {
               <h2 className="text-2xl font-bold mb-4">Related Properties</h2>
               <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 lg:gap-6">
                 {related.map((item) => (
-                  <Link key={item.id} href={`/properties/${item.slug}`} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
+                  <Link key={item.id} href={`/properties/${item.slug}`} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
                     <Card className="glass-card backdrop-blur-lg overflow-hidden hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <h3 className="font-semibold">{item.title}</h3>

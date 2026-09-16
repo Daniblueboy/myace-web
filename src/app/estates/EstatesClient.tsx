@@ -169,7 +169,7 @@ export default function EstatesClient() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="h-96 shrink-0 w-[82%] animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 md:w-auto md:shrink"
+                className="h-96 shrink-0 w-[82%] animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 lg:w-auto lg:shrink"
               />
             ))}
           </div>
@@ -193,7 +193,7 @@ export default function EstatesClient() {
         ) : (
           <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-8 lg:grid-cols-2 xl:grid-cols-3">
             {filtered.map((estate: any, i: number) => (
-              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center md:w-auto md:shrink">
+              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
                   className="glass-card backdrop-blur-lg group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"

@@ -31,7 +31,7 @@ export default function EstateGallery({ images = [] }: { images: string[] }) {
           <button
             key={`${image}-${idx}`}
             type="button"
-            className="h-48 w-[75%] shrink-0 snap-center overflow-hidden rounded-lg border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 md:w-full md:shrink"
+            className="h-48 w-[75%] shrink-0 snap-center overflow-hidden rounded-lg border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 lg:w-full lg:shrink"
             onClick={() => {
               setIndex(idx);
               setOpen(true);
