@@ -43,7 +43,7 @@ export default function EstateOfferings({
   const options = useMemo<OptionItem[]>(() => {
     const items: OptionItem[] = [];
     properties.forEach((property) => {
-      const flyers = (property.media || []).filter(
+      const propertyFlyers = (property.media || []).filter(
         (item: any) => item.type === 'FLYER' || item.type === 'BROCHURE'
       );
       const outrightVariants = (property.variants || []).filter(
@@ -52,13 +52,19 @@ export default function EstateOfferings({
 
       if (outrightVariants.length > 0) {
         outrightVariants.forEach((variant: any) => {
+          // A variant with its own media (e.g. a size-specific pricing
+          // flyer) shows only that — not every flyer the property has —
+          // so a 500sqm option doesn't display a 1-acre payment plan.
+          const variantFlyers = variant.media
+            ? variant.media.filter((item: any) => item.type === 'FLYER' || item.type === 'BROCHURE')
+            : propertyFlyers;
           items.push({
             id: variant.id,
             label: normalizeLabel(variant.label || property.title),
             price: Number(variant.price),
             currency: variant.currency || property.currency || 'NGN',
             propertyTitle: property.title,
-            flyers,
+            flyers: variantFlyers,
             available: variant.active !== false,
     });
         });
@@ -69,7 +75,7 @@ export default function EstateOfferings({
           price: Number(property.price),
           currency: property.currency || 'NGN',
           propertyTitle: property.title,
-          flyers,
+          flyers: propertyFlyers,
           available: property.status !== 'SOLD',
         });
       }
@@ -142,12 +148,12 @@ export default function EstateOfferings({
               )}
             </div>
             <div className="flex gap-2">
-              <Button asChild className="flex-1" disabled={!option.available}>
+              <Button asChild className="flex-1 min-w-0 whitespace-normal h-auto py-2" disabled={!option.available}>
                 <Link href={`/contact${estateSlug ? `?estate=${estateSlug}&enquiry=PURCHASE` : '?enquiry=PURCHASE'}`}>
                   Enquire to Purchase
                 </Link>
               </Button>
-              <Button variant="outline" asChild className="flex-1" disabled={!option.available}>
+              <Button variant="outline" asChild className="flex-1 min-w-0 whitespace-normal h-auto py-2" disabled={!option.available}>
                 <Link href={estateSlug ? `/book-inspection?estate=${estateSlug}` : '/book-inspection'}>
                   Book Inspection
                 </Link>

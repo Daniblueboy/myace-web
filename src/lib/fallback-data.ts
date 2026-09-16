@@ -330,6 +330,9 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-prime-payment-300-v', type: 'FLYER', title: 'Prime Boulevard Annex — 300sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-300sqm.jpg' },
+        ],
       },
       {
         id: 'fallback-land-variant-300-installment',
@@ -353,6 +356,9 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-prime-payment-500-v', type: 'FLYER', title: 'Prime Boulevard Annex — 500sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-500sqm.jpg' },
+        ],
       },
       {
         id: 'fallback-land-variant-500-installment',
@@ -426,6 +432,9 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-alpha-garden-flyer-500-v', type: 'FLYER', title: 'Alpha Garden City — 500sqm Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-500sqm.jpg' },
+        ],
       },
       {
         id: 'fallback-alpha-garden-variant-1acre',
@@ -435,6 +444,9 @@ export const fallbackProperties: Property[] = [
         size: '1 Acre',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-alpha-garden-flyer-1acre-v', type: 'FLYER', title: 'Alpha Garden City — 1 Acre Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-1acre.jpg' },
+        ],
       },
     ],
     faqs: [],
@@ -490,6 +502,9 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-heritage-payment-500sqm-v', type: 'FLYER', title: 'Heritage Estate — 500sqm Payment Plan', url: '/images/estates/heritage/heritage-payment-500sqm.jpg' },
+        ],
       },
       {
         id: 'fallback-heritage-variant-1acre',
@@ -499,6 +514,10 @@ export const fallbackProperties: Property[] = [
         size: '1 Acre',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-heritage-flyer-1acre-v', type: 'FLYER', title: 'Heritage Estate — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
+          { id: 'fallback-heritage-payment-1acre-v', type: 'FLYER', title: 'Heritage Estate — 1 Acre Payment Plan', url: '/images/estates/heritage/heritage-payment-1acre.jpg' },
+        ],
       },
     ],
     faqs: [],
@@ -604,6 +623,10 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-downtown-phase2-flyer-500-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 500sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg' },
+          { id: 'fallback-downtown-phase2-flyer-payment-500-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — Payment Plan', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg' },
+        ],
       },
       {
         id: 'fallback-downtown-phase2-variant-500-installment',
@@ -627,6 +650,10 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-downtown-phase2-flyer-1000-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 1,000sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-1000sqm.jpg' },
+          { id: 'fallback-downtown-phase2-flyer-payment-1000-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — Payment Plan', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg' },
+        ],
       },
       {
         id: 'fallback-downtown-phase2-variant-1000-installment',
@@ -836,6 +863,9 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-edo-mega-flyer-450-v', type: 'FLYER', title: 'Edo Mega City — 450sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-450sqm.jpg' },
+        ],
       },
       {
         id: 'fallback-edo-mega-variant-900-outright',
@@ -846,6 +876,10 @@ export const fallbackProperties: Property[] = [
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-edo-mega-flyer-900-v', type: 'FLYER', title: 'Edo Mega City — 900sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-900sqm.jpg' },
+          { id: 'fallback-edo-mega-flyer-payment-900-v', type: 'FLYER', title: 'Edo Mega City — Payment Plan', url: '/images/estates/edo-mega-city/edo-flyer-payment-plan.jpg' },
+        ],
       },
       {
         id: 'fallback-edo-mega-variant-900-installment',
@@ -868,6 +902,10 @@ export const fallbackProperties: Property[] = [
         size: '1 Acre',
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [
+          { id: 'fallback-edo-mega-flyer-1acre-v', type: 'FLYER', title: 'Edo Mega City — 1 Acre Pricing', url: '/images/estates/edo-mega-city/edo-flyer-1acre.jpg' },
+          { id: 'fallback-edo-mega-flyer-payment-1acre-v', type: 'FLYER', title: 'Edo Mega City — Payment Plan', url: '/images/estates/edo-mega-city/edo-flyer-payment-plan.jpg' },
+        ],
       },
       {
         id: 'fallback-edo-mega-variant-1acre-installment',

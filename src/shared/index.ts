@@ -65,6 +65,11 @@ export interface PropertyVariant {
   installmentAmount?: number | null;
   sortOrder?: number;
   active?: boolean;
+  /** Flyers specific to this variant (e.g. a size's own pricing/payment-plan
+   * image) — shown instead of the property's full media list on the
+   * Available Options card, so a 500sqm option doesn't show a 1-acre
+   * flyer. Falls back to the property's own media when a variant has none. */
+  media?: PropertyMedia[];
 }
 
 export interface PropertyMedia {
