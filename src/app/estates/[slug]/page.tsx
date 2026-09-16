@@ -1,19 +1,18 @@
 import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
-import { MapPin, Home, ShieldCheck, ArrowLeft, View, Download } from 'lucide-react';
+import { MapPin, Home, ShieldCheck, ArrowLeft, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import EstateOfferings from '@/components/estates/EstateOfferings';
-import EstateGallery from '@/components/estates/EstateGallery';
 import { EstateHeroCarousel } from '@/components/estates/EstateHeroCarousel';
+import { EstateMediaSection, type FlyerItem } from '@/components/estates/EstateMediaSection';
 import { Reveal } from '@/components/motion/Reveal';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator';
-import PropertyPanorama from '@/components/properties/PropertyPanorama';
 import { ShareEstate } from '@/components/estates/ShareEstate';
 import { RelatedEstates } from '@/components/estates/RelatedEstates';
-import { getOfferingLabel } from '@/lib/estate-offerings';
+import { getOfferingLabel, getAvailableCountLabel } from '@/lib/estate-offerings';
+import type { Property, PropertyResource, PropertyMedia } from '@/shared';
 
 const SITE_URL = 'https://aceroyalestates.com';
 
@@ -103,6 +102,28 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
 
   const tourImages: string[] = [...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))];
   const offeringLabel = getOfferingLabel(estate);
+  const availableCountLabel = getAvailableCountLabel(estate);
+
+  // Flyers/brochures pulled together from wherever they're catalogued —
+  // the estate's own brochure, each linked property's resources, and (once
+  // real data has it) property.media entries typed FLYER/BROCHURE — deduped
+  // by URL since the same PDF sometimes gets linked from more than one spot.
+  const flyerUrls = new Set<string>();
+  const flyers: FlyerItem[] = [];
+  const addFlyer = (title: string, url: string | null | undefined) => {
+    if (!url || flyerUrls.has(url)) return;
+    flyerUrls.add(url);
+    flyers.push({ id: url, title, url });
+  };
+  addFlyer(`${estate.name} — Estate Brochure`, estate.brochureUrl);
+  (estate.properties || []).forEach((property: Property) => {
+    (property.resources || [])
+      .filter((r: PropertyResource) => r.fileType === 'PDF' || /flyer|brochure/i.test(r.title))
+      .forEach((r: PropertyResource) => addFlyer(r.title, r.url));
+    (property.media || [])
+      .filter((m: PropertyMedia) => m.type === 'FLYER' || m.type === 'BROCHURE')
+      .forEach((m: PropertyMedia) => addFlyer(m.title || `${property.title} — Flyer`, m.url));
+  });
 
   return (
     <div className="min-h-screen">
@@ -171,7 +192,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   className="group inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
                 >
                   <Download className="h-4 w-4 shrink-0" />
-                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[90px] group-hover:opacity-100">
+                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 lg:group-hover:ml-2 lg:group-hover:max-w-[90px] lg:group-hover:opacity-100">
                     Brochure
                   </span>
                 </a>
@@ -180,7 +201,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 {estate.properties?.length ? (
                   <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Home className="h-4 w-4" /> Available Units
+                      <Home className="h-4 w-4" /> {availableCountLabel}
                     </div>
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
                   </div>
@@ -199,11 +220,13 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
           </div>
         </div>
 
-        {/* Video & Virtual Tour — promoted out of the Media tab to right
-            after the header/description (was buried as the 2nd of four
-            tabs); video autoplays (muted, per browser rules) so it catches
-            attention as soon as it scrolls into view, and this is where the
-            primary Book Inspection CTA for this block lives. */}
+        {/* Estate Launch Video, then one unified Media section (virtual
+            tour + photos + flyers behind a pill filter) instead of three
+            always-stacked blocks — promoted out of the Media tab to right
+            after the header/description; video autoplays (muted, per
+            browser rules) so it catches attention as soon as it scrolls
+            into view, and this is where the primary Book Inspection CTA
+            for this block lives. */}
         {(estate.videoUrl ||
           estate.panoramaUrls?.length ||
           estate.virtualTourUrl ||
@@ -232,52 +255,15 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 </div>
               )}
 
-              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h2 className="text-2xl font-bold">Virtual Tour</h2>
-                  {!estate.panoramaUrls?.length && !estate.virtualTourUrl && tourImages.length > 0 && (
-                    <span className="text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-                      Sample preview
-                    </span>
-                  )}
-                </div>
-                {estate.panoramaUrls?.length ? (
-                  <PropertyPanorama panoramaUrls={estate.panoramaUrls} estateName={estate.name} />
-                ) : estate.virtualTourUrl ? (
-                  <div className="aspect-video rounded-xl overflow-hidden border">
-                    <iframe
-                      src={getEmbedUrl(estate.virtualTourUrl)}
-                      title={`Virtual tour of ${estate.name}`}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
-                      allowFullScreen
-                    />
-                  </div>
-                ) : tourImages.length > 0 ? (
-                  <div className="space-y-3">
-                    <VirtualTourSimulator estateName={estate.name} images={tourImages} />
-                    <p className="text-sm text-muted-foreground">
-                      Interactive photo simulation for feature preview. It is not captured 360° media or
-                      a substitute for an in-person inspection.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="rounded-xl border border-dashed p-8 text-center space-y-3">
-                    <View className="h-8 w-8 text-muted-foreground mx-auto" />
-                    <p className="text-muted-foreground">
-                      A virtual walkthrough of {estate.name} isn't available yet. Book an inspection to
-                      tour it in person.
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {estate.gallery && estate.gallery.length > 0 && (
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-                  <EstateGallery images={estate.gallery} />
-                </div>
-              )}
+              <EstateMediaSection
+                estateName={estate.name}
+                panoramaUrls={estate.panoramaUrls}
+                virtualTourEmbedUrl={estate.virtualTourUrl ? getEmbedUrl(estate.virtualTourUrl) : null}
+                tourImages={tourImages}
+                isSamplePreviewTour={!estate.panoramaUrls?.length && !estate.virtualTourUrl && tourImages.length > 0}
+                photos={estate.gallery || []}
+                flyers={flyers}
+              />
 
               <Button size="lg" className="w-full sm:w-auto" asChild>
                 <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
@@ -291,7 +277,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="faqs">FAQs</TabsTrigger>
-              <TabsTrigger value="units">Available Units</TabsTrigger>
+              <TabsTrigger value="units">{availableCountLabel}</TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="mt-6 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">

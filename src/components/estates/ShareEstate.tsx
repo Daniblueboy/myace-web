@@ -29,10 +29,13 @@ export function ShareEstate({ name, url, iconOnly = false }: { name: string; url
   // own max-width/opacity animate, so there's a single width-driving
   // transition instead of two competing ones (which caused visible jitter
   // when the revealed text was long enough to shift a lot of layout).
+  // Expand-on-hover only makes sense with a real pointer — scoped to lg:
+  // (this codebase's pointer-vs-touch breakpoint) so it never engages on
+  // mobile, where tap can leave :hover "stuck" in some browsers.
   const expandableIconClass =
     'group inline-flex h-9 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50';
   const expandableLabelClass =
-    'max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[100px] group-hover:opacity-100';
+    'max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 lg:group-hover:ml-2 lg:group-hover:max-w-[100px] lg:group-hover:opacity-100';
 
   const nativeShare = async () => {
     try {

@@ -21,3 +21,17 @@ export function getOfferingLabel(estate: Estate): string | null {
   if (fromProperties) return fromProperties;
   return formatOfferingTypes(new Set(estate.offeringType ? [estate.offeringType] : []));
 }
+
+/** Land is sold by plot/acre, never as a countable "unit" — apartments are
+ * the only offering actually sold in discrete units (1 bed, 2 bed, etc).
+ * Picks the right word for the "Available ___" stat/tab on an estate that
+ * has linked properties. */
+export function getAvailableCountLabel(estate: Estate): string {
+  const types = new Set((estate.properties || []).map((p) => p.type));
+  const hasLand = types.has('LAND');
+  const hasApartment = types.has('APARTMENT');
+  if (hasLand && hasApartment) return 'Available Options';
+  if (hasLand) return 'Available Plots';
+  if (hasApartment) return 'Available Units';
+  return 'Available Options';
+}
