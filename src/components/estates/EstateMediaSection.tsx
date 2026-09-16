@@ -43,8 +43,6 @@ export function EstateMediaSection({
   const [tourOpen, setTourOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [flyerLightboxOpen, setFlyerLightboxOpen] = useState(false);
-  const [flyerLightboxIndex, setFlyerLightboxIndex] = useState(0);
 
   const hasTour = true; // always has at least an empty-state fallback
   const items: MediaTile[] = [
@@ -52,6 +50,18 @@ export function EstateMediaSection({
     ...photos.map((url, index) => ({ kind: 'photo' as const, url, index })),
     ...flyers.map((flyer) => ({ kind: 'flyer' as const, flyer })),
   ];
+
+  // One shared lightbox for every image in the strip — photos and image
+  // flyers together, in filmstrip order — so paging through it isn't
+  // scoped to whichever type you happened to click.
+  const imageSlides = items.flatMap((item) => {
+    if (item.kind === 'photo') return [{ src: item.url, key: `photo-${item.index}` }];
+    if (item.kind === 'flyer' && isImageUrl(item.flyer.url)) {
+      return [{ src: item.flyer.url, title: item.flyer.title, key: item.flyer.id }];
+    }
+    return [];
+  });
+  const slideIndexFor = (key: string) => imageSlides.findIndex((s) => s.key === key);
 
   const availableFilters = FILTERS.filter((f) => {
     if (f === 'All' || f === 'Virtual Tour') return true;
@@ -69,9 +79,6 @@ export function EstateMediaSection({
   });
 
   const tourPreviewImage = tourImages[0] || photos[0];
-  const lightboxSlides = photos.map((src) => ({ src }));
-  const imageFlyers = flyers.filter((f) => isImageUrl(f.url));
-  const flyerLightboxSlides = imageFlyers.map((f) => ({ src: f.url, title: f.title }));
 
   return (
     <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
@@ -139,7 +146,7 @@ export function EstateMediaSection({
                 key={`photo-${item.index}`}
                 type="button"
                 onClick={() => {
-                  setLightboxIndex(item.index);
+                  setLightboxIndex(slideIndexFor(`photo-${item.index}`));
                   setLightboxOpen(true);
                 }}
                 className="group relative shrink-0 w-32 sm:w-40 aspect-square snap-center overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-950"
@@ -174,15 +181,15 @@ export function EstateMediaSection({
           );
           const tileClass =
             'group relative shrink-0 w-32 sm:w-40 aspect-square snap-center overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-950';
-          // Image flyers open in the lightbox, matching Photos — only a
-          // non-image file (e.g. a PDF brochure) falls back to a new tab.
+          // Image flyers open in the same shared lightbox as Photos — only
+          // a non-image file (e.g. a PDF brochure) falls back to a new tab.
           return flyerIsImage ? (
             <button
               key={item.flyer.id}
               type="button"
               onClick={() => {
-                setFlyerLightboxIndex(imageFlyers.findIndex((f) => f.id === item.flyer.id));
-                setFlyerLightboxOpen(true);
+                setLightboxIndex(slideIndexFor(item.flyer.id));
+                setLightboxOpen(true);
               }}
               className={tileClass}
             >
@@ -196,23 +203,13 @@ export function EstateMediaSection({
         })}
       </div>
 
-      {photos.length > 0 && (
+      {imageSlides.length > 0 && (
         <Lightbox
           open={lightboxOpen}
           close={() => setLightboxOpen(false)}
           index={lightboxIndex}
-          slides={lightboxSlides}
+          slides={imageSlides}
           on={{ view: ({ index }) => setLightboxIndex(index) }}
-        />
-      )}
-
-      {imageFlyers.length > 0 && (
-        <Lightbox
-          open={flyerLightboxOpen}
-          close={() => setFlyerLightboxOpen(false)}
-          index={flyerLightboxIndex}
-          slides={flyerLightboxSlides}
-          on={{ view: ({ index }) => setFlyerLightboxIndex(index) }}
         />
       )}
 
