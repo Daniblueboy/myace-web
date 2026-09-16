@@ -16,6 +16,7 @@ import PropertyEnquiryForm from '@/components/properties/PropertyEnquiryForm';
 import PropertyPanorama from '@/components/properties/PropertyPanorama';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
 
 // Dynamically import map to avoid SSR issues with Leaflet
 const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'), {
@@ -243,21 +244,15 @@ export default function PropertyDetailPage() {
                 <h2 className="text-2xl font-bold">Video &amp; Virtual Tour</h2>
 
                 {property.videoUrl && (
-                  <div className="aspect-video rounded-lg overflow-hidden border">
-                    {property.videoUrl.includes('youtube') || property.videoUrl.includes('vimeo') ? (
-                      <iframe
-                        src={getAutoplayEmbedUrl(property.videoUrl)}
-                        title={`Video tour for ${property.title}`}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video autoPlay muted loop playsInline controls className="w-full h-full">
-                        <source src={property.videoUrl} />
-                      </video>
-                    )}
-                  </div>
+                  <AdaptiveVideoPlayer
+                    src={property.videoUrl}
+                    embedSrc={
+                      property.videoUrl.includes('youtube') || property.videoUrl.includes('vimeo')
+                        ? getAutoplayEmbedUrl(property.videoUrl)
+                        : null
+                    }
+                    title={`Video tour for ${property.title}`}
+                  />
                 )}
 
                 {property.panoramaUrl && (
@@ -290,20 +285,16 @@ export default function PropertyDetailPage() {
                           </a>
                         </div>
                         {item.type === 'VIDEO' && (
-                          <div className="aspect-video rounded-lg overflow-hidden border mt-4">
-                            {item.url.includes('youtube') || item.url.includes('vimeo') ? (
-                              <iframe
-                                src={getAutoplayEmbedUrl(item.url)}
-                                title={`Video for ${property.title}`}
-                                className="w-full h-full"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                              />
-                            ) : (
-                              <video autoPlay muted loop playsInline controls className="w-full h-full">
-                                <source src={item.url} />
-                              </video>
-                            )}
+                          <div className="mt-4">
+                            <AdaptiveVideoPlayer
+                              src={item.url}
+                              embedSrc={
+                                item.url.includes('youtube') || item.url.includes('vimeo')
+                                  ? getAutoplayEmbedUrl(item.url)
+                                  : null
+                              }
+                              title={`Video for ${property.title}`}
+                            />
                           </div>
                         )}
                       </div>

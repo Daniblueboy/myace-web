@@ -12,6 +12,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShareEstate } from '@/components/estates/ShareEstate';
 import { RelatedEstates } from '@/components/estates/RelatedEstates';
 import { getOfferingLabel, getAvailableCountLabel } from '@/lib/estate-offerings';
+import { getVideoAspectRatio } from '@/lib/video-aspect-ratio';
+import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
 import type { Property, PropertyResource, PropertyMedia } from '@/shared';
 
 const SITE_URL = 'https://aceroyalestates.com';
@@ -103,6 +105,10 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
   const tourImages: string[] = [...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))];
   const offeringLabel = getOfferingLabel(estate);
   const availableCountLabel = getAvailableCountLabel(estate);
+  const isHostedVideo = (url: string) => url.includes('youtube') || url.includes('vimeo') || url.includes('youtu.be');
+  const launchVideoAspectRatio = estate.videoUrl && isHostedVideo(estate.videoUrl)
+    ? await getVideoAspectRatio(estate.videoUrl)
+    : null;
 
   // Flyers/brochures pulled together from wherever they're catalogued —
   // the estate's own brochure, each linked property's resources, and (once
@@ -237,21 +243,12 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               {estate.videoUrl && (
                 <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
                   <h2 className="text-2xl font-bold">Estate Launch Video</h2>
-                  <div className="aspect-video rounded-xl overflow-hidden border">
-                    {estate.videoUrl.includes('youtube') || estate.videoUrl.includes('vimeo') || estate.videoUrl.includes('youtu.be') ? (
-                      <iframe
-                        src={getAutoplayEmbedUrl(estate.videoUrl)}
-                        title={`Launch video for ${estate.name}`}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video autoPlay muted loop playsInline controls preload="metadata" className="w-full h-full">
-                        <source src={estate.videoUrl} type="video/mp4" />
-                      </video>
-                    )}
-                  </div>
+                  <AdaptiveVideoPlayer
+                    src={estate.videoUrl}
+                    embedSrc={isHostedVideo(estate.videoUrl) ? getAutoplayEmbedUrl(estate.videoUrl) : null}
+                    title={`Launch video for ${estate.name}`}
+                    initialAspectRatio={launchVideoAspectRatio}
+                  />
                 </div>
               )}
 
