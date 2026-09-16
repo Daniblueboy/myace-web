@@ -34,6 +34,18 @@ function getEmbedUrl(url: string) {
   return url;
 }
 
+// Same embed conversion as getEmbedUrl, plus autoplay+mute params —
+// browsers block non-muted autoplay outright, and starting muted (with
+// controls still available to unmute) is what lets the video draw
+// attention the moment this section scrolls into view.
+function getAutoplayEmbedUrl(url: string) {
+  const embed = getEmbedUrl(url);
+  if (!embed) return embed;
+  if (embed.includes('youtube.com/embed/')) return `${embed}${embed.includes('?') ? '&' : '?'}autoplay=1&mute=1&playsinline=1`;
+  if (embed.includes('player.vimeo.com')) return `${embed}${embed.includes('?') ? '&' : '?'}autoplay=1&muted=1`;
+  return embed;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -118,6 +130,27 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                     </span>
                   )}
                 </div>
+                {/* CTAs pulled up to sit right with the status badge, at the
+                    very top of the page, rather than below the description —
+                    enquiring shouldn't need scrolling past the pitch first. */}
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild>
+                    <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a
+                      href={estate.brochureUrl || '/resources'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Download Brochure
+                    </a>
+                  </Button>
+                  <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
+                </div>
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">{estate.name}</h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <MapPin className="w-4 h-4" />
@@ -126,24 +159,6 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 <p className="text-muted-foreground text-lg">
                   {estate.description || 'A master-planned estate with verified titles and modern infrastructure.'}
                 </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild>
-                  <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <a
-                    href={estate.brochureUrl || '/resources'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download Brochure
-                  </a>
-                </Button>
-                <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
               </div>
               <div
                 className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 ${estate.properties?.length ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}
@@ -176,58 +191,32 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
           </div>
         </div>
 
-        <Reveal>
-          <Tabs defaultValue="overview">
-            <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="media">Media &amp; Virtual Tour</TabsTrigger>
-              <TabsTrigger value="faqs">FAQs</TabsTrigger>
-              <TabsTrigger value="units">Available Units</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="overview" className="mt-6 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
-              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
-                <h2 className="text-2xl font-bold">Estate Highlights</h2>
-                {estate.amenities && estate.amenities.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
-                    {estate.amenities.map((amenity: string) => (
-                      <span key={amenity} className="px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-950 border dark:border-slate-800 text-sm">
-                        {amenity}
-                      </span>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-muted-foreground">
-                    Infrastructure and title details will be published here. Contact us for a full brochure.
-                  </p>
-                )}
-              </div>
-              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-3">
-                <h3 className="text-xl font-semibold">Inspection Schedule</h3>
-                <p className="text-muted-foreground">
-                  Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
-                </p>
-                <Button variant="outline" asChild className="w-full">
-                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book a Slot</Link>
-                </Button>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="media" className="mt-6 space-y-6">
+        {/* Video & Virtual Tour — promoted out of the Media tab to right
+            after the header/description (was buried as the 2nd of four
+            tabs); video autoplays (muted, per browser rules) so it catches
+            attention as soon as it scrolls into view, and this is where the
+            primary Book Inspection CTA for this block lives. */}
+        {(estate.videoUrl ||
+          estate.panoramaUrls?.length ||
+          estate.virtualTourUrl ||
+          tourImages.length > 0 ||
+          (estate.gallery && estate.gallery.length > 0)) && (
+          <Reveal>
+            <div className="space-y-6">
               {estate.videoUrl && (
                 <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
                   <h2 className="text-2xl font-bold">Estate Launch Video</h2>
                   <div className="aspect-video rounded-xl overflow-hidden border">
                     {estate.videoUrl.includes('youtube') || estate.videoUrl.includes('vimeo') || estate.videoUrl.includes('youtu.be') ? (
                       <iframe
-                        src={getEmbedUrl(estate.videoUrl)}
+                        src={getAutoplayEmbedUrl(estate.videoUrl)}
                         title={`Launch video for ${estate.name}`}
                         className="w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
                     ) : (
-                      <video controls playsInline preload="metadata" className="w-full h-full">
+                      <video autoPlay muted loop playsInline controls preload="metadata" className="w-full h-full">
                         <source src={estate.videoUrl} type="video/mp4" />
                       </video>
                     )}
@@ -271,16 +260,57 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                       A virtual walkthrough of {estate.name} isn't available yet. Book an inspection to
                       tour it in person.
                     </p>
-                    <Button variant="outline" asChild>
-                      <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
-                    </Button>
                   </div>
                 )}
               </div>
 
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Gallery</h2>
-                <EstateGallery images={estate.gallery || []} />
+              {estate.gallery && estate.gallery.length > 0 && (
+                <div>
+                  <h2 className="text-2xl font-bold mb-4">Gallery</h2>
+                  <EstateGallery images={estate.gallery} />
+                </div>
+              )}
+
+              <Button size="lg" className="w-full sm:w-auto" asChild>
+                <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
+              </Button>
+            </div>
+          </Reveal>
+        )}
+
+        <Reveal>
+          <Tabs defaultValue="overview">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="faqs">FAQs</TabsTrigger>
+              <TabsTrigger value="units">Available Units</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="overview" className="mt-6 grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
+                <h2 className="text-2xl font-bold">Estate Highlights</h2>
+                {estate.amenities && estate.amenities.length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {estate.amenities.map((amenity: string) => (
+                      <span key={amenity} className="px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-950 border dark:border-slate-800 text-sm">
+                        {amenity}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground">
+                    Infrastructure and title details will be published here. Contact us for a full brochure.
+                  </p>
+                )}
+              </div>
+              <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-3">
+                <h3 className="text-xl font-semibold">Inspection Schedule</h3>
+                <p className="text-muted-foreground">
+                  Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
+                </p>
+                <Button variant="outline" asChild className="w-full">
+                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book a Slot</Link>
+                </Button>
               </div>
             </TabsContent>
 

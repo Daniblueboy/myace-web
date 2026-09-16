@@ -132,6 +132,10 @@ export interface Estate {
   amenities?: string[];
   properties?: Property[];
   faqs?: EstateFAQ[];
+  /** Marks a fast-selling pick, shown as a "Fast Selling" tag on the
+   * homepage's Our Developments cards (the newest estate there gets "New"
+   * instead, regardless of this flag). */
+  featured?: boolean;
   createdAt: string;
   updatedAt: string;
 }

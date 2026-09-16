@@ -26,20 +26,32 @@ export default function EstateGallery({ images = [] }: { images: string[] }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-4 lg:grid-cols-3">
-        {images.map((image, idx) => (
-          <button
-            key={`${image}-${idx}`}
-            type="button"
-            className="h-48 w-[75%] shrink-0 snap-center overflow-hidden rounded-lg border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 lg:w-full lg:shrink"
-            onClick={() => {
-              setIndex(idx);
-              setOpen(true);
-            }}
-          >
-            <img src={image} alt={`Estate gallery ${idx + 1}`} className="h-full w-full object-cover" />
-          </button>
-        ))}
+      {/* Instagram/Snapchat-style explore grid, matching the main gallery
+          (GalleryGrid) — a dense mosaic scrolling with the page instead of
+          its own horizontal row, with an occasional larger featured tile. */}
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-0.5 sm:gap-1 grid-flow-dense">
+        {images.map((image, idx) => {
+          const featured = idx % 7 === 0;
+          return (
+            <button
+              key={`${image}-${idx}`}
+              type="button"
+              className={`relative overflow-hidden bg-slate-100 dark:bg-slate-900 ${featured ? 'col-span-2 row-span-2' : 'aspect-square'}`}
+              onClick={() => {
+                setIndex(idx);
+                setOpen(true);
+              }}
+              aria-label={`View estate gallery image ${idx + 1}`}
+            >
+              <img
+                src={image}
+                alt={`Estate gallery ${idx + 1}`}
+                loading={idx > 8 ? 'lazy' : 'eager'}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </button>
+          );
+        })}
       </div>
 
       <Lightbox

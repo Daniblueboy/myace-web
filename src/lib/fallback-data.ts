@@ -54,6 +54,7 @@ export const fallbackEstates: Estate[] = [
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Approved Layout', 'Registered Survey'],
+    featured: true,
     createdAt: now,
     updatedAt: now,
   },
