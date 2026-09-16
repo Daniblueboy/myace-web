@@ -1227,6 +1227,18 @@ export const fallbackBlogPosts = [
     createdAt: '2023-08-08T00:00:00.000Z',
     updatedAt: '2023-08-08T00:00:00.000Z',
   },
+  {
+    id: 'fallback-blog-metro-city-buy-hold',
+    title: 'Metro City Garden Price Increase Alert',
+    slug: 'metro-city-garden-price-increase-alert',
+    excerpt: 'Why the Buy & Hold strategy is one of the most reliable ways to grow a real estate portfolio.',
+    content:
+      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nWould you like to know more? Reach out to Aceroyal Estate Homes to learn about our current buy-and-hold opportunities.',
+    coverImageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    published: true,
+    createdAt: '2023-03-24T00:00:00.000Z',
+    updatedAt: '2023-03-24T00:00:00.000Z',
+  },
 ];
 
 // Real names/roles confirmed against the live site's own "Meet The Team"
