@@ -123,15 +123,23 @@ export default async function AboutPage() {
       {/* Our Story */}
       <Reveal>
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
-          <div className="container max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Building Confidence Into Property Ownership</h2>
+          <div className="container max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl font-bold">The Ultimate Standard of Trust</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Aceroyal Estates — a subsidiary of Aceroyalpro Services — was established to make
-              quality real estate opportunities more accessible while helping buyers navigate one
-              of the most important financial decisions they will make. Today, the company
-              operates across multiple locations in Nigeria, providing residential land, homes and
-              real estate services supported by structured documentation, professional guidance
-              and after-sales support.
+              AceRoyal Estates, a subsidiary of AceRoyalpro Services, exists to make real estate
+              ownership accessible and trustworthy for Nigerians and the diaspora — built on
+              clear titling, structured documentation, and a process with no guesswork.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Today, we operate across 5 states — Lagos, Oyo, Enugu, Edo, and Abuja — with 3
+              physical offices, and a portfolio spanning residential land, wellness-led
+              communities, and commercial developments.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Our track record backs the promise: Eko Paragon, a 105-unit development delivered
+              with the Lagos State Government in 18 months, and Downtown Lagos Commercial City,
+              now expanding along one of Lagos&apos;s fastest-growing corridors. Every new estate
+              is held to the same standard.
             </p>
           </div>
         </section>

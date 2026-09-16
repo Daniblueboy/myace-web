@@ -11,16 +11,30 @@ export default function CeoWelcomeSection() {
           />
         </div>
         <div className="space-y-5">
-          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Message from the CEO</p>
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">A Welcome Note from Our CEO</p>
           <h2 className="text-3xl md:text-4xl font-bold">Welcome to Aceroyal Estates</h2>
-          <p className="text-muted-foreground text-lg">
-            Our mission is to deliver secure, well-planned estates with clear titles and
-            transparent payment plans. We are committed to helping families and investors
-            own property with confidence.
-          </p>
+          <div className="text-muted-foreground text-lg space-y-4">
+            <p>
+              At AceRoyal Estates, we believe that owning property should never feel like a
+              gamble. It should feel like a decision you can stand behind — backed by clear
+              documentation, honest guidance, and a team that treats your investment as
+              seriously as you do.
+            </p>
+            <p>
+              That belief is why we built AceRoyal on one standard: trust. From our first
+              estate to every community we develop today, our goal has stayed the same — to
+              give families and investors a real, secure path to property ownership, without
+              the uncertainty that too often surrounds real estate in Nigeria.
+            </p>
+            <p>
+              I&apos;m proud of what we&apos;ve built so far, and even more excited about
+              what&apos;s ahead. Thank you for trusting AceRoyal with one of the most
+              important decisions you&apos;ll ever make.
+            </p>
+          </div>
           <div className="space-y-1 text-sm text-muted-foreground">
             <p className="font-semibold text-slate-900 dark:text-white">Dr. Endurance Cletus Agonor</p>
-            <p>CEO and Founder</p>
+            <p>CEO and Founder, AceRoyal Estates</p>
           </div>
         </div>
       </div>
