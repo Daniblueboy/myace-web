@@ -232,6 +232,24 @@ export const fallbackEstates: Estate[] = [
     createdAt: '2023-03-24T00:00:00.000Z',
     updatedAt: '2023-03-24T00:00:00.000Z',
   },
+  {
+    id: 'fallback-estate-novena',
+    name: 'Novena Estate Phase 2',
+    slug: 'novena-estate-phase-2',
+    description:
+      'Novena Estate Phase 2 is located at Iraye, Epe, Lagos.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
+    state: 'Lagos',
+    city: 'Iraye, Epe',
+    address: 'Iraye, Epe, Lagos',
+    coverImage: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
+    videoUrl: '/videos/novena-estate.mp4',
+    brochureUrl: null,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: [],
+    createdAt: '2022-10-17T00:00:00.000Z',
+    updatedAt: '2022-10-17T00:00:00.000Z',
+  },
 ];
 
 export const fallbackProperties: Property[] = [
@@ -1089,6 +1107,52 @@ export const fallbackProperties: Property[] = [
     createdAt: '2023-03-24T00:00:00.000Z',
     updatedAt: '2023-03-24T00:00:00.000Z',
   },
+  {
+    id: 'fallback-property-novena-plot',
+    title: 'Novena Estate Phase 2 — 500sqm Plot',
+    slug: 'novena-estate-phase-2-plot',
+    description:
+      'A 500sqm plot at Novena Estate Phase 2, Iraye, Epe — buy now and get 100 bags of Dangote Cement free, courtesy of the Goody Bag Promo.',
+    type: 'LAND',
+    status: 'AVAILABLE',
+    price: 2500000,
+    currency: 'NGN',
+    state: 'Lagos',
+    city: 'Iraye, Epe',
+    address: 'Iraye, Epe, Lagos',
+    bedrooms: null,
+    bathrooms: null,
+    size: '500sqm',
+    amenities: [],
+    featured: false,
+    images: [
+      { id: 'fallback-novena-image-1', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg', altText: 'Novena Estate Phase 2 Goody Bag Promo flyer' },
+    ],
+    variants: [
+      {
+        id: 'fallback-novena-variant-500sqm',
+        label: '500sqm Plot',
+        price: 2500000,
+        currency: 'NGN',
+        size: '500sqm',
+        sizeUnit: 'SQM',
+        paymentType: 'OUTRIGHT',
+        active: true,
+        media: [
+          { id: 'fallback-novena-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+        ],
+      },
+    ],
+    faqs: [],
+    resources: [],
+    media: [
+      { id: 'fallback-novena-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+    ],
+    estateId: 'fallback-estate-novena',
+    estate: fallbackEstates.find((e) => e.slug === 'novena-estate-phase-2'),
+    createdAt: '2022-10-17T00:00:00.000Z',
+    updatedAt: '2022-10-17T00:00:00.000Z',
+  },
 ];
 
 fallbackEstates.forEach((estate) => {
@@ -1314,6 +1378,30 @@ export const fallbackBlogPosts = [
     published: true,
     createdAt: '2023-03-24T00:00:00.000Z',
     updatedAt: '2023-03-24T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-good-tidings-promo',
+    title: 'Aceroyal Estates Homes Brings You Good Tidings!',
+    slug: 'aceroyal-estates-homes-brings-you-good-tidings',
+    excerpt: 'A 50% End of Year/New Year discount on land at New City Estate, Imota, Ikorodu.',
+    content:
+      'Good tidings we bring to you and your friends — good tidings of Christmas and a Happy New Year!\n\nAceroyal Estates Homes is giving a 50% discount for our End of the Year/New Year sales — with just ₦850,000 instead of ₦1.7m you can buy 500sqm of land, and with just ₦500,000 instead of ₦850,000 you can buy 300sqm of land, at New City Estate, Imota, Ikorodu, Lagos.\n\nIsn’t this exciting? I know you never saw it coming, right?\n\nThis promo will end on the 31st of January 2023, so don’t miss this amazing offer and be part of the people who will be celebrated in the New Year.\n\nYou! Yes, you! Don’t sleep — wake up and become a landowner!',
+    coverImageUrl: '/images/estates/new-city-estate/new-city-flyer.jpg',
+    published: true,
+    createdAt: '2022-12-29T00:00:00.000Z',
+    updatedAt: '2022-12-29T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-goody-bag-promo',
+    title: 'Goody Bag Promo',
+    slug: 'goody-bag-promo',
+    excerpt: 'Buy a plot at Novena Estate Phase 2 and get 100 bags of Dangote Cement free.',
+    content:
+      'Promo! Promo!! Promo!!! AceRoyal got you covered.\n\nAceRoyal Estates Homes Ltd is known for the amazing promos they always make available to their clients. The Goody Bag Promo is the promo of the century — it’s the first of its kind. No other estate company does it better than ACEROYAL.\n\nWhen you buy 1 plot of land in Novena Estate Phase 2, you get 100 bags of Dangote Cement free of charge. With this, you can start fencing your land or start the foundation of your house in Novena Estate 2, Iraye, Epe.\n\nWe don’t just sell land to you, we also support your vision of becoming a homeowner.\n\nJump on this offer today by calling 09156549709 to book an inspection with us now!\n\nAceroyal: we are building the future together!',
+    coverImageUrl: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
+    published: true,
+    createdAt: '2022-10-17T00:00:00.000Z',
+    updatedAt: '2022-10-17T00:00:00.000Z',
   },
 ];
 
