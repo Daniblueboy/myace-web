@@ -46,12 +46,18 @@ export default function EstateOfferings({
       const propertyFlyers = (property.media || []).filter(
         (item: any) => item.type === 'FLYER' || item.type === 'BROCHURE'
       );
-      const outrightVariants = (property.variants || []).filter(
+      const allVariants = property.variants || [];
+      const outrightVariants = allVariants.filter(
         (variant: any) => !variant.paymentType || variant.paymentType === 'OUTRIGHT'
       );
+      // Most properties always have at least one outright-priced variant, but
+      // a purely installment/flexible-plan property (no lump-sum option at
+      // all) has none — fall back to showing its installment variants
+      // directly instead of collapsing them into one property-level card.
+      const displayVariants = outrightVariants.length > 0 ? outrightVariants : allVariants;
 
-      if (outrightVariants.length > 0) {
-        outrightVariants.forEach((variant: any) => {
+      if (displayVariants.length > 0) {
+        displayVariants.forEach((variant: any) => {
           // A variant with its own media (e.g. a size-specific pricing
           // flyer) shows only that — not every flyer the property has —
           // so a 500sqm option doesn't display a 1-acre payment plan.

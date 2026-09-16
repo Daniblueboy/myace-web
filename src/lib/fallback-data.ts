@@ -198,6 +198,23 @@ export const fallbackEstates: Estate[] = [
     createdAt: '2026-09-16T00:00:00.000Z',
     updatedAt: '2026-09-16T00:00:00.000Z',
   },
+  {
+    id: 'fallback-estate-new-city',
+    name: 'New City Estate',
+    slug: 'new-city-estate',
+    description:
+      'New City Estate is located at Imota, Ikorodu — the very center of Ikorodu.\n\nEstate Title: Freehold/Registered Survey. Estate Offer: Flexible Plan.\n\nLandmarks: Caleb University, Imota Rice Mill, Lasustech, Land Mark College, Ikorodu Ferry Terminal.',
+    state: 'Lagos',
+    city: 'Imota, Ikorodu',
+    address: 'Imota, Ikorodu, Lagos',
+    coverImage: '/images/estates/new-city-estate/new-city-flyer.jpg',
+    brochureUrl: null,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: ['Interlock Road', 'Good Road Network', 'Good Water Supply', 'Green Areas', 'Perimeter Fencing'],
+    createdAt: '2023-05-07T00:00:00.000Z',
+    updatedAt: '2023-05-07T00:00:00.000Z',
+  },
 ];
 
 export const fallbackProperties: Property[] = [
@@ -932,6 +949,69 @@ export const fallbackProperties: Property[] = [
     estate: fallbackEstates.find((e) => e.slug === 'edo-mega-city'),
     createdAt: now,
     updatedAt: now,
+  },
+  {
+    id: 'fallback-property-new-city-plot',
+    title: 'New City Estate — 300sqm / 500sqm Plots',
+    slug: 'new-city-estate-plots',
+    description:
+      'Flexible-plan plots at New City Estate, Imota, Ikorodu — Freehold/Registered Survey title. 500sqm at ₦100,000/month or 300sqm at ₦50,000/month, both over 12 months, no lump-sum payment required.',
+    type: 'LAND',
+    status: 'AVAILABLE',
+    price: 600000,
+    currency: 'NGN',
+    state: 'Lagos',
+    city: 'Imota, Ikorodu',
+    address: 'Imota, Ikorodu, Lagos',
+    bedrooms: null,
+    bathrooms: null,
+    size: null,
+    amenities: ['Interlock Road', 'Good Road Network', 'Good Water Supply', 'Green Areas', 'Perimeter Fencing'],
+    featured: false,
+    images: [
+      { id: 'fallback-new-city-image-1', url: '/images/estates/new-city-estate/new-city-flyer.jpg', altText: 'New City Estate flexible plan flyer' },
+    ],
+    variants: [
+      {
+        id: 'fallback-new-city-variant-300sqm',
+        label: '300sqm Plot',
+        price: 600000,
+        currency: 'NGN',
+        size: '300sqm',
+        sizeUnit: 'SQM',
+        paymentType: 'INSTALLMENT',
+        installmentMonths: 12,
+        installmentAmount: 50000,
+        active: true,
+        media: [
+          { id: 'fallback-new-city-flyer-300sqm-v', type: 'FLYER', title: 'New City Estate — 300sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+        ],
+      },
+      {
+        id: 'fallback-new-city-variant-500sqm',
+        label: '500sqm Plot',
+        price: 1200000,
+        currency: 'NGN',
+        size: '500sqm',
+        sizeUnit: 'SQM',
+        paymentType: 'INSTALLMENT',
+        installmentMonths: 12,
+        installmentAmount: 100000,
+        active: true,
+        media: [
+          { id: 'fallback-new-city-flyer-500sqm-v', type: 'FLYER', title: 'New City Estate — 500sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+        ],
+      },
+    ],
+    faqs: [],
+    resources: [],
+    media: [
+      { id: 'fallback-new-city-flyer', type: 'FLYER', title: 'New City Estate — Flexible Plan Pricing', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+    ],
+    estateId: 'fallback-estate-new-city',
+    estate: fallbackEstates.find((e) => e.slug === 'new-city-estate'),
+    createdAt: '2023-05-07T00:00:00.000Z',
+    updatedAt: '2023-05-07T00:00:00.000Z',
   },
 ];
 
