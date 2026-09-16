@@ -1680,7 +1680,7 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-aeon-trisl',
     name: 'AEON Trisl Group',
-    logoUrl: '/images/partners/aeon-trisl-logo.jpg',
+    logoUrl: '/images/partners/aeon-trisl-logo.png',
     category: 'PARTNER',
     active: true,
   },
@@ -1694,7 +1694,7 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-lsdpc',
     name: 'Lagos State Development & Property Corporation (LSDPC)',
-    logoUrl: '/images/partners/lsdpc-logo.jpg',
+    logoUrl: '/images/partners/lsdpc-logo.png',
     category: 'PARTNER',
     active: true,
   },
