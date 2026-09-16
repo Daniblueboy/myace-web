@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Link
                     key={item.id}
                     href={`/blog/${item.slug}`}
-                    className="glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow lg:w-auto lg:shrink"
+                    className="glass-card backdrop-blur-lg shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow lg:w-auto lg:max-w-none lg:shrink"
                   >
                     {item.coverImageUrl && (
                       <img

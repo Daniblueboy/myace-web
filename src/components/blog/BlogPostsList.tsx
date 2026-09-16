@@ -56,7 +56,7 @@ export function BlogPostsList({
         {posts.map((post) => (
           <Card
             key={post.id}
-            className="glass-card backdrop-blur-lg group h-full shrink-0 w-[82%] snap-center flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:shrink"
+            className="glass-card backdrop-blur-lg group h-full shrink-0 w-[82%] max-w-sm snap-center flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
           >
             {post.coverImageUrl && (
               <div className="h-48 overflow-hidden rounded-t-lg">
