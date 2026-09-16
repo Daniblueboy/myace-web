@@ -1,12 +1,11 @@
 import type { Estate, GalleryItem, Property, TeamMember, Testimonial } from '@/shared';
 
 const now = '2026-01-01T00:00:00.000Z';
-const brochureUrl = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
-// TODO(content): most estates below still use placeholder/stock imagery.
-// Real photography exists on the live site but is inconsistently organized
-// (mixed with generic stock photos even there) — needs sourcing from Daniel
-// rather than scraped, so galleries/coverImage are approximate for now.
+// Every active estate now has real cover/gallery imagery — these stock
+// Unsplash placeholders only remain for the internal promo cards below
+// (app launch, realtor program, inspection slots), which illustrate a
+// feature/concept rather than a specific real property.
 const estateImages = {
   alphaGardenCity: '/images/estates/alpha-garden-city.jpeg',
   placeholder1: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=80',
@@ -118,9 +117,13 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Lagos',
     address: 'Lekki Coastal Road, Lagos',
-    coverImage: estateImages.placeholder1,
+    // No real photos ever came in for Phase 1 (sold out before this content
+    // pass) — leave both empty rather than stock photos; EstateHeroCarousel
+    // and the estates grid both render a clean "coming soon"/no-image state
+    // for this instead of a fake picture.
+    coverImage: null,
     brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2025/03/Downtown-Brochure.pdf',
-    gallery: [estateImages.placeholder1, estateImages.placeholder2, estateImages.placeholder4],
+    gallery: [],
     status: 'SOLD_OUT',
     amenities: ['Business District', 'Green Spaces & Waterways', '24/7 Power', 'High-Speed Internet'],
     offeringType: 'LAND',
@@ -253,98 +256,6 @@ export const fallbackEstates: Estate[] = [
 ];
 
 export const fallbackProperties: Property[] = [
-  {
-    id: 'fallback-property-duplex',
-    title: 'Luxury 4 Bedroom Duplex',
-    slug: 'luxury-4-bedroom-duplex-lekki',
-    description: 'A modern duplex offering generous living spaces, estate security, backup power, and easy access to Lekki business corridors.',
-    type: 'APARTMENT',
-    status: 'AVAILABLE',
-    price: 150000000,
-    currency: 'NGN',
-    state: 'Lagos',
-    city: 'Lekki',
-    address: 'Admiralty Way, Lekki Phase 1',
-    bedrooms: 4,
-    bathrooms: 5,
-    size: '450sqm',
-    amenities: ['Swimming Pool', 'CCTV', 'Backup Power', 'Security'],
-    featured: true,
-    latitude: 6.4474,
-    longitude: 3.4723,
-    // Placeholder real-estate stock clip — same stable, verified-embeddable
-    // YouTube video used elsewhere as a placeholder (see the
-    // gallery/testimonial usages below), not real footage of this property.
-    videoUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
-    images: [
-      {
-        id: 'fallback-property-duplex-image',
-        url: estateImages.placeholder2,
-        altText: 'Luxury duplex exterior',
-      },
-      {
-        id: 'fallback-property-duplex-image-2',
-        url: estateImages.placeholder1,
-        altText: 'Luxury duplex living area',
-      },
-      {
-        id: 'fallback-property-duplex-image-3',
-        url: estateImages.placeholder3,
-        altText: 'Luxury duplex street view',
-      },
-    ],
-    variants: [
-      {
-        id: 'fallback-duplex-variant-4bed',
-        label: '4 Bedroom Duplex',
-        price: 150000000,
-        currency: 'NGN',
-        bedrooms: 4,
-        bathrooms: 5,
-        size: '450sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-      },
-      {
-        id: 'fallback-duplex-installment',
-        label: '4 Bedroom Duplex Payment Plan',
-        price: 165000000,
-        currency: 'NGN',
-        bedrooms: 4,
-        bathrooms: 5,
-        size: '450sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 30,
-        installmentMonths: 12,
-        installmentAmount: 9600000,
-        active: true,
-      },
-    ],
-    faqs: [
-      {
-        id: 'fallback-property-faq-1',
-        question: 'Can I schedule an inspection?',
-        answer: 'Yes. Use the booking form or contact the sales team to confirm the next inspection slot.',
-      },
-    ],
-    resources: [
-      {
-        id: 'fallback-property-resource-1',
-        title: 'Property Brochure',
-        fileType: 'PDF',
-        url: brochureUrl,
-      },
-    ],
-    // Not actually an Eko Paragon unit (generic Lekki duplex, unrelated
-    // location/specs) — was only ever linked here as a placeholder.
-    // Unlinked now that Eko Paragon has its real 1/2/3-bedroom units below.
-    estateId: null,
-    estate: null,
-    createdAt: now,
-    updatedAt: now,
-  },
   {
     // Replaced the old generic "Prime Estate Land, Gwarinpa" placeholder
     // (wrong location, wrong price - never actually matched this estate)
@@ -1175,10 +1086,12 @@ fallbackEstates.forEach((estate) => {
   ];
 });
 
-// Real posts pulled from the live blog (most recent 6, matching what the
-// live homepage features). 20 older posts (2022-2025) not migrated yet.
-// TODO(content): cover images are still placeholder Unsplash photos - the
-// live posts' own images weren't cleanly resolved during this pass.
+// Most posts below carry Daniel's own verbatim copy and real images from
+// this session's content pass. A few — flagged individually with their own
+// TODO(content) comment — still have no real image (none was ever
+// provided) or, for "Is Lagos Real Estate Still a Good Investment in
+// 2025?", still paraphrased content rather than his verbatim text; it's
+// one of ~20 older live-blog posts (2022-2025) not yet migrated.
 export const fallbackBlogPosts = [
   {
     id: 'fallback-blog-downtown-phase-2-launch',
@@ -1247,7 +1160,10 @@ export const fallbackBlogPosts = [
     excerpt: 'Why transparency and honest communication — not hype — are what actually build buyer trust in Nigerian real estate.',
     content:
       'Investors really dislike hidden fees, any kind of misrepresentation, or surprises about property issues.\n\nThey value honesty and transparency above all. Just be upfront — it’s that simple.\n\nWhen you explore property investment opportunities, you quickly learn that integrity is non-negotiable. Buyers and investors are extra cautious, particularly in the Nigerian property market.\n\nThink about it. When you walk into a real estate office, you expect clear and honest communication. No hidden fees, no confusing fine print, just straightforward answers. This type of openness is what creates confidence in buyers and investors.\n\nIn a country where many are searching for affordable real estate Nigeria offers, knowing that you are dealing with a reputable developer makes all the difference.\n\nWhen a developer consistently demonstrates honesty, they build trust. This trust is the foundation for long-lasting relationships that naturally turn clients into brand evangelists.\n\nAt AceRoyal Estates, we have worked hard to establish our brand as a beacon of integrity in the Nigerian property market. Our commitment to transparency means every transaction is handled with care so that our clients receive exactly what they are promised. We have earned our reputation by choosing honesty over hype.\n\nWhen you ask top search engines how to invest in Nigerian property or how to avoid real estate scams Nigeria, the answer always comes back to trust and reliability. At AceRoyal Estates, we stand out because we put integrity at the heart of everything we do.\n\nUltimately, whether you are entering the Nigerian property market as a first-time buyer or as a seasoned investor, remember that integrity is the key.\n\nLet’s get you started on your next real estate investment. Call now for a free consultation.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
+    // No image was provided for this post — leave unset rather than a
+    // stock photo; the post page and listing cards both render fine
+    // without a cover image.
+    coverImageUrl: null,
     published: true,
     createdAt: '2025-03-15T00:00:00.000Z',
     updatedAt: '2025-03-15T00:00:00.000Z',
@@ -1307,7 +1223,11 @@ export const fallbackBlogPosts = [
     excerpt: 'Population growth, infrastructure projects, and rental demand behind Lagos’s continued property boom.',
     content:
       'Lagos real estate remains one of Nigeria’s most profitable investments — thousands relocate to the city daily, pushing demand for land and housing higher. Areas like Ibeju-Lekki, Epe, and Lekki Phase 2 have seen major appreciation, while Ikorodu and Ajah are becoming investor favorites.\n\nMajor infrastructure projects — the Imota Rice Mill, Fourth Mainland Bridge, and Lagos-Calabar Coastal Road — are driving demand further. Rental income is strong too, from short-let apartments to commercial properties, giving landlords steady cash flow.\n\nThe risk is choosing the wrong developer — delayed projects and poor-quality builds are common, so buy from a company with a proven track record and full transparency.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80',
+    // TODO(content): one of the ~20 older live-blog posts not migrated with
+    // Daniel's own copy — this content is a paraphrase, not his verbatim
+    // text, and no image was ever provided. No stock photo either, since
+    // that would just swap one placeholder for another.
+    coverImageUrl: null,
     published: true,
     createdAt: '2025-02-04T00:00:00.000Z',
     updatedAt: '2025-02-04T00:00:00.000Z',
@@ -1331,7 +1251,9 @@ export const fallbackBlogPosts = [
     excerpt: 'The AceRoyal Investment Plan — Appreciate, Capitalize, Enhance — for turning financial goals into action.',
     content:
       'We all make financial goals every year. We dream big, plan to invest, and set ambitious targets. But how often do those plans actually turn into real, lasting wealth?\n\nThis year, flip the switch. Take concrete steps towards building sustainable wealth.\n\nMaking smart financial choices is key. At AceRoyal Estates, we give you the information and support you need to confidently invest in real estate. Our expertise and amazing properties make us the right choice for your investment journey.\n\nIntroducing the AceRoyal Investment Plan — your 2025 roadmap to financial success.\n\nA — Appreciate: Land Banking\n\nInvest in prime land within rapidly developing areas like Legacy Garden City, Imota, Ikorodu and our ultra luxurious Edo Mega City. Land value consistently appreciates over time, offering significant long-term returns.\n\nC — Capitalize: Experience True Passive Income\n\nInvest in our state-of-the-art Eko Paragon Residence. Enjoy modern living with unmatched luxury and comfort. Generate consistent rental income from both short-term and long-term residents with minimal effort on your part. Our expert team handles all aspects of property management, including tenant screening, maintenance, and cleaning. Just relax and reap the reward — sit back and enjoy the benefits of passive income while we take care of the rest.\n\nE — Enhance: Diversify Your Portfolio\n\nExplore both land banking and hotel residence investments to enhance your portfolio’s stability and maximize your returns.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+    // No image was provided for this post — leave unset rather than a
+    // stock photo.
+    coverImageUrl: null,
     published: true,
     createdAt: '2025-01-15T00:00:00.000Z',
     updatedAt: '2025-01-15T00:00:00.000Z',
