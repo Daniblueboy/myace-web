@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { toast } from 'sonner';
 
-export function ShareEstate({ name, url }: { name: string; url: string }) {
+export function ShareEstate({ name, url, iconOnly = false }: { name: string; url: string; iconOnly?: boolean }) {
   const [copied, setCopied] = useState(false);
   // navigator.share only exists in the browser, and support varies (most
   // mobile browsers, most desktop browsers don't) — check after mount so
@@ -56,7 +56,11 @@ export function ShareEstate({ name, url }: { name: string; url: string }) {
   // every installed app — WhatsApp, Messages, Mail, Instagram, whatever's
   // there — instead of us hand-building each integration.
   if (canNativeShare) {
-    return (
+    return iconOnly ? (
+      <Button variant="outline" size="icon" onClick={nativeShare} aria-label="Share Property">
+        <Share2 className="h-4 w-4" />
+      </Button>
+    ) : (
       <Button variant="outline" className="gap-2" onClick={nativeShare}>
         <Share2 className="h-4 w-4" />
         Share Property
@@ -67,10 +71,16 @@ export function ShareEstate({ name, url }: { name: string; url: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="gap-2">
-          <Share2 className="h-4 w-4" />
-          Share Property
-        </Button>
+        {iconOnly ? (
+          <Button variant="outline" size="icon" aria-label="Share Property">
+            <Share2 className="h-4 w-4" />
+          </Button>
+        ) : (
+          <Button variant="outline" className="gap-2">
+            <Share2 className="h-4 w-4" />
+            Share Property
+          </Button>
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem asChild className="gap-2 cursor-pointer">

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
-import { MapPin, Home, ShieldCheck, ArrowLeft, View } from 'lucide-react';
+import { MapPin, Home, ShieldCheck, ArrowLeft, View, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import EstateOfferings from '@/components/estates/EstateOfferings';
@@ -117,7 +117,6 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
             <div className="p-8 space-y-5">
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-3">
-                  <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Estate Spotlight</p>
                   {estate.status && (
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
@@ -129,27 +128,12 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                       {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
                     </span>
                   )}
-                </div>
-                {/* CTAs pulled up to sit right with the status badge, at the
-                    very top of the page, rather than below the description —
-                    enquiring shouldn't need scrolling past the pitch first. */}
-                <div className="flex flex-wrap gap-3">
-                  <Button asChild>
+                  {/* Only Enquire sits up here with the status badge — the
+                      rest of the CTAs stay in their original spot below the
+                      description. */}
+                  <Button size="sm" asChild>
                     <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
                   </Button>
-                  <Button variant="outline" asChild>
-                    <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a
-                      href={estate.brochureUrl || '/resources'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Download Brochure
-                    </a>
-                  </Button>
-                  <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} />
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">{estate.name}</h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
@@ -159,6 +143,26 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 <p className="text-muted-foreground text-lg">
                   {estate.description || 'A master-planned estate with verified titles and modern infrastructure.'}
                 </p>
+              </div>
+              {/* nowrap + icon-only Brochure/Share keeps this one row on
+                  every screen width instead of wrapping to a second line. */}
+              <div className="flex flex-nowrap items-center gap-2 overflow-x-auto scroll-hide">
+                <Button asChild className="shrink-0">
+                  <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
+                </Button>
+                <Button variant="outline" size="icon" className="shrink-0" asChild>
+                  <a
+                    href={estate.brochureUrl || '/resources'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download Brochure"
+                  >
+                    <Download className="h-4 w-4" />
+                  </a>
+                </Button>
+                <div className="shrink-0">
+                  <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} iconOnly />
+                </div>
               </div>
               <div
                 className={`flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 ${estate.properties?.length ? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}
