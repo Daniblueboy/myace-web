@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getVideoAspectRatio } from '@/lib/video-aspect-ratio';
 
 type AdaptiveVideoPlayerProps = {
@@ -25,6 +25,28 @@ const PORTRAIT_MAX_HEIGHT = '70vh';
  */
 export function AdaptiveVideoPlayer({ src, embedSrc, title, initialAspectRatio, className = '' }: AdaptiveVideoPlayerProps) {
   const [ratio, setRatio] = useState<number | null>(initialAspectRatio ?? (embedSrc ? LANDSCAPE_FALLBACK : null));
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // The autoPlay attribute on a <video> with a nested <source> (rather than
+  // a src on the element itself) unreliably triggers on mobile/after
+  // hydration — the video loads fully (readyState 4) but stays paused. An
+  // explicit play() call is the reliable fallback; browsers that already
+  // autoplayed just no-op here since play() on a playing video is a no-op.
+  useEffect(() => {
+    if (embedSrc) return;
+    const video = videoRef.current;
+    if (!video) return;
+    const tryPlay = () => {
+      video.play().catch(() => {});
+    };
+    tryPlay();
+    video.addEventListener('loadedmetadata', tryPlay);
+    video.addEventListener('canplay', tryPlay);
+    return () => {
+      video.removeEventListener('loadedmetadata', tryPlay);
+      video.removeEventListener('canplay', tryPlay);
+    };
+  }, [src, embedSrc]);
 
   // Pages that render this client-side (no server-fetched oEmbed data
   // passed in) fetch the real ratio themselves once mounted.
@@ -63,6 +85,7 @@ export function AdaptiveVideoPlayer({ src, embedSrc, title, initialAspectRatio, 
         />
       ) : (
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
