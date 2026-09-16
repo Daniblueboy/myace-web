@@ -164,6 +164,10 @@ export const fallbackProperties: Property[] = [
     featured: true,
     latitude: 6.4474,
     longitude: 3.4723,
+    // Placeholder aerial tour clip — same stable, verified-embeddable
+    // YouTube video already used elsewhere as a placeholder (see the
+    // gallery/testimonial TODOs), not real footage of this property.
+    videoUrl: 'https://www.youtube.com/watch?v=fs_wEyzesvs',
     images: [
       {
         id: 'fallback-property-duplex-image',

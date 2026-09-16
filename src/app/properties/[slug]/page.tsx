@@ -23,6 +23,29 @@ const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'),
   loading: () => <div className="h-[400px] rounded-lg bg-slate-100 dark:bg-slate-800" />,
 });
 
+// Converts a YouTube/Vimeo watch URL into its embeddable form and adds
+// autoplay+mute params — browsers block non-muted autoplay outright, and
+// starting muted (with controls still available to unmute) is what lets
+// the video draw attention the moment this section scrolls into view.
+function getAutoplayEmbedUrl(url: string) {
+  if (!url) return url;
+  if (url.includes('youtube.com/embed/')) return `${url}${url.includes('?') ? '&' : '?'}autoplay=1&mute=1&playsinline=1`;
+  if (url.includes('player.vimeo.com')) return `${url}${url.includes('?') ? '&' : '?'}autoplay=1&muted=1`;
+  if (url.includes('youtu.be/')) {
+    const id = url.split('youtu.be/')[1]?.split(/[?&]/)[0];
+    return id ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&playsinline=1` : url;
+  }
+  if (url.includes('youtube.com/watch')) {
+    const id = new URL(url).searchParams.get('v');
+    return id ? `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&playsinline=1` : url;
+  }
+  if (url.includes('vimeo.com/')) {
+    const id = url.split('vimeo.com/')[1]?.split(/[?&]/)[0];
+    return id ? `https://player.vimeo.com/video/${id}?autoplay=1&muted=1` : url;
+  }
+  return url;
+}
+
 export default function PropertyDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -97,8 +120,10 @@ export default function PropertyDetailPage() {
       </div>
 
       <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Main Content */}
-        <div className="md:col-span-2 space-y-6">
+        {/* Main Content — ordered after the enquiry sidebar on mobile (see
+            below) so the enquiry CTA is the first thing a visitor reaches,
+            not something buried at the bottom of a long stacked page. */}
+        <div className="order-2 md:order-1 md:col-span-2 space-y-6">
           {/* Header */}
           <div>
             <div className="flex gap-2 mb-3">
@@ -201,6 +226,98 @@ export default function PropertyDetailPage() {
             </CardContent>
           </Card>
 
+          {/* Video & Virtual Tour — promoted out of the Media tab to right
+              after Description (was previously the last of six tabs, easy
+              to miss) since video is what actually catches attention; the
+              video autoplays (muted, per browser autoplay rules) for that
+              reason. Only rendered when there's real media, and only shown
+              here in one place — the Media tab below it is gone. */}
+          {(property.panoramaUrl ||
+            property.videoUrl ||
+            (property.media &&
+              property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length > 0)) && (
+            <Card className="glass-card backdrop-blur-lg">
+              <CardContent className="p-6 space-y-6">
+                <h2 className="text-2xl font-bold">Video &amp; Virtual Tour</h2>
+
+                {property.videoUrl && (
+                  <div className="aspect-video rounded-lg overflow-hidden border">
+                    {property.videoUrl.includes('youtube') || property.videoUrl.includes('vimeo') ? (
+                      <iframe
+                        src={getAutoplayEmbedUrl(property.videoUrl)}
+                        title={`Video tour for ${property.title}`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video autoPlay muted loop playsInline controls className="w-full h-full">
+                        <source src={property.videoUrl} />
+                      </video>
+                    )}
+                  </div>
+                )}
+
+                {property.panoramaUrl && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">360° Virtual Tour</h3>
+                    <PropertyPanorama panoramaUrls={[property.panoramaUrl]} />
+                  </div>
+                )}
+
+                {property.media &&
+                  property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">Additional Media</h3>
+                    {property.media
+                      .filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE')
+                      .map((item: any) => (
+                      <div key={item.id} className="rounded-lg border p-4">
+                        <div className="flex items-center justify-between gap-4">
+                          <div>
+                            <p className="font-medium">{item.title || item.type}</p>
+                            <p className="text-sm text-slate-500 dark:text-muted-foreground">{item.type}</p>
+                          </div>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary text-sm font-medium"
+                          >
+                            Open
+                          </a>
+                        </div>
+                        {item.type === 'VIDEO' && (
+                          <div className="aspect-video rounded-lg overflow-hidden border mt-4">
+                            {item.url.includes('youtube') || item.url.includes('vimeo') ? (
+                              <iframe
+                                src={getAutoplayEmbedUrl(item.url)}
+                                title={`Video for ${property.title}`}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            ) : (
+                              <video autoPlay muted loop playsInline controls className="w-full h-full">
+                                <source src={item.url} />
+                              </video>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <Button size="lg" className="w-full sm:w-auto" asChild>
+                  <Link href={property.estate ? `/book-inspection?estate=${property.estate.slug}` : '/book-inspection'}>
+                    Book Inspection
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
           {/* Tabs */}
           <Tabs defaultValue="location">
             {/* TabsList is w-fit by design (shadcn default) and doesn't wrap
@@ -214,7 +331,6 @@ export default function PropertyDetailPage() {
                 <TabsTrigger value="faqs">FAQs</TabsTrigger>
                 <TabsTrigger value="resources">Resources</TabsTrigger>
                 <TabsTrigger value="payment">Payment Plan</TabsTrigger>
-                <TabsTrigger value="media">Media</TabsTrigger>
               </TabsList>
             </div>
             <TabsContent value="location" className="mt-4">
@@ -381,87 +497,6 @@ export default function PropertyDetailPage() {
                 </Card>
               )}
             </TabsContent>
-            <TabsContent value="media" className="mt-4 space-y-6">
-              {property.panoramaUrl && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">360° Virtual Tour</h3>
-                  <PropertyPanorama panoramaUrls={[property.panoramaUrl]} />
-                </div>
-              )}
-              {property.videoUrl && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">Video Tour</h3>
-                  <div className="aspect-video rounded-lg overflow-hidden border">
-                    {property.videoUrl.includes('youtube') || property.videoUrl.includes('vimeo') ? (
-                      <iframe
-                        src={property.videoUrl}
-                        title={`Video tour for ${property.title}`}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video controls className="w-full h-full">
-                        <source src={property.videoUrl} />
-                      </video>
-                    )}
-                  </div>
-                </div>
-              )}
-              {property.media &&
-                property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length > 0 && (
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Additional Media</h3>
-                  {property.media
-                    .filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE')
-                    .map((item: any) => (
-                    <div key={item.id} className="rounded-lg border p-4">
-                      <div className="flex items-center justify-between gap-4">
-                        <div>
-                          <p className="font-medium">{item.title || item.type}</p>
-                          <p className="text-sm text-slate-500 dark:text-muted-foreground">{item.type}</p>
-                        </div>
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary text-sm font-medium"
-                        >
-                          Open
-                        </a>
-                      </div>
-                      {item.type === 'VIDEO' && (
-                        <div className="aspect-video rounded-lg overflow-hidden border mt-4">
-                          {item.url.includes('youtube') || item.url.includes('vimeo') ? (
-                            <iframe
-                              src={item.url}
-                              title={`Video for ${property.title}`}
-                              className="w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                            />
-                          ) : (
-                            <video controls className="w-full h-full">
-                              <source src={item.url} />
-                            </video>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-              {!property.panoramaUrl &&
-                !property.videoUrl &&
-                (!property.media ||
-                  property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length === 0) && (
-                <Card className="glass-card backdrop-blur-lg">
-                  <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
-                    No media available for this property.
-                  </CardContent>
-                </Card>
-              )}
-            </TabsContent>
           </Tabs>
 
           {related.length > 0 && (
@@ -488,8 +523,11 @@ export default function PropertyDetailPage() {
           )}
         </div>
 
-        {/* Sidebar */}
-        <div>
+        {/* Sidebar — moved ahead of Main Content in visual order on mobile
+            (order-1 vs Main Content's order-2) so the enquiry form is the
+            top of the page there; unchanged on desktop where it's already
+            the visible right-hand column. */}
+        <div className="order-1 md:order-2">
           <PropertyEnquiryForm
             propertyId={property.id}
             propertyTitle={property.title}
