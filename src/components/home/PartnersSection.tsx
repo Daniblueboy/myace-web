@@ -44,7 +44,7 @@ export default function PartnersSection() {
     <section className="py-12 md:py-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl font-bold mb-4">Our Partners & Clients</h2>
+          <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
           <p className="text-muted-foreground">
             Trusted by leading organizations across Nigeria
           </p>

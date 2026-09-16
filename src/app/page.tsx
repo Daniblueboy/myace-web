@@ -14,14 +14,15 @@ import { Reveal } from '@/components/motion/Reveal';
 
 // Section order follows Daniel's specified homepage flow: Hero, Who We Are,
 // CEO message, Our Developments, Our Success (testimonials), Why Choose
-// Aceroyal, Our Partnership, Announcement, App Launch, Insights. New/
-// fast-selling property indicators live inside Our Developments itself
-// (see EstateSections/FeaturedEstates) rather than as a separate homepage
-// section — an earlier standalone "Featured Properties" section was
-// removed per Daniel's explicit correction. Why Choose Aceroyal originally
-// lived inside Who We Are
-// (folded in to avoid two consecutive "about the company" blocks) but was
-// moved to its own section right after Our Success per Daniel's request.
+// Aceroyal, Our Partnership, Announcement, App Launch, Insights.
+// Our Developments (EstateSections/FeaturedProperties) shows properties,
+// not estates — ordered newest first, then fast-selling (`featured`) —
+// per Daniel's explicit direction, after two earlier attempts (a
+// standalone "Featured Properties" section, then a second row inside an
+// estates grid) were reverted. Why Choose Aceroyal originally lived
+// inside Who We Are (folded in to avoid two consecutive "about the
+// company" blocks) but was moved to its own section right after Our
+// Success per Daniel's request.
 // Services was folded into Who We Are, the Realtor CTA was removed
 // outright, the States We Operate In section was removed outright too per
 // Daniel's request, and the Newsletter section was folded into App Launch
