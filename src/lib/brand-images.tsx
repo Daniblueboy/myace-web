@@ -1,21 +1,30 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-// aceroyal-symbol-white.png is already the mark alone (no wordmark to crop
-// away) with a real transparent background, so this just needs to composite
-// it onto a solid brand color for contexts (favicon, OG image) that can't
-// rely on transparency.
-let markDataUri: string | null = null;
-function getMarkDataUri() {
-  if (!markDataUri) {
-    const filePath = path.join(process.cwd(), 'public/images/aceroyal-symbol-white.png');
+// Both symbol PNGs are already the mark alone (no wordmark to crop away)
+// with a real transparent background. The colour version carries its own
+// red/black branding, so it reads cleanly on a plain white backdrop rather
+// than needing compositing onto a solid brand-color block the way the
+// white-only mark did.
+const markDataUris: Record<'colour' | 'white', string | null> = { colour: null, white: null };
+function getMarkDataUri(variant: 'colour' | 'white' = 'colour') {
+  if (!markDataUris[variant]) {
+    const filePath = path.join(process.cwd(), `public/images/aceroyal-symbol-${variant}.png`);
     const base64 = fs.readFileSync(filePath).toString('base64');
-    markDataUri = `data:image/png;base64,${base64}`;
+    markDataUris[variant] = `data:image/png;base64,${base64}`;
   }
-  return markDataUri;
+  return markDataUris[variant]!;
 }
 
-export function MarkIcon({ size, background = '#bb1e15' }: { size: number; background?: string }) {
+export function MarkIcon({
+  size,
+  background = '#ffffff',
+  variant = 'colour',
+}: {
+  size: number;
+  background?: string;
+  variant?: 'colour' | 'white';
+}) {
   const markSize = Math.round(size * 0.62);
 
   return (
@@ -29,7 +38,7 @@ export function MarkIcon({ size, background = '#bb1e15' }: { size: number; backg
         background,
       }}
     >
-      <img alt="" src={getMarkDataUri()} width={markSize} height={markSize} style={{ objectFit: 'contain' }} />
+      <img alt="" src={getMarkDataUri(variant)} width={markSize} height={markSize} style={{ objectFit: 'contain' }} />
     </div>
   );
 }
@@ -52,7 +61,7 @@ export function ShareImage() {
         fontFamily: 'sans-serif',
       }}
     >
-      <MarkIcon size={markSize} background="transparent" />
+      <MarkIcon size={markSize} background="transparent" variant="white" />
       <div
         style={{
           marginTop: 24,
