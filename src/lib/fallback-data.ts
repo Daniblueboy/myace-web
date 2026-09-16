@@ -663,7 +663,9 @@ export const fallbackProperties: Property[] = [
     amenities: ['Office Spaces', 'Health Care Facilities', 'Shopping Mall', 'Financial Districts', 'Exclusive Membership', 'Helipad', 'Restaurants'],
     featured: true,
     images: [
-      { id: 'fallback-downtown-phase2-image-1', url: estateImages.placeholder3, altText: 'Downtown Lagos Phase 2' },
+      { id: 'fallback-downtown-phase2-image-1', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg', altText: 'Downtown Lagos Phase 2 — 500sqm pricing' },
+      { id: 'fallback-downtown-phase2-image-2', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-1000sqm.jpg', altText: 'Downtown Lagos Phase 2 — 1,000sqm pricing' },
+      { id: 'fallback-downtown-phase2-image-3', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg', altText: 'Downtown Lagos Phase 2 — payment plan' },
     ],
     variants: [
       {
@@ -1558,24 +1560,6 @@ export const fallbackTestimonials: Testimonial[] = [
       "I've talked to the CEO of Aceroyalestates multiple times about real estate and the real estate market. He is very knowledgeable, professional and passionate about his vision. Anyone who works with him is lucky to have him on their side. It's a competitive market and he knows how to navigate the complexities to his clients advantage, he is constantly challenging the status quo, I once called him the \"robinhood\" of real estate. Was a joy to work with. He really went above and beyond in pursuit of my peculiar constraints, and worked through several challenging buying scenarios until I got just what I wanted. Thank you Chairman_ace.",
     active: true,
   },
-  // TODO(content): dummy entry below (not sourced from any real client)
-  // written to read like a genuine testimonial rather than announcing
-  // itself as a placeholder, so the "Our Success" layout — text, photo,
-  // and video testimonials — can actually be reviewed as it will look once
-  // real content lands. Built per Daniel's standing instruction to build
-  // every section during development with placeholders rather than gate on
-  // final content, and swap/remove before go-live. Replace name/role/
-  // message/imageUrl with real, approved client content.
-  {
-    id: 'fallback-testimonial-dummy-image',
-    name: 'Adaeze Okafor',
-    role: 'Homeowner, Alpha Garden City',
-    message:
-      "From my first site visit to the day I got my allocation letter, the process was clear at every step. No surprises, no hidden charges — just what was agreed from the start. I'm proud to call this estate home.",
-    rating: 5,
-    imageUrl: estateImages.placeholder3,
-    active: true,
-  },
   // Real footage from a quarterly Allocation Day at The Legacy Garden City —
   // shown as an event clip rather than attributed to any one named client,
   // since we don't have a specific person's approved quote to go with it.
@@ -1812,20 +1796,96 @@ export const fallbackResources = [
     estateId: 'fallback-estate-prime-annex',
     estate: fallbackEstates.find((e) => e.slug === 'prime-annex'),
   },
+  {
+    id: 'fallback-resource-alpha-garden-brochure',
+    title: 'Alpha Garden City — Brochure',
+    url: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
+    fileType: 'PDF',
+    estateId: 'fallback-estate-alpha-garden-city',
+    estate: fallbackEstates.find((e) => e.slug === 'alpha-garden-city'),
+  },
+  {
+    id: 'fallback-resource-villa-nova-flyer',
+    title: 'Villa Nova Bungalows — Pricing Flyer',
+    url: '/images/estates/villa-nova/villa-nova-flyer-1.jpg',
+    fileType: 'JPG',
+    estateId: 'fallback-estate-villa-nova',
+    estate: fallbackEstates.find((e) => e.slug === 'villa-nova-bungalows'),
+  },
+  {
+    id: 'fallback-resource-new-city-flyer',
+    title: 'New City Estate — Flexible Plan Flyer',
+    url: '/images/estates/new-city-estate/new-city-flyer.jpg',
+    fileType: 'JPG',
+    estateId: 'fallback-estate-new-city',
+    estate: fallbackEstates.find((e) => e.slug === 'new-city-estate'),
+  },
+  {
+    id: 'fallback-resource-metro-city-flyer',
+    title: 'Metro City Garden — Pricing Flyer',
+    url: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
+    fileType: 'JPG',
+    estateId: 'fallback-estate-metro-city-garden',
+    estate: fallbackEstates.find((e) => e.slug === 'metro-city-garden'),
+  },
+  {
+    id: 'fallback-resource-novena-flyer',
+    title: 'Novena Estate Phase 2 — Pricing Flyer',
+    url: '/images/estates/novena-estate/novena-estate-flyer.jpg',
+    fileType: 'JPG',
+    estateId: 'fallback-estate-novena',
+    estate: fallbackEstates.find((e) => e.slug === 'novena-estate-phase-2'),
+  },
 ];
 
 export const fallbackFaqs = [
   {
     id: 'fallback-faq-1',
     question: 'Can I inspect before payment?',
-    answer: 'Yes. We recommend booking an inspection before making a purchase decision.',
+    answer: 'Yes. We recommend booking an inspection before making a purchase decision — use the Book Inspection page to join the next scheduled visit to any active estate.',
     sortOrder: 0,
   },
   {
     id: 'fallback-faq-2',
     question: 'Are payment plans available?',
-    answer: 'Payment-plan availability depends on the estate and unit type. Contact the team for the current schedule.',
+    answer: 'Most estates offer both an outright price and an installment plan (typically 6-12 months with an initial deposit). Payment-plan availability and terms vary by estate and plot size — check the estate’s Available Options section or contact the team for the current schedule.',
     sortOrder: 1,
+  },
+  {
+    id: 'fallback-faq-3',
+    question: 'What documents do I get when I buy land or a property?',
+    answer: 'Every plot comes with a registered survey — a licensed surveyor’s map of your land’s exact boundaries and location, filed with the state’s Office of the Surveyor-General — which is required before any land title (Certificate of Occupancy, Right of Occupancy, Freehold, etc.) can be issued. Aceroyal handles the surveying, documentation, and title process on your behalf.',
+    sortOrder: 2,
+  },
+  {
+    id: 'fallback-faq-4',
+    question: 'What happens on Allocation Day?',
+    answer: 'Allocation Day is held every three months. Licensed surveyors walk you through your plot’s exact location and boundaries, and our Admin team has your documents ready to sign on-site — no back-and-forth or weeks of waiting. It’s also a chance to meet future neighbors and fellow investors.',
+    sortOrder: 3,
+  },
+  {
+    id: 'fallback-faq-5',
+    question: 'How do I make a payment?',
+    answer: 'Payments should always be made into Aceroyal’s corporate account, never a personal account. Contact the sales team or your assigned agent for current account details before making any payment.',
+    sortOrder: 4,
+  },
+  {
+    id: 'fallback-faq-6',
+    question: 'Which cities does Aceroyal operate in?',
+    answer: 'Aceroyal currently has active estates across Lagos, Oyo, Enugu, Edo, and Abuja, with physical offices to match. See the Estates page for the full current list.',
+    sortOrder: 5,
+  },
+  {
+    id: 'fallback-faq-7',
+    question: 'Can I buy from outside Nigeria?',
+    answer: 'Yes — Aceroyal works with buyers in the diaspora regularly. Documentation, allocation, and payment can all be coordinated remotely; contact the team to discuss your specific location and timeline.',
+    sortOrder: 6,
+  },
+  {
+    id: 'fallback-faq-8',
+    question: 'Where can I find brochures and consent forms?',
+    answer: 'Estate-specific brochures, consent forms, and pricing flyers are available on the Downloads & Resources page, and linked directly from each estate’s own page.',
+    sortOrder: 7,
   },
 ];
 
