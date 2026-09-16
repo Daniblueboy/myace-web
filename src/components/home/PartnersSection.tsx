@@ -71,7 +71,10 @@ export default function PartnersSection() {
           className="flex gap-6 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center lg:mx-0"
         >
           {partners.map((partner) => (
-            <div key={partner.id} className="group shrink-0 w-[38%] snap-center md:w-52">
+            <div
+              key={partner.id}
+              className="group shrink-0 w-[38%] snap-center grayscale transition-all duration-300 hover:grayscale-0 md:w-52"
+            >
               <PartnerLogo partner={partner} />
               <p className="mt-2 h-4 truncate text-center text-xs font-medium text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {partner.name}
