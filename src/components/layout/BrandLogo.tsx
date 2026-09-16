@@ -23,7 +23,7 @@ export function BrandLogo({
   if (theme === 'dark') {
     return (
       <Image
-        src="/images/aceroyal-wordmark-white.png"
+        src="/images/aceroyal-wordmark-white-red-a.png"
         alt="Aceroyal"
         width={245}
         height={58}
@@ -42,7 +42,7 @@ export function BrandLogo({
         className={`${dimensions} object-contain dark:hidden ${className}`}
       />
       <Image
-        src="/images/aceroyal-wordmark-white.png"
+        src="/images/aceroyal-wordmark-white-red-a.png"
         alt=""
         width={245}
         height={58}

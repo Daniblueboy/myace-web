@@ -165,10 +165,10 @@ export const fallbackProperties: Property[] = [
     featured: true,
     latitude: 6.4474,
     longitude: 3.4723,
-    // Placeholder aerial tour clip — same stable, verified-embeddable
-    // YouTube video already used elsewhere as a placeholder (see the
-    // gallery/testimonial TODOs), not real footage of this property.
-    videoUrl: 'https://www.youtube.com/watch?v=fs_wEyzesvs',
+    // Placeholder real-estate stock clip — same stable, verified-embeddable
+    // YouTube video used elsewhere as a placeholder (see the
+    // gallery/testimonial usages below), not real footage of this property.
+    videoUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
     images: [
       {
         id: 'fallback-property-duplex-image',
@@ -630,7 +630,7 @@ export const fallbackTestimonials: Testimonial[] = [
     message:
       "I've bought land before and dealt with a lot of back and forth. With Aceroyal, the inspection was organized, the documentation was ready when they said it would be, and allocation happened on schedule. Watch how it went for me.",
     rating: 5,
-    videoUrl: 'https://www.youtube.com/watch?v=fs_wEyzesvs',
+    videoUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
     active: true,
   },
 ];
@@ -680,7 +680,7 @@ export const fallbackGalleryItems: GalleryItem[] = [
     id: 'fallback-gallery-5',
     title: 'Allocation Day Walkthrough',
     mediaType: 'video',
-    mediaUrl: 'https://www.youtube.com/watch?v=fs_wEyzesvs',
+    mediaUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
     thumbnailUrl: estateImages.placeholder1,
     estateName: 'Heritage Estate',
     active: true,

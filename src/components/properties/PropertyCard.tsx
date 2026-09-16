@@ -51,7 +51,7 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
          )}
          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
            <span className="bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold uppercase tracking-wider text-slate-900">
-             {property.type}
+             {property.type === 'LAND' ? 'Land' : property.type === 'APARTMENT' ? 'Apartment' : property.type}
            </span>
          </div>
       </div>

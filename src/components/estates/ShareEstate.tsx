@@ -24,6 +24,16 @@ export function ShareEstate({ name, url, iconOnly = false }: { name: string; url
 
   const shareText = `Check out ${name} on Aceroyal Estates`;
 
+  // Matches the Button `variant="outline"` look, but as a plain element so
+  // the label can expand on hover. Padding stays fixed — only the label's
+  // own max-width/opacity animate, so there's a single width-driving
+  // transition instead of two competing ones (which caused visible jitter
+  // when the revealed text was long enough to shift a lot of layout).
+  const expandableIconClass =
+    'group inline-flex h-9 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50';
+  const expandableLabelClass =
+    'max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[100px] group-hover:opacity-100';
+
   const nativeShare = async () => {
     try {
       await navigator.share({ title: name, text: shareText, url });
@@ -57,9 +67,10 @@ export function ShareEstate({ name, url, iconOnly = false }: { name: string; url
   // there — instead of us hand-building each integration.
   if (canNativeShare) {
     return iconOnly ? (
-      <Button variant="outline" size="icon" onClick={nativeShare} aria-label="Share Property">
-        <Share2 className="h-4 w-4" />
-      </Button>
+      <button type="button" onClick={nativeShare} aria-label="Share Property" className={expandableIconClass}>
+        <Share2 className="h-4 w-4 shrink-0" />
+        <span className={expandableLabelClass}>Share</span>
+      </button>
     ) : (
       <Button variant="outline" className="gap-2" onClick={nativeShare}>
         <Share2 className="h-4 w-4" />
@@ -72,9 +83,10 @@ export function ShareEstate({ name, url, iconOnly = false }: { name: string; url
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {iconOnly ? (
-          <Button variant="outline" size="icon" aria-label="Share Property">
-            <Share2 className="h-4 w-4" />
-          </Button>
+          <button type="button" aria-label="Share Property" className={expandableIconClass}>
+            <Share2 className="h-4 w-4 shrink-0" />
+            <span className={expandableLabelClass}>Share</span>
+          </button>
         ) : (
           <Button variant="outline" className="gap-2">
             <Share2 className="h-4 w-4" />

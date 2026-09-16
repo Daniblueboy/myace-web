@@ -130,7 +130,9 @@ export default function PropertyDetailPage() {
               <Badge variant="secondary" className="bg-primary text-white">
                 {property.status}
               </Badge>
-              <Badge variant="outline">{property.type}</Badge>
+              <Badge variant="outline">
+                {property.type === 'LAND' ? 'Land' : property.type === 'APARTMENT' ? 'Apartment' : property.type}
+              </Badge>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{property.title}</h1>
             <div className="flex items-center text-slate-600 dark:text-slate-300 text-lg">

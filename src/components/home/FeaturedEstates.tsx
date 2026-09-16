@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Estate } from '@/shared';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getOfferingLabel } from '@/lib/estate-offerings';
 
 type FeaturedEstatesProps = {
   estates: Estate[];
@@ -32,6 +33,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
           {shown.map((estate) => {
             const isNew = estate.id === latest?.id;
             const isFastSelling = Boolean(estate.featured) && !isNew;
+            const offeringLabel = getOfferingLabel(estate);
             return (
               <div
                 key={estate.id}
@@ -53,6 +55,11 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
                         }`}
                       >
                         {isNew ? 'New' : 'Fast Selling'}
+                      </span>
+                    )}
+                    {offeringLabel && (
+                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-slate-900/80 text-white backdrop-blur-sm">
+                        {offeringLabel}
                       </span>
                     )}
                   </div>

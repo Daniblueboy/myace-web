@@ -13,6 +13,7 @@ import { VirtualTourSimulator } from '@/components/estates/VirtualTourSimulator'
 import PropertyPanorama from '@/components/properties/PropertyPanorama';
 import { ShareEstate } from '@/components/estates/ShareEstate';
 import { RelatedEstates } from '@/components/estates/RelatedEstates';
+import { getOfferingLabel } from '@/lib/estate-offerings';
 
 const SITE_URL = 'https://aceroyalestates.com';
 
@@ -101,6 +102,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
   }
 
   const tourImages: string[] = [...new Set([estate.coverImage, ...(estate.gallery || [])].filter(Boolean))];
+  const offeringLabel = getOfferingLabel(estate);
 
   return (
     <div className="min-h-screen">
@@ -128,6 +130,11 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                       {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
                     </span>
                   )}
+                  {offeringLabel && (
+                    <span className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                      {offeringLabel}
+                    </span>
+                  )}
                   {/* Only Enquire sits up here with the status badge — the
                       rest of the CTAs stay in their original spot below the
                       description. */}
@@ -150,16 +157,18 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 <Button asChild className="shrink-0">
                   <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
                 </Button>
-                <Button variant="outline" size="icon" className="shrink-0" asChild>
-                  <a
-                    href={estate.brochureUrl || '/resources'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Download Brochure"
-                  >
-                    <Download className="h-4 w-4" />
-                  </a>
-                </Button>
+                <a
+                  href={estate.brochureUrl || '/resources'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Download Brochure"
+                  className="group inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+                >
+                  <Download className="h-4 w-4 shrink-0" />
+                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[160px] group-hover:opacity-100">
+                    Download Brochure
+                  </span>
+                </a>
                 <div className="shrink-0">
                   <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} iconOnly />
                 </div>

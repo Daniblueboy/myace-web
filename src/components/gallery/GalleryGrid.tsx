@@ -83,8 +83,8 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
             <button
               key={item.id}
               type="button"
-              className={`group relative overflow-hidden bg-slate-100 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary dark:bg-slate-900 ${
-                featured ? 'col-span-2 row-span-2' : 'aspect-square'
+              className={`group relative aspect-square overflow-hidden bg-slate-100 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary dark:bg-slate-900 ${
+                featured ? 'col-span-2 row-span-2' : ''
               }`}
               onClick={() => {
                 if (item.mediaType === 'video') {
