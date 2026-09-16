@@ -237,7 +237,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Novena Estate Phase 2',
     slug: 'novena-estate-phase-2',
     description:
-      'Novena Estate Phase 2 is located at Iraye, Epe, Lagos.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
+      'Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State. Land Title: Registered Survey.\n\nClose proximity to Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
     state: 'Lagos',
     city: 'Iraye, Epe',
     address: 'Iraye, Epe, Lagos',
@@ -246,7 +246,7 @@ export const fallbackEstates: Estate[] = [
     brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
-    amenities: [],
+    amenities: ['Paved Road', 'Perimeter Fencing', 'Steady Water Supply', 'Full Power Supply', 'Estate Security', 'Shopping Mall', 'Church/Mosque', 'Gym and Private Bar', 'Green Area/Garden'],
     createdAt: '2022-10-17T00:00:00.000Z',
     updatedAt: '2022-10-17T00:00:00.000Z',
   },
@@ -1402,6 +1402,42 @@ export const fallbackBlogPosts = [
     published: true,
     createdAt: '2022-10-17T00:00:00.000Z',
     updatedAt: '2022-10-17T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-introducing-novena',
+    title: 'Introducing Our Latest Estate in Lagos: Iraye, Epe',
+    slug: 'introducing-our-latest-estate-in-lagos-iraye-epe',
+    excerpt: 'Novena Estate Phase 2 — a buy-and-build residential estate at Iraye, Epe, now selling at ₦2.5 million per 500sqm plot.',
+    content:
+      'Introducing our latest estate in Lagos: Iraye, Epe — Novena Estate.\n\nThe Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State.\n\nNovena Estate Phase 2 is in close proximity with Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nThe features of Novena Estate Phase 2 include paved road, perimeter fencing, steady water supply, full power supply, estate security, shopping mall, church/mosque, gym and private bar, and green area/garden.\n\nA plot of land at Novena Estate Phase 2 is measured at 500sqm. We are currently selling at ₦2.5 million per plot.',
+    coverImageUrl: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
+    published: true,
+    createdAt: '2022-06-14T00:00:00.000Z',
+    updatedAt: '2022-06-14T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-estate-launch',
+    title: 'Estate Launch: La Regina Luxury Resort & Novena Estate Phase 2',
+    slug: 'estate-launch-la-regina-luxury-resort-and-novena-estate-phase-2',
+    excerpt: 'AceRoyal officially launches La Regina Luxury Resort Estate (Ketu, Epe) and Novena Estate Phase 2 (Iraye, Epe).',
+    content:
+      'You’re invited!\n\nAceRoyal Estates Homes Ltd invites the general public to the launching of her estates: La Regina Luxury Resort Estate, located at Ketu, Epe, and Novena Estate Phase 2, located at Iraye, Epe.\n\nWith Coach Spark Ovadje as the Chief Launcher and host of other co-launchers. If you know Coach Spark very well (Nigeria’s National Real Estate Coach), then you will know this is not an event to miss, because there is so much to learn and unlearn!\n\nThere are a lot of amazing things that will happen on that day. We will have a raffle draw where so many persons will have the opportunity of winning a free standing fan, an electric kettle, a LED TV, a mini-refrigerator, and lots more!\n\nBuses will be available at strategic locations to pick and drop you off.\n\nYou will have plenty to eat and drink.\n\nThe time remains 9 AM on Saturday, June 18th, 2022. See you on Saturday — and till then, please stay safe!\n\nCall/WhatsApp 09156549709 for further inquiries.',
+    coverImageUrl: '/images/blog/estate-launch/launch-invite-flyer.jpg',
+    published: true,
+    createdAt: '2022-06-17T00:00:00.000Z',
+    updatedAt: '2022-06-17T00:00:00.000Z',
+  },
+  {
+    id: 'fallback-blog-ileya-promo',
+    title: 'Ileya Mega Discount Promo',
+    slug: 'ileya-mega-discount-promo',
+    excerpt: 'A 40% Ileya discount on plots at Novena Estate Phase 2 — ₦1.5 million instead of ₦2.5 million.',
+    content:
+      'It’s Ileya — AceRoyal got you covered.\n\nAt Aceroyal Estate Homes Ltd, we hold dearly our commitment to our customers and the community. Because of this, we are giving out a massive discount on every plot purchased this July, through our Ileya Mega Discount Promo.\n\nDuring this period of celebration, we want to put smiles on the faces of our customers. We would be selling a plot of land at Novena Estate Phase 2 for ₦1.5M instead of the actual price of ₦2.5M — a whopping 40% discount.\n\nThat’s not all — we have also lined up numerous fantastic prizes like bags of rice, oil, phones, a refrigerator, and even a mature ram to be won by all participants.\n\nThis Ileya promo runs for 10 days, starting on the 1st all through till the 10th of July 2022.\n\nMaximize this offer now!',
+    coverImageUrl: '/images/blog/ileya-promo/ileya-flyer.jpg',
+    published: true,
+    createdAt: '2022-07-01T00:00:00.000Z',
+    updatedAt: '2022-07-01T00:00:00.000Z',
   },
 ];
 
