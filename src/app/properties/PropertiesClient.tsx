@@ -199,7 +199,7 @@ export default function PropertiesClient() {
           ) : properties.length > 0 ? (
             <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 xl:grid-cols-3 lg:gap-8">
               {properties.map(property => (
-                <div key={property.id} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
+                <div key={property.id} className="shrink-0 w-[82%] max-w-sm snap-center lg:w-auto lg:max-w-none lg:shrink">
                   <PropertyCard property={property} />
                 </div>
               ))}

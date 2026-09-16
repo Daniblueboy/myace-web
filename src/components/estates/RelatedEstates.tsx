@@ -27,7 +27,7 @@ export async function RelatedEstates({ currentSlug, state }: { currentSlug: stri
           <Link
             key={estate.id}
             href={`/estates/${estate.slug}`}
-            className="glass-card backdrop-blur-lg group shrink-0 w-[75%] snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow lg:w-auto lg:shrink"
+            className="glass-card backdrop-blur-lg group shrink-0 w-[75%] max-w-sm snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow lg:w-auto lg:max-w-none lg:shrink"
           >
             <div className="h-40 overflow-hidden bg-slate-100 dark:bg-slate-800">
               {estate.coverImage && (

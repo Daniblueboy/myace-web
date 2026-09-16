@@ -175,7 +175,7 @@ export default function EstatesClient() {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="h-96 shrink-0 w-[82%] animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 lg:w-auto lg:shrink"
+                className="h-96 shrink-0 w-[82%] max-w-sm animate-pulse rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 lg:w-auto lg:max-w-none lg:shrink"
               />
             ))}
           </div>
@@ -201,7 +201,7 @@ export default function EstatesClient() {
             {filtered.map((estate: any, i: number) => {
               const offeringLabel = formatOfferingTypes(estateOfferingTypes.get(estate.id) || new Set());
               return (
-              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
+              <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] max-w-sm snap-center lg:w-auto lg:max-w-none lg:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
                   className="glass-card backdrop-blur-lg group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
