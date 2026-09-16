@@ -1689,6 +1689,10 @@ export const fallbackPartners = [
     name: 'Emaar Properties',
     logoUrl: '/images/partners/emaar-logo.png',
     category: 'PARTNER',
+    // Emaar's mark is a filled purple square (not a transparent cutout) —
+    // fill the whole card with it instead of padding it onto a white
+    // backdrop, which would otherwise double-box it.
+    ownBackground: true,
     active: true,
   },
   {
@@ -1703,6 +1707,9 @@ export const fallbackPartners = [
     name: 'Gidi Homes',
     logoUrl: '/images/partners/gidi-homes-logo.png',
     category: 'PARTNER',
+    // White-only artwork on a black card — needs its own dark background to
+    // stay visible, so fill the card with it rather than padding onto white.
+    ownBackground: true,
     active: true,
   },
   {
@@ -1710,6 +1717,8 @@ export const fallbackPartners = [
     name: 'The Billionaire Realtor Group',
     logoUrl: '/images/partners/brg-logo.jpg',
     category: 'PARTNER',
+    // Gold/white badge on a dark gradient — same reasoning as Gidi Homes.
+    ownBackground: true,
     active: true,
   },
 ];
