@@ -206,15 +206,15 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 lg:grid-cols-2">
                 {estate.properties?.length ? (
                   <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Home className="h-4 w-4" /> {availableCountLabel}
+                    <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+                      <Home className="h-4 w-4 shrink-0" /> {availableCountLabel}
                     </div>
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
                   </div>
                 ) : null}
                 <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <ShieldCheck className="h-4 w-4" /> Amenities
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+                    <ShieldCheck className="h-4 w-4 shrink-0" /> Amenities
                   </div>
                   <div className="text-2xl font-semibold mt-1">{estate.amenities?.length || 0}</div>
                 </div>
