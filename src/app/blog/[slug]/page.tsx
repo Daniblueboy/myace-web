@@ -113,12 +113,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       const alt = imageMatch[1] || 'Blog image';
                       const url = imageMatch[2];
                       return (
-                        <img
+                        <div
                           key={`img-${index}`}
-                          src={url}
-                          alt={alt}
-                          className="w-full max-h-96 object-cover rounded-xl border"
-                        />
+                          className="flex items-center justify-center max-h-96 overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-800"
+                        >
+                          <img
+                            src={url}
+                            alt={alt}
+                            className="max-h-96 w-auto max-w-full object-contain"
+                          />
+                        </div>
                       );
                     }
 
