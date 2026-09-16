@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FilterPills } from '@/components/ui/filter-pills';
 import { Reveal } from '@/components/motion/Reveal';
+import { formatOfferingTypes } from '@/lib/estate-offerings';
 
 const OFFERING_OPTIONS = [
   { value: 'ALL', label: 'Land & Apartments' },
@@ -57,6 +58,11 @@ export default function EstatesClient() {
     };
     properties.forEach((p: any) => add(p.estateId, p.type));
     estates.forEach((e: any) => (e.properties || []).forEach((p: any) => add(e.id, p.type)));
+    // Estates without a priced Property record yet fall back to their own
+    // declared offeringType so the filter and badge stay in sync.
+    estates.forEach((e: any) => {
+      if (!map.has(e.id) && e.offeringType) add(e.id, e.offeringType);
+    });
     return map;
   }, [properties, estates]);
 
@@ -192,7 +198,9 @@ export default function EstatesClient() {
           </div>
         ) : (
           <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-8 lg:grid-cols-2 xl:grid-cols-3">
-            {filtered.map((estate: any, i: number) => (
+            {filtered.map((estate: any, i: number) => {
+              const offeringLabel = formatOfferingTypes(estateOfferingTypes.get(estate.id) || new Set());
+              return (
               <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
@@ -220,6 +228,11 @@ export default function EstatesClient() {
                         {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
                       </span>
                     )}
+                    {offeringLabel && (
+                      <span className="absolute right-4 top-4 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                        {offeringLabel}
+                      </span>
+                    )}
                     <div className="absolute inset-x-0 bottom-0 p-5">
                       <h3 className="text-xl font-bold text-white">{estate.name}</h3>
                       <div className="mt-1 flex items-center gap-2 text-sm text-white/85">
@@ -240,7 +253,8 @@ export default function EstatesClient() {
                   </div>
                 </Link>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

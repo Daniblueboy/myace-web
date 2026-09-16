@@ -152,11 +152,17 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 </p>
               </div>
               {/* nowrap + icon-only Brochure/Share keeps this one row on
-                  every screen width instead of wrapping to a second line. */}
+                  every screen width instead of wrapping to a second line.
+                  Download sits last so its hover-expand never shoves a
+                  sibling sideways — that shift is what read as "shaking"
+                  when it sat between Book Inspection and Share. */}
               <div className="flex flex-nowrap items-center gap-2 overflow-x-auto scroll-hide">
                 <Button asChild className="shrink-0">
                   <Link href={`/book-inspection?estate=${estate.slug}`}>Book Inspection</Link>
                 </Button>
+                <div className="shrink-0">
+                  <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} iconOnly />
+                </div>
                 <a
                   href={estate.brochureUrl || '/resources'}
                   target="_blank"
@@ -165,13 +171,10 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   className="group inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
                 >
                   <Download className="h-4 w-4 shrink-0" />
-                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[160px] group-hover:opacity-100">
-                    Download Brochure
+                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 group-hover:ml-2 group-hover:max-w-[90px] group-hover:opacity-100">
+                    Brochure
                   </span>
                 </a>
-                <div className="shrink-0">
-                  <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} iconOnly />
-                </div>
               </div>
               <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 lg:grid-cols-2">
                 {estate.properties?.length ? (

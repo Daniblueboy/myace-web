@@ -132,6 +132,10 @@ export interface Estate {
   amenities?: string[];
   properties?: Property[];
   faqs?: EstateFAQ[];
+  /** "LAND" | "APARTMENT" — what this estate sells, for estates that don't
+   * (yet) have priced Property records catalogued. Used as a fallback for
+   * the offering badge when `properties` derivation finds nothing. */
+  offeringType?: string | null;
   /** Marks a fast-selling pick, shown as a "Fast Selling" tag on the
    * homepage's Our Developments cards (the newest estate there gets "New"
    * instead, regardless of this flag). */
