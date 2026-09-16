@@ -1672,27 +1672,31 @@ export const fallbackComplianceItems = [
   },
 ];
 
-// TODO(content): logos not sourced yet — using the Aceroyal mark as a
-// placeholder until real partner logos are provided.
+// Real partner names, sourced from actual project content (Eko Paragon
+// Residence development credits, BRG partnership announcement) — logo image
+// files haven't been sourced yet, so logoUrl deliberately points at a path
+// that doesn't exist; PartnerLogo's onError handler renders the partner's
+// name as a text badge instead, rather than showing the wrong company's
+// logo next to a different company's name.
 export const fallbackPartners = [
   {
-    id: 'fallback-partner-aeon-trisl',
-    name: 'AEON Trisl Group',
-    logoUrl: '/images/aceroyal-symbol-colour.png',
+    id: 'fallback-partner-lsdpc',
+    name: 'Lagos State Development & Property Corporation (LSDPC)',
+    logoUrl: '/images/partners/lsdpc-logo.png',
+    category: 'PARTNER',
+    active: true,
+  },
+  {
+    id: 'fallback-partner-gidi-homes',
+    name: 'Gidi Homes',
+    logoUrl: '/images/partners/gidi-homes-logo.png',
     category: 'PARTNER',
     active: true,
   },
   {
     id: 'fallback-partner-brg',
     name: 'The Billionaire Realtor Group',
-    logoUrl: '/images/aceroyal-symbol-colour.png',
-    category: 'PARTNER',
-    active: true,
-  },
-  {
-    id: 'fallback-partner-emaar',
-    name: 'Emaar Properties',
-    logoUrl: '/images/aceroyal-symbol-colour.png',
+    logoUrl: '/images/partners/brg-logo.png',
     category: 'PARTNER',
     active: true,
   },
