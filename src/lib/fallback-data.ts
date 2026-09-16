@@ -237,18 +237,18 @@ export const fallbackEstates: Estate[] = [
     name: 'Novena Estate Phase 2',
     slug: 'novena-estate-phase-2',
     description:
-      'Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State. Land Title: Registered Survey.\n\nClose proximity to Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
+      'Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State — on the north side of the Lekki Lagoon. Epe is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. Land Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
     state: 'Lagos',
     city: 'Iraye, Epe',
     address: 'Iraye, Epe, Lagos',
-    coverImage: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
+    coverImage: '/images/estates/novena-estate/novena-estate-flyer.jpg',
     videoUrl: '/videos/novena-estate.mp4',
     brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
-    amenities: ['Paved Road', 'Perimeter Fencing', 'Steady Water Supply', 'Full Power Supply', 'Estate Security', 'Shopping Mall', 'Church/Mosque', 'Gym and Private Bar', 'Green Area/Garden'],
-    createdAt: '2022-10-17T00:00:00.000Z',
-    updatedAt: '2022-10-17T00:00:00.000Z',
+    amenities: ['Dry Land', 'Perimeter Fencing', 'Steady Water Supply', 'Full Power Supply', 'Private Bar/Gym', 'Estate Security', 'Paved Road', 'Garden', 'Shopping Center', 'Church/Mosque'],
+    createdAt: '2022-06-14T00:00:00.000Z',
+    updatedAt: '2022-06-14T00:00:00.000Z',
   },
 ];
 
@@ -1112,7 +1112,7 @@ export const fallbackProperties: Property[] = [
     title: 'Novena Estate Phase 2 — 500sqm Plot',
     slug: 'novena-estate-phase-2-plot',
     description:
-      'A 500sqm plot at Novena Estate Phase 2, Iraye, Epe — buy now and get 100 bags of Dangote Cement free, courtesy of the Goody Bag Promo.',
+      'A 500sqm plot at Novena Estate Phase 2, Iraye, Epe, Lagos — Registered Survey title, now selling at ₦2.5 million per plot.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 2500000,
@@ -1126,7 +1126,8 @@ export const fallbackProperties: Property[] = [
     amenities: [],
     featured: false,
     images: [
-      { id: 'fallback-novena-image-1', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg', altText: 'Novena Estate Phase 2 Goody Bag Promo flyer' },
+      { id: 'fallback-novena-image-1', url: '/images/estates/novena-estate/novena-estate-flyer.jpg', altText: 'Novena Estate Phase 2 pricing flyer' },
+      { id: 'fallback-novena-image-2', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg', altText: 'Novena Estate Phase 2 Goody Bag Promo flyer' },
     ],
     variants: [
       {
@@ -1139,19 +1140,21 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-novena-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+          { id: 'fallback-novena-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
+          { id: 'fallback-novena-goody-bag-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-novena-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+      { id: 'fallback-novena-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
+      { id: 'fallback-novena-goody-bag-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
     ],
     estateId: 'fallback-estate-novena',
     estate: fallbackEstates.find((e) => e.slug === 'novena-estate-phase-2'),
-    createdAt: '2022-10-17T00:00:00.000Z',
-    updatedAt: '2022-10-17T00:00:00.000Z',
+    createdAt: '2022-06-14T00:00:00.000Z',
+    updatedAt: '2022-06-14T00:00:00.000Z',
   },
 ];
 
@@ -1409,8 +1412,8 @@ export const fallbackBlogPosts = [
     slug: 'introducing-our-latest-estate-in-lagos-iraye-epe',
     excerpt: 'Novena Estate Phase 2 — a buy-and-build residential estate at Iraye, Epe, now selling at ₦2.5 million per 500sqm plot.',
     content:
-      'Introducing our latest estate in Lagos: Iraye, Epe — Novena Estate.\n\nThe Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State.\n\nNovena Estate Phase 2 is in close proximity with Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nThe features of Novena Estate Phase 2 include paved road, perimeter fencing, steady water supply, full power supply, estate security, shopping mall, church/mosque, gym and private bar, and green area/garden.\n\nA plot of land at Novena Estate Phase 2 is measured at 500sqm. We are currently selling at ₦2.5 million per plot.',
-    coverImageUrl: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
+      'Introducing our latest estate in Lagos, Iraye, Epe — Novena Estate.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again — congratulations to those who picked a slot and more from Phase 1 — before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.\n\nA plot of land at Novena Estate Phase 2 is measured at 500sqm. We are currently selling at ₦2.5 million per plot.',
+    coverImageUrl: '/images/estates/novena-estate/novena-estate-flyer.jpg',
     published: true,
     createdAt: '2022-06-14T00:00:00.000Z',
     updatedAt: '2022-06-14T00:00:00.000Z',
