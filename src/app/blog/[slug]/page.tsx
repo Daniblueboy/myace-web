@@ -77,11 +77,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <article className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden">
             {post.coverImageUrl && (
-              <div className="aspect-video bg-gradient-to-r from-primary/80 to-primary/40 relative">
+              <div className="max-h-[28rem] flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-900">
                 <img
                   src={post.coverImageUrl}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  className="max-h-[28rem] w-full object-contain"
                 />
               </div>
             )}
@@ -171,11 +171,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     className="glass-card backdrop-blur-lg shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow lg:w-auto lg:max-w-none lg:shrink"
                   >
                     {item.coverImageUrl && (
-                      <img
-                        src={item.coverImageUrl}
-                        alt={item.title}
-                        className="h-40 w-full object-cover"
-                      />
+                      <div className="h-40 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">
+                        <img
+                          src={item.coverImageUrl}
+                          alt={item.title}
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
                     )}
                     <div className="p-4">
                       <h3 className="font-semibold text-lg mb-2">{item.title}</h3>

@@ -3,7 +3,9 @@ import { fallbackBlogPosts } from '@/lib/fallback-data';
 import { Calendar } from 'lucide-react';
 
 export default function LatestBlogPosts() {
-  const posts = fallbackBlogPosts.slice(0, 3);
+  const posts = [...fallbackBlogPosts]
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 3);
 
   return (
     <section className="py-12 md:py-28 bg-white dark:bg-slate-950">
@@ -28,11 +30,11 @@ export default function LatestBlogPosts() {
               className="glass-card backdrop-blur-lg group shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
             >
               {post.coverImageUrl && (
-                <div className="h-44 overflow-hidden">
+                <div className="h-44 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <img
                     src={post.coverImageUrl}
                     alt={post.title}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
                   />
                 </div>
               )}
