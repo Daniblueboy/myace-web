@@ -215,6 +215,23 @@ export const fallbackEstates: Estate[] = [
     createdAt: '2023-05-07T00:00:00.000Z',
     updatedAt: '2023-05-07T00:00:00.000Z',
   },
+  {
+    id: 'fallback-estate-metro-city-garden',
+    name: 'Metro City Garden',
+    slug: 'metro-city-garden',
+    description:
+      'Metro City Garden is located at Itoikin, Epe, Lagos.\n\nEstate Title: Freehold/Registered Survey.\n\nLandmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.',
+    state: 'Lagos',
+    city: 'Itoikin, Epe',
+    address: 'Itoikin, Epe, Lagos',
+    coverImage: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
+    brochureUrl: null,
+    gallery: [],
+    status: 'ACTIVE',
+    amenities: ['Perimeter Fencing', 'Green Areas', 'Dry Land', '24-Hour Power', 'Clean Water Supply', 'Drainage', 'Gym/Spa', 'Swimming Pool'],
+    createdAt: '2023-03-24T00:00:00.000Z',
+    updatedAt: '2023-03-24T00:00:00.000Z',
+  },
 ];
 
 export const fallbackProperties: Property[] = [
@@ -1013,6 +1030,65 @@ export const fallbackProperties: Property[] = [
     createdAt: '2023-05-07T00:00:00.000Z',
     updatedAt: '2023-05-07T00:00:00.000Z',
   },
+  {
+    id: 'fallback-property-metro-city-plot',
+    title: 'Metro City Garden — 300sqm / 500sqm Plots',
+    slug: 'metro-city-garden-plots',
+    description:
+      'Freehold/Registered Survey plots at Metro City Garden, Itoikin, Epe — 300sqm at ₦1,000,000 or 500sqm at ₦1,500,000, with 100% ROI guaranteed.',
+    type: 'LAND',
+    status: 'AVAILABLE',
+    price: 1000000,
+    currency: 'NGN',
+    state: 'Lagos',
+    city: 'Itoikin, Epe',
+    address: 'Itoikin, Epe, Lagos',
+    bedrooms: null,
+    bathrooms: null,
+    size: null,
+    amenities: ['Perimeter Fencing', 'Green Areas', 'Dry Land', '24-Hour Power', 'Clean Water Supply', 'Drainage', 'Gym/Spa', 'Swimming Pool'],
+    featured: false,
+    images: [
+      { id: 'fallback-metro-city-image-1', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg', altText: 'Metro City Garden pricing flyer' },
+    ],
+    variants: [
+      {
+        id: 'fallback-metro-city-variant-300sqm',
+        label: '300sqm Plot',
+        price: 1000000,
+        currency: 'NGN',
+        size: '300sqm',
+        sizeUnit: 'SQM',
+        paymentType: 'OUTRIGHT',
+        active: true,
+        media: [
+          { id: 'fallback-metro-city-flyer-300sqm-v', type: 'FLYER', title: 'Metro City Garden — Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+        ],
+      },
+      {
+        id: 'fallback-metro-city-variant-500sqm',
+        label: '500sqm Plot',
+        price: 1500000,
+        currency: 'NGN',
+        size: '500sqm',
+        sizeUnit: 'SQM',
+        paymentType: 'OUTRIGHT',
+        active: true,
+        media: [
+          { id: 'fallback-metro-city-flyer-500sqm-v', type: 'FLYER', title: 'Metro City Garden — Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+        ],
+      },
+    ],
+    faqs: [],
+    resources: [],
+    media: [
+      { id: 'fallback-metro-city-flyer', type: 'FLYER', title: 'Metro City Garden — Pricing Flyer', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+    ],
+    estateId: 'fallback-estate-metro-city-garden',
+    estate: fallbackEstates.find((e) => e.slug === 'metro-city-garden'),
+    createdAt: '2023-03-24T00:00:00.000Z',
+    updatedAt: '2023-03-24T00:00:00.000Z',
+  },
 ];
 
 fallbackEstates.forEach((estate) => {
@@ -1231,10 +1307,10 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-metro-city-buy-hold',
     title: 'Metro City Garden Price Increase Alert',
     slug: 'metro-city-garden-price-increase-alert',
-    excerpt: 'Why the Buy & Hold strategy is one of the most reliable ways to grow a real estate portfolio.',
+    excerpt: 'Metro City Garden’s price just jumped from ₦850,000 to ₦1,500,000 — see the new pricing and what’s driving the Buy & Hold strategy.',
     content:
-      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nWould you like to know more? Reach out to Aceroyal Estate Homes to learn about our current buy-and-hold opportunities.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nNow unto the good news. Metro City Garden price increase alert: from ₦850,000 to ₦1,500,000. This is so much good news to those who subscribed to the just concluded promo — see how your investment just appreciated in a blink.\n\nMetro City Garden now selling: 500sqm at ₦1,500,000, 300sqm at ₦1,000,000. Location: Itoikin, Epe. Landmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.\n\nFeatures: perimeter fencing, green areas, dry land, 24-hour power, water supply, drainage, and more. Title: Freehold/Registered Survey.\n\nMetro City Garden guarantees 100% ROI just as you can see now — join a team of landowners today and experience peace of mind. For more information, contact our customer care lines: 09156549709, 08053605093.\n\n~ACE, building the future together.',
+    coverImageUrl: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
     published: true,
     createdAt: '2023-03-24T00:00:00.000Z',
     updatedAt: '2023-03-24T00:00:00.000Z',
