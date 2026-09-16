@@ -117,7 +117,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                           key={`img-${index}`}
                           src={url}
                           alt={alt}
-                          className="w-full rounded-xl border"
+                          className="w-full max-h-96 object-cover rounded-xl border"
                         />
                       );
                     }
