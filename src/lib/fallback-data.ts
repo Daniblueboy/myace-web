@@ -1028,6 +1028,18 @@ export const fallbackBlogPosts = [
     updatedAt: '2025-03-15T00:00:00.000Z',
   },
   {
+    id: 'fallback-blog-aceroyal-name-story',
+    title: 'What’s in a Name? The Story Behind AceRoyal',
+    slug: 'whats-in-a-name-the-story-behind-aceroyal',
+    excerpt: 'The meaning behind the AceRoyal name — leadership, Edo heritage, and a vision for Nigerian real estate.',
+    content:
+      'Have you ever stopped to think about the meaning behind a name? A name is more than just a label — it carries history, purpose, and a vision for the future.\n\nFor AceRoyal Group, our name is a reflection of our roots, values, and commitment to excellence in real estate.\n\nThe Origin of “AceRoyal”\n\nThe name AceRoyal isn’t just a brand, it’s a legacy.\n\n![The AceRoyal team on site](/images/blog/aceroyal-name-story/team-site-visit.jpg)\n\n“Ace” comes from the initials of our founder, Dr. Agonor Cletus Endurance. It represents leadership, excellence, and a determination to be the best in everything we do.\n\n“Royal” is a tribute to his proud Edo heritage, a culture deeply rooted in dignity, strength, and leadership. It symbolizes the trust, prestige, and integrity that define every transaction, every development, and every client relationship at AceRoyal.\n\nTogether, AceRoyal represents a vision of prosperity and service to humanity — a vision that has grown into one of Nigeria’s most trusted real estate brands.\n\nA Legacy in the Making\n\nWhat’s in a name? For us, it’s everything. It’s a story of vision, heritage, and a relentless pursuit of excellence. It’s a name that stands for trust, quality, and a future where homeownership is not a privilege, but a right.\n\nWhether you’re looking to buy, invest, or build, AceRoyal Estate Homes is here to guide you every step of the way.\n\nWelcome to AceRoyal — where dreams become reality, and legacies are built.',
+    coverImageUrl: '/images/blog/aceroyal-name-story/team-site-visit.jpg',
+    published: true,
+    createdAt: '2025-03-06T00:00:00.000Z',
+    updatedAt: '2025-03-06T00:00:00.000Z',
+  },
+  {
     id: 'fallback-blog-allocation-day',
     title: 'Land Ownership Made Easy: Why Allocation Day Matters',
     slug: 'land-ownership-made-easy-why-allocation-day-matters',
