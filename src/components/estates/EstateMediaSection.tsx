@@ -43,6 +43,8 @@ export function EstateMediaSection({
   const [tourOpen, setTourOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [flyerLightboxOpen, setFlyerLightboxOpen] = useState(false);
+  const [flyerLightboxIndex, setFlyerLightboxIndex] = useState(0);
 
   const hasTour = true; // always has at least an empty-state fallback
   const items: MediaTile[] = [
@@ -68,6 +70,8 @@ export function EstateMediaSection({
 
   const tourPreviewImage = tourImages[0] || photos[0];
   const lightboxSlides = photos.map((src) => ({ src }));
+  const imageFlyers = flyers.filter((f) => isImageUrl(f.url));
+  const flyerLightboxSlides = imageFlyers.map((f) => ({ src: f.url, title: f.title }));
 
   return (
     <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-4">
@@ -149,15 +153,10 @@ export function EstateMediaSection({
               </button>
             );
           }
-          return (
-            <a
-              key={item.flyer.id}
-              href={item.flyer.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative shrink-0 w-32 sm:w-40 aspect-square snap-center overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-950"
-            >
-              {isImageUrl(item.flyer.url) ? (
+          const flyerIsImage = isImageUrl(item.flyer.url);
+          const tileContent = (
+            <>
+              {flyerIsImage ? (
                 <img
                   src={item.flyer.url}
                   alt={item.flyer.title}
@@ -171,6 +170,27 @@ export function EstateMediaSection({
               <span className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-2 py-1.5 text-left text-xs font-semibold text-white line-clamp-1">
                 {item.flyer.title}
               </span>
+            </>
+          );
+          const tileClass =
+            'group relative shrink-0 w-32 sm:w-40 aspect-square snap-center overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-950';
+          // Image flyers open in the lightbox, matching Photos — only a
+          // non-image file (e.g. a PDF brochure) falls back to a new tab.
+          return flyerIsImage ? (
+            <button
+              key={item.flyer.id}
+              type="button"
+              onClick={() => {
+                setFlyerLightboxIndex(imageFlyers.findIndex((f) => f.id === item.flyer.id));
+                setFlyerLightboxOpen(true);
+              }}
+              className={tileClass}
+            >
+              {tileContent}
+            </button>
+          ) : (
+            <a key={item.flyer.id} href={item.flyer.url} target="_blank" rel="noopener noreferrer" className={tileClass}>
+              {tileContent}
             </a>
           );
         })}
@@ -183,6 +203,16 @@ export function EstateMediaSection({
           index={lightboxIndex}
           slides={lightboxSlides}
           on={{ view: ({ index }) => setLightboxIndex(index) }}
+        />
+      )}
+
+      {imageFlyers.length > 0 && (
+        <Lightbox
+          open={flyerLightboxOpen}
+          close={() => setFlyerLightboxOpen(false)}
+          index={flyerLightboxIndex}
+          slides={flyerLightboxSlides}
+          on={{ view: ({ index }) => setFlyerLightboxIndex(index) }}
         />
       )}
 

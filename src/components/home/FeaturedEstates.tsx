@@ -9,10 +9,11 @@ type FeaturedEstatesProps = {
 };
 
 export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
-  const shown = estates.slice(0, 3);
-  const latest = [...shown].sort(
+  const sorted = [...estates].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  )[0];
+  );
+  const shown = sorted.slice(0, 3);
+  const latest = shown[0];
 
   return (
     <section className="py-12 md:py-28 bg-white dark:bg-slate-950">

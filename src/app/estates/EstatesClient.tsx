@@ -68,16 +68,18 @@ export default function EstatesClient() {
 
   const filtered = useMemo(() => {
     const term = search.trim().toLowerCase();
-    return estates.filter((estate) => {
-      if (state !== 'ALL' && estate.state !== state) return false;
-      if (status !== 'ALL' && estate.status !== status) return false;
-      if (offering !== 'ALL' && !estateOfferingTypes.get(estate.id)?.has(offering)) return false;
-      if (term) {
-        const haystack = `${estate.name} ${estate.description || ''} ${estate.city} ${estate.state}`.toLowerCase();
-        if (!haystack.includes(term)) return false;
-      }
-      return true;
-    });
+    return estates
+      .filter((estate) => {
+        if (state !== 'ALL' && estate.state !== state) return false;
+        if (status !== 'ALL' && estate.status !== status) return false;
+        if (offering !== 'ALL' && !estateOfferingTypes.get(estate.id)?.has(offering)) return false;
+        if (term) {
+          const haystack = `${estate.name} ${estate.description || ''} ${estate.city} ${estate.state}`.toLowerCase();
+          if (!haystack.includes(term)) return false;
+        }
+        return true;
+      })
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }, [estates, search, state, status, offering, estateOfferingTypes]);
 
   const hasActiveFilters = Boolean(search) || state !== 'ALL' || status !== 'ALL' || offering !== 'ALL';

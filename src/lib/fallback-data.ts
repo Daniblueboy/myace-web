@@ -166,8 +166,11 @@ export const fallbackEstates: Estate[] = [
     status: 'ACTIVE',
     amenities: ['Clean Water Supply', 'Power Supply', 'Swimming Pool', 'Tennis Court', 'Green Spaces', 'Prime Location'],
     featured: true,
-    createdAt: now,
-    updatedAt: now,
+    // Genuinely the most recent addition (added today) — other estates
+    // share the placeholder `now` timestamp, so this is deliberately later
+    // to sort first wherever estates are ordered newest-first.
+    createdAt: '2026-09-16T00:00:00.000Z',
+    updatedAt: '2026-09-16T00:00:00.000Z',
   },
 ];
 
