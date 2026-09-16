@@ -1442,6 +1442,18 @@ export const fallbackBlogPosts = [
     createdAt: '2022-07-01T00:00:00.000Z',
     updatedAt: '2022-07-01T00:00:00.000Z',
   },
+  {
+    id: 'fallback-blog-childrens-day-promo',
+    title: 'Happy Children’s Day — Children’s Day Promo',
+    slug: 'happy-childrens-day-childrens-day-promo',
+    excerpt: 'Buy a plot for your kids at Novena Estate Phase 2 — ₦350k initial deposit, balance spread over 10 months, half a plot free.',
+    content:
+      'Happy Children’s Day!\n\nBuy a plot for your kids today at Novena Estate Phase 2 — spread the balance for 10 months, pay an initial deposit of ₦350k, and get half a plot free, with instant allocation upon first deposit and documents.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again — congratulations to those who picked a slot and more from Phase 1 — before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.',
+    coverImageUrl: '/images/blog/childrens-day-promo/childrens-day-flyer.jpg',
+    published: true,
+    createdAt: '2022-05-01T00:00:00.000Z',
+    updatedAt: '2022-05-01T00:00:00.000Z',
+  },
 ];
 
 // Real names/roles confirmed against the live site's own "Meet The Team"
