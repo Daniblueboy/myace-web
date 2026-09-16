@@ -9,6 +9,69 @@ import { Input } from '@/components/ui/input';
 import { Search, ChevronDown } from 'lucide-react';
 import { HeroParticles } from '@/components/home/HeroParticles';
 
+// Slide 1 ("Strategic Investments") reads with black text (the others stay
+// white) — a light gradient built into that slide's own background (see the
+// slides loop below) creates the contrast, not a boxed panel behind the
+// text. Hoisted out of HeroSection (was defined inline in its render body,
+// which reset AnimatePresence's exit-transition state on every re-render)
+// and takes what it needs as props instead of closing over hero state.
+function HeroHeadline({
+  slideIndex,
+  isCenteredLayout,
+  headline,
+}: {
+  slideIndex: number;
+  isCenteredLayout: boolean;
+  headline: string[];
+}) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.h1
+        key={slideIndex}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className={`text-4xl short:text-2xl md:text-6xl font-bold tracking-tight ${
+          isCenteredLayout ? 'text-slate-900' : 'text-white'
+        }`}
+      >
+        {headline[0]} <br /> {headline[1]}
+      </motion.h1>
+    </AnimatePresence>
+  );
+}
+
+// The real wordmark artwork (not text) — the brand guide is explicit that
+// it shouldn't be rebuilt with a substitute font. -colour reads dark enough
+// to work on the light gradient of the centered-layout slide and on slide
+// 0's background; slide 2's photo washes the colour symbol out, so it alone
+// uses the white variant. Hoisted for the same reason as HeroHeadline above.
+function HeroMark({
+  large = false,
+  slideIndex,
+  isCenteredLayout,
+}: {
+  large?: boolean;
+  slideIndex: number;
+  isCenteredLayout: boolean;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-2 short:gap-1">
+      <img
+        src={slideIndex === 2 ? '/images/aceroyal-symbol-white.png' : '/images/aceroyal-symbol-colour.png'}
+        alt=""
+        className={`${large ? 'h-28 w-28 short:h-16 short:w-16' : 'h-16 w-16 short:h-10 short:w-10'} object-contain`}
+      />
+      <img
+        src={isCenteredLayout ? '/images/aceroyal-wordmark-colour.png' : '/images/aceroyal-wordmark-white.png'}
+        alt="Aceroyal"
+        className={large ? 'h-6 w-auto' : 'h-4 w-auto'}
+      />
+    </div>
+  );
+}
+
 export default function HeroSection() {
   const router = useRouter();
   const [keyword, setKeyword] = useState('');
@@ -61,46 +124,6 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  // Slide 1 reads with black text (the others stay white) — a light
-  // gradient built into that slide's own background (see the slides loop
-  // below) creates the contrast, not a boxed panel behind the text.
-  const HeroHeadline = () => (
-    <AnimatePresence mode="wait">
-      <motion.h1
-        key={slideIndex}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`text-4xl short:text-2xl md:text-6xl font-bold tracking-tight ${
-          isCenteredLayout ? 'text-slate-900' : 'text-white'
-        }`}
-      >
-        {activeSlide.headline[0]} <br /> {activeSlide.headline[1]}
-      </motion.h1>
-    </AnimatePresence>
-  );
-
-  // The real wordmark artwork (not text) — the brand guide is explicit that
-  // it shouldn't be rebuilt with a substitute font. -colour reads dark
-  // enough to work on the light gradient of the centered-layout slide and
-  // on slide 0's background; slide 2's photo washes the colour symbol out,
-  // so it alone uses the white variant.
-  const HeroMark = ({ large = false }: { large?: boolean }) => (
-    <div className="flex flex-col items-center gap-2 short:gap-1">
-      <img
-        src={slideIndex === 2 ? '/images/aceroyal-symbol-white.png' : '/images/aceroyal-symbol-colour.png'}
-        alt=""
-        className={`${large ? 'h-28 w-28 short:h-16 short:w-16' : 'h-16 w-16 short:h-10 short:w-10'} object-contain`}
-      />
-      <img
-        src={isCenteredLayout ? '/images/aceroyal-wordmark-colour.png' : '/images/aceroyal-wordmark-white.png'}
-        alt="Aceroyal"
-        className={large ? 'h-6 w-auto' : 'h-4 w-auto'}
-      />
-    </div>
-  );
-
   return (
     <section
       className="relative flex items-center justify-center bg-slate-900 text-white overflow-hidden min-h-[calc(100dvh-var(--nav-h)-var(--bottom-nav-h))] lg:min-h-[min(750px,calc(100dvh-var(--nav-h)))] py-0 lg:py-0"
@@ -147,10 +170,20 @@ export default function HeroSection() {
           keeps the top/bottom zones pinned to the edges regardless of
           whether the (empty) middle zone has content. */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 pt-16 pb-24 short:pt-6 short:pb-12 text-center lg:hidden">
-        <div className="flex w-full justify-center">{!isCenteredLayout && <HeroHeadline />}</div>
-        <div className="flex w-full justify-center">{isCenteredLayout && <HeroMark large />}</div>
         <div className="flex w-full justify-center">
-          {isCenteredLayout ? <HeroHeadline /> : <HeroMark />}
+          {!isCenteredLayout && (
+            <HeroHeadline slideIndex={slideIndex} isCenteredLayout={isCenteredLayout} headline={activeSlide.headline} />
+          )}
+        </div>
+        <div className="flex w-full justify-center">
+          {isCenteredLayout && <HeroMark large slideIndex={slideIndex} isCenteredLayout={isCenteredLayout} />}
+        </div>
+        <div className="flex w-full justify-center">
+          {isCenteredLayout ? (
+            <HeroHeadline slideIndex={slideIndex} isCenteredLayout={isCenteredLayout} headline={activeSlide.headline} />
+          ) : (
+            <HeroMark slideIndex={slideIndex} isCenteredLayout={isCenteredLayout} />
+          )}
         </div>
       </div>
 
@@ -160,7 +193,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <HeroHeadline />
+        <HeroHeadline slideIndex={slideIndex} isCenteredLayout={isCenteredLayout} headline={activeSlide.headline} />
 
         <p
           className={`text-lg md:text-xl max-w-2xl mx-auto ${

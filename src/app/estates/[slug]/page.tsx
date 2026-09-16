@@ -131,8 +131,49 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
       .forEach((m: PropertyMedia) => addFlyer(m.title || `${property.title} — Flyer`, m.url));
   });
 
+  const prices = (estate.properties || [])
+    .flatMap((property: Property) => (property.variants && property.variants.length > 0 ? property.variants : [property]))
+    .map((item: any) => Number(item.price))
+    .filter((price: number) => !Number.isNaN(price) && price > 0);
+  const lowPrice = prices.length > 0 ? Math.min(...prices) : undefined;
+  const highPrice = prices.length > 0 ? Math.max(...prices) : undefined;
+  const absoluteImage = estate.coverImage
+    ? estate.coverImage.startsWith('http')
+      ? estate.coverImage
+      : `${SITE_URL}${estate.coverImage}`
+    : undefined;
+
+  const estateJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    name: estate.name,
+    description: estate.description || undefined,
+    url: `${SITE_URL}/estates/${estate.slug}`,
+    image: absoluteImage ? [absoluteImage] : undefined,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: estate.city,
+      addressRegion: estate.state,
+      addressCountry: 'NG',
+    },
+    ...(lowPrice !== undefined && {
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'NGN',
+        lowPrice,
+        highPrice,
+        availability:
+          estate.status === 'SOLD_OUT' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+      },
+    }),
+  };
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(estateJsonLd) }}
+      />
       <div className="container py-12 md:py-16 space-y-10">
         <div>
           <Button variant="ghost" asChild className="gap-2">

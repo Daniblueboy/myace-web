@@ -26,7 +26,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
               <p>
-                By accessing and using Aceroyal Estates' services, you agree to be bound by these Terms and Conditions.
+                By accessing and using Aceroyal Estates&apos; services, you agree to be bound by these Terms and Conditions.
                 If you do not agree to these terms, please do not use our services.
               </p>
             </section>

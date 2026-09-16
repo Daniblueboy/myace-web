@@ -117,7 +117,7 @@ export default async function AboutPage() {
           <div className="container max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold">The Ultimate Standard of Trust</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              AceRoyal Estates, a subsidiary of AceRoyalpro Services, exists to make real estate
+              Aceroyal Estates, a subsidiary of AceRoyalpro Services, exists to make real estate
               ownership accessible and trustworthy for Nigerians and the diaspora — built on
               clear titling, structured documentation, and a process with no guesswork.
             </p>

@@ -42,7 +42,7 @@ export default function AccountDeletionPage() {
             <p className="text-sm uppercase tracking-[0.2em] text-primary mb-3">Account Deletion</p>
             <h1 className="text-4xl font-bold mb-4">Delete Your Aceroyal Account</h1>
             <p className="text-lg text-muted-foreground">
-              You're in control of your data. Here's how to request permanent deletion of your
+              You&apos;re in control of your data. Here&apos;s how to request permanent deletion of your
               Aceroyal Estates account, and what happens after you do.
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function AccountDeletionPage() {
             <AlertTriangle className="h-6 w-6 text-amber-600 dark:text-amber-400 shrink-0" />
             <p className="text-sm text-amber-900 dark:text-amber-200">
               If you have an active or pending property transaction on your account, let us know in
-              your request — we'll confirm how deletion affects that transaction before proceeding.
+              your request — we&apos;ll confirm how deletion affects that transaction before proceeding.
             </p>
           </div>
 
@@ -95,7 +95,7 @@ export default function AccountDeletionPage() {
             <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">Ready to request deletion?</h2>
             <p className="text-muted-foreground mb-6">
-              Email us directly, or use the contact form and select "Support" as your enquiry type.
+              Email us directly, or use the contact form and select &quot;Support&quot; as your enquiry type.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

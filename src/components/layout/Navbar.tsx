@@ -31,7 +31,18 @@ function EstatesMegaMenu({ active }: { active: boolean }) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const estates = fallbackEstates.slice(0, 6);
+  // Sold-out estates shouldn't take one of the 8 preview slots ahead of
+  // estates you can still actually buy into, and the newest/featured
+  // estates (e.g. Villa Nova) shouldn't get buried behind older ones just
+  // because of insertion order in fallback-data.ts — filter, then sort
+  // featured-first and newest-first, before slicing to 8.
+  const estates = fallbackEstates
+    .filter((estate) => estate.status !== 'SOLD_OUT')
+    .sort((a, b) => {
+      if (!!a.featured !== !!b.featured) return a.featured ? -1 : 1;
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    })
+    .slice(0, 8);
 
   const openNow = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);

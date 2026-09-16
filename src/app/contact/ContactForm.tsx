@@ -113,7 +113,7 @@ export default function ContactForm() {
         <div className="container">
           <h1 className="text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as
+            Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as
             soon as possible.
           </p>
           {estateName && (
