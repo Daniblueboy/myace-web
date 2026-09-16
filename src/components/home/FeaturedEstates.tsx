@@ -13,7 +13,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold">Estate Spotlights</h2>
+            <h2 className="text-3xl font-bold">Our Developments</h2>
             <p className="text-muted-foreground">
               Curated estates with verified titles and infrastructure highlights.
             </p>
