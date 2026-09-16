@@ -157,11 +157,16 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Eleko',
     address: 'Idera Scheme, Eleko, Lagos',
-    coverImage: '/images/estates/villa-nova/villa-nova-cover.jpg',
+    coverImage: '/images/estates/villa-nova/villa-nova-gate.jpg',
     brochureUrl: null,
     gallery: [
+      '/images/estates/villa-nova/villa-nova-gate.jpg',
+      '/images/estates/villa-nova/villa-nova-exterior-day.jpg',
+      '/images/estates/villa-nova/villa-nova-exterior-dusk.jpg',
+      '/images/estates/villa-nova/villa-nova-street-1.jpg',
+      '/images/estates/villa-nova/villa-nova-street-2.jpg',
+      '/images/estates/villa-nova/villa-nova-entry.jpg',
       '/images/estates/villa-nova/villa-nova-3d-aerial.jpg',
-      '/images/estates/villa-nova/villa-nova-dusk.jpg',
     ],
     status: 'ACTIVE',
     amenities: ['Clean Water Supply', 'Power Supply', 'Swimming Pool', 'Tennis Court', 'Green Spaces', 'Prime Location'],
@@ -440,8 +445,8 @@ export const fallbackProperties: Property[] = [
     amenities: ['Clean Water Supply', 'Power Supply', 'Swimming Pool', 'Tennis Court', 'Green Spaces'],
     featured: true,
     images: [
-      { id: 'fallback-villa-nova-image-1', url: '/images/estates/villa-nova/villa-nova-cover.jpg', altText: 'Villa Nova bungalow exterior' },
-      { id: 'fallback-villa-nova-image-2', url: '/images/estates/villa-nova/villa-nova-dusk.jpg', altText: 'Villa Nova bungalow at dusk' },
+      { id: 'fallback-villa-nova-image-1', url: '/images/estates/villa-nova/villa-nova-exterior-day.jpg', altText: 'Villa Nova bungalow exterior' },
+      { id: 'fallback-villa-nova-image-2', url: '/images/estates/villa-nova/villa-nova-exterior-dusk.jpg', altText: 'Villa Nova bungalow at dusk' },
     ],
     variants: [
       {
