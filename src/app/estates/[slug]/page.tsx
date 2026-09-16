@@ -203,18 +203,26 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   </span>
                 </a>
               </div>
-              <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-3 lg:grid-cols-2">
+              {/* Always exactly 2 cards — a plain 2-col grid (not the
+                  sitewide scroll-row pattern) so each cell can actually
+                  shrink via minmax(0,1fr) instead of forcing a wider
+                  min-content that overflowed the column on narrow phones.
+                  Labels can still wrap to 2 lines on a narrow card (nowrap
+                  reintroduces the overflow), so the label row reserves a
+                  fixed height on both cards — that's what keeps the counts
+                  aligned regardless of which label actually wraps. */}
+              <div className="grid grid-cols-2 gap-3">
                 {estate.properties?.length ? (
-                  <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
-                    <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
-                      <Home className="h-4 w-4 shrink-0" /> {availableCountLabel}
+                  <div className="min-w-0 rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                    <div className="flex items-start gap-1.5 text-xs sm:text-sm text-muted-foreground min-h-10 sm:min-h-5">
+                      <Home className="h-4 w-4 shrink-0 mt-0.5" /> <span>{availableCountLabel}</span>
                     </div>
                     <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
                   </div>
                 ) : null}
-                <div className="shrink-0 w-[45%] snap-center rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4 lg:w-auto lg:shrink">
-                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
-                    <ShieldCheck className="h-4 w-4 shrink-0" /> Amenities
+                <div className="min-w-0 rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                  <div className="flex items-start gap-1.5 text-xs sm:text-sm text-muted-foreground min-h-10 sm:min-h-5">
+                    <ShieldCheck className="h-4 w-4 shrink-0 mt-0.5" /> <span>Amenities</span>
                   </div>
                   <div className="text-2xl font-semibold mt-1">{estate.amenities?.length || 0}</div>
                 </div>
