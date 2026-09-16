@@ -1,13 +1,19 @@
 import Link from 'next/link';
-import type { Estate } from '@/shared';
+import type { Estate, Property } from '@/shared';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PropertyCard } from '@/components/properties/PropertyCard';
 
 type FeaturedEstatesProps = {
   estates: Estate[];
+  /** Latest listing plus any `featured` (fast-selling) properties — shown
+   * as a second row inside this same "Our Developments" section rather
+   * than a separate homepage section. */
+  properties?: Property[];
 };
 
-export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
+export default function FeaturedEstates({ estates, properties = [] }: FeaturedEstatesProps) {
+  const latestProperty = properties[0];
   return (
     <section className="py-12 md:py-28 bg-white dark:bg-slate-950">
       <div className="container">
@@ -54,6 +60,23 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
             </Link>
           ))}
         </div>
+
+        {properties.length > 0 && (
+          <div className="mt-14 md:mt-20">
+            <h3 className="text-xl font-semibold text-center mb-8">New &amp; Fast-Selling Properties</h3>
+            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+              {properties.map((property) => (
+                <div key={property.id} className="shrink-0 w-[82%] snap-center lg:w-auto lg:shrink">
+                  <PropertyCard
+                    property={property}
+                    isNew={property.id === latestProperty?.id}
+                    isFastSelling={Boolean(property.featured) && property.id !== latestProperty?.id}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
