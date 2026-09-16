@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
 import TestimonialsSpotlight from '@/components/home/TestimonialsSpotlight';
 
-// "Our Success" — the testimonial carousel (text/photo/video quotes) plus a
+// "Our Successes" — the testimonial carousel (text/photo/video quotes) plus a
 // clickable preview of the full gallery: reuses GalleryGrid as-is (same
 // lightbox-with-next/prev for photos, same video modal) rather than a
 // static thumbnail strip, so a moment actually pops up and scrolls the way
@@ -24,20 +24,14 @@ export default async function TestimonialsSection() {
     <section className="py-12 md:py-28 bg-slate-50 dark:bg-slate-950">
       <div className="container">
         <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary">Our Success</p>
-          <h2 className="text-3xl font-bold mt-2">What Clients Say</h2>
-          <p className="text-muted-foreground mt-2">
-            Real stories from people who secured properties with Aceroyal Estates.
-          </p>
+          <p className="text-base uppercase tracking-[0.2em] text-primary">Our Successes</p>
         </div>
 
-        {testimonials && testimonials.length > 0 && <TestimonialsSpotlight items={testimonials} />}
-
         {moments.length > 0 && (
-          <div className="mt-14 md:mt-20">
-            <h3 className="text-xl font-semibold text-center mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-center mb-8">
               Moments From Allocation, Inspection &amp; Handover
-            </h3>
+            </h2>
             <GalleryGrid items={moments} />
             <div className="mt-8 text-center">
               <Button variant="outline" asChild>
@@ -46,6 +40,16 @@ export default async function TestimonialsSection() {
                 </Link>
               </Button>
             </div>
+          </div>
+        )}
+
+        {testimonials && testimonials.length > 0 && (
+          <div className="mt-14 md:mt-20">
+            <h2 className="text-3xl font-bold text-center">What Clients Say</h2>
+            <p className="text-muted-foreground text-center mt-2 mb-8">
+              Real stories from people who secured properties with Aceroyal Estates.
+            </p>
+            <TestimonialsSpotlight items={testimonials} />
           </div>
         )}
       </div>

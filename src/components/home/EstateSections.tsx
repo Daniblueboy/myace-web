@@ -1,22 +1,12 @@
-import { fetchAPI } from '@/lib/api';
-import type { Property } from '@/shared';
-import FeaturedProperties from '@/components/home/FeaturedProperties';
+import { fallbackEstates } from '@/lib/fallback-data';
+import FeaturedEstates from '@/components/home/FeaturedEstates';
 
-const SHOWCASE_SIZE = 6;
-
-// "Our Developments" homepage slot — shows properties ordered newest first
-// then fast-selling (`featured`), per Daniel's explicit direction.
-export default async function EstateSections() {
-  const data = await fetchAPI('/properties?take=50').catch(() => []);
-  const allProperties: Property[] = Array.isArray(data) ? data : data?.items || [];
-  if (allProperties.length === 0) return null;
-
-  const byNewest = [...allProperties].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
-  const latest = byNewest[0];
-  const fastSelling = allProperties.filter((p) => p.featured && p.id !== latest.id);
-  const properties = [latest, ...fastSelling].slice(0, SHOWCASE_SIZE);
-
-  return <FeaturedProperties properties={properties} />;
+// Was FeaturedEstates + LatestEstates back to back — two near-identical
+// estate grids in a row read as redundant. One curated spotlight (with its
+// own "View All" link to /estates for the rest) covers "Our Developments"
+// on its own. Feeds off estates (fallbackEstates), not the separate
+// properties list — confirmed as the intended data source per Daniel,
+// after a few property-based experiments here were tried and reverted.
+export default function EstateSections() {
+  return <FeaturedEstates estates={fallbackEstates} />;
 }
