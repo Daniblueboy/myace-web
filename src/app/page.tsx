@@ -2,7 +2,7 @@ import HeroSection from '@/components/home/HeroSection';
 import { WhoWeAreSection } from '@/components/home/WhoWeAreSection';
 import CeoWelcomeSection from '@/components/home/CeoWelcomeSection';
 import EstateSections from '@/components/home/EstateSections';
-import NewPropertySpotlight from '@/components/home/NewPropertySpotlight';
+import PropertyShowcase from '@/components/home/PropertyShowcase';
 import { StatesSection } from '@/components/home/StatesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import WhyChooseSection from '@/components/home/WhyChooseSection';
@@ -15,9 +15,13 @@ import { CtaSection } from '@/components/home/CtaSection';
 import { Reveal } from '@/components/motion/Reveal';
 
 // Section order follows Daniel's specified homepage flow: Hero, Who We Are,
-// CEO message, Our Developments, New Property spotlight, Our Success
+// CEO message, Our Developments, Featured Properties, Our Success
 // (testimonials), Why Choose Aceroyal, Our Partnership, Announcement, App
-// Launch, Insights. Why Choose Aceroyal originally lived inside Who We Are
+// Launch, Insights. Featured Properties replaced an earlier single-property
+// "New Property" spotlight — rather than a dedicated section for one
+// listing, it shows a small mixed set (the latest listing plus properties
+// flagged `featured` as fast-selling) with "New"/"Fast Selling" tags on the
+// cards themselves. Why Choose Aceroyal originally lived inside Who We Are
 // (folded in to avoid two consecutive "about the company" blocks) but was
 // moved to its own section right after Our Success per Daniel's request.
 // Services was folded into Who We Are, the Realtor CTA was removed
@@ -32,7 +36,7 @@ export default function HomePage() {
       <Reveal><WhoWeAreSection /></Reveal>
       <Reveal><CeoWelcomeSection /></Reveal>
       <Reveal><EstateSections /></Reveal>
-      <Reveal><NewPropertySpotlight /></Reveal>
+      <Reveal><PropertyShowcase /></Reveal>
       <Reveal><StatesSection /></Reveal>
       <Reveal><TestimonialsSection /></Reveal>
       <Reveal><WhyChooseSection /></Reveal>

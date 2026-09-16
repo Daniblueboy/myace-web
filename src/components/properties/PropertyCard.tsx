@@ -6,9 +6,13 @@ import { MapPin, Bed, Bath, Square } from 'lucide-react';
 
 interface PropertyCardProps {
   property: Property;
+  /** Flags this specific card as the most recently added property. */
+  isNew?: boolean;
+  /** Flags this specific card as a fast-selling/featured pick. */
+  isFastSelling?: boolean;
 }
 
-export function PropertyCard({ property }: PropertyCardProps) {
+export function PropertyCard({ property, isNew = false, isFastSelling = false }: PropertyCardProps) {
   const outrightPrices = property.variants
     ?.filter((variant) => !variant.paymentType || variant.paymentType === 'OUTRIGHT')
     .map((variant) => Number(variant.price))
@@ -31,6 +35,20 @@ export function PropertyCard({ property }: PropertyCardProps) {
              {property.status}
            </span>
          </div>
+         {(isNew || isFastSelling) && (
+           <div className="absolute top-4 right-4 flex flex-col items-end gap-1.5">
+             {isNew && (
+               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-primary text-primary-foreground">
+                 New
+               </span>
+             )}
+             {isFastSelling && (
+               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-amber-500 text-white">
+                 Fast Selling
+               </span>
+             )}
+           </div>
+         )}
          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
            <span className="bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold uppercase tracking-wider text-slate-900">
              {property.type}
