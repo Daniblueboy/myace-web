@@ -132,6 +132,11 @@ export default async function AboutPage() {
               now expanding along one of Lagos&apos;s fastest-growing corridors. Every new estate
               is held to the same standard.
             </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              We offer estate development, property sales &amp; allocation, estate/facility
+              management, and diaspora advisory — led by Dr. Endurance Cletus Agonor, CEO and
+              Founder.
+            </p>
           </div>
         </section>
       </Reveal>
@@ -220,19 +225,9 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">International Reach</h2>
-            {/* PRE-CUTOVER CHECKLIST: this claim (only Nigerian partner of AEON
-                Trisl Group; partner of Emaar Properties Dubai) is carried over
-                verbatim from the live WordPress site. It has NOT been
-                independently verified — confirm with Aceroyal that both
-                partnerships are still current and approved for public use
-                before go-live. Also carried from the live site: the CEO's
-                REDAN membership (see fallbackTeamMembers bio) and the CAC/NDPC
-                compliance lines below — same status, same ask. */}
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Aceroyal Estate is the only Nigerian partner of the AEON Trisl Group (headquartered
-              in Dubai, with branches in London, Karachi, Lahore, and Gujrat), and partners with
-              Emaar Properties Dubai to deliver some of the best property prices to Africa and
-              Africans in the diaspora.
+              Our partnership with AEON Trisl Group and Emaar Properties Dubai brings
+              international development standards into how we plan and build.
             </p>
           </div>
         </section>

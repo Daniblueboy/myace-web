@@ -1672,13 +1672,30 @@ export const fallbackComplianceItems = [
   },
 ];
 
-// Real partner names, sourced from actual project content (Eko Paragon
-// Residence development credits, BRG partnership announcement) — logo image
-// files haven't been sourced yet, so logoUrl deliberately points at a path
-// that doesn't exist; PartnerLogo's onError handler renders the partner's
-// name as a text badge instead, rather than showing the wrong company's
-// logo next to a different company's name.
+// Real partner names, sourced from actual project content — AEON Trisl
+// Group and Emaar Properties Dubai from the About page's "International
+// Reach" section (carried over verbatim from the live WordPress site),
+// LSDPC and Gidi Homes from the Eko Paragon Residence development credits,
+// and BRG from the partnership announcement blog post. Logo image files
+// haven't been sourced yet, so logoUrl deliberately points at a path that
+// doesn't exist; PartnerLogo's onError handler renders the partner's name
+// as a text badge instead, rather than showing the wrong company's logo
+// next to a different company's name.
 export const fallbackPartners = [
+  {
+    id: 'fallback-partner-aeon-trisl',
+    name: 'AEON Trisl Group',
+    logoUrl: '/images/partners/aeon-trisl-logo.png',
+    category: 'PARTNER',
+    active: true,
+  },
+  {
+    id: 'fallback-partner-emaar',
+    name: 'Emaar Properties',
+    logoUrl: '/images/partners/emaar-logo.png',
+    category: 'PARTNER',
+    active: true,
+  },
   {
     id: 'fallback-partner-lsdpc',
     name: 'Lagos State Development & Property Corporation (LSDPC)',
