@@ -5,6 +5,7 @@ import EstateSections from '@/components/home/EstateSections';
 import NewPropertySpotlight from '@/components/home/NewPropertySpotlight';
 import { StatesSection } from '@/components/home/StatesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import WhyChooseSection from '@/components/home/WhyChooseSection';
 import PartnersSection from '@/components/home/PartnersSection';
 import ComplianceSection from '@/components/home/ComplianceSection';
 import PromoSection from '@/components/home/PromoSection';
@@ -15,13 +16,15 @@ import { Reveal } from '@/components/motion/Reveal';
 
 // Section order follows Daniel's specified homepage flow: Hero, Who We Are,
 // CEO message, Our Developments, New Property spotlight, Our Success
-// (testimonials), Our Partnership, Announcement, App Launch, Insights.
-// Why Choose Us and Services were folded into/removed in favor of Who We
-// Are (see that component), the Realtor CTA was removed outright, and the
-// Newsletter section was folded into App Launch (both posted to the same
-// /newsletter endpoint) — rather than kept as separate near-duplicate
-// sections. Everything else already on the homepage (States, Compliance,
-// final CTA) stays, woven in around that backbone.
+// (testimonials), Why Choose Aceroyal, Our Partnership, Announcement, App
+// Launch, Insights. Why Choose Aceroyal originally lived inside Who We Are
+// (folded in to avoid two consecutive "about the company" blocks) but was
+// moved to its own section right after Our Success per Daniel's request.
+// Services was folded into Who We Are, the Realtor CTA was removed
+// outright, and the Newsletter section was folded into App Launch (both
+// posted to the same /newsletter endpoint) — rather than kept as separate
+// near-duplicate sections. Everything else already on the homepage (States,
+// Compliance, final CTA) stays, woven in around that backbone.
 export default function HomePage() {
   return (
     <div>
@@ -32,6 +35,7 @@ export default function HomePage() {
       <Reveal><NewPropertySpotlight /></Reveal>
       <Reveal><StatesSection /></Reveal>
       <Reveal><TestimonialsSection /></Reveal>
+      <Reveal><WhyChooseSection /></Reveal>
       <Reveal><PartnersSection /></Reveal>
       <Reveal><ComplianceSection /></Reveal>
       <Reveal><PromoSection /></Reveal>

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Home, Award, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { WhyChooseAceroyal } from '@/components/home/WhyChooseAceroyal';
 
 // Condensed from the About page's "Our Story" copy (src/app/about/page.tsx)
 // rather than written fresh, so the two pages stay consistent. Stats match
@@ -13,10 +12,6 @@ const stats = [
   { icon: Award, label: 'States We Operate In', value: '5' },
   { icon: Users, label: 'Physical Offices', value: '3' },
 ];
-
-// Was a separate "Why Choose Aceroyal?" section right after this one —
-// folded in here instead since two consecutive "about the company" blocks
-// read as repeating themselves.
 
 export function WhoWeAreSection() {
   return (
@@ -50,11 +45,6 @@ export function WhoWeAreSection() {
             <Link href="/services">Our Services</Link>
           </Button>
         </div>
-      </div>
-
-      <div className="container max-w-5xl mx-auto pt-14 md:pt-20">
-        <h3 className="text-xl font-semibold text-center mb-8">Why Choose Aceroyal</h3>
-        <WhyChooseAceroyal />
       </div>
     </section>
   );
