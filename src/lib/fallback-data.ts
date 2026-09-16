@@ -1672,20 +1672,15 @@ export const fallbackComplianceItems = [
   },
 ];
 
-// Real partner names, sourced from actual project content — AEON Trisl
-// Group and Emaar Properties Dubai from the About page's "International
-// Reach" section (carried over verbatim from the live WordPress site),
-// LSDPC and Gidi Homes from the Eko Paragon Residence development credits,
-// and BRG from the partnership announcement blog post. Logo image files
-// haven't been sourced yet, so logoUrl deliberately points at a path that
-// doesn't exist; PartnerLogo's onError handler renders the partner's name
-// as a text badge instead, rather than showing the wrong company's logo
-// next to a different company's name.
+// Real partner names and logos — AEON Trisl Group and Emaar Properties
+// Dubai from the About page's "International Reach" section, LSDPC and
+// Gidi Homes from the Eko Paragon Residence development credits, and BRG
+// from the partnership announcement blog post.
 export const fallbackPartners = [
   {
     id: 'fallback-partner-aeon-trisl',
     name: 'AEON Trisl Group',
-    logoUrl: '/images/partners/aeon-trisl-logo.png',
+    logoUrl: '/images/partners/aeon-trisl-logo.jpg',
     category: 'PARTNER',
     active: true,
   },
@@ -1699,7 +1694,7 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-lsdpc',
     name: 'Lagos State Development & Property Corporation (LSDPC)',
-    logoUrl: '/images/partners/lsdpc-logo.png',
+    logoUrl: '/images/partners/lsdpc-logo.jpg',
     category: 'PARTNER',
     active: true,
   },
@@ -1713,7 +1708,7 @@ export const fallbackPartners = [
   {
     id: 'fallback-partner-brg',
     name: 'The Billionaire Realtor Group',
-    logoUrl: '/images/partners/brg-logo.png',
+    logoUrl: '/images/partners/brg-logo.jpg',
     category: 'PARTNER',
     active: true,
   },
