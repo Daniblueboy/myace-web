@@ -144,13 +144,19 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           </div>
           {videoItem && (
             <div className="aspect-video w-full">
-              <iframe
-                src={getEmbedUrl(videoItem.mediaUrl)}
-                title={videoItem.title}
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              {videoItem.mediaUrl.includes('youtube') || videoItem.mediaUrl.includes('vimeo') ? (
+                <iframe
+                  src={getEmbedUrl(videoItem.mediaUrl)}
+                  title={videoItem.title}
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video controls playsInline preload="metadata" className="h-full w-full">
+                  <source src={videoItem.mediaUrl} type="video/mp4" />
+                </video>
+              )}
             </div>
           )}
         </DialogContent>

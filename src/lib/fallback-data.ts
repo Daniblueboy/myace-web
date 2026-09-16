@@ -1045,8 +1045,8 @@ export const fallbackBlogPosts = [
     slug: 'land-ownership-made-easy-why-allocation-day-matters',
     excerpt: 'What happens at Aceroyal’s quarterly Allocation Day, and why walking your plot matters.',
     content:
-      'Allocation Day is the moment your land goes from "something you paid for" to something you can actually stand on. At Aceroyal Estate Homes, we hold this every three months.\n\nOn Allocation Day, licensed surveyors who drafted the survey plans guide you through your land’s exact location and boundaries. Documents are signed on-site with the Admin team, so there’s no back-and-forth or weeks of waiting. It’s also a chance to meet future neighbors and fellow investors — and yes, there’s lunch.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+      'Let’s talk about Allocation Day — that exciting moment when your land goes from “something you paid for” to something you can actually stand on. It’s not just about seeing your plot; it’s about making it official.\n\nAt Aceroyal Estate Homes, we do this every three months, turning your investment into reality. If you’ve secured a plot or acre, this is your moment. Here’s why you don’t want to miss it:\n\n[video](/videos/allocation-day.mp4)\n\n1. You’re Not Just Buying Land — You’re Owning It\n\nUntil you step on your plot, land ownership feels abstract. But on Allocation Day, you walk the land and see exactly what you invested in. Our licensed surveyors, who drafted the survey plans, guide you through the process, ensuring you understand your land’s exact location and boundaries.\n\n![A new landowner celebrates her allocation at The Legacy Garden City](/images/gallery/allocation-day/legacy-garden-city-allocated.jpg)\n\n2. Your Documents Are Ready — No Delays\n\nWe know Nigerian real estate can be stressful, but not with us. Our dedicated Admin team ensures you sign all necessary documents on-site, so you leave with full ownership clarity. No back and forth. No waiting weeks for paperwork.\n\n3. You Meet Your Future Neighbors & Investors\n\nIt’s more than just land — it’s a community. Whether you plan to build soon or invest for appreciation, Allocation Day lets you connect with like-minded buyers, potential partners, and future neighbors. Who knows? You might even find someone with a shared vision for the area.\n\n![Celebrating a new allocation on site](/images/gallery/allocation-day/just-got-allocated.jpg)\n\n4. And Yes, There’s Lunch!\n\nAfter handling business, we make sure you relax, celebrate, and enjoy good food. Because owning land should feel exciting, not stressful.',
+    coverImageUrl: '/images/gallery/allocation-day/latest-land-owner.jpg',
     published: true,
     createdAt: '2025-02-24T00:00:00.000Z',
     updatedAt: '2025-02-24T00:00:00.000Z',
@@ -1057,8 +1057,8 @@ export const fallbackBlogPosts = [
     slug: 'lagos-vs-abuja-where-should-you-invest-in-real-estate-in-2025',
     excerpt: 'Comparing Lagos’s fast-paced growth against Abuja’s stability — and which fits which kind of investor.',
     content:
-      'Lagos is fast-paced, high-demand real estate: over 20 million people, growing development hubs like Ibeju-Lekki and Abijo GRA, and major infrastructure (Lekki-Epe Expressway, Fourth Mainland Bridge, Dangote Refinery) pushing property values up daily. Best picks: Eko Paragon Residence (Abijo GRA) for rental income, Legacy Garden City Phase 2 (Imota) for land banking.\n\nAbuja is calmer and more structured — government presence means steady, long-term investment security, with land banking opportunities in areas like Gwagwalada and Kuje still affordable but appreciating. Best pick: Prime Boulevard Annex (Gwagwalada).\n\nChoose Lagos for fast-paced, high-demand real estate and rental income; choose Abuja for stability, exclusivity, and government-backed security. Both are goldmines — it depends on your goals.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+      'If you were investing ₦50 million in Nigerian real estate today, where would it be — Lagos or Abuja?\n\nThis is the debate every smart investor is having in 2025. Both cities are booming, both offer massive returns, but the real question is: which one is right for you? Let’s break it down.\n\nLagos: The Hustle, The Profit\n\nLagos is the heartbeat of Nigeria’s economy — fast-paced, always moving, and never sleeping. If you’re looking for a city with guaranteed demand, Lagos real estate is king.\n\nWhy Invest in Lagos?\n\nHigh population = high demand — over 20 million people and growing; houses, land, and rentals never stay empty for long. Growing development hubs — Ibeju-Lekki, Epe, and Abijo GRA are turning into prime real estate zones. Massive infrastructure boom — the Lekki-Epe Expressway, Fourth Mainland Bridge, and the Dangote Refinery are making Lagos property more valuable daily. Short-term rental market — with business travelers and tourists, Lagos is the best place to earn passive income from rentals.\n\nBest Places to Invest in Lagos (2025)\n\nEko Paragon Residence (Abijo GRA): luxury apartments with a hotel-style experience, perfect for investors looking for high rental income. Legacy Garden City, Phase 2 (Imota): affordable land in a fast-growing location, ideal for land banking and long-term appreciation.\n\nAbuja: The Prestige, The Stability\n\nAbuja is different. It’s calm, structured, and known for its premium real estate market. Unlike Lagos, property prices don’t fluctuate wildly — they steadily appreciate.\n\nWhy Invest in Abuja?\n\nGovernment presence = stability — Abuja is the political capital, meaning steady development and long-term investment security. Less hustle, more exclusivity — unlike Lagos, Abuja is not overcrowded; property owners enjoy a more serene and organized environment. Land banking opportunities — areas like Gwagwalada and Kuje are currently affordable but won’t be for long.\n\nBest Places to Invest in Abuja (2025)\n\n![Prime Boulevard Annex — Gwagwalada, Abuja](/images/blog/lagos-vs-abuja/prime-annex-abuja.jpg)\n\nPrime Boulevard Annex (Gwagwalada): a fast-rising area with affordable plots now but major price appreciation coming soon.\n\nLagos vs. Abuja: Which Should You Choose?\n\nChoose Lagos if you want fast-paced, high-demand real estate, high rental income potential, and quick appreciation in hot zones. Choose Abuja if you want a stable, structured, long-term investment, luxury and exclusivity, and government-backed real estate stability.\n\nAt the end of the day, both cities are goldmines — it depends on your investment goals.',
+    coverImageUrl: '/images/blog/lagos-vs-abuja/eko-paragon-lagos.jpg',
     published: true,
     createdAt: '2025-02-17T00:00:00.000Z',
     updatedAt: '2025-02-17T00:00:00.000Z',
@@ -1069,8 +1069,8 @@ export const fallbackBlogPosts = [
     slug: 'why-most-people-lose-money-in-lagos-real-estate-and-how-to-avoid-it',
     excerpt: 'Common due-diligence mistakes that cost Lagos land buyers their investment, and how to avoid them.',
     content:
-      'A common story: a buyer thought he’d secured a prime plot by the roadside in Ibeju-Lekki, only to discover at allocation that the land belonged to the government, marked for a future road expansion. His entire investment was gone — the result of skipping due diligence.\n\nAvoid "too good to be true" deals — research market prices and buy from reputable developers with full documentation. Never pay without proper documentation: get a Contract of Sale or Deed of Assignment, and pay into a corporate account, not a personal one. Think long-term — real wealth in Lagos real estate comes from patience and appreciation, not quick flips.',
-    coverImageUrl: 'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80',
+      'A realtor once shared a story with me about a client who thought he had secured a prime plot by the roadside in Ibeju-Lekki.\n\nThe land was in a fast-developing area, and the price seemed like a good deal. But when it was time for allocation, he discovered the land belonged to the government — marked for a future road expansion project. His entire investment was gone.\n\nThis is one of the biggest mistakes people make in Lagos real estate — not doing due diligence.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of buyers invest safely and profitably. Here’s how to ensure your hard-earned money doesn’t go to waste.\n\n1. Don’t Go for “Too Good to Be True” Deals\n\nDo this instead: research market prices in areas like Lekki, Abijo GRA, and Epe. Buy from reputable developers — Aceroyal Estate Homes offers secure properties with full documentation.\n\n2. Don’t Pay Without Proper Documentation\n\n![Eko Paragon Residence — secure documentation and Certificate of Occupancy](/images/blog/lose-money-lagos/eko-paragon-certificate.jpg)\n\nDo this instead: ensure you get a Contract of Sale or Deed of Assignment. Make payments to a corporate account, not personal accounts. Work with established real estate firms like Aceroyal, where every transaction is transparent and secure.\n\n3. Think Long-Term\n\nA lot of people buy real estate expecting quick profits in a few months. But true wealth in Lagos real estate comes from long-term appreciation and smart investments. Consider off-plan properties like Eko Paragon Residence, which offer high ROI and secure documentation. Be patient — the best real estate investments appreciate over time.\n\nMake a Smart Investment Today\n\nAt Aceroyal Estate Homes, we offer secure, high-value properties with full documentation. Don’t take risks with your hard-earned money. Secure your future today — send us a message now!',
+    coverImageUrl: '/images/blog/lose-money-lagos/eko-paragon-certificate.jpg',
     published: true,
     createdAt: '2025-02-11T00:00:00.000Z',
     updatedAt: '2025-02-11T00:00:00.000Z',
@@ -1251,20 +1251,14 @@ export const fallbackTestimonials: Testimonial[] = [
       "I've talked to the CEO of Aceroyalestates multiple times about real estate and the real estate market. He is very knowledgeable, professional and passionate about his vision. Anyone who works with him is lucky to have him on their side. It's a competitive market and he knows how to navigate the complexities to his clients advantage, he is constantly challenging the status quo, I once called him the \"robinhood\" of real estate. Was a joy to work with. He really went above and beyond in pursuit of my peculiar constraints, and worked through several challenging buying scenarios until I got just what I wanted. Thank you Chairman_ace.",
     active: true,
   },
-  // TODO(content): dummy entries below (not sourced from any real client)
-  // written to read like genuine testimonials rather than announcing
-  // themselves as placeholders, so the "Our Success" layout — text, photo,
+  // TODO(content): dummy entry below (not sourced from any real client)
+  // written to read like a genuine testimonial rather than announcing
+  // itself as a placeholder, so the "Our Success" layout — text, photo,
   // and video testimonials — can actually be reviewed as it will look once
   // real content lands. Built per Daniel's standing instruction to build
   // every section during development with placeholders rather than gate on
   // final content, and swap/remove before go-live. Replace name/role/
-  // message/imageUrl/videoUrl with real, approved client content; the
-  // YouTube clip below (an aerial city/skyline drone tour, chosen for
-  // being property/real-estate-adjacent rather than an unrelated clip)
-  // is a placeholder, not real client footage. An earlier direct-link
-  // (Google Cloud Storage sample bucket) was swapped for a YouTube embed
-  // after its bucket permissions started returning AccessDenied — embed
-  // URLs don't expire the way that link did.
+  // message/imageUrl with real, approved client content.
   {
     id: 'fallback-testimonial-dummy-image',
     name: 'Adaeze Okafor',
@@ -1275,66 +1269,61 @@ export const fallbackTestimonials: Testimonial[] = [
     imageUrl: estateImages.placeholder3,
     active: true,
   },
+  // Real footage from a quarterly Allocation Day at The Legacy Garden City —
+  // shown as an event clip rather than attributed to any one named client,
+  // since we don't have a specific person's approved quote to go with it.
   {
-    id: 'fallback-testimonial-dummy-video',
-    name: 'Chuka Nwosu',
-    role: 'Investor, Downtown Lagos Commercial City',
+    id: 'fallback-testimonial-allocation-video',
+    name: 'Allocation Day at The Legacy Garden City',
+    role: 'Aceroyal Estate Homes',
     message:
-      "I've bought land before and dealt with a lot of back and forth. With Aceroyal, the inspection was organized, the documentation was ready when they said it would be, and allocation happened on schedule. Watch how it went for me.",
-    rating: 5,
-    videoUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
+      'New landowners receive their Certificate of Allocation and walk their plots on site — this is what Allocation Day looks like at The Legacy Garden City.',
+    videoUrl: '/videos/allocation-day.mp4',
+    imageUrl: '/images/gallery/allocation-day/latest-land-owner.jpg',
     active: true,
   },
 ];
 
-// TODO(content): placeholder stock photos standing in so the gallery grid/
-// lightbox can actually be seen and tested before real photos/videos exist.
-// Same treatment as the hero/estate stock imagery elsewhere in this file —
-// swap every item below for real photos (ideally hosted on Cloudinary, per
-// the earlier asset-storage decision) before go-live.
 export const fallbackGalleryItems: GalleryItem[] = [
   {
-    id: 'fallback-gallery-1',
-    title: 'Allocation Day — Alpha Garden City',
+    id: 'fallback-gallery-allocation-1',
+    title: 'Latest Land Owner',
     mediaType: 'image',
-    mediaUrl: estateImages.alphaGardenCity,
-    estateName: 'Alpha Garden City',
+    mediaUrl: '/images/gallery/allocation-day/latest-land-owner.jpg',
+    estateName: 'The Legacy Garden City',
     active: true,
   },
   {
-    id: 'fallback-gallery-2',
-    title: 'Site Inspection Walkthrough',
+    id: 'fallback-gallery-allocation-2',
+    title: 'I Have Just Been Allocated',
     mediaType: 'image',
-    mediaUrl: estateImages.placeholder1,
-    estateName: 'Heritage Estate',
+    mediaUrl: '/images/gallery/allocation-day/legacy-garden-city-allocated.jpg',
+    estateName: 'The Legacy Garden City',
     active: true,
   },
   {
-    id: 'fallback-gallery-3',
-    title: 'Estate Launch Event',
+    id: 'fallback-gallery-allocation-3',
+    title: 'I Just Got Allocated',
     mediaType: 'image',
-    mediaUrl: estateImages.placeholder2,
-    estateName: 'Eko Paragon Residence',
+    mediaUrl: '/images/gallery/allocation-day/just-got-allocated.jpg',
+    estateName: 'The Legacy Garden City',
     active: true,
   },
   {
-    id: 'fallback-gallery-4',
-    title: 'Client Handover',
+    id: 'fallback-gallery-allocation-4',
+    title: 'Allocation Day on Site',
     mediaType: 'image',
-    mediaUrl: estateImages.placeholder3,
-    estateName: 'Downtown Lagos',
+    mediaUrl: '/images/gallery/allocation-day/legacy-garden-city-key.jpg',
+    estateName: 'The Legacy Garden City',
     active: true,
   },
-  // TODO(content): dummy video entry (see the testimonials TODO above for
-  // why it reads like real content and where the placeholder clip is from)
-  // — replace mediaUrl with a real allocation/inspection-day video.
   {
-    id: 'fallback-gallery-5',
+    id: 'fallback-gallery-allocation-video',
     title: 'Allocation Day Walkthrough',
     mediaType: 'video',
-    mediaUrl: 'https://www.youtube.com/watch?v=2lufRODAVPM',
-    thumbnailUrl: estateImages.placeholder1,
-    estateName: 'Heritage Estate',
+    mediaUrl: '/videos/allocation-day.mp4',
+    thumbnailUrl: '/images/gallery/allocation-day/legacy-garden-city-key.jpg',
+    estateName: 'The Legacy Garden City',
     active: true,
   },
 ];
