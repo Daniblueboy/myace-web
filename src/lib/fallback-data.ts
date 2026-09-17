@@ -1217,22 +1217,6 @@ export const fallbackBlogPosts = [
     updatedAt: '2025-02-11T00:00:00.000Z',
   },
   {
-    id: 'fallback-blog-is-lagos-still-good',
-    title: 'Is Lagos Real Estate Still a Good Investment in 2025?',
-    slug: 'is-lagos-real-estate-still-a-good-investment-in-2025',
-    excerpt: 'Population growth, infrastructure projects, and rental demand behind Lagos’s continued property boom.',
-    content:
-      'Lagos real estate remains one of Nigeria’s most profitable investments — thousands relocate to the city daily, pushing demand for land and housing higher. Areas like Ibeju-Lekki, Epe, and Lekki Phase 2 have seen major appreciation, while Ikorodu and Ajah are becoming investor favorites.\n\nMajor infrastructure projects — the Imota Rice Mill, Fourth Mainland Bridge, and Lagos-Calabar Coastal Road — are driving demand further. Rental income is strong too, from short-let apartments to commercial properties, giving landlords steady cash flow.\n\nThe risk is choosing the wrong developer — delayed projects and poor-quality builds are common, so buy from a company with a proven track record and full transparency.',
-    // TODO(content): one of the ~20 older live-blog posts not migrated with
-    // Daniel's own copy — this content is a paraphrase, not his verbatim
-    // text, and no image was ever provided. No stock photo either, since
-    // that would just swap one placeholder for another.
-    coverImageUrl: null,
-    published: true,
-    createdAt: '2025-02-04T00:00:00.000Z',
-    updatedAt: '2025-02-04T00:00:00.000Z',
-  },
-  {
     id: 'fallback-blog-hotel-residences',
     title: 'Luxury Living, Lucrative Returns: Lagos Hotel Residences',
     slug: 'luxury-living-lucrative-returns-lagos-hotel-residences',
