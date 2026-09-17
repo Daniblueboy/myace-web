@@ -51,10 +51,18 @@ export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
+// Search Console shows real impressions for split/variant spellings
+// ("ace royal estates", "ace royal", "aceroyal estate") alongside the
+// standard one-word "Aceroyal" — alternateName is the correct lever for
+// telling Google these all refer to the same entity, without reintroducing
+// the two-word spelling into the visible copy itself.
+const BRAND_ALTERNATE_NAMES = ['Ace Royal Estates', 'Ace Royal', 'AceRoyal Estates', 'AceRoyal'];
+
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE_NAME,
+  alternateName: BRAND_ALTERNATE_NAMES,
   url: SITE_URL,
 };
 
@@ -62,6 +70,7 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
   name: SITE_NAME,
+  alternateName: BRAND_ALTERNATE_NAMES,
   url: SITE_URL,
   logo: `${SITE_URL}/images/aceroyal-symbol-colour.png`,
   email: 'customercare@aceroyalestates.com',
