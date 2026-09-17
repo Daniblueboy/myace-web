@@ -171,6 +171,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
   return (
     <div className="min-h-screen">
       <script
+        id="estate-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(estateJsonLd) }}
       />
