@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { fallbackBlogPosts } from '@/lib/fallback-data';
 import { Calendar } from 'lucide-react';
+import { BlogCoverFallback } from '@/components/blog/BlogCoverFallback';
 
 export default function LatestBlogPosts() {
   const posts = [...fallbackBlogPosts]
@@ -29,7 +30,7 @@ export default function LatestBlogPosts() {
               href={`/blog/${post.slug}`}
               className="glass-card backdrop-blur-lg group shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
             >
-              {post.coverImageUrl && (
+              {post.coverImageUrl ? (
                 <div className="h-44 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <img
                     src={post.coverImageUrl}
@@ -37,6 +38,8 @@ export default function LatestBlogPosts() {
                     className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
                   />
                 </div>
+              ) : (
+                <BlogCoverFallback className="h-44" />
               )}
               <div className="p-5">
                 <h3 className="font-semibold text-lg mb-2">{post.title}</h3>

@@ -6,7 +6,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import WhyChooseSection from '@/components/home/WhyChooseSection';
 import PartnersSection from '@/components/home/PartnersSection';
 import ComplianceSection from '@/components/home/ComplianceSection';
-import PromoSection from '@/components/home/PromoSection';
+// import PromoSection from '@/components/home/PromoSection'; // see commented usage below
 import AppDownloadSection from '@/components/home/AppDownloadSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
 import { CtaSection } from '@/components/home/CtaSection';
@@ -41,7 +41,12 @@ export default function HomePage() {
       <Reveal><WhyChooseSection /></Reveal>
       <Reveal><PartnersSection /></Reveal>
       <Reveal><ComplianceSection /></Reveal>
-      <Reveal><PromoSection /></Reveal>
+      {/* Announcements carousel — commented out for go-live per Daniel's
+          request; the fallbackPromos content (app launch, realtor program,
+          inspection slots) isn't a real dated announcement, and this section
+          is only meant to run when there's an actual one to show. Re-enable
+          by uncommenting once real announcement content exists. */}
+      {/* <Reveal><PromoSection /></Reveal> */}
       <Reveal><AppDownloadSection /></Reveal>
       <Reveal><LatestBlogPosts /></Reveal>
       <Reveal><CtaSection /></Reveal>

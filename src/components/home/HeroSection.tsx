@@ -88,7 +88,7 @@ export default function HeroSection() {
     {
       type: 'image' as const,
       url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
-      headline: ['Build Legacies', 'Live with Purpose.'],
+      headline: ['The Ultimate Standard', 'of Trust'],
     },
     {
       type: 'image' as const,
@@ -98,7 +98,7 @@ export default function HeroSection() {
     {
       type: 'image' as const,
       url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1920&q=80',
-      headline: ['Smart Investment', 'Premium Value'],
+      headline: ['Building the Future', 'Together'],
     },
   ];
 
@@ -224,17 +224,17 @@ export default function HeroSection() {
         {/* Search Box */}
         <form
           onSubmit={handleSearch}
-          className="flex bg-white/95 dark:bg-slate-900/90 p-4 rounded-lg shadow-lg max-w-3xl mx-auto flex-col md:flex-row gap-4"
+          className="flex bg-white/95 dark:bg-black/90 p-4 rounded-lg shadow-lg max-w-3xl mx-auto flex-col md:flex-row gap-4"
         >
           <Input
             type="text"
             placeholder="Search by keywords..."
-            className="text-slate-900 dark:text-white bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+            className="text-slate-900 dark:text-white bg-white dark:bg-black border-slate-200 dark:border-slate-700"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
           <select
-            className="flex h-10 w-full rounded-md border border-input bg-background dark:bg-slate-900 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white"
+            className="flex h-10 w-full rounded-md border border-input bg-background dark:bg-black px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white"
             value={type}
             onChange={(e) => setType(e.target.value)}
           >
@@ -243,7 +243,7 @@ export default function HeroSection() {
             <option value="APARTMENT">Apartment</option>
           </select>
           <select
-            className="flex h-10 w-full rounded-md border border-input bg-background dark:bg-slate-900 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white"
+            className="flex h-10 w-full rounded-md border border-input bg-background dark:bg-black px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white"
             value={state}
             onChange={(e) => setState(e.target.value)}
           >

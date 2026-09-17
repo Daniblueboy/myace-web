@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import sanitizeHtml from 'sanitize-html';
 import { SANITIZE_OPTIONS } from '@/lib/sanitize';
+import { BlogCoverFallback } from '@/components/blog/BlogCoverFallback';
 
 export async function generateMetadata({
   params,
@@ -76,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
 
           <article className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden">
-            {post.coverImageUrl && (
+            {post.coverImageUrl ? (
               <div className="max-h-[28rem] flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-900">
                 <img
                   src={post.coverImageUrl}
@@ -84,6 +85,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   className="max-h-[28rem] w-full object-contain"
                 />
               </div>
+            ) : (
+              <BlogCoverFallback className="h-56" />
             )}
 
             <div className="p-8 md:p-12">
@@ -170,7 +173,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     href={`/blog/${item.slug}`}
                     className="glass-card backdrop-blur-lg shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow lg:w-auto lg:max-w-none lg:shrink"
                   >
-                    {item.coverImageUrl && (
+                    {item.coverImageUrl ? (
                       <div className="h-40 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">
                         <img
                           src={item.coverImageUrl}
@@ -178,6 +181,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                           className="h-full w-full object-contain"
                         />
                       </div>
+                    ) : (
+                      <BlogCoverFallback className="h-40" />
                     )}
                     <div className="p-4">
                       <h3 className="font-semibold text-lg mb-2">{item.title}</h3>

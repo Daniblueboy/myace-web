@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { fetchAPI } from '@/lib/api';
+import { BlogCoverFallback } from '@/components/blog/BlogCoverFallback';
 
 interface BlogPost {
   id: string;
@@ -58,7 +59,7 @@ export function BlogPostsList({
             key={post.id}
             className="glass-card backdrop-blur-lg group h-full shrink-0 w-[82%] max-w-sm snap-center flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
           >
-            {post.coverImageUrl && (
+            {post.coverImageUrl ? (
               <div className="h-48 flex items-center justify-center overflow-hidden rounded-t-lg bg-slate-100 dark:bg-slate-800">
                 <img
                   src={post.coverImageUrl}
@@ -66,6 +67,8 @@ export function BlogPostsList({
                   className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
+            ) : (
+              <BlogCoverFallback className="h-48 rounded-t-lg" />
             )}
             <CardHeader>
               <CardTitle className="line-clamp-2">{post.title}</CardTitle>
