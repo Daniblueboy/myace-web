@@ -15,8 +15,7 @@ import { getOfferingLabel, getAvailableCountLabel } from '@/lib/estate-offerings
 import { getVideoAspectRatio } from '@/lib/video-aspect-ratio';
 import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
 import type { Property, PropertyResource, PropertyMedia } from '@/shared';
-
-const SITE_URL = 'https://aceroyalestates.com';
+import { SITE_URL, breadcrumbListJsonLd } from '@/lib/json-ld';
 
 function getEmbedUrl(url: string) {
   if (!url) return url;
@@ -168,12 +167,23 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
     }),
   };
 
+  const breadcrumbJsonLd = breadcrumbListJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Estates', path: '/estates' },
+    { name: estate.name, path: `/estates/${estate.slug}` },
+  ]);
+
   return (
     <div className="min-h-screen">
       <script
         id="estate-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(estateJsonLd) }}
+      />
+      <script
+        id="estate-breadcrumb-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <div className="container py-12 md:py-16 space-y-10">
         <div>

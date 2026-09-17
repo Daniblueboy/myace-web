@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import sanitizeHtml from 'sanitize-html';
 import { SANITIZE_OPTIONS } from '@/lib/sanitize';
 import { BlogCoverFallback } from '@/components/blog/BlogCoverFallback';
+import { SITE_URL, SITE_NAME, SITE_LOGO, absoluteUrl, breadcrumbListJsonLd } from '@/lib/json-ld';
 
 export async function generateMetadata({
   params,
@@ -67,8 +68,42 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
+  const postJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt || undefined,
+    image: absoluteUrl(post.coverImageUrl) ? [absoluteUrl(post.coverImageUrl)] : undefined,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    datePublished: post.createdAt,
+    dateModified: post.updatedAt || post.createdAt,
+    author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: { '@type': 'ImageObject', url: SITE_LOGO },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/blog/${post.slug}` },
+  };
+
+  const breadcrumbJsonLd = breadcrumbListJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
+      <script
+        id="blog-post-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(postJsonLd) }}
+      />
+      <script
+        id="blog-post-breadcrumb-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-4xl mx-auto">
           <Link href="/blog" className="inline-flex items-center gap-2 text-primary hover:opacity-80 mb-8">

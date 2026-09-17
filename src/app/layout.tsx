@@ -51,6 +51,13 @@ export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
@@ -89,8 +96,14 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/aceroyal-symbol-white.png" fetchPriority="high" />
         <link rel="preload" as="image" href="/images/aceroyal-symbol-colour.png" />
         <script
+          id="organization-json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          id="website-json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body>
