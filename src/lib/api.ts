@@ -16,12 +16,30 @@ function dispatchRequestEvent(name: string) {
   }
 }
 
+// Lead and newsletter submissions have no external backend (Render is not
+// in use) — they're always handled by this app's own Resend-backed route
+// handlers, regardless of API_ENABLED, instead of falling into the "online
+// submissions unavailable" fallback-mode error below.
+const LOCAL_ROUTES = ['/leads', '/newsletter'];
+
 export async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
   const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const method = (options.method || 'GET').toUpperCase();
   const fallbackData = getFallbackData(path, method);
+
+  if (method !== 'GET' && LOCAL_ROUTES.includes(path)) {
+    const res = await fetch(`/api${path}`, {
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...options.headers },
+    });
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({}));
+      throw new Error(error.message || 'An error occurred');
+    }
+    return res.json();
+  }
 
   if (!API_ENABLED) {
     if (method === 'GET') {
