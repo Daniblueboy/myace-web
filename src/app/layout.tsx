@@ -7,6 +7,7 @@ import { QueryProvider } from '@/components/query-provider';
 import { PublicChrome } from '@/components/layout/PublicChrome';
 import { NavigationProgress } from '@/components/layout/NavigationProgress';
 import { InitialPreloader } from '@/components/layout/InitialPreloader';
+import { CookieConsent } from '@/components/layout/CookieConsent';
 
 const SITE_URL = 'https://aceroyalestates.com';
 const SITE_NAME = 'Aceroyal Estates';
@@ -105,6 +106,7 @@ export default function RootLayout({
               <NavigationProgress />
             </Suspense>
             <PublicChrome>{children}</PublicChrome>
+            <CookieConsent />
             <Toaster position="top-right" richColors />
           </ThemeProvider>
         </QueryProvider>
