@@ -21,7 +21,6 @@ import {
   NAV_LINKS_AFTER_ESTATES,
   NAV_LINKS_TAIL,
   RESOURCES_LINKS,
-  CUSTOMER_PORTAL_URL,
 } from '@/components/layout/nav-links';
 
 // Shared layoutId: only one of these ever renders at a time (whichever tab
@@ -213,13 +212,16 @@ export function MobileBottomNav() {
               );
             })}
 
-            <SheetClose asChild>
+            {/* Login commented out per Daniel's request — customer portal
+                link not ready to be surfaced yet. Re-enable by uncommenting
+                and re-adding CUSTOMER_PORTAL_URL to the import above. */}
+            {/* <SheetClose asChild>
               <Button variant="outline" className="w-full mt-2" asChild>
                 <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
                   Login
                 </a>
               </Button>
-            </SheetClose>
+            </SheetClose> */}
             <SheetClose asChild>
               <Button className="w-full" asChild>
                 <Link href="/book-inspection">Book Inspection</Link>

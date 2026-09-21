@@ -8,7 +8,7 @@ import { useTheme } from 'next-themes';
 import { fallbackEstates } from '@/lib/fallback-data';
 import { BrandLogo } from '@/components/layout/BrandLogo';
 import { isActivePath } from '@/components/layout/nav-utils';
-import { NAV_LINKS_BEFORE_ESTATES, NAV_LINKS_AFTER_ESTATES, RESOURCES_LINKS, NAV_LINKS_TAIL, CUSTOMER_PORTAL_URL } from '@/components/layout/nav-links';
+import { NAV_LINKS_BEFORE_ESTATES, NAV_LINKS_AFTER_ESTATES, RESOURCES_LINKS, NAV_LINKS_TAIL } from '@/components/layout/nav-links';
 
 function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
@@ -205,11 +205,14 @@ export function Navbar() {
             <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
-          <Button variant="ghost" asChild>
+          {/* Login commented out per Daniel's request — customer portal
+              link not ready to be surfaced yet. Re-enable by uncommenting
+              and re-adding CUSTOMER_PORTAL_URL to the import above. */}
+          {/* <Button variant="ghost" asChild>
             <a href={CUSTOMER_PORTAL_URL} target="_blank" rel="noopener noreferrer">
               Login
             </a>
-          </Button>
+          </Button> */}
           <Button asChild><Link href="/book-inspection">Book Inspection</Link></Button>
         </div>
       </div>
