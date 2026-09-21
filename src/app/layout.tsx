@@ -77,7 +77,7 @@ const organizationJsonLd = {
   telephone: ['+234-201-330-0287', '+234-915-654-9709'],
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway',
+    streetAddress: 'KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah',
     addressLocality: 'Lagos',
     addressCountry: 'NG',
   },

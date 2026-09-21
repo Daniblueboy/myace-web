@@ -50,7 +50,7 @@ export function Footer() {
           <ul className="space-y-4 text-sm">
             <li className="flex gap-3">
               <MapPin className="w-5 h-5 text-primary shrink-0" />
-              <span>Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos, Nigeria</span>
+              <span>KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah, Lagos, Nigeria</span>
             </li>
             <li className="flex gap-3">
               <Phone className="w-5 h-5 text-primary shrink-0" />

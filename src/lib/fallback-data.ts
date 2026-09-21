@@ -1799,8 +1799,8 @@ export const fallbackOffices = [
   {
     id: 'fallback-office-lagos',
     state: 'Lagos',
-    city: 'Lekki',
-    address: 'Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos, Nigeria.',
+    city: 'Ajah',
+    address: 'KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah, Lagos, Nigeria.',
     phones: ['02013300287', '09156549709'],
     emails: ['customercare@aceroyalestates.com'],
     openingHours: 'Mon-Fri: 9am - 5pm',

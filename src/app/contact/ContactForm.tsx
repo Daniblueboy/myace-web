@@ -287,7 +287,7 @@ export default function ContactForm() {
                       <div>
                         <h3 className="font-semibold mb-1">Head Office</h3>
                         <p className="text-sm text-muted-foreground">
-                          Providence Plaza, 17 Olokonla Road, Sangotedo, Lekki-Ajah Expressway, Lagos
+                          KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah, Lagos
                         </p>
                       </div>
                     </div>
