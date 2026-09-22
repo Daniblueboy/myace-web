@@ -48,8 +48,8 @@ export function CookieConsent() {
     >
       <p className="text-sm text-slate-700 dark:text-slate-300">
         We use cookies to keep this site working properly and to understand how it&apos;s used. See our{' '}
-        <Link href="/privacy" className="text-primary hover:underline">
-          Privacy Policy
+        <Link href="/privacy#cookies" className="text-primary hover:underline">
+          Cookie Policy
         </Link>{' '}
         for details.
       </p>

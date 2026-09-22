@@ -257,7 +257,7 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <section className="mb-8">
+            <section id="cookies" className="mb-8 scroll-mt-24">
               <h2 className="text-2xl font-bold mb-4">7. Cookies and Similar Technologies</h2>
               <p className="mb-2">Our website and digital services may use cookies and similar technologies to:</p>
               <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -277,7 +277,15 @@ export default function PrivacyPage() {
                 Where consent is legally required for non-essential cookies or similar technologies, we will
                 provide an appropriate choice before using them.
               </p>
-              <p>You may also manage cookies through your browser settings.</p>
+              <p className="mb-4">You may also manage cookies through your browser settings.</p>
+              <p>
+                Further information about the cookies and similar technologies actually used on our Website is
+                available in our{' '}
+                <a href="/privacy#cookies" className="text-primary hover:underline">
+                  Cookie Policy
+                </a>
+                .
+              </p>
             </section>
 
             <section className="mb-8">
