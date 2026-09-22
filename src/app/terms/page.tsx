@@ -19,7 +19,7 @@ export default function TermsPage() {
           <h1 className="text-4xl font-bold mb-8">Terms & Conditions</h1>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-muted-foreground mb-6">Last updated: September 16, 2026</p>
+            <p className="text-muted-foreground mb-6">Last updated: September 22, 2026</p>
 
             <p>
               These Terms & Conditions govern your access to and use of the Aceroyal Estates website, digital
@@ -36,30 +36,60 @@ export default function TermsPage() {
             </p>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">1. About Aceroyal Estates</h2>
+              <h2 className="text-2xl font-bold mb-4">1. Definitions</h2>
+              <p className="mb-2">For the purposes of these Terms:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>&quot;Aceroyal Estates&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;</strong>{' '}
+                  means Aceroyal Estates Homes Ltd;
+                </li>
+                <li>
+                  <strong>&quot;Customer&quot;, &quot;you&quot; or &quot;your&quot;</strong> means any person who
+                  accesses the Website, submits an enquiry, books an inspection or enters into a transaction with
+                  Aceroyal Estates;
+                </li>
+                <li>
+                  <strong>&quot;Website&quot;</strong> means the Aceroyal Estates website and official digital
+                  platforms;
+                </li>
+                <li>
+                  <strong>&quot;Property&quot;</strong> means any land, building, unit, estate or development
+                  marketed or offered by Aceroyal Estates; and
+                </li>
+                <li>
+                  <strong>&quot;Transaction Documents&quot;</strong> means any offer letter, contract of sale,
+                  payment plan, allocation letter, deed, receipt or other document issued in connection with a
+                  Property transaction.
+                </li>
+              </ul>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">2. Property Information and Transactions</h2>
               <p className="mb-4">
-                Aceroyal Estates provides real estate-related services, including the marketing and sale of land
-                and properties, property information, property inspections, investment enquiries and related
-                services.
+                Information displayed on the Website is provided for general information and marketing purposes and
+                does not, by itself, constitute a final offer for sale. Prices, availability, plot or unit sizes,
+                payment plans, development specifications, promotional offers and development timelines may change
+                from time to time.
               </p>
               <p className="mb-4">
-                Information presented on this website is intended to provide general information about our
-                properties, developments and services.
+                Photographs, videos, maps, renders, floor plans and illustrations are for presentation purposes and
+                may not always represent the final completed development exactly.
               </p>
               <p className="mb-4">
-                Where you enter into a property transaction with Aceroyal Estates, the specific terms contained in
-                your allocation documents, offer letter, purchase agreement, deed, payment plan or other
-                transaction documents will also apply.
+                Aceroyal Estates will take reasonable steps to ensure that material property information published
+                on the Website is accurate and will not knowingly publish misleading or deceptive information.
               </p>
               <p>
-                Where there is any conflict between these website Terms & Conditions and a specific written
-                property transaction agreement, the terms of the applicable transaction agreement shall prevail to
-                the extent permitted by law.
+                The rights and obligations of Aceroyal Estates and a Customer in respect of a Property shall be
+                governed by the applicable Transaction Documents. Where there is any inconsistency between general
+                Website information and the applicable Transaction Documents, the Transaction Documents shall
+                prevail, subject to applicable law.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">2. Eligibility and Use of Our Services</h2>
+              <h2 className="text-2xl font-bold mb-4">3. Eligibility and Use of Our Services</h2>
               <p className="mb-4">
                 By using our website or submitting an enquiry, you confirm that:
               </p>
@@ -69,36 +99,6 @@ export default function TermsPage() {
                 <li>you will not use our website or services for fraudulent, unlawful or abusive purposes; and</li>
                 <li>you will not attempt to interfere with the security, functionality or availability of our website or digital systems.</li>
               </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">3. Property Listings and Information</h2>
-              <p className="mb-4">
-                Aceroyal Estates takes reasonable steps to ensure that property information displayed on this
-                website is accurate and current.
-              </p>
-              <p className="mb-2">However, property information may change from time to time, including:</p>
-              <ul className="list-disc pl-6 space-y-2 mb-4">
-                <li>prices;</li>
-                <li>availability;</li>
-                <li>plot or unit sizes;</li>
-                <li>payment plans;</li>
-                <li>development specifications;</li>
-                <li>promotional offers;</li>
-                <li>construction or infrastructure timelines; and</li>
-                <li>other property-related details.</li>
-              </ul>
-              <p className="mb-2">Unless expressly stated otherwise in a written agreement:</p>
-              <ul className="list-disc pl-6 space-y-2 mb-4">
-                <li>displayed prices may change without prior notice;</li>
-                <li>a property shown on the website is not guaranteed to remain available;</li>
-                <li>photographs, videos, maps, renders, floor plans and illustrations may be provided for presentation purposes and may not always represent the final completed development exactly; and</li>
-                <li>online information does not constitute a binding offer to sell.</li>
-              </ul>
-              <p>
-                A property transaction becomes binding only upon completion of the applicable documentation and
-                satisfaction of the payment and acceptance requirements specified by Aceroyal Estates.
-              </p>
             </section>
 
             <section className="mb-8">
@@ -118,51 +118,52 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">5. Payments</h2>
+              <h2 className="text-2xl font-bold mb-4">5. Prices and Payments</h2>
               <p className="mb-4">
                 Property prices, deposits, instalment arrangements, payment deadlines and other financial terms
-                vary by property and transaction.
+                shall be as stated in the applicable Transaction Documents or official payment documentation.
               </p>
               <p className="mb-4">
-                The applicable payment terms will be communicated through official Aceroyal Estates documentation,
-                invoices, offer letters or purchase agreements.
-              </p>
-              <p className="mb-4">
-                Customers must make payments only through officially authorised Aceroyal Estates payment channels.
-              </p>
-              <p className="mb-4">
-                Aceroyal Estates will not be responsible for payments made to unauthorised persons, accounts or
-                channels where the customer knew or reasonably ought to have known that the payment instruction was
-                not authorised.
-              </p>
-              <p className="mb-4">
-                Customers are encouraged to verify payment details through an official Aceroyal Estates
-                communication channel before making payment.
+                Customers shall make payments only through bank accounts or payment channels officially designated
+                by Aceroyal Estates. Customers are advised to verify any payment instruction or change in payment
+                details through an official Aceroyal Estates communication channel before making payment.
               </p>
               <p>
-                Where instalment plans apply, late payments may attract charges, affect promotional pricing or
-                result in other consequences as specified in the applicable transaction agreement.
+                Aceroyal Estates shall not be responsible for payments made to unauthorised persons or accounts
+                unless the payment was expressly authorised by Aceroyal Estates in writing.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">6. Reservation and Property Availability</h2>
+              <h2 className="text-2xl font-bold mb-4">6. Agents, Marketers and Representatives</h2>
               <p className="mb-4">
-                Submitting an enquiry, booking an inspection or expressing interest in a property does not by
-                itself reserve or secure that property.
-              </p>
-              <p className="mb-4">
-                Where a reservation arrangement is available, the applicable reservation requirements will be
-                communicated to the customer.
+                No employee, marketer, agent, broker, consultant or other representative has authority to alter
+                Property prices or Transaction Documents, promise a refund or discount, receive payment, allocate a
+                Property or otherwise bind Aceroyal Estates unless expressly authorised to do so by Aceroyal
+                Estates.
               </p>
               <p>
-                Property availability will be subject to confirmation by Aceroyal Estates and the terms applicable
-                to the relevant development.
+                Any variation to a Property transaction must be confirmed through an authorised Aceroyal Estates
+                communication or applicable Transaction Document.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">7. Documentation, Allocation and Government Processes</h2>
+              <h2 className="text-2xl font-bold mb-4">7. Reservation and Allocation</h2>
+              <p className="mb-4">
+                Submitting an enquiry, booking an inspection or expressing interest in a Property does not reserve
+                or secure the Property.
+              </p>
+              <p>
+                Payment of a purchase price or instalment does not, by itself, constitute allocation of a specific
+                plot, unit or Property. Allocation shall be subject to confirmation of payment, availability,
+                completion of applicable documentation and Aceroyal Estates&apos; internal approval and allocation
+                process.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">8. Property Documentation and Government Processes</h2>
               <p className="mb-4">
                 The nature and timing of documentation provided in connection with a property transaction will
                 depend on the relevant property and applicable transaction terms.
@@ -182,7 +183,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">8. Refunds and Cancellations</h2>
+              <h2 className="text-2xl font-bold mb-4">9. Refunds and Cancellations</h2>
               <p className="mb-4">
                 Refund and cancellation rights depend on the circumstances of the transaction, applicable law and
                 the specific terms contained in the customer&apos;s purchase or reservation agreement.
@@ -198,7 +199,34 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">9. Promotions and Special Offers</h2>
+              <h2 className="text-2xl font-bold mb-4">10. Complaints and Customer Redress</h2>
+              <p className="mb-4">
+                Customers may submit complaints through Aceroyal Estates&apos; official communication channels.
+                Complaints will be reviewed and, where appropriate, escalated to the relevant department or
+                management for resolution.
+              </p>
+              <p>
+                Nothing in these Terms prevents a Customer from exercising any statutory right or seeking redress
+                before a competent regulatory authority or court.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">11. Force Majeure</h2>
+              <p className="mb-4">
+                Aceroyal Estates shall not be liable for delay or failure in performing an obligation where such
+                delay or failure results from circumstances beyond its reasonable control, including natural
+                disasters, government or regulatory delays, changes in law, strikes, civil unrest, fire, flood,
+                infrastructure failure, security incidents or other events of a similar nature.
+              </p>
+              <p>
+                Where reasonably practicable, Aceroyal Estates shall notify affected Customers of material delays
+                and take reasonable steps to mitigate their effect.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">12. Promotions and Special Offers</h2>
               <p className="mb-2">
                 From time to time, Aceroyal Estates may offer discounts, promotions, bonuses or special payment
                 arrangements. Such promotions may:
@@ -217,7 +245,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">10. Third-Party Services and Links</h2>
+              <h2 className="text-2xl font-bold mb-4">13. Third-Party Services and Links</h2>
               <p className="mb-4">
                 Our website may contain links to third-party websites, platforms or services. These may include
                 maps, payment services, social media platforms, property-related service providers or other
@@ -231,7 +259,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">11. Intellectual Property</h2>
+              <h2 className="text-2xl font-bold mb-4">14. Intellectual Property</h2>
               <p className="mb-2">Unless otherwise stated, the content available through this website, including:</p>
               <ul className="list-disc pl-6 space-y-2 mb-4">
                 <li>text;</li>
@@ -257,7 +285,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">12. Accuracy and Availability of the Website</h2>
+              <h2 className="text-2xl font-bold mb-4">15. Accuracy and Availability of the Website</h2>
               <p className="mb-4">We aim to keep our website available and operating correctly.</p>
               <p className="mb-2">
                 However, we do not guarantee that the website will always be uninterrupted, error-free or
@@ -275,7 +303,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">13. Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold mb-4">16. Limitation of Liability</h2>
               <p className="mb-4">
                 To the fullest extent permitted by applicable law, Aceroyal Estates will not be liable for
                 indirect, incidental, special or consequential losses arising solely from the use or temporary
@@ -293,7 +321,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">14. Privacy and Personal Information</h2>
+              <h2 className="text-2xl font-bold mb-4">17. Privacy and Personal Information</h2>
               <p className="mb-4">
                 When you submit an enquiry, book an inspection, subscribe for updates, create an account or
                 otherwise provide personal information through our services, we may collect and process your
@@ -310,11 +338,16 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">15. Electronic Communications</h2>
+              <h2 className="text-2xl font-bold mb-4">18. Electronic Communications and Acceptance</h2>
               <p className="mb-4">
-                By providing your contact information and contacting us through our website or digital channels,
-                you agree that Aceroyal Estates may communicate with you electronically regarding your enquiry,
-                inspection, transaction or requested service.
+                Where a Customer accepts these Terms electronically, including by ticking an acceptance box,
+                submitting an online form or otherwise indicating acceptance through the Website, such acceptance
+                may constitute evidence of the Customer&apos;s agreement to these Terms, subject to applicable law.
+              </p>
+              <p className="mb-4">
+                Electronic communications, confirmations, notices, receipts and records maintained by Aceroyal
+                Estates may be relied upon as evidence of communications and transactions, subject to applicable
+                law.
               </p>
               <p>
                 Marketing communications will be managed in accordance with applicable law and your communication
@@ -323,7 +356,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">16. Prohibited Conduct</h2>
+              <h2 className="text-2xl font-bold mb-4">19. Prohibited Conduct</h2>
               <p className="mb-2">You must not:</p>
               <ul className="list-disc pl-6 space-y-2 mb-4">
                 <li>submit false or misleading information;</li>
@@ -342,27 +375,25 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">17. Changes to These Terms</h2>
+              <h2 className="text-2xl font-bold mb-4">20. Changes to These Terms</h2>
               <p className="mb-4">
-                We may update these Terms & Conditions periodically to reflect changes to our services, business
-                practices or legal requirements.
-              </p>
-              <p className="mb-4">
-                Where material changes are made, the updated version will be published on this website together
-                with a revised &quot;Last updated&quot; date.
+                Aceroyal Estates may amend these Terms from time to time to reflect changes to its services,
+                business practices, technology or applicable law. The updated Terms shall be published on the
+                Website with the revised &quot;Last Updated&quot; date.
               </p>
               <p className="mb-4">
                 Your continued use of the website after an update constitutes acceptance of the revised Terms,
                 subject to applicable law.
               </p>
               <p>
-                Changes to these website Terms will not retrospectively alter the terms of an already executed
-                property transaction agreement unless expressly agreed by the parties or required by law.
+                Changes shall apply prospectively and shall not retrospectively alter the rights or obligations
+                arising under an existing Transaction Document unless expressly agreed by the parties or required by
+                law.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">18. Governing Law</h2>
+              <h2 className="text-2xl font-bold mb-4">21. Governing Law</h2>
               <p>
                 These Terms & Conditions are governed by and interpreted in accordance with the laws of the Federal
                 Republic of Nigeria. Any dispute relating to these Terms or the use of our website will be handled
@@ -372,7 +403,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">19. Severability</h2>
+              <h2 className="text-2xl font-bold mb-4">22. Severability</h2>
               <p>
                 If any provision of these Terms is found to be invalid, unlawful or unenforceable, the remaining
                 provisions will continue to apply to the extent permitted by law.
@@ -380,7 +411,7 @@ export default function TermsPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">20. Contact Us</h2>
+              <h2 className="text-2xl font-bold mb-4">23. Contact Us</h2>
               <p className="mb-4">
                 If you have any questions, complaints or enquiries regarding these Terms & Conditions, please
                 contact:

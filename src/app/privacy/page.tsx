@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-muted-foreground mb-6">Last updated: September 17, 2026</p>
+            <p className="text-muted-foreground mb-6">Last updated: September 22, 2026</p>
 
             <p className="mb-4">
               Aceroyal Estates (&ldquo;Aceroyal Estates&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo; or
@@ -69,6 +69,12 @@ export default function PrivacyPage() {
                 <li>occupation or other identification information where relevant to a transaction; and</li>
                 <li>government-issued identification details where required for property documentation, identity verification or regulatory purposes.</li>
               </ul>
+              <p className="mb-4">
+                Government-issued identification, date of birth, occupation and similar information will only be
+                collected where reasonably necessary for a specified transaction, verification, regulatory or legal
+                purpose, and will not be requested as a general requirement for ordinary website enquiries unless
+                necessary.
+              </p>
 
               <p className="mb-2 font-semibold">b. Account Information</p>
               <p className="mb-2">Where you create an account on our digital platforms, we may collect:</p>
@@ -409,7 +415,9 @@ export default function PrivacyPage() {
                 <li>contractual requirements;</li>
                 <li>legal or regulatory obligations;</li>
                 <li>tax and accounting requirements;</li>
-                <li>dispute-resolution requirements; and</li>
+                <li>dispute-resolution requirements;</li>
+                <li>fraud prevention;</li>
+                <li>legal claims; and</li>
                 <li>legitimate business record-keeping needs.</li>
               </ul>
               <p>
@@ -445,20 +453,42 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">14. Account Deletion</h2>
+              <h2 className="text-2xl font-bold mb-4">14. Privacy Requests</h2>
               <p className="mb-4">
-                Where our mobile application or customer platform provides user accounts, you may request deletion
-                of your account through the available account-deletion feature or by contacting us.
+                Requests relating to access, correction, deletion, restriction, objection, portability, withdrawal
+                of consent or other privacy matters may be submitted through Aceroyal Estates&apos; designated
+                privacy contact or the privacy request facility provided on the Website.
               </p>
               <p>
-                Deleting an account does not necessarily require us to delete information that we are legally
-                required to retain, including information relating to completed property transactions, financial
-                records or regulatory obligations.
+                We will review and respond to verified requests within the period required by applicable law,
+                taking into account the nature and complexity of the request.
               </p>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">15. Children and Minors</h2>
+              <h2 className="text-2xl font-bold mb-4">15. Account Deletion</h2>
+              <p className="mb-4">
+                You may request deletion of your Aceroyal Estates online account through the available
+                account-deletion facility or by contacting us through the designated privacy or customer-support
+                channel.
+              </p>
+              <p className="mb-4">
+                Deletion of an online account does not automatically cancel an existing or pending property
+                transaction and does not require Aceroyal Estates to delete information that it is legally required
+                or reasonably entitled to retain, including contracts, property ownership or allocation records,
+                invoices, receipts, payment records, tax records, regulatory records, dispute records or information
+                required to establish or protect legal rights.
+              </p>
+              <p>
+                Where account deletion is completed, information that is no longer required will be deleted or
+                anonymised where reasonably practicable. Where certain information must be retained, it will
+                continue to be protected and used only for the purposes for which retention is required or
+                permitted.
+              </p>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">16. Children and Minors</h2>
               <p className="mb-4">
                 Our property services are primarily intended for adults who have the legal capacity to enter into
                 property transactions.
@@ -479,7 +509,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">16. Third-Party Websites and Services</h2>
+              <h2 className="text-2xl font-bold mb-4">17. Third-Party Websites and Services</h2>
               <p className="mb-4">
                 Our websites and applications may contain links to third-party websites, platforms or services.
               </p>
@@ -494,7 +524,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">17. Automated Decision-Making</h2>
+              <h2 className="text-2xl font-bold mb-4">18. Automated Decision-Making</h2>
               <p className="mb-4">
                 Aceroyal Estates does not ordinarily make significant decisions about customers solely through
                 automated processing.
@@ -506,7 +536,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">18. Data Breaches</h2>
+              <h2 className="text-2xl font-bold mb-4">19. Data Breaches</h2>
               <p className="mb-2">If a personal-data breach occurs, we will take reasonable steps to:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>contain and investigate the incident;</li>
@@ -517,7 +547,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">19. Complaints</h2>
+              <h2 className="text-2xl font-bold mb-4">20. Complaints</h2>
               <p className="mb-4">
                 If you have a concern about how Aceroyal Estates processes your personal information, we encourage
                 you to contact us first so we can investigate and respond.
@@ -529,7 +559,7 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">20. Changes to This Privacy Policy</h2>
+              <h2 className="text-2xl font-bold mb-4">21. Changes to This Privacy Policy</h2>
               <p className="mb-2">We may update this Privacy Policy periodically to reflect:</p>
               <ul className="list-disc pl-6 space-y-2 mb-4">
                 <li>changes to our services;</li>
@@ -547,25 +577,27 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">21. Contact Us</h2>
+              <h2 className="text-2xl font-bold mb-4">22. Contact</h2>
               <p className="mb-2">
-                For questions, complaints, data-access requests or other privacy-related enquiries, please contact:
+                For privacy-related enquiries, data-rights requests or complaints, please contact:
               </p>
               <p className="mb-4">
-                Aceroyal Estates
+                Aceroyal Data Protection Officer
+                <br />
+                Andrew Akinwale Arowolo
                 <br />
                 Email:{' '}
-                <a href="mailto:customercare@aceroyalestates.com" className="text-primary hover:underline">
-                  customercare@aceroyalestates.com
+                <a href="mailto:andrewarowolo@aceroyalestates.com" className="text-primary hover:underline">
+                  andrewarowolo@aceroyalestates.com
                 </a>
               </p>
               <p>
-                For privacy-specific requests, please include sufficient information for us to identify and respond
-                to your request.
-              </p>
-              <p>
-                Where Aceroyal Estates appoints a Data Protection Officer or dedicated privacy contact, the
-                relevant contact information may also be published on this page.
+                For general customer support, you may also reach us at{' '}
+                <a href="mailto:customercare@aceroyalestates.com" className="text-primary hover:underline">
+                  customercare@aceroyalestates.com
+                </a>
+                . For privacy-specific requests, please include sufficient information for us to identify and
+                respond to your request.
               </p>
             </section>
           </div>

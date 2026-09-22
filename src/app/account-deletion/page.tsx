@@ -176,6 +176,13 @@ export default function AccountDeletionPage() {
                 <Link href="/contact?enquiry=SUPPORT">Use the contact form</Link>
               </Button>
             </div>
+            <p className="text-xs text-muted-foreground mt-6">
+              For privacy-specific requests, you may also contact our Data Protection Officer at{' '}
+              <a href="mailto:andrewarowolo@aceroyalestates.com" className="text-primary hover:underline">
+                andrewarowolo@aceroyalestates.com
+              </a>
+              .
+            </p>
           </div>
         </div>
       </div>
