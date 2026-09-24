@@ -41,7 +41,7 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>&quot;Aceroyal Estates&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;</strong>{' '}
-                  means Aceroyal Estates Homes Ltd;
+                  means Aceroyal Estates Homes Ltd (RC 1844788);
                 </li>
                 <li>
                   <strong>&quot;Customer&quot;, &quot;you&quot; or &quot;your&quot;</strong> means any person who

@@ -65,7 +65,8 @@ export function Footer() {
       </div>
       <div className="container mt-8 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/65">
         <div>
-          &copy; {new Date().getFullYear()} Aceroyal Estates. All rights reserved. Made with passion by{' '}
+          &copy; {new Date().getFullYear()} Aceroyal Estates Homes Ltd. RC 1844788. All rights reserved. Made with
+          passion by{' '}
           <a
             href="https://doutechsolutions.com"
             target="_blank"
