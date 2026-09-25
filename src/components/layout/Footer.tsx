@@ -9,6 +9,7 @@ export function Footer() {
         {/* Brand */}
         <div className="space-y-4">
           <BrandLogo theme="dark" size="lg" />
+          <p className="text-xs font-semibold text-primary">RC 1844788</p>
           <p className="text-sm text-white/75">
             Premium real estate solutions in Nigeria. Helping you find your dream property with ease and trust.
           </p>
