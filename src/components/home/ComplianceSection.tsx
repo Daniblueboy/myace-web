@@ -37,6 +37,9 @@ export default function ComplianceSection() {
                   <Icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-bold text-lg">{item.title}</h3>
+                {item.registrationNo && (
+                  <p className="text-sm font-semibold text-primary">{item.registrationNo}</p>
+                )}
                 {item.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 )}
