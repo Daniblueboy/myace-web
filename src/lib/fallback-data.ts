@@ -29,7 +29,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Alpha Garden City Resort',
     slug: 'alpha-garden-city',
     description:
-      'Alpha Garden City Resort is a thoughtfully planned, nature-forward residential community in Ibadan, designed around a simple idea: land should not just be owned, it should enhance life. Every acre is enriched with 10-15 fruit-bearing trees, forming a living orchard that improves air quality and creates a refreshing, green atmosphere.\n\nWellness is built into daily life here — nature walking trails, yoga and meditation platforms, cycling paths, and the Central Wellness Village (roughly 15-20 acres, with a holistic spa, wellness clinics, healthy dining, fitness studios, and retreat facilities), alongside an integrated golf course and family-friendly outdoor spaces.\n\nThe estate follows a low-density model — about one home per acre — with residential options spanning wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nDeveloped by Aceroyal, whose track record includes Eko Paragon Residence (a 105-unit development delivered in partnership with the Lagos State Government) and Downtown Lagos Commercial City.\n\nPricing: 500sqm at ₦6M (₦500K initial deposit), 1 acre at ₦18M (₦1.5M initial deposit).',
+      'Alpha Garden City Resort is a thoughtfully planned, nature-forward residential community in Ibadan, designed around a simple idea: land should not just be owned, it should enhance life. Every acre is enriched with 10-15 fruit-bearing trees, forming a living orchard that improves air quality and creates a refreshing, green atmosphere.\n\nWellness is built into daily life here: nature walking trails, yoga and meditation platforms, cycling paths, and the Central Wellness Village (roughly 15-20 acres, with a holistic spa, wellness clinics, healthy dining, fitness studios, and retreat facilities), alongside an integrated golf course and family-friendly outdoor spaces.\n\nThe estate follows a low-density model, about one home per acre, with residential options spanning wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nDeveloped by Aceroyal, whose track record includes Eko Paragon Residence (a 105-unit development delivered in partnership with the Lagos State Government) and Downtown Lagos Commercial City.\n\nPricing: 500sqm at ₦6M (₦500K initial deposit), 1 acre at ₦18M (₦1.5M initial deposit).',
     state: 'Oyo',
     city: 'Ibadan',
     address: 'Olomi Olunde, Academy Road, Ibadan, Oyo State',
@@ -49,7 +49,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Heritage Estates',
     slug: 'heritage-estate',
     description:
-      'Heritage Estates (Obodo Oma) — the heartbeat of Coal City living. A premium residential and commercial estate strategically located in Ekwegbe Nike, Enugu State, one of the fastest-growing corridors in the Coal City, blending heritage, serenity, and modern living for homeowners and investors alike.\n\nThe estate comes with an approved layout and registered survey, guaranteeing secure ownership. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M (₦1M initial deposit), 1 Acre at ₦30M (₦5M initial deposit).',
+      'Heritage Estates (Obodo Oma): the heartbeat of Coal City living. A premium residential and commercial estate strategically located in Ekwegbe Nike, Enugu State, one of the fastest-growing corridors in the Coal City, blending heritage, serenity, and modern living for homeowners and investors alike.\n\nThe estate comes with an approved layout and registered survey, guaranteeing secure ownership. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M (₦1M initial deposit), 1 Acre at ₦30M (₦5M initial deposit).',
     state: 'Enugu',
     city: 'Nike',
     address: 'Ekwegbe Nike, Enugu State',
@@ -71,7 +71,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Edo Mega City',
     slug: 'edo-mega-city',
     description:
-      'Edo Mega City — "Indeed a Homecoming Project," where every square meter is a canvas for your dreams. The biggest and most secured private residential estate in Edo State, heavily guarded by the Army, curated to bring comfort, luxury living, and an oasis of modern elegance and nature.\n\nAvailable plot sizes: 450sqm (50ft × 100ft) and 900sqm (100ft × 100ft, suited to a duplex).\n\nPricing: 450sqm at ₦3M (₦500K initial deposit), 900sqm at ₦5M (₦1.5M initial deposit). Titled C of O / Government Allocation.',
+      'Edo Mega City: "Indeed a Homecoming Project," where every square meter is a canvas for your dreams. The biggest and most secured private residential estate in Edo State, heavily guarded by the Army, curated to bring comfort, luxury living, and an oasis of modern elegance and nature.\n\nAvailable plot sizes: 450sqm (50ft × 100ft) and 900sqm (100ft × 100ft, suited to a duplex).\n\nPricing: 450sqm at ₦3M (₦500K initial deposit), 900sqm at ₦5M (₦1.5M initial deposit). Titled C of O / Government Allocation.',
     state: 'Edo',
     city: 'Benin City',
     address: 'Aduwawa Bypass, Benin City, Edo State',
@@ -88,10 +88,10 @@ export const fallbackEstates: Estate[] = [
   },
   {
     id: 'fallback-estate-downtown-lagos-phase-2',
-    name: 'Downtown Lagos Commercial City — Phase 2',
+    name: 'Downtown Lagos Commercial City Phase 2',
     slug: 'downtown-lagos-phase-2',
     description:
-      'Downtown Commercial City Phase 2 follows the sold-out Phase 1 — a fast-rising commercial district hub in Labour City, Ibeju-Lekki, on the Coastal Road, in the heart of Lagos\'s growth corridor. This is where businesses will stand, traffic will grow, and property value will multiply.\n\nStrategic landmarks nearby: Lekki Free Trade Zone, Dangote Refinery, Lekki Deep Sea Port, and Lekki-Epe International Airport.\n\nAvailable options: 500sqm at ₦60M (₦45M land + ₦15M infrastructure & documentation) or 1,000sqm at ₦100M (₦80M land + ₦20M infrastructure & documentation). Titled C of O / Government Allocation.',
+      'Downtown Commercial City Phase 2 follows the sold-out Phase 1, a fast-rising commercial district hub in Labour City, Ibeju-Lekki, on the Coastal Road, in the heart of Lagos\'s growth corridor. This is where businesses will stand, traffic will grow, and property value will multiply.\n\nStrategic landmarks nearby: Lekki Free Trade Zone, Dangote Refinery, Lekki Deep Sea Port, and Lekki-Epe International Airport.\n\nAvailable options: 500sqm at ₦60M (₦45M land + ₦15M infrastructure & documentation) or 1,000sqm at ₦100M (₦80M land + ₦20M infrastructure & documentation). Titled C of O / Government Allocation.',
     state: 'Lagos',
     city: 'Ibeju-Lekki',
     address: 'Labour City, Ibeju-Lekki, Coastal Road, Lagos State',
@@ -110,7 +110,7 @@ export const fallbackEstates: Estate[] = [
   },
   {
     id: 'fallback-estate-downtown-lagos',
-    name: 'Downtown Lagos Commercial City — Phase 1',
+    name: 'Downtown Lagos Commercial City Phase 1',
     slug: 'downtown-lagos',
     description:
       'Downtown Lagos is a master-planned "city within a city" in the heart of Lagos, combining premium residential apartments and smart homes, a state-of-the-art business district, world-class shopping and entertainment, and green spaces and waterways. Phase 1 has sold out.',
@@ -155,7 +155,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Prime Boulevard Annex',
     slug: 'prime-annex',
     description:
-      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja — a bubbling area close to Prime Boulevard 1, the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital, on a motorable, tarred road leading to the airport and specialist hospital. Titled C of O.\n\nPricing: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit).',
+      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja. It is a bubbling area close to Prime Boulevard 1, the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital, on a motorable, tarred road leading to the airport and specialist hospital. Titled C of O.\n\nPricing: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit).',
     state: 'Abuja',
     city: 'Gwagwalada',
     address: 'Gwagwalada, Abuja, FCT',
@@ -176,7 +176,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Villa Nova Bungalows',
     slug: 'villa-nova-bungalows',
     description:
-      'Villa Nova Bungalows — "The Villa Life, Reimagined." Modern bungalows and a waterfront villa in Abijo GRA, Lagos, with clean water and power supply, a swimming pool, tennis court, and green spaces throughout. Titled C of O.\n\nBungalows: 2-Bedroom Semi-Detached Bungalow at ₦77.5M, all-inclusive (₦5M initial deposit); 3-Bedroom Fully Detached Bungalow + BQ at ₦105.5M (without pool) or ₦131.5M (with pool).\n\nVilla: 5-Bedroom Waterfront Villa at ₦190.5M (₦10M initial deposit).',
+      'Villa Nova Bungalows: "The Villa Life, Reimagined." Modern bungalows and a waterfront villa in Abijo GRA, Lagos, with clean water and power supply, a swimming pool, tennis court, and green spaces throughout. Titled C of O.\n\nBungalows: 2-Bedroom Semi-Detached Bungalow at ₦77.5M, all-inclusive (₦5M initial deposit); 3-Bedroom Fully Detached Bungalow + BQ at ₦105.5M (without pool) or ₦131.5M (with pool).\n\nVilla: 5-Bedroom Waterfront Villa at ₦190.5M (₦10M initial deposit).',
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo GRA, Lagos',
@@ -205,7 +205,7 @@ export const fallbackEstates: Estate[] = [
     name: 'New City Estate',
     slug: 'new-city-estate',
     description:
-      'New City Estate is located at Imota, Ikorodu — the very center of Ikorodu.\n\nEstate Title: Freehold/Registered Survey. Estate Offer: Flexible Plan.\n\nLandmarks: Caleb University, Imota Rice Mill, Lasustech, Land Mark College, Ikorodu Ferry Terminal.',
+      'New City Estate is located at Imota, Ikorodu, the very center of Ikorodu.\n\nEstate Title: Freehold/Registered Survey. Estate Offer: Flexible Plan.\n\nLandmarks: Caleb University, Imota Rice Mill, Lasustech, Land Mark College, Ikorodu Ferry Terminal.',
     state: 'Lagos',
     city: 'Imota, Ikorodu',
     address: 'Imota, Ikorodu, Lagos',
@@ -239,7 +239,7 @@ export const fallbackEstates: Estate[] = [
     name: 'Novena Estate Phase 2',
     slug: 'novena-estate-phase-2',
     description:
-      'Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State — on the north side of the Lekki Lagoon. Epe is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. Land Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free — enough to fence your land or start your foundation.',
+      'Novena Estate Phase 2 is a buy-and-build residential estate located at Iraye, Epe, Lagos State, on the north side of the Lekki Lagoon. Epe is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. Land Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, the proposed international market, and the proposed local airport.\n\nGoody Bag Promo: buy a plot of land at Novena Estate Phase 2 and get 100 bags of Dangote Cement free, enough to fence your land or start your foundation.',
     state: 'Lagos',
     city: 'Iraye, Epe',
     address: 'Iraye, Epe, Lagos',
@@ -260,9 +260,9 @@ export const fallbackProperties: Property[] = [
     // (wrong location, wrong price - never actually matched this estate)
     // with the real Prime Boulevard Annex plot sizes/pricing.
     id: 'fallback-property-land',
-    title: 'Prime Boulevard Annex — 300sqm / 500sqm Plots',
+    title: 'Prime Boulevard Annex 300sqm / 500sqm Plots',
     slug: 'prime-boulevard-annex-plots',
-    description: 'Residential plots at Prime Boulevard Annex, Gwagwalada, Abuja, FCT — 300sqm or 500sqm, titled C of O.',
+    description: 'Residential plots at Prime Boulevard Annex, Gwagwalada, Abuja, FCT: 300sqm or 500sqm, titled C of O.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 3000000,
@@ -294,7 +294,7 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-prime-pricing-300-v', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
+          { id: 'fallback-prime-pricing-300-v', type: 'FLYER', title: 'Prime Boulevard Annex Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
         ],
       },
       {
@@ -308,14 +308,14 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-prime-pricing-500-v', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
+          { id: 'fallback-prime-pricing-500-v', type: 'FLYER', title: 'Prime Boulevard Annex Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-prime-pricing', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
+      { id: 'fallback-prime-pricing', type: 'FLYER', title: 'Prime Boulevard Annex Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
     ],
     estateId: 'fallback-estate-prime-annex',
     estate: fallbackEstates.find((e) => e.slug === 'prime-annex'),
@@ -324,9 +324,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-alpha-garden-plot',
-    title: 'Alpha Garden City Resort — 500sqm / 1 Acre Plots',
+    title: 'Alpha Garden City Resort 500sqm / 1 Acre Plots',
     slug: 'alpha-garden-city-500sqm-plot',
-    description: 'Plots at Alpha Garden City Resort, a low-density, orchard-style residential community at Olomi Olunde, Academy Road, Ibadan — 500sqm or 1 acre.',
+    description: 'Plots at Alpha Garden City Resort, a low-density, orchard-style residential community at Olomi Olunde, Academy Road, Ibadan: 500sqm or 1 acre.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 6000000,
@@ -377,9 +377,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-heritage-plot',
-    title: 'Heritage Estates — 500sqm / 1 Acre Plots',
+    title: 'Heritage Estates 500sqm / 1 Acre Plots',
     slug: 'heritage-estate-500sqm-plot',
-    description: 'Serviced plots at Heritage Estates (Obodo Oma), Ekwegbe Nike, Enugu State — 500sqm or 1 acre, approved layout, registered survey.',
+    description: 'Serviced plots at Heritage Estates (Obodo Oma), Ekwegbe Nike, Enugu State: 500sqm or 1 acre, approved layout, registered survey.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 6000000,
@@ -411,7 +411,7 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-heritage-flyer-500sqm-v', type: 'FLYER', title: 'Heritage Estates — 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
+          { id: 'fallback-heritage-flyer-500sqm-v', type: 'FLYER', title: 'Heritage Estates 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
         ],
       },
       {
@@ -424,15 +424,15 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-heritage-flyer-1acre-v', type: 'FLYER', title: 'Heritage Estates — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
+          { id: 'fallback-heritage-flyer-1acre-v', type: 'FLYER', title: 'Heritage Estates 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-heritage-flyer-500sqm', type: 'FLYER', title: 'Heritage Estates — 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
-      { id: 'fallback-heritage-flyer-1acre', type: 'FLYER', title: 'Heritage Estates — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
+      { id: 'fallback-heritage-flyer-500sqm', type: 'FLYER', title: 'Heritage Estates 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
+      { id: 'fallback-heritage-flyer-1acre', type: 'FLYER', title: 'Heritage Estates 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
     ],
     estateId: 'fallback-estate-heritage',
     estate: fallbackEstates.find((e) => e.slug === 'heritage-estate'),
@@ -445,9 +445,9 @@ export const fallbackProperties: Property[] = [
     // The old flyers print superseded prices and the old Eleko location, so
     // none are attached.
     id: 'fallback-property-villa-nova-bungalow',
-    title: 'Villa Nova — Bungalows',
+    title: 'Villa Nova Bungalows',
     slug: 'villa-nova-bungalows',
-    description: 'Modern bungalows at Villa Nova, Abijo GRA, Lagos — a 2-bedroom semi-detached bungalow or a 3-bedroom fully detached bungalow with BQ, with or without a pool. Clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
+    description: 'Modern bungalows at Villa Nova, Abijo GRA, Lagos: a 2-bedroom semi-detached bungalow or a 3-bedroom fully detached bungalow with BQ, with or without a pool. Clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
     type: 'HOUSE',
     status: 'AVAILABLE',
     price: 77500000,
@@ -508,9 +508,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-villa-nova-waterfront-villa',
-    title: 'Villa Nova — 5-Bedroom Waterfront Villa',
+    title: 'Villa Nova 5-Bedroom Waterfront Villa',
     slug: 'villa-nova-five-bedroom-waterfront-villa',
-    description: 'A 5-bedroom waterfront villa at Villa Nova, Abijo GRA, Lagos — clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
+    description: 'A 5-bedroom waterfront villa at Villa Nova, Abijo GRA, Lagos, with clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
     type: 'HOUSE',
     status: 'AVAILABLE',
     price: 190500000,
@@ -549,9 +549,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-downtown-phase2-plot',
-    title: 'Downtown Lagos Phase 2 — 500sqm / 1,000sqm Plots',
+    title: 'Downtown Lagos Phase 2: 500sqm / 1,000sqm Plots',
     slug: 'downtown-lagos-phase-2-plots',
-    description: 'Commercial-district plots at Downtown Lagos Commercial City Phase 2, Labour City, Ibeju-Lekki — 500sqm or 1,000sqm.',
+    description: 'Commercial-district plots at Downtown Lagos Commercial City Phase 2, Labour City, Ibeju-Lekki: 500sqm or 1,000sqm.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 60000000,
@@ -604,9 +604,9 @@ export const fallbackProperties: Property[] = [
   // it, so none are attached.
   {
     id: 'fallback-property-eko-paragon-1bed',
-    title: 'Eko Paragon — One-Bedroom Apartment',
+    title: 'Eko Paragon One-Bedroom Apartment',
     slug: 'eko-paragon-one-bedroom-apartment',
-    description: 'A one-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    description: 'A one-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos, with contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 85000000,
@@ -642,9 +642,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-eko-paragon-2bed',
-    title: 'Eko Paragon — Two-Bedroom Apartment',
+    title: 'Eko Paragon Two-Bedroom Apartment',
     slug: 'eko-paragon-two-bedroom-apartment',
-    description: 'A two-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    description: 'A two-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos, with contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 95000000,
@@ -680,9 +680,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-eko-paragon-3bed',
-    title: 'Eko Paragon — Three-Bedroom Residential Terrace + BQ',
+    title: 'Eko Paragon Three-Bedroom Residential Terrace + BQ',
     slug: 'eko-paragon-three-bedroom-residential-terrace',
-    description: 'A three-bedroom residential terrace with BQ at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    description: 'A three-bedroom residential terrace with BQ at Eko Paragon Residence, Abijo G.R.A., Lagos, with contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 150000000,
@@ -718,9 +718,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-edo-mega-plot',
-    title: 'Edo Mega City — 450sqm / 900sqm Plots',
+    title: 'Edo Mega City 450sqm / 900sqm Plots',
     slug: 'edo-mega-city-plots',
-    description: 'Plots at Edo Mega City, Aduwawa Bypass, Benin City, Edo State — 450sqm or 900sqm (duplex-ready). Titled C of O / Government Allocation.',
+    description: 'Plots at Edo Mega City, Aduwawa Bypass, Benin City, Edo State: 450sqm or 900sqm (duplex-ready). Titled C of O / Government Allocation.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 3000000,
@@ -772,10 +772,10 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-new-city-plot',
-    title: 'New City Estate — 300sqm / 500sqm Plots',
+    title: 'New City Estate 300sqm / 500sqm Plots',
     slug: 'new-city-estate-plots',
     description:
-      'Flexible-plan plots at New City Estate, Imota, Ikorodu — Freehold/Registered Survey title. 500sqm at ₦100,000/month or 300sqm at ₦50,000/month, both over 12 months, no lump-sum payment required.',
+      'Flexible-plan plots at New City Estate, Imota, Ikorodu, with Freehold/Registered Survey title. 500sqm at ₦100,000/month or 300sqm at ₦50,000/month, both over 12 months, no lump-sum payment required.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 600000,
@@ -804,7 +804,7 @@ export const fallbackProperties: Property[] = [
         installmentAmount: 50000,
         active: true,
         media: [
-          { id: 'fallback-new-city-flyer-300sqm-v', type: 'FLYER', title: 'New City Estate — 300sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+          { id: 'fallback-new-city-flyer-300sqm-v', type: 'FLYER', title: 'New City Estate 300sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
         ],
       },
       {
@@ -819,14 +819,14 @@ export const fallbackProperties: Property[] = [
         installmentAmount: 100000,
         active: true,
         media: [
-          { id: 'fallback-new-city-flyer-500sqm-v', type: 'FLYER', title: 'New City Estate — 500sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+          { id: 'fallback-new-city-flyer-500sqm-v', type: 'FLYER', title: 'New City Estate 500sqm Flexible Plan', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-new-city-flyer', type: 'FLYER', title: 'New City Estate — Flexible Plan Pricing', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
+      { id: 'fallback-new-city-flyer', type: 'FLYER', title: 'New City Estate Flexible Plan Pricing', url: '/images/estates/new-city-estate/new-city-flyer.jpg' },
     ],
     estateId: 'fallback-estate-new-city',
     estate: fallbackEstates.find((e) => e.slug === 'new-city-estate'),
@@ -835,10 +835,10 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-metro-city-plot',
-    title: 'Metro City Garden — 300sqm / 500sqm Plots',
+    title: 'Metro City Garden 300sqm / 500sqm Plots',
     slug: 'metro-city-garden-plots',
     description:
-      'Freehold/Registered Survey plots at Metro City Garden, Itoikin, Epe — 300sqm at ₦1,000,000 or 500sqm at ₦1,500,000, with 100% ROI guaranteed.',
+      'Freehold/Registered Survey plots at Metro City Garden, Itoikin, Epe: 300sqm at ₦1,000,000 or 500sqm at ₦1,500,000, with 100% ROI guaranteed.',
     type: 'LAND',
     status: 'SOLD',
     price: 1000000,
@@ -865,7 +865,7 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-metro-city-flyer-300sqm-v', type: 'FLYER', title: 'Metro City Garden — Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+          { id: 'fallback-metro-city-flyer-300sqm-v', type: 'FLYER', title: 'Metro City Garden Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
         ],
       },
       {
@@ -878,14 +878,14 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-metro-city-flyer-500sqm-v', type: 'FLYER', title: 'Metro City Garden — Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+          { id: 'fallback-metro-city-flyer-500sqm-v', type: 'FLYER', title: 'Metro City Garden Pricing', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-metro-city-flyer', type: 'FLYER', title: 'Metro City Garden — Pricing Flyer', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
+      { id: 'fallback-metro-city-flyer', type: 'FLYER', title: 'Metro City Garden Pricing Flyer', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg' },
     ],
     estateId: 'fallback-estate-metro-city-garden',
     estate: fallbackEstates.find((e) => e.slug === 'metro-city-garden'),
@@ -894,10 +894,10 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-novena-plot',
-    title: 'Novena Estate Phase 2 — 500sqm Plot',
+    title: 'Novena Estate Phase 2: 500sqm Plot',
     slug: 'novena-estate-phase-2-plot',
     description:
-      'A 500sqm plot at Novena Estate Phase 2, Iraye, Epe, Lagos — Registered Survey title, now selling at ₦2.5 million per plot.',
+      'A 500sqm plot at Novena Estate Phase 2, Iraye, Epe, Lagos, with Registered Survey title, now selling at ₦2.5 million per plot.',
     type: 'LAND',
     status: 'SOLD',
     price: 2500000,
@@ -925,16 +925,16 @@ export const fallbackProperties: Property[] = [
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-novena-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
-          { id: 'fallback-novena-goody-bag-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+          { id: 'fallback-novena-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2: Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
+          { id: 'fallback-novena-goody-bag-flyer-v', type: 'FLYER', title: 'Novena Estate Phase 2: Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
         ],
       },
     ],
     faqs: [],
     resources: [],
     media: [
-      { id: 'fallback-novena-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
-      { id: 'fallback-novena-goody-bag-flyer', type: 'FLYER', title: 'Novena Estate Phase 2 — Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
+      { id: 'fallback-novena-flyer', type: 'FLYER', title: 'Novena Estate Phase 2: Pricing', url: '/images/estates/novena-estate/novena-estate-flyer.jpg' },
+      { id: 'fallback-novena-goody-bag-flyer', type: 'FLYER', title: 'Novena Estate Phase 2: Goody Bag Promo', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg' },
     ],
     estateId: 'fallback-estate-novena',
     estate: fallbackEstates.find((e) => e.slug === 'novena-estate-phase-2'),
@@ -983,7 +983,7 @@ export const fallbackBlogPosts = [
     slug: 'why-smart-investors-are-rushing-to-buy-land-in-eleko',
     excerpt: 'Why Eleko, along the Lekki-Epe corridor, is drawing early investors ahead of Lekki- and Ajah-style price growth.',
     content:
-      'If you\'ve been thinking about real estate lately, chances are you\'ve heard people mention Eleko more than once. And honestly, it\'s not by accident. A lot of people are starting to look beyond the usual places like Lekki and Ajah. Not because those places are not good, but because the real opportunity now is getting in early somewhere that is still growing. That\'s exactly why smart investors are beginning to buy land in Eleko. Let me break it down for you in a way that actually makes sense.\n\n![Aerial view of the growing Eleko corridor](/images/blog/eleko-land/aerial-corridor.jpg)\n\nEleko is where Lagos is moving next\n\nLagos keeps expanding. It doesn\'t stop. What used to be considered "far" a few years ago is now fully developed and expensive. We\'ve seen it happen with Lekki, Ajah, even Sangotedo. Right now, that same movement is heading towards Eleko. So when people are searching for land for sale in Eleko Lagos, what they\'re really trying to figure out is this — "Am I getting in at the right time?" And the honest answer is yes, you still are.\n\nThe price of land in Eleko is still at entry level\n\nLet\'s talk about what really matters to most people, price. The price of land in Eleko is still relatively affordable compared to other parts of Lagos on the same axis. That\'s not a weakness. That\'s actually the opportunity. Because what happens over time is simple. As development increases, prices follow. It\'s not sudden, but it\'s consistent. This is why people who understand real estate don\'t wait until an area is fully developed. They move while it\'s still accessible.\n\n![A surveyed land plot in Eleko](/images/blog/eleko-land/land-plot.jpg)\n\nPeople are not just buying to build anymore\n\nSomething has changed in how people invest. Before, most people only wanted land when they were ready to start building immediately. Now, more people are buying land just to hold. They buy, leave it for a few years, and come back to meet a higher value.\n\nThat\'s exactly why you\'ll keep seeing searches like buy land in Eleko trending. People are thinking long term now.\n\nLocation still matters and Eleko checks out\n\nOne thing you should never ignore is location. Eleko sits along the Lekki Epe corridor, which is already one of the fastest developing parts of Lagos. Accessibility is improving, developments are moving outward, and naturally, demand follows. That\'s why more people are actively searching for land for sale in Eleko, not just anywhere in Lagos.\n\n![A plot marker on site at Downtown Lagos Commercial City](/images/blog/eleko-land/plot-marker.jpg)\n\nSuccess and Proven delivery\n\nOne major confidence point for investors is that Phase 1 of Downtown Lagos Commercial City was a success. Allocations were successfully completed, and all clients received their plots as promised. This track record of delivery builds trust and shows that the project is not just conceptual, it is structured, active, and reliable.\n\n![Clients on a site inspection at Downtown Lagos Commercial City](/images/blog/eleko-land/site-inspection.jpg)\n\nConclusion\n\nInstead of just buying random land, investors are now looking for something more structured. With Downtown Lagos Commercial City, you\'re not just buying land. You\'re buying into a planned environment within Eleko that is designed for growth. Everything about it is intentional. From documentation to layout to long term value. So when someone is comparing different options for land for sale in Eleko Lagos, this is where the difference becomes clear. It is not just about owning land. It is about owning the right kind of land.',
+      'If you\'ve been thinking about real estate lately, chances are you\'ve heard people mention Eleko more than once. And honestly, it\'s not by accident. A lot of people are starting to look beyond the usual places like Lekki and Ajah. Not because those places are not good, but because the real opportunity now is getting in early somewhere that is still growing. That\'s exactly why smart investors are beginning to buy land in Eleko. Let me break it down for you in a way that actually makes sense.\n\n![Aerial view of the growing Eleko corridor](/images/blog/eleko-land/aerial-corridor.jpg)\n\nEleko is where Lagos is moving next\n\nLagos keeps expanding. It doesn\'t stop. What used to be considered "far" a few years ago is now fully developed and expensive. We\'ve seen it happen with Lekki, Ajah, even Sangotedo. Right now, that same movement is heading towards Eleko. So when people are searching for land for sale in Eleko Lagos, what they\'re really trying to figure out is this: "Am I getting in at the right time?" And the honest answer is yes, you still are.\n\nThe price of land in Eleko is still at entry level\n\nLet\'s talk about what really matters to most people, price. The price of land in Eleko is still relatively affordable compared to other parts of Lagos on the same axis. That\'s not a weakness. That\'s actually the opportunity. Because what happens over time is simple. As development increases, prices follow. It\'s not sudden, but it\'s consistent. This is why people who understand real estate don\'t wait until an area is fully developed. They move while it\'s still accessible.\n\n![A surveyed land plot in Eleko](/images/blog/eleko-land/land-plot.jpg)\n\nPeople are not just buying to build anymore\n\nSomething has changed in how people invest. Before, most people only wanted land when they were ready to start building immediately. Now, more people are buying land just to hold. They buy, leave it for a few years, and come back to meet a higher value.\n\nThat\'s exactly why you\'ll keep seeing searches like buy land in Eleko trending. People are thinking long term now.\n\nLocation still matters and Eleko checks out\n\nOne thing you should never ignore is location. Eleko sits along the Lekki Epe corridor, which is already one of the fastest developing parts of Lagos. Accessibility is improving, developments are moving outward, and naturally, demand follows. That\'s why more people are actively searching for land for sale in Eleko, not just anywhere in Lagos.\n\n![A plot marker on site at Downtown Lagos Commercial City](/images/blog/eleko-land/plot-marker.jpg)\n\nSuccess and Proven delivery\n\nOne major confidence point for investors is that Phase 1 of Downtown Lagos Commercial City was a success. Allocations were successfully completed, and all clients received their plots as promised. This track record of delivery builds trust and shows that the project is not just conceptual, it is structured, active, and reliable.\n\n![Clients on a site inspection at Downtown Lagos Commercial City](/images/blog/eleko-land/site-inspection.jpg)\n\nConclusion\n\nInstead of just buying random land, investors are now looking for something more structured. With Downtown Lagos Commercial City, you\'re not just buying land. You\'re buying into a planned environment within Eleko that is designed for growth. Everything about it is intentional. From documentation to layout to long term value. So when someone is comparing different options for land for sale in Eleko Lagos, this is where the difference becomes clear. It is not just about owning land. It is about owning the right kind of land.',
     coverImageUrl: '/images/blog/eleko-land/aerial-corridor.jpg',
     published: true,
     createdAt: '2026-04-20T00:00:00.000Z',
@@ -995,7 +995,7 @@ export const fallbackBlogPosts = [
     slug: 'the-secret-investment-thats-creating-millionaires',
     excerpt: 'How hotel-residence investments like Eko Paragon Residence offer passive rental income without landlord headaches.',
     content:
-      'Savvy investors are earning passive income by owning hotel residences rather than managing traditional Airbnbs directly. Not all short-term rental investments are worth it — some drain your time and resources, while the right hotel residence gives high returns with zero effort.\n\nEko Paragon Residence, an upcoming five-star hotel residence in Abijo GRA, Lagos, developed by Aceroyal Estate Homes in partnership with LSDPC, offers a fully managed system: the hotel team handles marketing, guest experience, and maintenance, while the owner simply enjoys rental income.\n\nWith a hotel residence like Eko Paragon, investors can expect steady, predictable income, plus appreciating property value in Abijo GRA — earning both rental income and long-term value growth.\n\nPre-launch prices at Eko Paragon Residence are the lowest they\'ll ever be. Now is the best time to invest before the market value jumps.',
+      'Savvy investors are earning passive income by owning hotel residences rather than managing traditional Airbnbs directly. Not all short-term rental investments are worth it. Some drain your time and resources, while the right hotel residence gives high returns with zero effort.\n\nEko Paragon Residence, an upcoming five-star hotel residence in Abijo GRA, Lagos, developed by Aceroyal Estate Homes in partnership with LSDPC, offers a fully managed system: the hotel team handles marketing, guest experience, and maintenance, while the owner simply enjoys rental income.\n\nWith a hotel residence like Eko Paragon, investors can expect steady, predictable income, plus appreciating property value in Abijo GRA, earning both rental income and long-term value growth.\n\nPre-launch prices at Eko Paragon Residence are the lowest they\'ll ever be. Now is the best time to invest before the market value jumps.',
     coverImageUrl: '/images/blog/eko-millionaires/pricing-flyer.jpg',
     published: true,
     createdAt: '2025-04-01T00:00:00.000Z',
@@ -1007,7 +1007,7 @@ export const fallbackBlogPosts = [
     slug: 'land-banking-the-smartest-investment-youll-regret-not-making',
     excerpt: 'Why buying and holding land in high-growth areas like Legacy Garden City and Edo Mega City builds long-term wealth.',
     content:
-      'Imagine buying land for ₦150,000 a few years ago and watching it appreciate to over ₦3 million today.\n\nSounds unbelievable? That’s exactly what happened to Overcomer Ibeson, our in-house Architect and Site Manager. His investment decision transformed into generational wealth, while many others missed out.\n\nThis is the power of Land Banking — the strategic purchase of land in high-growth areas, held for future value appreciation. If you’re still waiting for the “right time” to invest, this is your wake-up call: the right time is NOW.\n\nWhy Land Banking is the Ultimate Wealth-Building Strategy\n\nUnlike cars or gadgets that lose value over time, land is an appreciating asset. Lagos, Abuja, and Benin are expanding rapidly, turning today’s outskirts into tomorrow’s prime real estate.\n\nTake Legacy Garden City and Edo Mega City — both are located in developing regions with massive infrastructural projects underway. In 3 to 5 years, landowners here will see exponential returns, just like Overcomer.\n\nThe High Cost of Waiting\n\nMany Nigerians in the diaspora regret not buying land years ago when prices were lower. While they waited, others secured their future.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of investors, including those in the diaspora, secure land without fear of scams. Our clients testify to our integrity and trustworthiness, a rarity in the real estate industry.\n\nDon’t be the one saying, “I wish I had invested earlier.”',
+      'Imagine buying land for ₦150,000 a few years ago and watching it appreciate to over ₦3 million today.\n\nSounds unbelievable? That’s exactly what happened to Overcomer Ibeson, our in-house Architect and Site Manager. His investment decision transformed into generational wealth, while many others missed out.\n\nThis is the power of Land Banking: the strategic purchase of land in high-growth areas, held for future value appreciation. If you’re still waiting for the “right time” to invest, this is your wake-up call: the right time is NOW.\n\nWhy Land Banking is the Ultimate Wealth-Building Strategy\n\nUnlike cars or gadgets that lose value over time, land is an appreciating asset. Lagos, Abuja, and Benin are expanding rapidly, turning today’s outskirts into tomorrow’s prime real estate.\n\nTake Legacy Garden City and Edo Mega City. Both are located in developing regions with massive infrastructural projects underway. In 3 to 5 years, landowners here will see exponential returns, just like Overcomer.\n\nThe High Cost of Waiting\n\nMany Nigerians in the diaspora regret not buying land years ago when prices were lower. While they waited, others secured their future.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of investors, including those in the diaspora, secure land without fear of scams. Our clients testify to our integrity and trustworthiness, a rarity in the real estate industry.\n\nDon’t be the one saying, “I wish I had invested earlier.”',
     coverImageUrl: '/images/blog/land-banking/legacy-garden-city-flyer.jpg',
     published: true,
     createdAt: '2025-03-25T00:00:00.000Z',
@@ -1019,7 +1019,7 @@ export const fallbackBlogPosts = [
     slug: 'thinking-of-investing-in-nigerian-real-estate-here-is-the-right-way-to-get-started',
     excerpt: 'A practical checklist for diaspora and first-time investors: goals, location, paperwork, and starting small.',
     content:
-      'If you’ve been paying attention to global trends, you already know that the cost of living in the West is going up while stability is going down.\n\nRent prices are through the roof, jobs are uncertain, and the dream of homeownership keeps getting harder. More Nigerians abroad are beginning to ask the big question — is it time to invest back home?\n\nIf that thought has crossed your mind, you’re on the right track. Real estate in Nigeria is one of the smartest investments you can make, but only if you do it the right way. Buying property is not like ordering online and hoping it arrives. You need a strategy. Let’s break it down.\n\nStart with a Clear Goal\n\nAre you buying for yourself, looking to rent it out, or planning to hold the land until the value skyrockets? Lagos, for example, never stops growing. Places like Lekki and Ajah were once bush, but today a single plot can buy you a house in some parts of the US. Imagine if you had bought land there ten years ago.\n\nPick the Right Location\n\nNot all properties are worth your money. Some areas promise rapid growth, while others stay the same for decades. Lagos, Abuja, and even Benin City have hotspots where land value doubles every few years.\n\nIf you’ve been watching the Lekki-Epe corridor, you already know what’s happening. The Lekki Free Trade Zone, Dangote Refinery, and the proposed airport are turning this region into Nigeria’s real estate jackpot. Smart investors are already securing plots before the prices explode.\n\nVerify the Paperwork\n\nNothing stings more than sending millions home, only to find out the land you paid for belongs to three different people. Before buying, always check for a C of O, Governor’s Consent, or a proper Deed of Assignment. If the documentation isn’t clear, walk away.\n\nStart Small and Grow\n\nIf you’re not ready for a big investment, start with a plot, develop it gradually, and scale up. Land doesn’t depreciate.\n\nWhether you’re abroad or right here in Nigeria, one thing is clear — owning property is always a smart move. If the uncertainty overseas has you thinking about securing something back home, now is the time to act.\n\nCall Aceroyal Estate Homes today and let’s get you started.',
+      'If you’ve been paying attention to global trends, you already know that the cost of living in the West is going up while stability is going down.\n\nRent prices are through the roof, jobs are uncertain, and the dream of homeownership keeps getting harder. More Nigerians abroad are beginning to ask the big question: is it time to invest back home?\n\nIf that thought has crossed your mind, you’re on the right track. Real estate in Nigeria is one of the smartest investments you can make, but only if you do it the right way. Buying property is not like ordering online and hoping it arrives. You need a strategy. Let’s break it down.\n\nStart with a Clear Goal\n\nAre you buying for yourself, looking to rent it out, or planning to hold the land until the value skyrockets? Lagos, for example, never stops growing. Places like Lekki and Ajah were once bush, but today a single plot can buy you a house in some parts of the US. Imagine if you had bought land there ten years ago.\n\nPick the Right Location\n\nNot all properties are worth your money. Some areas promise rapid growth, while others stay the same for decades. Lagos, Abuja, and even Benin City have hotspots where land value doubles every few years.\n\nIf you’ve been watching the Lekki-Epe corridor, you already know what’s happening. The Lekki Free Trade Zone, Dangote Refinery, and the proposed airport are turning this region into Nigeria’s real estate jackpot. Smart investors are already securing plots before the prices explode.\n\nVerify the Paperwork\n\nNothing stings more than sending millions home, only to find out the land you paid for belongs to three different people. Before buying, always check for a C of O, Governor’s Consent, or a proper Deed of Assignment. If the documentation isn’t clear, walk away.\n\nStart Small and Grow\n\nIf you’re not ready for a big investment, start with a plot, develop it gradually, and scale up. Land doesn’t depreciate.\n\nWhether you’re abroad or right here in Nigeria, one thing is clear: owning property is always a smart move. If the uncertainty overseas has you thinking about securing something back home, now is the time to act.\n\nCall Aceroyal Estate Homes today and let’s get you started.',
     coverImageUrl: '/images/blog/nigerian-real-estate-getting-started/eko-paragon-cta.jpg',
     published: true,
     createdAt: '2025-03-17T00:00:00.000Z',
@@ -1029,9 +1029,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-integrity',
     title: 'The Secret Ingredient to Real Estate Success No One’s Talking About',
     slug: 'the-secret-ingredient-to-real-estate-success-no-one-is-talking-about',
-    excerpt: 'Why transparency and honest communication — not hype — are what actually build buyer trust in Nigerian real estate.',
+    excerpt: 'Why transparency and honest communication, not hype, are what actually build buyer trust in Nigerian real estate.',
     content:
-      'Investors really dislike hidden fees, any kind of misrepresentation, or surprises about property issues.\n\nThey value honesty and transparency above all. Just be upfront — it’s that simple.\n\nWhen you explore property investment opportunities, you quickly learn that integrity is non-negotiable. Buyers and investors are extra cautious, particularly in the Nigerian property market.\n\nThink about it. When you walk into a real estate office, you expect clear and honest communication. No hidden fees, no confusing fine print, just straightforward answers. This type of openness is what creates confidence in buyers and investors.\n\nIn a country where many are searching for affordable real estate Nigeria offers, knowing that you are dealing with a reputable developer makes all the difference.\n\nWhen a developer consistently demonstrates honesty, they build trust. This trust is the foundation for long-lasting relationships that naturally turn clients into brand evangelists.\n\nAt AceRoyal Estates, we have worked hard to establish our brand as a beacon of integrity in the Nigerian property market. Our commitment to transparency means every transaction is handled with care so that our clients receive exactly what they are promised. We have earned our reputation by choosing honesty over hype.\n\nWhen you ask top search engines how to invest in Nigerian property or how to avoid real estate scams Nigeria, the answer always comes back to trust and reliability. At AceRoyal Estates, we stand out because we put integrity at the heart of everything we do.\n\nUltimately, whether you are entering the Nigerian property market as a first-time buyer or as a seasoned investor, remember that integrity is the key.\n\nLet’s get you started on your next real estate investment. Call now for a free consultation.',
+      'Investors really dislike hidden fees, any kind of misrepresentation, or surprises about property issues.\n\nThey value honesty and transparency above all. Just be upfront. It’s that simple.\n\nWhen you explore property investment opportunities, you quickly learn that integrity is non-negotiable. Buyers and investors are extra cautious, particularly in the Nigerian property market.\n\nThink about it. When you walk into a real estate office, you expect clear and honest communication. No hidden fees, no confusing fine print, just straightforward answers. This type of openness is what creates confidence in buyers and investors.\n\nIn a country where many are searching for affordable real estate Nigeria offers, knowing that you are dealing with a reputable developer makes all the difference.\n\nWhen a developer consistently demonstrates honesty, they build trust. This trust is the foundation for long-lasting relationships that naturally turn clients into brand evangelists.\n\nAt AceRoyal Estates, we have worked hard to establish our brand as a beacon of integrity in the Nigerian property market. Our commitment to transparency means every transaction is handled with care so that our clients receive exactly what they are promised. We have earned our reputation by choosing honesty over hype.\n\nWhen you ask top search engines how to invest in Nigerian property or how to avoid real estate scams Nigeria, the answer always comes back to trust and reliability. At AceRoyal Estates, we stand out because we put integrity at the heart of everything we do.\n\nUltimately, whether you are entering the Nigerian property market as a first-time buyer or as a seasoned investor, remember that integrity is the key.\n\nLet’s get you started on your next real estate investment. Call now for a free consultation.',
     // No image was provided for this post — leave unset rather than a
     // stock photo; the post page and listing cards both render fine
     // without a cover image.
@@ -1044,9 +1044,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-aceroyal-name-story',
     title: 'What’s in a Name? The Story Behind AceRoyal',
     slug: 'whats-in-a-name-the-story-behind-aceroyal',
-    excerpt: 'The meaning behind the AceRoyal name — leadership, Edo heritage, and a vision for Nigerian real estate.',
+    excerpt: 'The meaning behind the AceRoyal name: leadership, Edo heritage, and a vision for Nigerian real estate.',
     content:
-      'Have you ever stopped to think about the meaning behind a name? A name is more than just a label — it carries history, purpose, and a vision for the future.\n\nFor AceRoyal Group, our name is a reflection of our roots, values, and commitment to excellence in real estate.\n\nThe Origin of “AceRoyal”\n\nThe name AceRoyal isn’t just a brand, it’s a legacy.\n\n“Ace” comes from the initials of our founder, Dr. Agonor Cletus Endurance. It represents leadership, excellence, and a determination to be the best in everything we do.\n\n“Royal” is a tribute to his proud Edo heritage, a culture deeply rooted in dignity, strength, and leadership. It symbolizes the trust, prestige, and integrity that define every transaction, every development, and every client relationship at AceRoyal.\n\nTogether, AceRoyal represents a vision of prosperity and service to humanity — a vision that has grown into one of Nigeria’s most trusted real estate brands.\n\nA Legacy in the Making\n\nWhat’s in a name? For us, it’s everything. It’s a story of vision, heritage, and a relentless pursuit of excellence. It’s a name that stands for trust, quality, and a future where homeownership is not a privilege, but a right.\n\nWhether you’re looking to buy, invest, or build, AceRoyal Estate Homes is here to guide you every step of the way.\n\nWelcome to AceRoyal — where dreams become reality, and legacies are built.',
+      'Have you ever stopped to think about the meaning behind a name? A name is more than just a label. It carries history, purpose, and a vision for the future.\n\nFor AceRoyal Group, our name is a reflection of our roots, values, and commitment to excellence in real estate.\n\nThe Origin of “AceRoyal”\n\nThe name AceRoyal isn’t just a brand, it’s a legacy.\n\n“Ace” comes from the initials of our founder, Dr. Agonor Cletus Endurance. It represents leadership, excellence, and a determination to be the best in everything we do.\n\n“Royal” is a tribute to his proud Edo heritage, a culture deeply rooted in dignity, strength, and leadership. It symbolizes the trust, prestige, and integrity that define every transaction, every development, and every client relationship at AceRoyal.\n\nTogether, AceRoyal represents a vision of prosperity and service to humanity, a vision that has grown into one of Nigeria’s most trusted real estate brands.\n\nA Legacy in the Making\n\nWhat’s in a name? For us, it’s everything. It’s a story of vision, heritage, and a relentless pursuit of excellence. It’s a name that stands for trust, quality, and a future where homeownership is not a privilege, but a right.\n\nWhether you’re looking to buy, invest, or build, AceRoyal Estate Homes is here to guide you every step of the way.\n\nWelcome to AceRoyal, where dreams become reality, and legacies are built.',
     coverImageUrl: '/images/blog/aceroyal-name-story/team-site-visit.jpg',
     published: true,
     createdAt: '2025-03-06T00:00:00.000Z',
@@ -1058,7 +1058,7 @@ export const fallbackBlogPosts = [
     slug: 'land-ownership-made-easy-why-allocation-day-matters',
     excerpt: 'What happens at Aceroyal’s quarterly Allocation Day, and why walking your plot matters.',
     content:
-      'Let’s talk about Allocation Day — that exciting moment when your land goes from “something you paid for” to something you can actually stand on. It’s not just about seeing your plot; it’s about making it official.\n\nAt Aceroyal Estate Homes, we do this every three months, turning your investment into reality. If you’ve secured a plot or acre, this is your moment. Here’s why you don’t want to miss it:\n\n[video](/videos/allocation-day.mp4)\n\n1. You’re Not Just Buying Land — You’re Owning It\n\nUntil you step on your plot, land ownership feels abstract. But on Allocation Day, you walk the land and see exactly what you invested in. Our licensed surveyors, who drafted the survey plans, guide you through the process, ensuring you understand your land’s exact location and boundaries.\n\n![A new landowner celebrates her allocation at The Legacy Garden City](/images/gallery/allocation-day/legacy-garden-city-allocated.jpg)\n\n2. Your Documents Are Ready — No Delays\n\nWe know Nigerian real estate can be stressful, but not with us. Our dedicated Admin team ensures you sign all necessary documents on-site, so you leave with full ownership clarity. No back and forth. No waiting weeks for paperwork.\n\n3. You Meet Your Future Neighbors & Investors\n\nIt’s more than just land — it’s a community. Whether you plan to build soon or invest for appreciation, Allocation Day lets you connect with like-minded buyers, potential partners, and future neighbors. Who knows? You might even find someone with a shared vision for the area.\n\n![Celebrating a new allocation on site](/images/gallery/allocation-day/just-got-allocated.jpg)\n\n4. And Yes, There’s Lunch!\n\nAfter handling business, we make sure you relax, celebrate, and enjoy good food. Because owning land should feel exciting, not stressful.',
+      'Let’s talk about Allocation Day, that exciting moment when your land goes from “something you paid for” to something you can actually stand on. It’s not just about seeing your plot; it’s about making it official.\n\nAt Aceroyal Estate Homes, we do this every three months, turning your investment into reality. If you’ve secured a plot or acre, this is your moment. Here’s why you don’t want to miss it:\n\n[video](/videos/allocation-day.mp4)\n\n1. You’re Not Just Buying Land, You’re Owning It\n\nUntil you step on your plot, land ownership feels abstract. But on Allocation Day, you walk the land and see exactly what you invested in. Our licensed surveyors, who drafted the survey plans, guide you through the process, ensuring you understand your land’s exact location and boundaries.\n\n![A new landowner celebrates her allocation at The Legacy Garden City](/images/gallery/allocation-day/legacy-garden-city-allocated.jpg)\n\n2. Your Documents Are Ready: No Delays\n\nWe know Nigerian real estate can be stressful, but not with us. Our dedicated Admin team ensures you sign all necessary documents on-site, so you leave with full ownership clarity. No back and forth. No waiting weeks for paperwork.\n\n3. You Meet Your Future Neighbors & Investors\n\nIt’s more than just land. It’s a community. Whether you plan to build soon or invest for appreciation, Allocation Day lets you connect with like-minded buyers, potential partners, and future neighbors. Who knows? You might even find someone with a shared vision for the area.\n\n![Celebrating a new allocation on site](/images/gallery/allocation-day/just-got-allocated.jpg)\n\n4. And Yes, There’s Lunch!\n\nAfter handling business, we make sure you relax, celebrate, and enjoy good food. Because owning land should feel exciting, not stressful.',
     coverImageUrl: '/images/gallery/allocation-day/latest-land-owner.jpg',
     published: true,
     createdAt: '2025-02-24T00:00:00.000Z',
@@ -1068,9 +1068,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-lagos-vs-abuja',
     title: 'Lagos vs. Abuja: Where Should You Invest in Real Estate in 2025?',
     slug: 'lagos-vs-abuja-where-should-you-invest-in-real-estate-in-2025',
-    excerpt: 'Comparing Lagos’s fast-paced growth against Abuja’s stability — and which fits which kind of investor.',
+    excerpt: 'Comparing Lagos’s fast-paced growth against Abuja’s stability, and which fits which kind of investor.',
     content:
-      'If you were investing ₦50 million in Nigerian real estate today, where would it be — Lagos or Abuja?\n\nThis is the debate every smart investor is having in 2025. Both cities are booming, both offer massive returns, but the real question is: which one is right for you? Let’s break it down.\n\nLagos: The Hustle, The Profit\n\nLagos is the heartbeat of Nigeria’s economy — fast-paced, always moving, and never sleeping. If you’re looking for a city with guaranteed demand, Lagos real estate is king.\n\nWhy Invest in Lagos?\n\nHigh population = high demand — over 20 million people and growing; houses, land, and rentals never stay empty for long. Growing development hubs — Ibeju-Lekki, Epe, and Abijo GRA are turning into prime real estate zones. Massive infrastructure boom — the Lekki-Epe Expressway, Fourth Mainland Bridge, and the Dangote Refinery are making Lagos property more valuable daily. Short-term rental market — with business travelers and tourists, Lagos is the best place to earn passive income from rentals.\n\nBest Places to Invest in Lagos (2025)\n\nEko Paragon Residence (Abijo GRA): luxury apartments with a hotel-style experience, perfect for investors looking for high rental income. Legacy Garden City, Phase 2 (Imota): affordable land in a fast-growing location, ideal for land banking and long-term appreciation.\n\nAbuja: The Prestige, The Stability\n\nAbuja is different. It’s calm, structured, and known for its premium real estate market. Unlike Lagos, property prices don’t fluctuate wildly — they steadily appreciate.\n\nWhy Invest in Abuja?\n\nGovernment presence = stability — Abuja is the political capital, meaning steady development and long-term investment security. Less hustle, more exclusivity — unlike Lagos, Abuja is not overcrowded; property owners enjoy a more serene and organized environment. Land banking opportunities — areas like Gwagwalada and Kuje are currently affordable but won’t be for long.\n\nBest Places to Invest in Abuja (2025)\n\n![Prime Boulevard Annex — Gwagwalada, Abuja](/images/blog/lagos-vs-abuja/prime-annex-abuja.jpg)\n\nPrime Boulevard Annex (Gwagwalada): a fast-rising area with affordable plots now but major price appreciation coming soon.\n\nLagos vs. Abuja: Which Should You Choose?\n\nChoose Lagos if you want fast-paced, high-demand real estate, high rental income potential, and quick appreciation in hot zones. Choose Abuja if you want a stable, structured, long-term investment, luxury and exclusivity, and government-backed real estate stability.\n\nAt the end of the day, both cities are goldmines — it depends on your investment goals.',
+      'If you were investing ₦50 million in Nigerian real estate today, where would it be: Lagos or Abuja?\n\nThis is the debate every smart investor is having in 2025. Both cities are booming, both offer massive returns, but the real question is: which one is right for you? Let’s break it down.\n\nLagos: The Hustle, The Profit\n\nLagos is the heartbeat of Nigeria’s economy: fast-paced, always moving, and never sleeping. If you’re looking for a city with guaranteed demand, Lagos real estate is king.\n\nWhy Invest in Lagos?\n\nHigh population = high demand: over 20 million people and growing; houses, land, and rentals never stay empty for long. Growing development hubs: Ibeju-Lekki, Epe, and Abijo GRA are turning into prime real estate zones. Massive infrastructure boom: the Lekki-Epe Expressway, Fourth Mainland Bridge, and the Dangote Refinery are making Lagos property more valuable daily. Short-term rental market: with business travelers and tourists, Lagos is the best place to earn passive income from rentals.\n\nBest Places to Invest in Lagos (2025)\n\nEko Paragon Residence (Abijo GRA): luxury apartments with a hotel-style experience, perfect for investors looking for high rental income. Legacy Garden City, Phase 2 (Imota): affordable land in a fast-growing location, ideal for land banking and long-term appreciation.\n\nAbuja: The Prestige, The Stability\n\nAbuja is different. It’s calm, structured, and known for its premium real estate market. Unlike Lagos, property prices don’t fluctuate wildly. They steadily appreciate.\n\nWhy Invest in Abuja?\n\nGovernment presence = stability: Abuja is the political capital, meaning steady development and long-term investment security. Less hustle, more exclusivity: unlike Lagos, Abuja is not overcrowded; property owners enjoy a more serene and organized environment. Land banking opportunities: areas like Gwagwalada and Kuje are currently affordable but won’t be for long.\n\nBest Places to Invest in Abuja (2025)\n\n![Prime Boulevard Annex, Gwagwalada, Abuja](/images/blog/lagos-vs-abuja/prime-annex-abuja.jpg)\n\nPrime Boulevard Annex (Gwagwalada): a fast-rising area with affordable plots now but major price appreciation coming soon.\n\nLagos vs. Abuja: Which Should You Choose?\n\nChoose Lagos if you want fast-paced, high-demand real estate, high rental income potential, and quick appreciation in hot zones. Choose Abuja if you want a stable, structured, long-term investment, luxury and exclusivity, and government-backed real estate stability.\n\nAt the end of the day, both cities are goldmines. It depends on your investment goals.',
     coverImageUrl: '/images/blog/lagos-vs-abuja/eko-paragon-lagos.jpg',
     published: true,
     createdAt: '2025-02-17T00:00:00.000Z',
@@ -1078,11 +1078,11 @@ export const fallbackBlogPosts = [
   },
   {
     id: 'fallback-blog-lose-money-lagos',
-    title: 'Why Most People Lose Money in Lagos Real Estate—And How to Avoid It',
+    title: 'Why Most People Lose Money in Lagos Real Estate and How to Avoid It',
     slug: 'why-most-people-lose-money-in-lagos-real-estate-and-how-to-avoid-it',
     excerpt: 'Common due-diligence mistakes that cost Lagos land buyers their investment, and how to avoid them.',
     content:
-      'A realtor once shared a story with me about a client who thought he had secured a prime plot by the roadside in Ibeju-Lekki.\n\nThe land was in a fast-developing area, and the price seemed like a good deal. But when it was time for allocation, he discovered the land belonged to the government — marked for a future road expansion project. His entire investment was gone.\n\nThis is one of the biggest mistakes people make in Lagos real estate — not doing due diligence.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of buyers invest safely and profitably. Here’s how to ensure your hard-earned money doesn’t go to waste.\n\n1. Don’t Go for “Too Good to Be True” Deals\n\nDo this instead: research market prices in areas like Lekki, Abijo GRA, and Epe. Buy from reputable developers — Aceroyal Estate Homes offers secure properties with full documentation.\n\n2. Don’t Pay Without Proper Documentation\n\n![Eko Paragon Residence — secure documentation and Certificate of Occupancy](/images/blog/lose-money-lagos/eko-paragon-certificate.jpg)\n\nDo this instead: ensure you get a Contract of Sale or Deed of Assignment. Make payments to a corporate account, not personal accounts. Work with established real estate firms like Aceroyal, where every transaction is transparent and secure.\n\n3. Think Long-Term\n\nA lot of people buy real estate expecting quick profits in a few months. But true wealth in Lagos real estate comes from long-term appreciation and smart investments. Consider off-plan properties like Eko Paragon Residence, which offer high ROI and secure documentation. Be patient — the best real estate investments appreciate over time.\n\nMake a Smart Investment Today\n\nAt Aceroyal Estate Homes, we offer secure, high-value properties with full documentation. Don’t take risks with your hard-earned money. Secure your future today — send us a message now!',
+      'A realtor once shared a story with me about a client who thought he had secured a prime plot by the roadside in Ibeju-Lekki.\n\nThe land was in a fast-developing area, and the price seemed like a good deal. But when it was time for allocation, he discovered the land belonged to the government, marked for a future road expansion project. His entire investment was gone.\n\nThis is one of the biggest mistakes people make in Lagos real estate: not doing due diligence.\n\nAt Aceroyal Estate Homes, we’ve helped hundreds of buyers invest safely and profitably. Here’s how to ensure your hard-earned money doesn’t go to waste.\n\n1. Don’t Go for “Too Good to Be True” Deals\n\nDo this instead: research market prices in areas like Lekki, Abijo GRA, and Epe. Buy from reputable developers. Aceroyal Estate Homes offers secure properties with full documentation.\n\n2. Don’t Pay Without Proper Documentation\n\n![Eko Paragon Residence: secure documentation and Certificate of Occupancy](/images/blog/lose-money-lagos/eko-paragon-certificate.jpg)\n\nDo this instead: ensure you get a Contract of Sale or Deed of Assignment. Make payments to a corporate account, not personal accounts. Work with established real estate firms like Aceroyal, where every transaction is transparent and secure.\n\n3. Think Long-Term\n\nA lot of people buy real estate expecting quick profits in a few months. But true wealth in Lagos real estate comes from long-term appreciation and smart investments. Consider off-plan properties like Eko Paragon Residence, which offer high ROI and secure documentation. Be patient. The best real estate investments appreciate over time.\n\nMake a Smart Investment Today\n\nAt Aceroyal Estate Homes, we offer secure, high-value properties with full documentation. Don’t take risks with your hard-earned money. Secure your future today. Send us a message now!',
     coverImageUrl: '/images/blog/lose-money-lagos/eko-paragon-certificate.jpg',
     published: true,
     createdAt: '2025-02-11T00:00:00.000Z',
@@ -1092,9 +1092,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-hotel-residences',
     title: 'Luxury Living, Lucrative Returns: Lagos Hotel Residences',
     slug: 'luxury-living-lucrative-returns-lagos-hotel-residences',
-    excerpt: 'Inside Eko Paragon Residence — furnished suites, hotel-style amenities, and short/long-term rental income.',
+    excerpt: 'Inside Eko Paragon Residence: furnished suites, hotel-style amenities, and short/long-term rental income.',
     content:
-      'Imagine a world where you can enjoy the privacy and comfort of your own home while having access to room service, buffet meals, a world-class spa, and a range of other exclusive services. That’s the Hotel Residence experience. Modern Airbnb ambience infused with Eko hospitality.\n\n![Eko Paragon Residence — 1, 2 and 3 bedroom apartments](/images/blog/hotel-residences/eko-paragon-render.jpg)\n\nAceRoyal Estate Homes, in partnership with Lagos State Development & Property Corporation (LSDPC) and Gidi Homes, is proud to present Eko Paragon Residence, a groundbreaking development that redefines luxury living and investment.\n\nEko Paragon Residence is more than just an investment; it’s a lifestyle. It’s an opportunity to capitalize on Lagos’s vibrant energy and create a lucrative stream of income.\n\nEko Paragon offers furnished 1, 2 or 3 bedroom apartments or suites that are available for short-term or long-term rentals. Fully equipped with 24/7 power supply, valet parking, 24/7 security, a state-of-the-art health center, cinema, high-speed Wi-Fi, an Olympic-size swimming pool, dedicated concierge services, an innovative smart lifestyle, and eco-friendly energy efficiency.\n\nInvesting in a short-term rental can be highly stable and profitable. It’s stable because housing has been one of the most stable asset classes. As the city continues to attract international businesses and high-net-worth individuals, the appeal of hotel residences will only increase.\n\nContact AceRoyal Estate Homes today to learn more about Eko Paragon Residence and discover how you can unlock the potential of Lagos’s thriving hospitality market.',
+      'Imagine a world where you can enjoy the privacy and comfort of your own home while having access to room service, buffet meals, a world-class spa, and a range of other exclusive services. That’s the Hotel Residence experience. Modern Airbnb ambience infused with Eko hospitality.\n\n![Eko Paragon Residence: 1, 2 and 3 bedroom apartments](/images/blog/hotel-residences/eko-paragon-render.jpg)\n\nAceRoyal Estate Homes, in partnership with Lagos State Development & Property Corporation (LSDPC) and Gidi Homes, is proud to present Eko Paragon Residence, a groundbreaking development that redefines luxury living and investment.\n\nEko Paragon Residence is more than just an investment; it’s a lifestyle. It’s an opportunity to capitalize on Lagos’s vibrant energy and create a lucrative stream of income.\n\nEko Paragon offers furnished 1, 2 or 3 bedroom apartments or suites that are available for short-term or long-term rentals. Fully equipped with 24/7 power supply, valet parking, 24/7 security, a state-of-the-art health center, cinema, high-speed Wi-Fi, an Olympic-size swimming pool, dedicated concierge services, an innovative smart lifestyle, and eco-friendly energy efficiency.\n\nInvesting in a short-term rental can be highly stable and profitable. It’s stable because housing has been one of the most stable asset classes. As the city continues to attract international businesses and high-net-worth individuals, the appeal of hotel residences will only increase.\n\nContact AceRoyal Estate Homes today to learn more about Eko Paragon Residence and discover how you can unlock the potential of Lagos’s thriving hospitality market.',
     coverImageUrl: '/images/blog/hotel-residences/eko-paragon-render.jpg',
     published: true,
     createdAt: '2025-01-27T00:00:00.000Z',
@@ -1104,9 +1104,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-stop-dreaming',
     title: 'Stop Dreaming, Start Doing: Build Real Wealth This Year',
     slug: 'stop-dreaming-start-doing-build-real-wealth-this-year',
-    excerpt: 'The AceRoyal Investment Plan — Appreciate, Capitalize, Enhance — for turning financial goals into action.',
+    excerpt: 'The AceRoyal Investment Plan (Appreciate, Capitalize, Enhance) for turning financial goals into action.',
     content:
-      'We all make financial goals every year. We dream big, plan to invest, and set ambitious targets. But how often do those plans actually turn into real, lasting wealth?\n\nThis year, flip the switch. Take concrete steps towards building sustainable wealth.\n\nMaking smart financial choices is key. At AceRoyal Estates, we give you the information and support you need to confidently invest in real estate. Our expertise and amazing properties make us the right choice for your investment journey.\n\nIntroducing the AceRoyal Investment Plan — your 2025 roadmap to financial success.\n\nA — Appreciate: Land Banking\n\nInvest in prime land within rapidly developing areas like Legacy Garden City, Imota, Ikorodu and our ultra luxurious Edo Mega City. Land value consistently appreciates over time, offering significant long-term returns.\n\nC — Capitalize: Experience True Passive Income\n\nInvest in our state-of-the-art Eko Paragon Residence. Enjoy modern living with unmatched luxury and comfort. Generate consistent rental income from both short-term and long-term residents with minimal effort on your part. Our expert team handles all aspects of property management, including tenant screening, maintenance, and cleaning. Just relax and reap the reward — sit back and enjoy the benefits of passive income while we take care of the rest.\n\nE — Enhance: Diversify Your Portfolio\n\nExplore both land banking and hotel residence investments to enhance your portfolio’s stability and maximize your returns.',
+      'We all make financial goals every year. We dream big, plan to invest, and set ambitious targets. But how often do those plans actually turn into real, lasting wealth?\n\nThis year, flip the switch. Take concrete steps towards building sustainable wealth.\n\nMaking smart financial choices is key. At AceRoyal Estates, we give you the information and support you need to confidently invest in real estate. Our expertise and amazing properties make us the right choice for your investment journey.\n\nIntroducing the AceRoyal Investment Plan: your 2025 roadmap to financial success.\n\nA for Appreciate: Land Banking\n\nInvest in prime land within rapidly developing areas like Legacy Garden City, Imota, Ikorodu and our ultra luxurious Edo Mega City. Land value consistently appreciates over time, offering significant long-term returns.\n\nC for Capitalize: Experience True Passive Income\n\nInvest in our state-of-the-art Eko Paragon Residence. Enjoy modern living with unmatched luxury and comfort. Generate consistent rental income from both short-term and long-term residents with minimal effort on your part. Our expert team handles all aspects of property management, including tenant screening, maintenance, and cleaning. Just relax and reap the reward. Sit back and enjoy the benefits of passive income while we take care of the rest.\n\nE for Enhance: Diversify Your Portfolio\n\nExplore both land banking and hotel residence investments to enhance your portfolio’s stability and maximize your returns.',
     // No image was provided for this post — leave unset rather than a
     // stock photo.
     coverImageUrl: null,
@@ -1120,7 +1120,7 @@ export const fallbackBlogPosts = [
     slug: 'land-titles-and-why-they-matter',
     excerpt: 'What a registered survey is, why it’s required before any land title, and how Aceroyal handles the paperwork.',
     content:
-      'It’s been a minute! We know you’ve missed us and we missed you too! We’re excited to be back and better than ever. We’ve been working hard to bring you more exciting and valuable content, and we can’t wait to share it with you. From now on, you can look forward to fresh insights, tips, and updates from us every single week.\n\nNow, let’s talk about something we know you’ll find super important: land titles and registered surveys. If you’re a landowner or thinking about becoming one, you absolutely need to get this right. Here’s why — and how Aceroyal makes the whole process not just easy, but enjoyable and stress-free.\n\nWhat’s a Land Title Anyway?\n\nA land title is essentially the official document that proves you own a piece of land. In Nigeria, there are a few types of land titles you might come across, such as the Certificate of Occupancy (C of O), Right of Occupancy (R of O), Freehold, and others. Each serves a different purpose and offers various levels of security. For now, let’s focus on one crucial aspect of land ownership: the registered survey, which is an essential step in the process.\n\nWhat’s a Registered Survey?\n\nA registered survey is like a map of your land. It shows the exact boundaries, dimensions, and location of your property, prepared by a licensed surveyor and filed with the state’s Office of the Surveyor-General. Think of it as your land’s GPS coordinates — clearly marking where your property begins and ends, and ensuring there are no disputes with boundaries.\n\nWhy Do You Need a Registered Survey?\n\nA registered survey isn’t just a formality; it’s a vital part of the land ownership process. Here’s why: it gives clarity and security, showing exactly where your land is so there’s no confusion or future arguments with neighbors. It’s essential for obtaining a land title — you can’t get your C of O or other land titles without a registered survey, since it’s a necessary step to prove the land is free from government issues and other encumbrances. And it gives peace of mind, helping verify that the land you’re buying is legitimate and doesn’t have any hidden problems like government acquisition or other claims.\n\nIf you’ve ever tried handling the process on your own, you know it’s not easy, as there are multiple steps involved. These steps come with their own challenges — red tape, delays, and unexpected costs. But here’s the good news: Aceroyal Estates Homes handles all of this for you.\n\nOur goal is simple: to make land ownership a breeze. Every piece of land and property we sell is free from government encumbrances, adverse claimants, and communal issues. We take pride in offering you peace of mind, knowing that your land is secure and legitimate.\n\nOur team of experts knows the Nigerian land documentation process inside and out. From getting a registered survey to securing other land titles, we manage it all, so you don’t have to worry about handling the paperwork or navigating through multiple government offices. We take a full-service approach — whether it’s engaging a certified surveyor, submitting documents to the right authorities, or keeping you informed every step of the way, we ensure that everything is done right.\n\nLet Us Handle the Hard Stuff, You Enjoy the Benefits\n\nLet’s take it back to our first allocation of The Legacy Garden City Phase 1 on August 10th, 2024 — our clients enjoyed a completely hands-off experience. We had already done all the groundwork, so they simply arrived to collect their documents and sign — no stress, no back-and-forth with paperwork. Each of them had their registered survey and every other document ready without having to lift a finger. We took care of everything behind the scenes, making sure the entire process was smooth and effortless. This is what we strive for at Aceroyal Estates Homes — making land ownership as easy as possible for you.\n\nSecuring a property doesn’t have to be a nightmare. With us, you can relax knowing your property is legally yours. We handle all the tough parts so you can focus on what really matters — enjoying your land or planning your next big project.',
+      'It’s been a minute! We know you’ve missed us and we missed you too! We’re excited to be back and better than ever. We’ve been working hard to bring you more exciting and valuable content, and we can’t wait to share it with you. From now on, you can look forward to fresh insights, tips, and updates from us every single week.\n\nNow, let’s talk about something we know you’ll find super important: land titles and registered surveys. If you’re a landowner or thinking about becoming one, you absolutely need to get this right. Here’s why, and how Aceroyal makes the whole process not just easy, but enjoyable and stress-free.\n\nWhat’s a Land Title Anyway?\n\nA land title is essentially the official document that proves you own a piece of land. In Nigeria, there are a few types of land titles you might come across, such as the Certificate of Occupancy (C of O), Right of Occupancy (R of O), Freehold, and others. Each serves a different purpose and offers various levels of security. For now, let’s focus on one crucial aspect of land ownership: the registered survey, which is an essential step in the process.\n\nWhat’s a Registered Survey?\n\nA registered survey is like a map of your land. It shows the exact boundaries, dimensions, and location of your property, prepared by a licensed surveyor and filed with the state’s Office of the Surveyor-General. Think of it as your land’s GPS coordinates, clearly marking where your property begins and ends, and ensuring there are no disputes with boundaries.\n\nWhy Do You Need a Registered Survey?\n\nA registered survey isn’t just a formality; it’s a vital part of the land ownership process. Here’s why: it gives clarity and security, showing exactly where your land is so there’s no confusion or future arguments with neighbors. It’s essential for obtaining a land title. You can’t get your C of O or other land titles without a registered survey, since it’s a necessary step to prove the land is free from government issues and other encumbrances. And it gives peace of mind, helping verify that the land you’re buying is legitimate and doesn’t have any hidden problems like government acquisition or other claims.\n\nIf you’ve ever tried handling the process on your own, you know it’s not easy, as there are multiple steps involved. These steps come with their own challenges: red tape, delays, and unexpected costs. But here’s the good news: Aceroyal Estates Homes handles all of this for you.\n\nOur goal is simple: to make land ownership a breeze. Every piece of land and property we sell is free from government encumbrances, adverse claimants, and communal issues. We take pride in offering you peace of mind, knowing that your land is secure and legitimate.\n\nOur team of experts knows the Nigerian land documentation process inside and out. From getting a registered survey to securing other land titles, we manage it all, so you don’t have to worry about handling the paperwork or navigating through multiple government offices. We take a full-service approach, whether it’s engaging a certified surveyor, submitting documents to the right authorities, or keeping you informed every step of the way, we ensure that everything is done right.\n\nLet Us Handle the Hard Stuff, You Enjoy the Benefits\n\nLet’s take it back to our first allocation of The Legacy Garden City Phase 1 on August 10th, 2024, our clients enjoyed a completely hands-off experience. We had already done all the groundwork, so they simply arrived to collect their documents and sign, with no stress, no back-and-forth with paperwork. Each of them had their registered survey and every other document ready without having to lift a finger. We took care of everything behind the scenes, making sure the entire process was smooth and effortless. This is what we strive for at Aceroyal Estates Homes: making land ownership as easy as possible for you.\n\nSecuring a property doesn’t have to be a nightmare. With us, you can relax knowing your property is legally yours. We handle all the tough parts so you can focus on what really matters: enjoying your land or planning your next big project.',
     coverImageUrl: '/images/blog/land-titles/land-titles-cover.jpg',
     published: true,
     createdAt: '2024-09-15T00:00:00.000Z',
@@ -1154,9 +1154,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-metro-city-buy-hold',
     title: 'Metro City Garden Price Increase Alert',
     slug: 'metro-city-garden-price-increase-alert',
-    excerpt: 'Metro City Garden’s price just jumped from ₦850,000 to ₦1,500,000 — see the new pricing and what’s driving the Buy & Hold strategy.',
+    excerpt: 'Metro City Garden’s price just jumped from ₦850,000 to ₦1,500,000. See the new pricing and what’s driving the Buy & Hold strategy.',
     content:
-      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nNow unto the good news. Metro City Garden price increase alert: from ₦850,000 to ₦1,500,000. This is so much good news to those who subscribed to the just concluded promo — see how your investment just appreciated in a blink.\n\nMetro City Garden now selling: 500sqm at ₦1,500,000, 300sqm at ₦1,000,000. Location: Itoikin, Epe. Landmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.\n\nFeatures: perimeter fencing, green areas, dry land, 24-hour power, water supply, drainage, and more. Title: Freehold/Registered Survey.\n\nMetro City Garden guarantees 100% ROI just as you can see now — join a team of landowners today and experience peace of mind. For more information, contact our customer care lines: 09156549709, 08053605093.\n\n~ACE, building the future together.',
+      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nNow unto the good news. Metro City Garden price increase alert: from ₦850,000 to ₦1,500,000. This is so much good news to those who subscribed to the just concluded promo. See how your investment just appreciated in a blink.\n\nMetro City Garden now selling: 500sqm at ₦1,500,000, 300sqm at ₦1,000,000. Location: Itoikin, Epe. Landmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.\n\nFeatures: perimeter fencing, green areas, dry land, 24-hour power, water supply, drainage, and more. Title: Freehold/Registered Survey.\n\nMetro City Garden guarantees 100% ROI just as you can see now. Join a team of landowners today and experience peace of mind. For more information, contact our customer care lines: 09156549709, 08053605093.\n\n~ACE, building the future together.',
     coverImageUrl: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
     published: true,
     createdAt: '2023-03-24T00:00:00.000Z',
@@ -1168,7 +1168,7 @@ export const fallbackBlogPosts = [
     slug: 'aceroyal-estates-homes-brings-you-good-tidings',
     excerpt: 'A 50% End of Year/New Year discount on land at New City Estate, Imota, Ikorodu.',
     content:
-      'Good tidings we bring to you and your friends — good tidings of Christmas and a Happy New Year!\n\nAceroyal Estates Homes is giving a 50% discount for our End of the Year/New Year sales — with just ₦850,000 instead of ₦1.7m you can buy 500sqm of land, and with just ₦500,000 instead of ₦850,000 you can buy 300sqm of land, at New City Estate, Imota, Ikorodu, Lagos.\n\nIsn’t this exciting? I know you never saw it coming, right?\n\nThis promo will end on the 31st of January 2023, so don’t miss this amazing offer and be part of the people who will be celebrated in the New Year.\n\nYou! Yes, you! Don’t sleep — wake up and become a landowner!',
+      'Good tidings we bring to you and your friends, good tidings of Christmas and a Happy New Year!\n\nAceroyal Estates Homes is giving a 50% discount for our End of the Year/New Year sales: with just ₦850,000 instead of ₦1.7m you can buy 500sqm of land, and with just ₦500,000 instead of ₦850,000 you can buy 300sqm of land, at New City Estate, Imota, Ikorodu, Lagos.\n\nIsn’t this exciting? I know you never saw it coming, right?\n\nThis promo will end on the 31st of January 2023, so don’t miss this amazing offer and be part of the people who will be celebrated in the New Year.\n\nYou! Yes, you! Don’t sleep. Wake up and become a landowner!',
     coverImageUrl: '/images/estates/new-city-estate/new-city-flyer.jpg',
     published: true,
     createdAt: '2022-12-29T00:00:00.000Z',
@@ -1180,7 +1180,7 @@ export const fallbackBlogPosts = [
     slug: 'goody-bag-promo',
     excerpt: 'Buy a plot at Novena Estate Phase 2 and get 100 bags of Dangote Cement free.',
     content:
-      'Promo! Promo!! Promo!!! AceRoyal got you covered.\n\nAceRoyal Estates Homes Ltd is known for the amazing promos they always make available to their clients. The Goody Bag Promo is the promo of the century — it’s the first of its kind. No other estate company does it better than ACEROYAL.\n\nWhen you buy 1 plot of land in Novena Estate Phase 2, you get 100 bags of Dangote Cement free of charge. With this, you can start fencing your land or start the foundation of your house in Novena Estate 2, Iraye, Epe.\n\nWe don’t just sell land to you, we also support your vision of becoming a homeowner.\n\nJump on this offer today by calling 09156549709 to book an inspection with us now!\n\nAceroyal: we are building the future together!',
+      'Promo! Promo!! Promo!!! AceRoyal got you covered.\n\nAceRoyal Estates Homes Ltd is known for the amazing promos they always make available to their clients. The Goody Bag Promo is the promo of the century. It’s the first of its kind. No other estate company does it better than ACEROYAL.\n\nWhen you buy 1 plot of land in Novena Estate Phase 2, you get 100 bags of Dangote Cement free of charge. With this, you can start fencing your land or start the foundation of your house in Novena Estate 2, Iraye, Epe.\n\nWe don’t just sell land to you, we also support your vision of becoming a homeowner.\n\nJump on this offer today by calling 09156549709 to book an inspection with us now!\n\nAceroyal: we are building the future together!',
     coverImageUrl: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
     published: true,
     createdAt: '2022-10-17T00:00:00.000Z',
@@ -1190,9 +1190,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-introducing-novena',
     title: 'Introducing Our Latest Estate in Lagos: Iraye, Epe',
     slug: 'introducing-our-latest-estate-in-lagos-iraye-epe',
-    excerpt: 'Novena Estate Phase 2 — a buy-and-build residential estate at Iraye, Epe, now selling at ₦2.5 million per 500sqm plot.',
+    excerpt: 'Novena Estate Phase 2: a buy-and-build residential estate at Iraye, Epe, now selling at ₦2.5 million per 500sqm plot.',
     content:
-      'Introducing our latest estate in Lagos, Iraye, Epe — Novena Estate.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again — congratulations to those who picked a slot and more from Phase 1 — before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.\n\nA plot of land at Novena Estate Phase 2 is measured at 500sqm. We are currently selling at ₦2.5 million per plot.',
+      'Introducing our latest estate in Lagos, Iraye, Epe: Novena Estate.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again. Congratulations to those who picked a slot and more from Phase 1, before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.\n\nA plot of land at Novena Estate Phase 2 is measured at 500sqm. We are currently selling at ₦2.5 million per plot.',
     coverImageUrl: '/images/estates/novena-estate/novena-estate-flyer.jpg',
     published: true,
     createdAt: '2022-06-14T00:00:00.000Z',
@@ -1204,7 +1204,7 @@ export const fallbackBlogPosts = [
     slug: 'estate-launch-la-regina-luxury-resort-and-novena-estate-phase-2',
     excerpt: 'AceRoyal officially launches La Regina Luxury Resort Estate (Ketu, Epe) and Novena Estate Phase 2 (Iraye, Epe).',
     content:
-      'You’re invited!\n\nAceRoyal Estates Homes Ltd invites the general public to the launching of her estates: La Regina Luxury Resort Estate, located at Ketu, Epe, and Novena Estate Phase 2, located at Iraye, Epe.\n\nWith Coach Spark Ovadje as the Chief Launcher and host of other co-launchers. If you know Coach Spark very well (Nigeria’s National Real Estate Coach), then you will know this is not an event to miss, because there is so much to learn and unlearn!\n\nThere are a lot of amazing things that will happen on that day. We will have a raffle draw where so many persons will have the opportunity of winning a free standing fan, an electric kettle, a LED TV, a mini-refrigerator, and lots more!\n\nBuses will be available at strategic locations to pick and drop you off.\n\nYou will have plenty to eat and drink.\n\nThe time remains 9 AM on Saturday, June 18th, 2022. See you on Saturday — and till then, please stay safe!\n\nCall/WhatsApp 09156549709 for further inquiries.',
+      'You’re invited!\n\nAceRoyal Estates Homes Ltd invites the general public to the launching of her estates: La Regina Luxury Resort Estate, located at Ketu, Epe, and Novena Estate Phase 2, located at Iraye, Epe.\n\nWith Coach Spark Ovadje as the Chief Launcher and host of other co-launchers. If you know Coach Spark very well (Nigeria’s National Real Estate Coach), then you will know this is not an event to miss, because there is so much to learn and unlearn!\n\nThere are a lot of amazing things that will happen on that day. We will have a raffle draw where so many persons will have the opportunity of winning a free standing fan, an electric kettle, a LED TV, a mini-refrigerator, and lots more!\n\nBuses will be available at strategic locations to pick and drop you off.\n\nYou will have plenty to eat and drink.\n\nThe time remains 9 AM on Saturday, June 18th, 2022. See you on Saturday, and till then, please stay safe!\n\nCall/WhatsApp 09156549709 for further inquiries.',
     coverImageUrl: '/images/blog/estate-launch/launch-invite-flyer.jpg',
     published: true,
     createdAt: '2022-06-17T00:00:00.000Z',
@@ -1214,9 +1214,9 @@ export const fallbackBlogPosts = [
     id: 'fallback-blog-ileya-promo',
     title: 'Ileya Mega Discount Promo',
     slug: 'ileya-mega-discount-promo',
-    excerpt: 'A 40% Ileya discount on plots at Novena Estate Phase 2 — ₦1.5 million instead of ₦2.5 million.',
+    excerpt: 'A 40% Ileya discount on plots at Novena Estate Phase 2: ₦1.5 million instead of ₦2.5 million.',
     content:
-      'It’s Ileya — AceRoyal got you covered.\n\nAt Aceroyal Estate Homes Ltd, we hold dearly our commitment to our customers and the community. Because of this, we are giving out a massive discount on every plot purchased this July, through our Ileya Mega Discount Promo.\n\nDuring this period of celebration, we want to put smiles on the faces of our customers. We would be selling a plot of land at Novena Estate Phase 2 for ₦1.5M instead of the actual price of ₦2.5M — a whopping 40% discount.\n\nThat’s not all — we have also lined up numerous fantastic prizes like bags of rice, oil, phones, a refrigerator, and even a mature ram to be won by all participants.\n\nThis Ileya promo runs for 10 days, starting on the 1st all through till the 10th of July 2022.\n\nMaximize this offer now!',
+      'It’s Ileya, AceRoyal got you covered.\n\nAt Aceroyal Estate Homes Ltd, we hold dearly our commitment to our customers and the community. Because of this, we are giving out a massive discount on every plot purchased this July, through our Ileya Mega Discount Promo.\n\nDuring this period of celebration, we want to put smiles on the faces of our customers. We would be selling a plot of land at Novena Estate Phase 2 for ₦1.5M instead of the actual price of ₦2.5M, a whopping 40% discount.\n\nThat’s not all: we have also lined up numerous fantastic prizes like bags of rice, oil, phones, a refrigerator, and even a mature ram to be won by all participants.\n\nThis Ileya promo runs for 10 days, starting on the 1st all through till the 10th of July 2022.\n\nMaximize this offer now!',
     coverImageUrl: '/images/blog/ileya-promo/ileya-flyer.jpg',
     published: true,
     createdAt: '2022-07-01T00:00:00.000Z',
@@ -1224,11 +1224,11 @@ export const fallbackBlogPosts = [
   },
   {
     id: 'fallback-blog-childrens-day-promo',
-    title: 'Happy Children’s Day — Children’s Day Promo',
+    title: 'Happy Children’s Day: Children’s Day Promo',
     slug: 'happy-childrens-day-childrens-day-promo',
-    excerpt: 'Buy a plot for your kids at Novena Estate Phase 2 — ₦350k initial deposit, balance spread over 10 months, half a plot free.',
+    excerpt: 'Buy a plot for your kids at Novena Estate Phase 2: ₦350k initial deposit, balance spread over 10 months, half a plot free.',
     content:
-      'Happy Children’s Day!\n\nBuy a plot for your kids today at Novena Estate Phase 2 — spread the balance for 10 months, pay an initial deposit of ₦350k, and get half a plot free, with instant allocation upon first deposit and documents.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again — congratulations to those who picked a slot and more from Phase 1 — before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.',
+      'Happy Children’s Day!\n\nBuy a plot for your kids today at Novena Estate Phase 2: spread the balance for 10 months, pay an initial deposit of ₦350k, and get half a plot free, with instant allocation upon first deposit and documents.\n\nEpe is a town and local government area (LGA) in Lagos State, Nigeria, on the north side of the Lekki Lagoon. Epe right now is one of the most sought-after destinations for investors looking at land flipping years later or settling in away from the buzz and rush of crowded Lagos. You would be amazed at the ROI of this location in the next 2-3 years.\n\nThat is why your No. 1 real estate company, Aceroyal Estates, has decided to bring this to you again. Congratulations to those who picked a slot and more from Phase 1, before this also gets sold out.\n\nLand Title: Registered Survey.\n\nLandmarks: Isimi Lagos, Alaro City, Dangote Refinery, Epe Resort and Spa, Access Bank, Lekki Trade Fair, and the proposed local airport.\n\nFeatures of Novena Estate Phase 2 include: dry land, perimeter fencing, steady water supply and electricity, private bar/gym, estate security, paved road, garden, shopping center, and church/mosque.',
     coverImageUrl: '/images/blog/childrens-day-promo/childrens-day-flyer.jpg',
     published: true,
     createdAt: '2022-05-01T00:00:00.000Z',
@@ -1380,7 +1380,7 @@ export const fallbackTestimonials: Testimonial[] = [
     name: 'Allocation Day at The Legacy Garden City',
     role: 'Aceroyal Estate Homes',
     message:
-      'New landowners receive their Certificate of Allocation and walk their plots on site — this is what Allocation Day looks like at The Legacy Garden City.',
+      'New landowners receive their Certificate of Allocation and walk their plots on site. This is what Allocation Day looks like at The Legacy Garden City.',
     videoUrl: '/videos/allocation-day.mp4',
     imageUrl: '/images/gallery/allocation-day/latest-land-owner.jpg',
     active: true,
@@ -1533,7 +1533,7 @@ export const fallbackPromos = [
   {
     id: 'fallback-promo-realtor',
     title: 'Are You a Realtor? Join Aceroyal Realtor',
-    message: 'Earn commissions helping clients find their next estate, land, or apartment — with real-time listing access and dedicated support.',
+    message: 'Earn commissions helping clients find their next estate, land, or apartment, with real-time listing access and dedicated support.',
     details: 'Aceroyal Realtor gives partner agents real-time listing access, payment tracking, and dedicated support for every client they bring on. Fill out the form in the Aceroyal Realtor section below to get started.',
     imageUrl: estateImages.placeholder3,
     linkUrl: '/#realtor',
@@ -1563,7 +1563,7 @@ export const fallbackPromos = [
 export const fallbackResources = [
   {
     id: 'fallback-resource-heritage-500sqm-flyer',
-    title: 'Heritage Estates — 500sqm Pricing Flyer',
+    title: 'Heritage Estates 500sqm Pricing Flyer',
     url: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-heritage',
@@ -1571,7 +1571,7 @@ export const fallbackResources = [
   },
   {
     id: 'fallback-resource-heritage-1acre-flyer',
-    title: 'Heritage Estates — 1 Acre Pricing Flyer',
+    title: 'Heritage Estates 1 Acre Pricing Flyer',
     url: '/images/estates/heritage/heritage-flyer-1acre.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-heritage',
@@ -1579,7 +1579,7 @@ export const fallbackResources = [
   },
   {
     id: 'fallback-resource-prime-annex-flyer',
-    title: 'Prime Boulevard Annex — Pricing Flyer',
+    title: 'Prime Boulevard Annex Pricing Flyer',
     url: '/images/estates/prime-annex/prime-flyer-pricing.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-prime-annex',
@@ -1587,7 +1587,7 @@ export const fallbackResources = [
   },
   {
     id: 'fallback-resource-new-city-flyer',
-    title: 'New City Estate — Flexible Plan Flyer',
+    title: 'New City Estate Flexible Plan Flyer',
     url: '/images/estates/new-city-estate/new-city-flyer.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-new-city',
@@ -1595,7 +1595,7 @@ export const fallbackResources = [
   },
   {
     id: 'fallback-resource-metro-city-flyer',
-    title: 'Metro City Garden — Pricing Flyer',
+    title: 'Metro City Garden Pricing Flyer',
     url: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-metro-city-garden',
@@ -1603,7 +1603,7 @@ export const fallbackResources = [
   },
   {
     id: 'fallback-resource-novena-flyer',
-    title: 'Novena Estate Phase 2 — Pricing Flyer',
+    title: 'Novena Estate Phase 2: Pricing Flyer',
     url: '/images/estates/novena-estate/novena-estate-flyer.jpg',
     fileType: 'JPG',
     estateId: 'fallback-estate-novena',
@@ -1615,7 +1615,7 @@ export const fallbackFaqs = [
   {
     id: 'fallback-faq-1',
     question: 'Can I inspect before payment?',
-    answer: 'Yes. We recommend booking an inspection before making a purchase decision — use the Book Inspection page to join the next scheduled visit to any active estate.',
+    answer: 'Yes. We recommend booking an inspection before making a purchase decision. Use the Book Inspection page to join the next scheduled visit to any active estate.',
     sortOrder: 0,
   },
   {
@@ -1627,13 +1627,13 @@ export const fallbackFaqs = [
   {
     id: 'fallback-faq-3',
     question: 'What documents do I get when I buy land or a property?',
-    answer: 'Every plot comes with a registered survey — a licensed surveyor’s map of your land’s exact boundaries and location, filed with the state’s Office of the Surveyor-General — which is required before any land title (Certificate of Occupancy, Right of Occupancy, Freehold, etc.) can be issued. Aceroyal handles the surveying, documentation, and title process on your behalf.',
+    answer: 'Every plot comes with a registered survey: a licensed surveyor’s map of your land’s exact boundaries and location, filed with the state’s Office of the Surveyor-General, which is required before any land title (Certificate of Occupancy, Right of Occupancy, Freehold, etc.) can be issued. Aceroyal handles the surveying, documentation, and title process on your behalf.',
     sortOrder: 2,
   },
   {
     id: 'fallback-faq-4',
     question: 'What happens on Allocation Day?',
-    answer: 'Allocation Day is held every three months. Licensed surveyors walk you through your plot’s exact location and boundaries, and our Admin team has your documents ready to sign on-site — no back-and-forth or weeks of waiting. It’s also a chance to meet future neighbors and fellow investors.',
+    answer: 'Allocation Day is held every three months. Licensed surveyors walk you through your plot’s exact location and boundaries, and our Admin team has your documents ready to sign on-site, with no back-and-forth or weeks of waiting. It’s also a chance to meet future neighbors and fellow investors.',
     sortOrder: 3,
   },
   {
@@ -1651,7 +1651,7 @@ export const fallbackFaqs = [
   {
     id: 'fallback-faq-7',
     question: 'Can I buy from outside Nigeria?',
-    answer: 'Yes — Aceroyal works with buyers in the diaspora regularly. Documentation, allocation, and payment can all be coordinated remotely; contact the team to discuss your specific location and timeline.',
+    answer: 'Yes. Aceroyal works with buyers in the diaspora regularly. Documentation, allocation, and payment can all be coordinated remotely; contact the team to discuss your specific location and timeline.',
     sortOrder: 6,
   },
   {

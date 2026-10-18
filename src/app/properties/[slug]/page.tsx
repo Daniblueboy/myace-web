@@ -17,7 +17,7 @@ export async function generateMetadata({
 
   const description =
     (property.description as string | undefined)?.slice(0, 155) ||
-    `${property.title} — an Aceroyal Estates property in ${[property.city, property.state].filter(Boolean).join(', ')}.`;
+    `${property.title}, an Aceroyal Estates property in ${[property.city, property.state].filter(Boolean).join(', ')}.`;
 
   const title = `${property.title} | Aceroyal Estates`;
   const image = property.images?.[0]?.url;

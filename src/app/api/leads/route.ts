@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       from: FROM_EMAIL,
       to: NOTIFY_EMAIL,
       replyTo: email,
-      subject: `New ${enquiryType || leadType || 'General'} enquiry — ${fullName}`,
+      subject: `New ${enquiryType || leadType || 'General'} enquiry from ${fullName}`,
       text: [
         `Reference: ${referenceId}`,
         `Name: ${fullName}`,

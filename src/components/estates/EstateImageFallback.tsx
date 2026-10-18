@@ -18,7 +18,7 @@ export function EstateImageFallback({
     <div
       className={`flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-primary via-[#7d150f] to-black text-center ${className}`}
       role="img"
-      aria-label={name ? `${name} — image coming soon` : 'Image coming soon'}
+      aria-label={name ? `${name}: image coming soon` : 'Image coming soon'}
     >
       <img
         src="/images/aceroyal-symbol-white.png"

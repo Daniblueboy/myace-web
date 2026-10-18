@@ -61,7 +61,7 @@ export async function generateMetadata({
 
   const description =
     (estate.description as string | undefined)?.slice(0, 155) ||
-    `${estate.name} — an Aceroyal Estates development in ${[estate.city, estate.state].filter(Boolean).join(', ')}.`;
+    `${estate.name}, an Aceroyal Estates development in ${[estate.city, estate.state].filter(Boolean).join(', ')}.`;
 
   const title = `${estate.name} | Aceroyal Estates`;
 
@@ -120,14 +120,14 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
     flyerUrls.add(url);
     flyers.push({ id: url, title, url });
   };
-  addFlyer(`${estate.name} — Estate Brochure`, estate.brochureUrl);
+  addFlyer(`${estate.name} Estate Brochure`, estate.brochureUrl);
   (estate.properties || []).forEach((property: Property) => {
     (property.resources || [])
       .filter((r: PropertyResource) => r.fileType === 'PDF' || /flyer|brochure/i.test(r.title))
       .forEach((r: PropertyResource) => addFlyer(r.title, r.url));
     (property.media || [])
       .filter((m: PropertyMedia) => m.type === 'FLYER' || m.type === 'BROCHURE')
-      .forEach((m: PropertyMedia) => addFlyer(m.title || `${property.title} — Flyer`, m.url));
+      .forEach((m: PropertyMedia) => addFlyer(m.title || `${property.title} Flyer`, m.url));
   });
 
   const prices = (estate.properties || [])

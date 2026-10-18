@@ -201,7 +201,7 @@ export default function HeroSection() {
             isCenteredLayout ? 'text-slate-700' : 'text-slate-200'
           }`}
         >
-          We develop and sell estates across Nigeria — land allocations, apartments and homes with clear titles.
+          We develop and sell estates across Nigeria: land allocations, apartments and homes with clear titles.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

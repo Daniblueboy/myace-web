@@ -42,7 +42,7 @@ export function EstateHeroCarousel({ images, alt }: EstateHeroCarouselProps) {
         <img
           key={src + i}
           src={src}
-          alt={`${alt} — photo ${i + 1}`}
+          alt={`${alt}, photo ${i + 1}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             i === index ? 'opacity-100' : 'opacity-0'
           }`}

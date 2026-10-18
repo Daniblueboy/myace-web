@@ -24,7 +24,7 @@ const STEPS = [
   {
     title: 'We verify your identity',
     description:
-      'Before processing the request, we may need to confirm you’re the authorised owner of the account — this protects your account, property records and personal information from unauthorised deletion requests.',
+      'Before processing the request, we may need to confirm you’re the authorised owner of the account. This protects your account, property records and personal information from unauthorised deletion requests.',
   },
   {
     title: 'We process your request',

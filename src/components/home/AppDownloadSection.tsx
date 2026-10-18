@@ -36,7 +36,7 @@ export default function AppDownloadSection() {
           <div className="space-y-4">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Aceroyal Mobile &amp; Updates</p>
             <h2 className="text-3xl md:text-4xl font-bold">
-              Our apps are launching soon — get updates as they happen
+              Our apps are launching soon. Get updates as they happen
             </h2>
             <p className="text-muted-foreground text-lg">
               Subscribe once for early access to the Aceroyal app on iOS &amp; Android, plus estate
@@ -62,7 +62,7 @@ export default function AppDownloadSection() {
               <Button type="submit" className="shrink-0">Notify Me</Button>
             </form>
             {status === 'success' && (
-              <p className="text-sm text-muted-foreground">You&apos;re on the list — we&apos;ll keep you updated.</p>
+              <p className="text-sm text-muted-foreground">You&apos;re on the list. We&apos;ll keep you updated.</p>
             )}
             {status === 'error' && (
               <p className="text-sm text-destructive">Couldn&apos;t subscribe right now. Please try again.</p>

@@ -16,13 +16,13 @@ export default function CeoWelcomeSection() {
           <div className="text-muted-foreground text-lg space-y-4">
             <p>
               At Aceroyal Estates, we believe that owning property should never feel like a
-              gamble. It should feel like a decision you can stand behind — backed by clear
+              gamble. It should feel like a decision you can stand behind, backed by clear
               documentation, honest guidance, and a team that treats your investment as
               seriously as you do.
             </p>
             <p>
               That belief is why we built Aceroyal on one standard: trust. From our first
-              estate to every community we develop today, our goal has stayed the same — to
+              estate to every community we develop today, our goal has stayed the same: to
               give families and investors a real, secure path to property ownership, without
               the uncertainty that too often surrounds real estate in Nigeria.
             </p>

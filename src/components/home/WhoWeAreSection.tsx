@@ -20,7 +20,7 @@ export function WhoWeAreSection() {
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Who We Are</p>
         <h2 className="text-3xl md:text-4xl font-bold">Building Confidence Into Property Ownership</h2>
         <p className="text-muted-foreground text-lg leading-relaxed text-left sm:text-center">
-          Aceroyal Estates — a subsidiary of Aceroyalpro Services — was established to make quality
+          Aceroyal Estates, a subsidiary of Aceroyalpro Services, was established to make quality
           real estate opportunities more accessible while helping buyers navigate one of the most
           important financial decisions they will make. Today, the company operates across multiple
           locations in Nigeria, providing residential land, homes and real estate services supported

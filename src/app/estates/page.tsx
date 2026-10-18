@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import EstatesClient from './EstatesClient';
 
 const TITLE = 'Our Estates | Aceroyal Estates';
-const DESCRIPTION = 'Browse active Aceroyal Estates developments across Lagos, Abuja, Oyo, Enugu and Edo — land and homes with transparent pricing.';
+const DESCRIPTION = 'Browse active Aceroyal Estates developments across Lagos, Abuja, Oyo, Enugu and Edo: land and homes with transparent pricing.';
 
 export const metadata: Metadata = {
   title: 'Our Estates',
