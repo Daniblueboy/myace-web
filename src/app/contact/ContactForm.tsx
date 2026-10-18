@@ -330,7 +330,7 @@ export default function ContactForm() {
                         src={office.photoUrl}
                         alt={office.photoAlt || `${office.name || office.city || office.state} team`}
                         loading="lazy"
-                        className="aspect-[4/3] w-full object-cover object-top"
+                        className="aspect-[4/3] w-full object-cover object-center"
                       />
                     )}
                     <div className="p-6">
