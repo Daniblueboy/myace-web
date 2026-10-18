@@ -21,19 +21,19 @@ export default async function TestimonialsSection() {
   if ((!testimonials || testimonials.length === 0) && moments.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-28 bg-slate-50 dark:bg-slate-950">
+    <section className="py-12 md:py-28 bg-slate-50 dark:bg-slate-900">
       <div className="container">
-        <div className="text-center mb-12">
-          <p className="text-base uppercase tracking-[0.2em] text-primary">Our Successes</p>
+        <div className="text-center mb-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Our Successes</p>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+            Moments From Allocation, Inspection &amp; Handover
+          </h2>
         </div>
 
         {moments.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold text-center mb-8">
-              Moments From Allocation, Inspection &amp; Handover
-            </h2>
-            <GalleryGrid items={moments} />
-            <div className="mt-8 text-center">
+            <GalleryGrid items={moments} showFilters={false} />
+            <div className="mt-6 text-center">
               <Button variant="outline" asChild>
                 <Link href="/gallery" className="gap-2">
                   View More Success Stories <ArrowRight className="h-4 w-4" />
@@ -44,11 +44,8 @@ export default async function TestimonialsSection() {
         )}
 
         {testimonials && testimonials.length > 0 && (
-          <div className="mt-14 md:mt-20">
-            <h2 className="text-3xl font-bold text-center">What Clients Say</h2>
-            <p className="text-muted-foreground text-center mt-2 mb-8">
-              Real stories from people who secured properties with Aceroyal Estates.
-            </p>
+          <div className="mt-12 md:mt-16">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8">What Clients Say</h3>
             <TestimonialsSpotlight items={testimonials} />
           </div>
         )}

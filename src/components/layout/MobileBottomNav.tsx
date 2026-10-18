@@ -5,17 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { Home, Building2, Search, MessageCircle, Menu as MenuIcon, Moon, Sun } from 'lucide-react';
+import { Home, Building2, Search, CalendarCheck, Menu as MenuIcon, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { isActivePath } from '@/components/layout/nav-utils';
-import { WHATSAPP_NUMBER, ENQUIRY_OPTIONS, estateLabelFromPath } from '@/components/layout/whatsapp-enquiry';
 import {
   NAV_LINKS_BEFORE_ESTATES,
   NAV_LINKS_AFTER_ESTATES,
@@ -72,18 +65,15 @@ function TabButton({
 }
 
 // The mobile "app" chrome: a fixed bottom tab bar (Home / Estates / Search /
-// Chat / Menu) that replaces the old top-right hamburger on small screens.
-// "Menu" opens the same drawer the hamburger used to — same links, same
-// theme toggle — just triggered from the bottom bar instead. Desktop is
-// untouched; this whole component renders nothing at md and up.
+// Book / Menu) that replaces the old top-right hamburger on small screens.
+// Chat lives in the floating ChatFab rather than a tab. "Menu" opens the
+// same drawer the hamburger used to — same links, same theme toggle — just
+// triggered from the bottom bar instead. Desktop is untouched; this whole
+// component renders nothing at lg and up.
 export function MobileBottomNav() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-
-  const estateLabel = estateLabelFromPath(pathname);
-  const context = estateLabel ? ` regarding ${estateLabel}` : '';
 
   return (
     <nav
@@ -95,36 +85,12 @@ export function MobileBottomNav() {
       <TabButton href="/estates" label="Estates" icon={Building2} active={isActivePath(pathname, '/estates')} />
       <TabButton href="/properties" label="Search" icon={Search} active={isActivePath(pathname, '/properties')} />
 
-      <DropdownMenu open={chatOpen} onOpenChange={setChatOpen}>
-        <DropdownMenuTrigger asChild>
-          <button type="button" className="relative flex flex-1 flex-col items-center justify-center py-1.5">
-            {chatOpen && <TabBubble />}
-            <motion.span
-              whileTap={{ scale: 0.82 }}
-              transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-              className={`relative z-10 flex flex-col items-center gap-1 text-[11px] font-medium ${
-                chatOpen ? 'text-primary' : 'text-muted-foreground'
-              }`}
-            >
-              <MessageCircle className="h-5 w-5" strokeWidth={chatOpen ? 2.25 : 2} />
-              Chat
-            </motion.span>
-          </button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="center" side="top" sideOffset={12} className="glass-panel backdrop-blur-xl backdrop-saturate-150">
-          {ENQUIRY_OPTIONS.map((option) => (
-            <DropdownMenuItem key={option.label} asChild className="gap-2 cursor-pointer">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(option.message(context))}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <option.icon className="h-4 w-4" /> {option.label}
-              </a>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <TabButton
+        href="/book-inspection"
+        label="Book"
+        icon={CalendarCheck}
+        active={isActivePath(pathname, '/book-inspection')}
+      />
 
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
         <SheetTrigger asChild>

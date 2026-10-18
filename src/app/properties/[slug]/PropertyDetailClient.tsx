@@ -17,11 +17,12 @@ import PropertyPanorama from '@/components/properties/PropertyPanorama';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
+import { propertyTypeLabel } from '@/lib/estate-offerings';
 
 // Dynamically import map to avoid SSR issues with Leaflet
 const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'), {
   ssr: false,
-  loading: () => <div className="h-[400px] rounded-lg bg-slate-100 dark:bg-slate-800" />,
+  loading: () => <div className="h-[400px] rounded-2xl bg-slate-100 dark:bg-slate-800" />,
 });
 
 // Converts a YouTube/Vimeo watch URL into its embeddable form and adds
@@ -75,6 +76,9 @@ export default function PropertyDetailClient() {
   );
   const imageFlyers = paymentFlyers.filter((item: any) => /\.(png|jpe?g|webp)$/i.test(item.url));
   const flyerSlides = imageFlyers.map((item: any) => ({ src: item.url, alt: item.title || 'Payment plan' }));
+  // Only approved plans are published; with none on file the tab is hidden
+  // rather than shown empty.
+  const hasPaymentInfo = paymentFlyers.length > 0 || installmentVariants.length > 0;
 
   useEffect(() => {
     async function load() {
@@ -117,7 +121,7 @@ export default function PropertyDetailClient() {
 
       {/* Gallery */}
       <div className="container mb-8">
-        <PropertyGallery images={property.images || []} />
+        <PropertyGallery images={property.images || []} title={property.title} />
       </div>
 
       <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -132,7 +136,7 @@ export default function PropertyDetailClient() {
                 {property.status}
               </Badge>
               <Badge variant="outline">
-                {property.type === 'LAND' ? 'Land' : property.type === 'APARTMENT' ? 'Apartment' : property.type}
+                {propertyTypeLabel(property.type)}
               </Badge>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-3">{property.title}</h1>
@@ -164,20 +168,20 @@ export default function PropertyDetailClient() {
           </div>
 
           {/* Overview Stats */}
-          <Card className="glass-card backdrop-blur-lg">
+          <Card>
             <CardContent className="p-6">
               <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
                   <Bed className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.bedrooms || 'N/A'}</span>
                   <span className="text-sm text-slate-500 dark:text-muted-foreground">Bedrooms</span>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
                   <Bath className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.bathrooms || 'N/A'}</span>
                   <span className="text-sm text-slate-500 dark:text-muted-foreground">Bathrooms</span>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl">
                   <Square className="w-6 h-6 text-primary mb-2" />
                   <span className="font-bold text-lg">{property.size || 'N/A'}</span>
                   <span className="text-sm text-slate-500 dark:text-muted-foreground">Sq Meters</span>
@@ -187,14 +191,14 @@ export default function PropertyDetailClient() {
           </Card>
 
           {variants.length > 0 && (
-            <Card className="glass-card backdrop-blur-lg">
+            <Card>
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">Pricing Options</h2>
                 <div className="space-y-3">
                   {outrightVariants.map((variant: any) => (
                     <div
                       key={variant.id}
-                      className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 rounded-lg border p-4"
+                      className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 rounded-2xl border p-4"
                     >
                       <div>
                         <p className="font-semibold">{variant.label}</p>
@@ -204,13 +208,25 @@ export default function PropertyDetailClient() {
                           {variant.size ? ` · ${variant.size}` : null}
                         </p>
                       </div>
-                      <div className="text-lg font-bold text-primary">
-                        {variant.currency} {Number(variant.price).toLocaleString()}
+                      <div className="md:text-right">
+                        <div className="text-lg font-bold text-primary">
+                          {variant.currency} {Number(variant.price).toLocaleString()}
+                        </div>
+                        {variant.priceNote && (
+                          <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-muted-foreground">
+                            {variant.priceNote}
+                          </p>
+                        )}
+                        {variant.initialDeposit ? (
+                          <p className="text-sm text-slate-600 dark:text-slate-300">
+                            Initial deposit: {variant.currency} {Number(variant.initialDeposit).toLocaleString()}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
                   ))}
                   {outrightVariants.length === 0 && (
-                    <div className="rounded-lg border p-4 text-slate-500 dark:text-muted-foreground">
+                    <div className="rounded-2xl border p-4 text-slate-500 dark:text-muted-foreground">
                       No outright pricing options listed.
                     </div>
                   )}
@@ -220,7 +236,7 @@ export default function PropertyDetailClient() {
           )}
 
           {/* Description */}
-          <Card className="glass-card backdrop-blur-lg">
+          <Card>
             <CardContent className="p-6">
               <h2 className="text-2xl font-bold mb-4">Description</h2>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">
@@ -239,7 +255,7 @@ export default function PropertyDetailClient() {
             property.videoUrl ||
             (property.media &&
               property.media.filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE').length > 0)) && (
-            <Card className="glass-card backdrop-blur-lg">
+            <Card>
               <CardContent className="p-6 space-y-6">
                 <h2 className="text-2xl font-bold">Video &amp; Virtual Tour</h2>
 
@@ -269,7 +285,7 @@ export default function PropertyDetailClient() {
                     {property.media
                       .filter((item: any) => item.type !== 'FLYER' && item.type !== 'BROCHURE')
                       .map((item: any) => (
-                      <div key={item.id} className="rounded-lg border p-4">
+                      <div key={item.id} className="rounded-2xl border p-4">
                         <div className="flex items-center justify-between gap-4">
                           <div>
                             <p className="font-medium">{item.title || item.type}</p>
@@ -323,7 +339,7 @@ export default function PropertyDetailClient() {
                 <TabsTrigger value="amenities">Amenities</TabsTrigger>
                 <TabsTrigger value="faqs">FAQs</TabsTrigger>
                 <TabsTrigger value="resources">Resources</TabsTrigger>
-                <TabsTrigger value="payment">Payment Plan</TabsTrigger>
+                {hasPaymentInfo && <TabsTrigger value="payment">{paymentFlyers.length > 0 ? 'Pricing Flyers' : 'Payment Plan'}</TabsTrigger>}
               </TabsList>
             </div>
             <TabsContent value="location" className="mt-4">
@@ -347,7 +363,7 @@ export default function PropertyDetailClient() {
               </div>
             </TabsContent>
             <TabsContent value="amenities" className="mt-4">
-              <Card className="glass-card backdrop-blur-lg">
+              <Card>
                 <CardContent className="p-6">
                   {property.amenities && property.amenities.length > 0 ? (
                     <ul className="grid grid-cols-2 gap-3 text-sm text-slate-600 dark:text-slate-300">
@@ -366,7 +382,7 @@ export default function PropertyDetailClient() {
             </TabsContent>
             <TabsContent value="faqs" className="mt-4">
               {property.faqs && property.faqs.length > 0 ? (
-                <Card className="glass-card backdrop-blur-lg">
+                <Card>
                   <CardContent className="p-6 space-y-4">
                     {property.faqs.map((faq: any) => (
                       <div key={faq.id}>
@@ -377,7 +393,7 @@ export default function PropertyDetailClient() {
                   </CardContent>
                 </Card>
               ) : (
-                <Card className="glass-card backdrop-blur-lg">
+                <Card>
                   <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
                     No FAQs available for this property
                   </CardContent>
@@ -385,7 +401,7 @@ export default function PropertyDetailClient() {
               )}
             </TabsContent>
             <TabsContent value="resources" className="mt-4">
-              <Card className="glass-card backdrop-blur-lg">
+              <Card>
                 <CardContent className="p-6">
                   {property.resources && property.resources.length > 0 ? (
                     <div className="space-y-3">
@@ -395,7 +411,7 @@ export default function PropertyDetailClient() {
                           href={resource.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between rounded-lg border p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                          className="flex items-center justify-between rounded-2xl border p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         >
                           <div>
                             <p className="font-medium">{resource.title}</p>
@@ -413,14 +429,14 @@ export default function PropertyDetailClient() {
             </TabsContent>
             <TabsContent value="payment" className="mt-4 space-y-4">
               {paymentFlyers.length > 0 ? (
-                <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2">
                   {paymentFlyers.map((item: any, index: number) => (
                       <div
                         key={item.id}
-                        className="glass-card backdrop-blur-lg shrink-0 w-[82%] snap-center rounded-lg border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow lg:w-auto lg:shrink"
+                        className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-4 text-left hover:shadow-md transition-shadow"
                       >
                         <div className="mb-3">
-                          <p className="font-semibold">{item.title || 'Payment Plan'}</p>
+                          <p className="font-semibold">{item.title || 'Pricing flyer'}</p>
                           <p className="text-sm text-slate-500 dark:text-muted-foreground">{item.type}</p>
                         </div>
                         {/\.(png|jpe?g|webp)$/i.test(item.url) ? (
@@ -438,13 +454,13 @@ export default function PropertyDetailClient() {
                             <img
                               src={item.url}
                               alt={item.title || 'Payment plan'}
-                              className="w-full rounded-lg border object-cover"
+                              className="w-full rounded-2xl border object-cover"
                             />
                           </button>
                         ) : (
                           <button
                             type="button"
-                            className="aspect-[4/3] w-full rounded-lg border overflow-hidden"
+                            className="aspect-[4/3] w-full rounded-2xl border overflow-hidden"
                             onClick={() => {
                               setDocTitle(item.title || 'Payment plan');
                               setDocUrl(item.url);
@@ -462,10 +478,10 @@ export default function PropertyDetailClient() {
                     ))}
                 </div>
               ) : installmentVariants.length > 0 ? (
-                <Card className="glass-card backdrop-blur-lg">
+                <Card>
                   <CardContent className="p-6 space-y-4">
                     {installmentVariants.map((variant: any) => (
-                      <div key={variant.id} className="rounded-lg border p-4">
+                      <div key={variant.id} className="rounded-2xl border p-4">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                           <div>
                             <p className="font-semibold">{variant.label}</p>
@@ -483,7 +499,7 @@ export default function PropertyDetailClient() {
                   </CardContent>
                 </Card>
               ) : (
-                <Card className="glass-card backdrop-blur-lg">
+                <Card>
                   <CardContent className="p-6 text-center text-slate-500 dark:text-muted-foreground">
                     No payment plan available for this property.
                   </CardContent>
@@ -495,10 +511,10 @@ export default function PropertyDetailClient() {
           {related.length > 0 && (
             <div>
               <h2 className="text-2xl font-bold mb-4">Related Properties</h2>
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 lg:gap-6">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 lg:gap-6">
                 {related.map((item) => (
-                  <Link key={item.id} href={`/properties/${item.slug}`} className="shrink-0 w-[82%] max-w-sm snap-center lg:w-auto lg:max-w-none lg:shrink">
-                    <Card className="glass-card backdrop-blur-lg overflow-hidden hover:shadow-md transition-shadow">
+                  <Link key={item.id} href={`/properties/${item.slug}`} className="">
+                    <Card className="overflow-hidden hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <h3 className="font-semibold">{item.title}</h3>
                         <p className="text-sm text-slate-500 dark:text-muted-foreground">
@@ -542,7 +558,7 @@ export default function PropertyDetailClient() {
           aria-modal="true"
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4"
         >
-          <div className="w-full max-w-5xl rounded-lg bg-white dark:bg-slate-900 shadow-lg overflow-hidden">
+          <div className="w-full max-w-5xl rounded-2xl bg-white dark:bg-slate-900 shadow-lg overflow-hidden">
             <div className="flex items-center justify-between border-b px-4 py-3">
               <h4 className="text-sm font-semibold">{docTitle}</h4>
               <button

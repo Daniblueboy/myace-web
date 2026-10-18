@@ -73,7 +73,7 @@ export default async function ResourcesPage({
               Resources & Downloads
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Access brochures, payment plans, and investment guides for your real estate journey.
+              Access current pricing flyers and documents for your real estate journey.
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default async function ResourcesPage({
                 return (
                   <Card
                     key={resource.id || index}
-                    className="glass-card backdrop-blur-lg group shrink-0 w-[78%] snap-center flex flex-col overflow-hidden border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 lg:w-auto lg:shrink"
+                    className="group shrink-0 w-[78%] snap-center flex flex-col overflow-hidden border hover:shadow-xl hover:-translate-y-1 transition-all duration-300 lg:w-auto lg:shrink"
                   >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-3">

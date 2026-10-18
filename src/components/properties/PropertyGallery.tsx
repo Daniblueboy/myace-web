@@ -6,21 +6,19 @@ import 'yet-another-react-lightbox/styles.css';
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 interface PropertyGalleryProps {
   images: Array<{ id: string; url: string; altText?: string | null }>;
+  title?: string;
 }
 
-export default function PropertyGallery({ images }: PropertyGalleryProps) {
+export default function PropertyGallery({ images, title }: PropertyGalleryProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
   if (!images || images.length === 0) {
-    return (
-      <div className="aspect-video bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center text-white">
-        <p>No images available</p>
-      </div>
-    );
+    return <EstateImageFallback name={title} showName className="aspect-video rounded-2xl" />;
   }
 
   const slides = images.map((img) => ({
@@ -33,7 +31,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
       <div className="grid grid-cols-4 gap-2">
         {/* Main Image */}
         <div
-          className="col-span-4 md:col-span-3 aspect-video cursor-pointer overflow-hidden rounded-lg"
+          className="col-span-4 md:col-span-3 aspect-video cursor-pointer overflow-hidden rounded-2xl"
           onClick={() => {
             setIndex(0);
             setOpen(true);
@@ -51,7 +49,7 @@ export default function PropertyGallery({ images }: PropertyGalleryProps) {
           {images.slice(1, 5).map((img, idx) => (
             <div
               key={img.id}
-              className="aspect-video cursor-pointer overflow-hidden rounded-lg relative"
+              className="aspect-video cursor-pointer overflow-hidden rounded-2xl relative"
               onClick={() => {
                 setIndex(idx + 1);
                 setOpen(true);

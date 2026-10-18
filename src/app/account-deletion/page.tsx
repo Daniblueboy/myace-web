@@ -39,7 +39,7 @@ export default function AccountDeletionPage() {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary mb-3">Account Deletion</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">Account Deletion</p>
             <h1 className="text-4xl font-bold mb-4">Delete Your Aceroyal Account</h1>
             <p className="text-lg text-muted-foreground">
               You&apos;re in control of your personal information. This page explains how to request deletion of
@@ -51,7 +51,7 @@ export default function AccountDeletionPage() {
           <h2 className="text-2xl font-bold mb-4">How to Request Account Deletion</h2>
           <div className="space-y-4 mb-12">
             {STEPS.map((step, i) => (
-              <div key={step.title} className="flex gap-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6">
+              <div key={step.title} className="flex gap-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6">
                 <div className="shrink-0 h-9 w-9 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">
                   {i + 1}
                 </div>
@@ -63,8 +63,8 @@ export default function AccountDeletionPage() {
             ))}
           </div>
 
-          <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2 mb-12">
-            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 lg:w-auto lg:shrink">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 mb-12">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 flex gap-4">
               <Clock className="h-6 w-6 text-primary shrink-0" />
               <div>
                 <h3 className="font-semibold mb-1">Processing time</h3>
@@ -75,7 +75,7 @@ export default function AccountDeletionPage() {
                 </p>
               </div>
             </div>
-            <div className="glass-card backdrop-blur-lg shrink-0 w-[85%] snap-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 flex gap-4 lg:w-auto lg:shrink">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 flex gap-4">
               <ShieldAlert className="h-6 w-6 text-primary shrink-0" />
               <div>
                 <h3 className="font-semibold mb-1">This is permanent</h3>
@@ -87,7 +87,7 @@ export default function AccountDeletionPage() {
             </div>
           </div>
 
-          <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-lg p-6 mb-12 flex gap-4">
+          <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-2xl p-6 mb-12 flex gap-4">
             <AlertTriangle className="h-6 w-6 text-amber-600 dark:text-amber-400 shrink-0" />
             <p className="text-sm text-amber-900 dark:text-amber-200">
               If you have an active or pending property transaction on your account, let us know in your request.
@@ -159,7 +159,7 @@ export default function AccountDeletionPage() {
             </p>
           </div>
 
-          <div className="text-center bg-white dark:bg-slate-800 rounded-lg shadow-lg p-10">
+          <div className="text-center bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-10">
             <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">Ready to request deletion?</h2>
             <p className="text-muted-foreground mb-6">

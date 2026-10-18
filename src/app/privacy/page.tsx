@@ -15,7 +15,7 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8 md:p-12">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 md:p-12">
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">

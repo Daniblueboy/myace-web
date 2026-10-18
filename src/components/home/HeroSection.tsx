@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, ChevronDown } from 'lucide-react';
 import { HeroParticles } from '@/components/home/HeroParticles';
+import { PROPERTY_TYPES } from '@/lib/estate-offerings';
 
 // Slide 1 ("Strategic Investments") reads with black text (the others stay
 // white) — a light gradient built into that slide's own background (see the
@@ -200,7 +201,7 @@ export default function HeroSection() {
             isCenteredLayout ? 'text-slate-700' : 'text-slate-200'
           }`}
         >
-          We develop and sell estates across Nigeria — land allocations and completed apartments with clear titles.
+          We develop and sell estates across Nigeria — land allocations, apartments and homes with clear titles.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -224,7 +225,7 @@ export default function HeroSection() {
         {/* Search Box */}
         <form
           onSubmit={handleSearch}
-          className="flex bg-white/95 dark:bg-black/90 p-4 rounded-lg shadow-lg max-w-3xl mx-auto flex-col md:flex-row gap-4"
+          className="flex bg-white/95 dark:bg-black/90 p-4 rounded-2xl shadow-lg max-w-3xl mx-auto flex-col md:flex-row gap-4"
         >
           <Input
             type="text"
@@ -239,8 +240,9 @@ export default function HeroSection() {
             onChange={(e) => setType(e.target.value)}
           >
             <option value="">All Types</option>
-            <option value="LAND">Land</option>
-            <option value="APARTMENT">Apartment</option>
+            {PROPERTY_TYPES.map((t) => (
+              <option key={t.value} value={t.value}>{t.singular}</option>
+            ))}
           </select>
           <select
             className="flex h-10 w-full rounded-md border border-input bg-background dark:bg-black px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white"

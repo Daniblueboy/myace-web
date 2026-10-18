@@ -11,7 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShareEstate } from '@/components/estates/ShareEstate';
 import { RelatedEstates } from '@/components/estates/RelatedEstates';
-import { getOfferingLabel, getAvailableCountLabel } from '@/lib/estate-offerings';
+import { getOfferingLabel, getAvailableCountLabel, getAvailableOptionCount } from '@/lib/estate-offerings';
 import { getVideoAspectRatio } from '@/lib/video-aspect-ratio';
 import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
 import type { Property, PropertyResource, PropertyMedia } from '@/shared';
@@ -242,18 +242,21 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                 <div className="shrink-0">
                   <ShareEstate name={estate.name} url={`${SITE_URL}/estates/${estate.slug}`} iconOnly />
                 </div>
-                <a
-                  href={estate.brochureUrl || '/resources'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Download Brochure"
-                  className="group inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
-                >
-                  <Download className="h-4 w-4 shrink-0" />
-                  <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 lg:group-hover:ml-2 lg:group-hover:max-w-[90px] lg:group-hover:opacity-100">
-                    Brochure
-                  </span>
-                </a>
+                {/* Only shown when a current brochure is on file. */}
+                {estate.brochureUrl && (
+                  <a
+                    href={estate.brochureUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download Brochure"
+                    className="group inline-flex h-9 shrink-0 items-center overflow-hidden rounded-md border bg-background px-3 shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+                  >
+                    <Download className="h-4 w-4 shrink-0" />
+                    <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-medium opacity-0 transition-[max-width,opacity,margin-left] duration-300 lg:group-hover:ml-2 lg:group-hover:max-w-[90px] lg:group-hover:opacity-100">
+                      Brochure
+                    </span>
+                  </a>
+                )}
               </div>
               {/* Always exactly 2 cards — a plain 2-col grid (not the
                   sitewide scroll-row pattern) so each cell can actually
@@ -265,14 +268,14 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   aligned regardless of which label actually wraps. */}
               <div className="grid grid-cols-2 gap-3">
                 {estate.properties?.length ? (
-                  <div className="min-w-0 rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                  <div className="min-w-0 rounded-2xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
                     <div className="flex items-start gap-1.5 text-xs sm:text-sm text-muted-foreground min-h-10 sm:min-h-5">
                       <Home className="h-4 w-4 shrink-0 mt-0.5" /> <span>{availableCountLabel}</span>
                     </div>
-                    <div className="text-2xl font-semibold mt-1">{estate.properties.length}</div>
+                    <div className="text-2xl font-semibold mt-1">{getAvailableOptionCount(estate)}</div>
                   </div>
                 ) : null}
-                <div className="min-w-0 rounded-xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
+                <div className="min-w-0 rounded-2xl border bg-slate-50 dark:bg-slate-950 dark:border-slate-800 p-4">
                   <div className="flex items-start gap-1.5 text-xs sm:text-sm text-muted-foreground min-h-10 sm:min-h-5">
                     <ShieldCheck className="h-4 w-4 shrink-0 mt-0.5" /> <span>Amenities</span>
                   </div>
@@ -355,7 +358,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
               <div className="rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 space-y-3">
                 <h3 className="text-xl font-semibold">Inspection Schedule</h3>
                 <p className="text-muted-foreground">
-                  Join our weekly site inspections to walk the estate, view available plots, and tour apartments.
+                  Join our weekly site inspections to walk the estate and view the available options in person.
                 </p>
                 <Button variant="outline" asChild className="w-full">
                   <Link href={`/book-inspection?estate=${estate.slug}`}>Book a Slot</Link>

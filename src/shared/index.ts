@@ -63,6 +63,10 @@ export interface PropertyVariant {
   upfrontPercent?: number | null;
   installmentMonths?: number | null;
   installmentAmount?: number | null;
+  /** Initial deposit for this option, shown separately from the total. */
+  initialDeposit?: number | null;
+  /** Short qualifier shown with the price, e.g. "All-inclusive". */
+  priceNote?: string | null;
   sortOrder?: number;
   active?: boolean;
   /** Flyers specific to this variant (e.g. a size's own pricing/payment-plan
@@ -137,7 +141,7 @@ export interface Estate {
   amenities?: string[];
   properties?: Property[];
   faqs?: EstateFAQ[];
-  /** "LAND" | "APARTMENT" — what this estate sells, for estates that don't
+  /** "LAND" | "APARTMENT" | "HOUSE" — what this estate sells, for estates that don't
    * (yet) have priced Property records catalogued. Used as a fallback for
    * the offering badge when `properties` derivation finds nothing. */
   offeringType?: string | null;

@@ -4,8 +4,7 @@ import CeoWelcomeSection from '@/components/home/CeoWelcomeSection';
 import EstateSections from '@/components/home/EstateSections';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import WhyChooseSection from '@/components/home/WhyChooseSection';
-import PartnersSection from '@/components/home/PartnersSection';
-import ComplianceSection from '@/components/home/ComplianceSection';
+import TrustSection from '@/components/home/TrustSection';
 // import PromoSection from '@/components/home/PromoSection'; // see commented usage below
 import AppDownloadSection from '@/components/home/AppDownloadSection';
 import LatestBlogPosts from '@/components/home/LatestBlogPosts';
@@ -24,6 +23,9 @@ import { Reveal } from '@/components/motion/Reveal';
 // lived inside Who We Are (folded in to avoid two consecutive "about the
 // company" blocks) but was moved to its own section right after Our
 // Success per Daniel's request.
+// Partners and Trusted & Certified share one TrustSection, App Launch sits
+// after Insights, and section backgrounds alternate black / #111 so the
+// page reads in distinct beats rather than one uniform scroll.
 // Services was folded into Who We Are, the Realtor CTA was removed
 // outright, the States We Operate In section was removed outright too per
 // Daniel's request, and the Newsletter section was folded into App Launch
@@ -39,16 +41,15 @@ export default function HomePage() {
       <Reveal><EstateSections /></Reveal>
       <Reveal><TestimonialsSection /></Reveal>
       <Reveal><WhyChooseSection /></Reveal>
-      <Reveal><PartnersSection /></Reveal>
-      <Reveal><ComplianceSection /></Reveal>
+      <Reveal><TrustSection /></Reveal>
       {/* Announcements carousel — commented out for go-live per Daniel's
           request; the fallbackPromos content (app launch, realtor program,
           inspection slots) isn't a real dated announcement, and this section
           is only meant to run when there's an actual one to show. Re-enable
           by uncommenting once real announcement content exists. */}
       {/* <Reveal><PromoSection /></Reveal> */}
-      <Reveal><AppDownloadSection /></Reveal>
       <Reveal><LatestBlogPosts /></Reveal>
+      <Reveal><AppDownloadSection /></Reveal>
       <Reveal><CtaSection /></Reveal>
     </div>
   );

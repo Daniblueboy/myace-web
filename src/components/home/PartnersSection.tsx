@@ -37,7 +37,7 @@ function PartnerLogo({ partner }: { partner: Partner }) {
   const card = partner.ownBackground ? (
     img
   ) : (
-    <div className="flex h-24 items-center justify-center rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200 transition-shadow duration-300 group-hover:shadow-md">
+    <div className="flex h-24 items-center justify-center rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200 transition-shadow duration-300 group-hover:shadow-md">
       {img}
     </div>
   );
@@ -51,29 +51,21 @@ function PartnerLogo({ partner }: { partner: Partner }) {
   );
 }
 
-export default function PartnersSection() {
+/** Partner logo row — rendered inside TrustSection. */
+export function PartnersRow() {
   const partners = fallbackPartners;
   const { ref, handlers } = useAutoScrollRow<HTMLDivElement>({ itemCount: partners.length });
 
   return (
-    <section className="py-12 md:py-28">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
-          <p className="text-muted-foreground">
-            Trusted by leading organizations in Nigeria and beyond
-          </p>
-        </div>
-
-        <div
+    <div
           ref={ref}
           {...handlers}
-          className="flex gap-6 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center lg:mx-0"
+          className="flex gap-6 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 items-center lg:mx-0 lg:px-0 lg:justify-center"
         >
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="group shrink-0 w-[38%] snap-center grayscale transition-all duration-300 hover:grayscale-0 md:w-52"
+              className="group shrink-0 w-[38%] snap-center grayscale transition-all duration-300 hover:grayscale-0 md:w-52 lg:w-44"
             >
               <PartnerLogo partner={partner} />
               <p className="mt-2 h-4 truncate text-center text-xs font-medium text-muted-foreground opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -81,8 +73,6 @@ export default function PartnersSection() {
               </p>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }

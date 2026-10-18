@@ -16,7 +16,7 @@ export default function EstateGallery({ images = [] }: { images: string[] }) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-8 text-muted-foreground">
+      <div className="rounded-2xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-8 text-muted-foreground">
         Gallery images will be uploaded soon.
       </div>
     );

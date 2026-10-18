@@ -27,7 +27,9 @@ function getEmbedUrl(url: string) {
   return url;
 }
 
-export function GalleryGrid({ items }: { items: GalleryItem[] }) {
+/** showFilters=false drops the count + filter pills, for previews (e.g. the
+ * homepage) that link through to the full gallery instead. */
+export function GalleryGrid({ items, showFilters = true }: { items: GalleryItem[]; showFilters?: boolean }) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [videoItem, setVideoItem] = useState<GalleryItem | null>(null);
   const [filter, setFilter] = useState<'all' | 'image' | 'video'>('all');
@@ -61,16 +63,18 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
 
   return (
     <>
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground" aria-live="polite">Showing {visibleItems.length} {visibleItems.length === 1 ? 'moment' : 'moments'}</p>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
-          {filters.map(({ value, label, icon: Icon, count }) => (
-            <button key={value} type="button" onClick={() => setFilter(value)} className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${filter === value ? 'border-primary bg-primary text-primary-foreground shadow-sm' : 'bg-background hover:border-primary/50 hover:text-primary'}`} aria-pressed={filter === value}>
-              <Icon className="h-4 w-4" /> {label} <span className="opacity-70">{count}</span>
-            </button>
-          ))}
+      {showFilters && (
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground" aria-live="polite">Showing {visibleItems.length} {visibleItems.length === 1 ? 'moment' : 'moments'}</p>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter gallery">
+            {filters.map(({ value, label, icon: Icon, count }) => (
+              <button key={value} type="button" onClick={() => setFilter(value)} className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${filter === value ? 'border-primary bg-primary text-primary-foreground shadow-sm' : 'bg-background hover:border-primary/50 hover:text-primary'}`} aria-pressed={filter === value}>
+                <Icon className="h-4 w-4" /> {label} <span className="opacity-70">{count}</span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       {/* Instagram/Snapchat-style explore grid: a dense, uniform 3-up mosaic
           with an occasional larger featured tile, scrolling with the page
           (not its own horizontal row) — every tile is a plain CSS aspect

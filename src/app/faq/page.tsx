@@ -5,7 +5,7 @@ import { FAQList } from '@/components/faq/FAQList';
 export const dynamic = 'force-dynamic';
 
 const TITLE = 'Frequently Asked Questions | Aceroyal Estates';
-const DESCRIPTION = 'Answers to common questions about buying property, payment plans and inspections with Aceroyal Estates.';
+const DESCRIPTION = 'Answers to common questions about buying property, pricing and inspections with Aceroyal Estates.';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
@@ -38,7 +38,7 @@ export default async function FAQPage() {
         />
       )}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
         <p className="text-lg text-muted-foreground">Answers to common questions about buying property with us.</p>
       </div>
 

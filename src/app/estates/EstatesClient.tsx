@@ -10,12 +10,12 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FilterPills } from '@/components/ui/filter-pills';
 import { Reveal } from '@/components/motion/Reveal';
-import { formatOfferingTypes } from '@/lib/estate-offerings';
+import { formatOfferingTypes, PROPERTY_TYPES } from '@/lib/estate-offerings';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 const OFFERING_OPTIONS = [
-  { value: 'ALL', label: 'Land & Apartments' },
-  { value: 'LAND', label: 'Land' },
-  { value: 'APARTMENT', label: 'Apartments' },
+  { value: 'ALL', label: 'All Types' },
+  ...PROPERTY_TYPES.map((t) => ({ value: t.value, label: t.plural })),
 ];
 
 export default function EstatesClient() {
@@ -112,10 +112,10 @@ export default function EstatesClient() {
       <div className="relative overflow-hidden border-b bg-white dark:bg-slate-900 dark:border-slate-800">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
         <div className="container relative py-16 md:py-20">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary mb-3">Master-Planned Communities</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">Master-Planned Communities</p>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 max-w-2xl">Our Estates</h1>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Explore master-planned estates where we sell land allocations and completed apartments,
+            Explore master-planned estates where we sell land allocations, apartments and homes,
             each with verified titles and clear documentation.
           </p>
         </div>
@@ -206,7 +206,7 @@ export default function EstatesClient() {
               <Reveal key={estate.id} delay={Math.min(i, 4) * 0.06} className="shrink-0 w-[82%] max-w-sm snap-center lg:w-auto lg:max-w-none lg:shrink">
                 <Link
                   href={`/estates/${estate.slug}`}
-                  className="glass-card backdrop-blur-lg group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
                 >
                   <div className="relative h-56 overflow-hidden">
                     {estate.coverImage ? (
@@ -216,7 +216,7 @@ export default function EstatesClient() {
                         className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                       />
                     ) : (
-                      <div className="h-full w-full bg-slate-200 dark:bg-slate-800" />
+                      <EstateImageFallback name={estate.name} className="h-full w-full" />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
                     {estate.status && (

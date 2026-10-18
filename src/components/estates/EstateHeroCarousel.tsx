@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 interface EstateHeroCarouselProps {
   images: string[];
@@ -20,11 +21,7 @@ export function EstateHeroCarousel({ images, alt }: EstateHeroCarouselProps) {
   }, [images.length]);
 
   if (images.length === 0) {
-    return (
-      <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 dark:bg-slate-900 dark:bg-none flex items-center justify-center text-slate-500">
-        Estate Preview Coming Soon
-      </div>
-    );
+    return <EstateImageFallback name={alt} showName className="w-full h-full" />;
   }
 
   return (

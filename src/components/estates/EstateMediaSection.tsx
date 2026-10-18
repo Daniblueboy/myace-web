@@ -229,7 +229,7 @@ export function EstateMediaSection({
             {panoramaUrls?.length ? (
               <PropertyPanorama panoramaUrls={panoramaUrls} estateName={estateName} />
             ) : (
-              <div className="aspect-video rounded-xl overflow-hidden border">
+              <div className="aspect-video rounded-2xl overflow-hidden border">
                 <iframe
                   src={virtualTourEmbedUrl!}
                   title={`Virtual tour of ${estateName}`}

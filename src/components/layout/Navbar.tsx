@@ -7,6 +7,7 @@ import { Moon, Sun, ChevronDown, ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { fallbackEstates } from '@/lib/fallback-data';
 import { BrandLogo } from '@/components/layout/BrandLogo';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 import { isActivePath } from '@/components/layout/nav-utils';
 import { NAV_LINKS_BEFORE_ESTATES, NAV_LINKS_AFTER_ESTATES, RESOURCES_LINKS, NAV_LINKS_TAIL } from '@/components/layout/nav-links';
 
@@ -85,12 +86,14 @@ function EstatesMegaMenu({ active }: { active: boolean }) {
                     className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-muted"
                   >
                     <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-muted">
-                      {estate.coverImage && (
+                      {estate.coverImage ? (
                         <img
                           src={estate.coverImage}
                           alt=""
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                         />
+                      ) : (
+                        <EstateImageFallback compact className="h-full w-full" />
                       )}
                     </div>
                     <div className="min-w-0">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { fetchAPI } from '@/lib/api';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 // Matched on state only — Estate has no structured price or property-type
 // field at this level (price lives in individual Property records / is
@@ -22,20 +23,22 @@ export async function RelatedEstates({ currentSlug, state }: { currentSlug: stri
   return (
     <section className="mt-4">
       <h2 className="text-2xl font-bold mb-6">You May Also Be Interested In</h2>
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {related.map((estate: any) => (
           <Link
             key={estate.id}
             href={`/estates/${estate.slug}`}
-            className="glass-card backdrop-blur-lg group shrink-0 w-[75%] max-w-sm snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow lg:w-auto lg:max-w-none lg:shrink"
+            className="group rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow"
           >
             <div className="h-40 overflow-hidden bg-slate-100 dark:bg-slate-800">
-              {estate.coverImage && (
+              {estate.coverImage ? (
                 <img
                   src={estate.coverImage}
                   alt={estate.name}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+              ) : (
+                <EstateImageFallback name={estate.name} className="h-full w-full" />
               )}
             </div>
             <div className="p-5">

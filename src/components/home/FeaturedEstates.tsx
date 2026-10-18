@@ -3,6 +3,7 @@ import type { Estate } from '@/shared';
 import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getOfferingLabel } from '@/lib/estate-offerings';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 type FeaturedEstatesProps = {
   estates: Estate[];
@@ -20,7 +21,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold">Our Developments</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Our Developments</h2>
             <p className="text-muted-foreground">
               Curated estates with verified titles and infrastructure highlights.
             </p>
@@ -38,16 +39,18 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
             return (
               <div
                 key={estate.id}
-                className="glass-card backdrop-blur-lg group flex flex-col shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
+                className="group flex flex-col shrink-0 w-[82%] max-w-sm snap-center rounded-2xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
               >
                 <Link href={`/estates/${estate.slug}`} className="block">
                   <div className="relative h-44 overflow-hidden">
-                    {estate.coverImage && (
+                    {estate.coverImage ? (
                       <img
                         src={estate.coverImage}
                         alt={estate.name}
                         className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                       />
+                    ) : (
+                      <EstateImageFallback name={estate.name} className="h-full w-full" />
                     )}
                     {(isNew || isFastSelling) && (
                       <span

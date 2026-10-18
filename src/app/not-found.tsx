@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="container max-w-lg text-center py-20">
-        <p className="text-sm uppercase tracking-[0.2em] text-primary mb-3">404</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary mb-3">404</p>
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Page not found</h1>
         <p className="text-muted-foreground mb-8">
           The page you&apos;re looking for doesn&apos;t exist or may have moved. Try one of these instead.

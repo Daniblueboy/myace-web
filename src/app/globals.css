@@ -110,7 +110,9 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  /* 0.5 rather than shadcn's 0.556: secondary text must clear 4.5:1 on the
+     off-white page background, not just on white cards. */
+  --muted-foreground: oklch(0.5 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -181,11 +183,14 @@
     font-family: Verdana, Geneva, sans-serif;
     line-height: 1.18;
     letter-spacing: -0.025em;
+    /* Even out line lengths so headings don't end on a single orphan word. */
+    text-wrap: balance;
   }
 
   p,
   li {
     line-height: 1.65;
+    text-wrap: pretty;
   }
 
   body {
@@ -194,10 +199,8 @@
     font-size: 1rem;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
-    /* Without this, glass-card/glass-panel translucency has nothing with
-       color or depth behind it to actually blur on a flat page background
-       — it just reads as slightly-off-white, not "glass". .dark body below
-       overrides this with its own (stronger) wash for the dark theme. */
+    /* Faint brand-red wash so the page has some depth behind the frosted
+       nav and menu panels. .dark body below sets its own wash. */
     background-image:
       radial-gradient(circle at 12% -8%, rgb(187 30 21 / 7%), transparent 26rem),
       radial-gradient(circle at 100% 15%, rgb(187 30 21 / 5%), transparent 30rem);
@@ -419,24 +422,16 @@
     background-color: var(--premium-dark) !important;
   }
 
-  /* Frosted-glass card surface — append alongside a card's existing
-     bg-white/bg-slate-900/border classes rather than replacing them; this
-     only overrides the background to a translucent version, so existing
-     padding/radius/border/dark-text classes keep working as-is. Pair with
-     backdrop-blur-lg in JSX (see .premium-navigation note above). Declared
-     after the dark:bg-slate-900 override above (same specificity + both
-     !important) so it wins the source-order tiebreak instead of getting
-     silently reset back to a solid surface color by that rule. */
-  .glass-card {
-    background-color: rgb(255 255 255 / 55%) !important; /* light --card */
-  }
-
-  .dark .glass-card {
-    background-color: rgb(17 17 17 / 55%) !important; /* dark --card */
-  }
-
   .dark :is(.dark\:border-slate-700, .dark\:border-slate-800) {
     border-color: var(--premium-border) !important;
+  }
+
+  /* Brand red (#bb1e15) is only 3.3:1 on black, below the 4.5:1 needed for
+     small text. Red *text* in dark mode uses a lighter tint of the brand
+     red (5.3:1 on black, 4.8:1 on the #111 surface); red fills, buttons and
+     borders keep the exact brand colour. */
+  .dark .text-primary {
+    color: #e5483e;
   }
 
   .dark :is(.text-slate-400, .text-slate-500, .text-slate-600) {

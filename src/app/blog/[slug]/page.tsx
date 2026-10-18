@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Back to Blog
           </Link>
 
-          <article className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden">
+          <article className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden">
             {post.coverImageUrl ? (
               <div className="max-h-[28rem] flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-900">
                 <img
@@ -153,7 +153,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       return (
                         <div
                           key={`img-${index}`}
-                          className="flex items-center justify-center max-h-96 overflow-hidden rounded-xl border bg-slate-100 dark:bg-slate-800"
+                          className="flex items-center justify-center max-h-96 overflow-hidden rounded-2xl border bg-slate-100 dark:bg-slate-800"
                         >
                           <img
                             src={url}
@@ -169,7 +169,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       const url = videoMatch[1];
                       const isEmbed = url.includes('youtube') || url.includes('vimeo');
                       return (
-                        <div key={`video-${index}`} className="aspect-video rounded-xl overflow-hidden border">
+                        <div key={`video-${index}`} className="aspect-video rounded-2xl overflow-hidden border">
                           {isEmbed ? (
                             <iframe
                               src={url}
@@ -201,12 +201,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {related.length > 0 && (
             <div className="mt-12">
               <h2 className="text-2xl font-bold mb-6">More Insights</h2>
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-3">
                 {related.map((item) => (
                   <Link
                     key={item.id}
                     href={`/blog/${item.slug}`}
-                    className="glass-card backdrop-blur-lg shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow lg:w-auto lg:max-w-none lg:shrink"
+                    className="rounded-2xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-md transition-shadow"
                   >
                     {item.coverImageUrl ? (
                       <div className="h-40 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">

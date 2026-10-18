@@ -29,6 +29,13 @@ export const metadata: Metadata = {
   twitter: { title: TITLE, description: DESCRIPTION },
 };
 
+// Full seated portraits for the two leaders shown as feature cards above the
+// team grid. Keyed by team-member id; anyone not listed stays in the grid.
+const FEATURED_PORTRAITS: Record<string, string> = {
+  'fallback-team-ceo': '/images/team/endurance-agonor-seated.jpg',
+  'fallback-team-coo': '/images/team/racheal-agonor-seated.jpg',
+};
+
 export default async function AboutPage() {
   // TODO(content): the only figures we can actually back up right now
   // (estates + states + offices are counted from real records). Do not add
@@ -40,13 +47,8 @@ export default async function AboutPage() {
     { icon: Users, label: 'Physical Offices', value: '3' },
   ];
 
-  const values = [
-    { title: 'Integrity', description: 'Clear information, honest representation and responsible transactions.' },
-    { title: 'Customer Commitment', description: 'Supporting clients before, during and after property acquisition.' },
-    { title: 'Quality', description: 'Developing and presenting properties to standards that protect long-term value.' },
-    { title: 'Innovation', description: 'Using technology and modern processes to improve the property experience.' },
-    { title: 'Excellence', description: 'Continuous improvement in service, delivery and professionalism.' },
-  ];
+  // Core values as approved by Aceroyal — titles only, no added descriptions.
+  const values = ['Interconnectedness', 'Passion', 'Integrity', 'Effectiveness', 'Quality'];
 
   const services = [
     { icon: Building2, title: 'Property Sales & Acquisition', description: 'Land, homes and investment properties.' },
@@ -77,18 +79,27 @@ export default async function AboutPage() {
   ];
 
   const teamMembers = await fetchAPI('/team').catch(() => []);
+  const featuredLeaders = teamMembers.filter((member: any) => FEATURED_PORTRAITS[member.id]);
+  const otherMembers = teamMembers.filter((member: any) => !FEATURED_PORTRAITS[member.id]);
 
   return (
     <div className="bg-background">
       {/* Hero */}
       <section className="py-16 md:py-24 text-center">
         <div className="container">
-          <h1 className="text-5xl font-bold mb-6">About Aceroyal Estates</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Aceroyal Estates</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Aceroyal Estates is a Nigerian real estate company focused on property development,
             sales, investment and property services. We help individuals, families and investors
             secure land and homes through a transparent, guided ownership process.
           </p>
+          <img
+            src="/images/brand/aceroyal-team.jpg"
+            alt="The Aceroyal Estates team"
+            width={1800}
+            height={1440}
+            className="mt-12 w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-[16/9] rounded-3xl object-cover object-center shadow-xl"
+          />
         </div>
       </section>
 
@@ -98,7 +109,7 @@ export default async function AboutPage() {
           <div className="container">
             <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-6 text-center">
+                <div key={stat.label} className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-6 text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                     <stat.icon className="w-6 h-6 text-primary" />
                   </div>
@@ -114,28 +125,33 @@ export default async function AboutPage() {
       {/* Our Story */}
       <Reveal>
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
-          <div className="container max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl font-bold">The Ultimate Standard of Trust</h2>
+          <div className="container max-w-3xl mx-auto space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold">The Ultimate Standard of Trust</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Aceroyal Estates, a subsidiary of AceRoyalpro Services, exists to make real estate
-              ownership accessible and trustworthy for Nigerians and the diaspora — built on
-              clear titling, structured documentation, and a process with no guesswork.
+              Real estate ownership should be built on more than a promise. It requires trust,
+              clear documentation, and the confidence that what you invest in is truly yours.
+              That is the standard Aceroyal was built to uphold.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Today, we operate across 5 states — Lagos, Oyo, Enugu, Edo, and Abuja — with 3
-              physical offices, and a portfolio spanning residential land, wellness-led
-              communities, and commercial developments.
+              A subsidiary of AceRoyalpro Services, Aceroyal Estates makes property ownership
+              accessible and trustworthy for Nigerians at home and in the diaspora through
+              transparent processes, clear titling, and structured documentation.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Our track record backs the promise: Eko Paragon, a 105-unit development delivered
-              with the Lagos State Government in 18 months, and Downtown Lagos Commercial City,
-              now expanding along one of Lagos&apos;s fastest-growing corridors. Every new estate
-              is held to the same standard.
+              Operating across Lagos, Oyo, Enugu, Edo, and Abuja, with three physical offices, our
+              portfolio spans residential land, homes, wellness-led communities, and commercial
+              developments. Our projects include Villa Nova Bungalows, Eko Paragon Residence,
+              Downtown Lagos Commercial City, Alpha Garden City Resort, Edo Mega City, Heritage
+              Estates, Legacy Garden City and Prime Boulevard Annex.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We offer estate development, property sales &amp; allocation, estate/facility
-              management, and diaspora advisory — led by Dr. Endurance Cletus Agonor, CEO and
-              Founder.
+              Our track record includes Eko Paragon Residence, a 105-unit development delivered in
+              partnership with the Lagos State Government within 18 months, and Downtown Lagos
+              Commercial City, expanding along one of Lagos&apos;s emerging growth corridors. Our
+              services cover estate development, property sales and allocation, estate and
+              facility management, and diaspora real estate advisory. Led by Dr. Endurance Cletus
+              Agonor, GCEO and Chairman, we are creating opportunities for people to own with
+              confidence, invest with clarity, and build lasting value.
             </p>
           </div>
         </section>
@@ -146,19 +162,19 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container">
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-8">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold mb-4 text-primary">Mission</h2>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  To make quality housing and property ownership more accessible through
-                  responsible development, transparent transactions and customer-focused real
-                  estate solutions.
+                  To create affordable housing for all and reduce the global housing deficit in
+                  line with the United Nations Sustainable Development Goals. As we believe
+                  everyone deserves a decent place to call home.
                 </p>
               </div>
-              <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-8">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold mb-4 text-primary">Vision</h2>
                 <p className="text-muted-foreground leading-relaxed text-lg">
-                  To become a trusted African real estate brand delivering quality housing and
-                  investment opportunities across markets and income levels.
+                  To deliver quality-assured housing for all, irrespective of income. Our dream
+                  is to see dreams come true.
                 </p>
               </div>
             </div>
@@ -170,15 +186,19 @@ export default async function AboutPage() {
       <Reveal>
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12 text-center">Our Values</h2>
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
-              {values.map((value) => (
-                <div key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
-                  <h3 className="text-xl font-semibold mb-2 text-primary">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Core Values</h2>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+              {values.map((value, index) => (
+                <li
+                  key={value}
+                  className={`flex items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 shadow-sm px-4 py-6 text-center ${
+                    index === values.length - 1 ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
+                >
+                  <h3 className="text-lg font-semibold text-primary break-words">{value}</h3>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       </Reveal>
@@ -187,10 +207,10 @@ export default async function AboutPage() {
       <Reveal>
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12 text-center">What We Do</h2>
-            <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">What We Do</h2>
+            <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {services.map((service) => (
-                <div key={service.title} className="glass-card backdrop-blur-lg shrink-0 w-[75%] snap-center bg-white dark:bg-slate-900 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
+                <div key={service.title} className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-6">
                   <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
                     <service.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -208,13 +228,35 @@ export default async function AboutPage() {
         </section>
       </Reveal>
 
-      {/* Leadership */}
+      {/* Leadership — the GCEO and COO lead with full seated portraits; the
+          rest of the team follows as matching headshots. */}
       {teamMembers.length > 0 && (
         <Reveal>
           <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
             <div className="container">
-              <h2 className="text-3xl font-bold mb-12 text-center">Leadership & Team</h2>
-              <TeamGrid members={teamMembers} />
+              <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Leadership & Team</h2>
+              {featuredLeaders.length > 0 && (
+                <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+                  {featuredLeaders.map((leader: any) => (
+                    <figure
+                      key={leader.id}
+                      className="overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800 shadow-sm"
+                    >
+                      <img
+                        src={FEATURED_PORTRAITS[leader.id]}
+                        alt={`${leader.name} - ${leader.role}`}
+                        loading="lazy"
+                        className="aspect-[4/5] w-full object-cover object-top"
+                      />
+                      <figcaption className="p-5 text-center">
+                        <p className="text-lg font-semibold">{leader.name}</p>
+                        <p className="text-sm text-muted-foreground">{leader.role}</p>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+              <TeamGrid members={otherMembers} />
             </div>
           </section>
         </Reveal>
@@ -224,7 +266,7 @@ export default async function AboutPage() {
       <Reveal>
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">International Reach</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">International Reach</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Our partnership with AEON Trisl Group and Emaar Properties Dubai brings
               international development standards into how we plan and build.
@@ -235,17 +277,27 @@ export default async function AboutPage() {
 
       {/* Why Aceroyal */}
       <Reveal>
-        <section className="py-16 md:py-24 bg-gradient-to-r from-primary to-[#7d150f] text-white">
-          <div className="container">
-            <h2 className="text-3xl font-bold mb-12 text-center">Why Aceroyal Estates?</h2>
-            <div className="grid sm:grid-cols-2 gap-10 max-w-4xl mx-auto">
-              {whyAceroyal.map((item) => (
-                <div key={item.title}>
-                  <h3 className="font-bold text-xl mb-3">{item.title}</h3>
-                  <p className="opacity-90 leading-relaxed">{item.description}</p>
-                </div>
-              ))}
+        <section className="py-16 md:py-24 bg-primary text-white">
+          <div className="container grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8">Why Aceroyal Estates?</h2>
+              <ul className="divide-y divide-white/20">
+                {whyAceroyal.map((item) => (
+                  <li key={item.title} className="py-5 first:pt-0 last:pb-0">
+                    <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+                    <p className="opacity-90 leading-relaxed">{item.description}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
+            <img
+              src="/images/brand/aceroyal-team-trio.jpg"
+              alt="Aceroyal Estates team members"
+              width={1000}
+              height={1250}
+              loading="lazy"
+              className="mx-auto aspect-[4/5] w-full max-w-sm rounded-3xl object-cover object-top shadow-xl md:max-w-none"
+            />
           </div>
         </section>
       </Reveal>
@@ -258,7 +310,7 @@ export default async function AboutPage() {
       <Reveal>
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900 text-center">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-4">Ready to Find the Right Property?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Find the Right Property?</h2>
             <p className="text-lg text-muted-foreground mb-8">
               Explore available estates or speak with our team to arrange an inspection.
             </p>

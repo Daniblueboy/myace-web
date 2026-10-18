@@ -39,7 +39,9 @@ function initials(name: string) {
 
 export default function TestimonialsSpotlight({ items }: { items: TestimonialItem[] }) {
   const [index, setIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
+  // Tracks which testimonial is expanded, so moving to another one shows it
+  // collapsed without resetting state in an effect.
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -60,13 +62,10 @@ export default function TestimonialsSpotlight({ items }: { items: TestimonialIte
     return () => clearInterval(timer);
   }, [inView, items.length, prefersReducedMotion]);
 
-  useEffect(() => {
-    setExpanded(false);
-  }, [index]);
-
   const active = items[index];
   if (!active) return null;
 
+  const expanded = expandedId === active.id;
   const isLong = active.message.length > EXCERPT_LENGTH;
   const displayMessage = expanded || !isLong ? active.message : excerpt(active.message);
 
@@ -77,7 +76,7 @@ export default function TestimonialsSpotlight({ items }: { items: TestimonialIte
         strokeWidth={1}
       />
 
-      <div className="relative overflow-hidden rounded-3xl border bg-white dark:bg-slate-900 dark:border-slate-800 shadow-lg px-6 py-10 md:px-14 md:py-14">
+      <div className="relative overflow-hidden rounded-3xl border bg-white dark:bg-slate-900 dark:border-slate-800 shadow-lg px-5 py-8 md:px-14 md:py-14">
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id}
@@ -118,19 +117,19 @@ export default function TestimonialsSpotlight({ items }: { items: TestimonialIte
             ) : null}
 
             <p className="text-lg md:text-2xl font-medium leading-relaxed text-slate-800 dark:text-slate-100">
-              "{displayMessage}"
+              &ldquo;{displayMessage}&rdquo;
             </p>
             {isLong && (
               <button
                 type="button"
-                onClick={() => setExpanded((v) => !v)}
+                onClick={() => setExpandedId(expanded ? null : active.id)}
                 className="mt-3 text-sm font-semibold text-primary hover:underline"
               >
                 {expanded ? 'Show less' : 'Read full review'}
               </button>
             )}
 
-            <div className="mt-8 flex items-center justify-center gap-3">
+            <div className="mt-6 md:mt-8 flex items-center justify-center gap-3">
               {active.photoUrl ? (
                 <img
                   src={active.photoUrl}

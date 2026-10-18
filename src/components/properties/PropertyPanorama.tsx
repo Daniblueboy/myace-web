@@ -194,7 +194,7 @@ export default function PropertyPanorama({ panoramaUrls, estateName }: PropertyP
       </div>
 
       {showHelp && (
-        <div className="absolute right-4 top-16 z-20 max-w-xs rounded-xl border border-white/15 bg-black/80 p-4 text-sm shadow-xl backdrop-blur-md">
+        <div className="absolute right-4 top-16 z-20 max-w-xs rounded-2xl border border-white/15 bg-black/80 p-4 text-sm shadow-xl backdrop-blur-md">
           <button
             type="button"
             className="absolute right-2 top-2 text-white/70 hover:text-white"

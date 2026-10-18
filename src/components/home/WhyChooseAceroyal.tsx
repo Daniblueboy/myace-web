@@ -1,7 +1,4 @@
-'use client';
-
 import { BadgeCheck, Zap, Shield, Headset } from 'lucide-react';
-import { useAutoScrollRow } from '@/hooks/useAutoScrollRow';
 
 // Copy is still unverified scaffold boilerplate, not sourced from the live
 // site or confirmed by Aceroyal — softened from stronger, SLA-sounding
@@ -14,27 +11,22 @@ const differentiators = [
   { icon: Headset, title: 'Dedicated Support', desc: 'A customer success team on hand throughout your journey.' },
 ];
 
+/** The four reasons as a divided list — sits beside a team photo in
+ * WhyChooseSection rather than as a row of icon cards. */
 export function WhyChooseAceroyal() {
-  const { ref, handlers } = useAutoScrollRow<HTMLDivElement>({ itemCount: differentiators.length });
-
   return (
-    <div
-      ref={ref}
-      {...handlers}
-      className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-4"
-    >
+    <ul className="divide-y divide-border">
       {differentiators.map((item) => (
-        <div
-          key={item.title}
-          className="glass-card backdrop-blur-lg shrink-0 w-[70%] max-w-64 snap-center bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border text-center lg:w-auto lg:max-w-none lg:shrink"
-        >
-          <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-            <item.icon className="w-6 h-6" />
+        <li key={item.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <item.icon className="h-5 w-5" />
+          </span>
+          <div>
+            <h3 className="text-lg font-semibold">{item.title}</h3>
+            <p className="mt-1 text-muted-foreground">{item.desc}</p>
           </div>
-          <h4 className="font-bold text-lg mb-2">{item.title}</h4>
-          <p className="text-muted-foreground text-sm">{item.desc}</p>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

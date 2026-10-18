@@ -111,7 +111,7 @@ export default function ContactForm() {
       {/* Hero */}
       <section className="py-16 md:py-24 text-center">
         <div className="container">
-          <h1 className="text-5xl font-bold mb-6">Get In Touch</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as
             soon as possible.
@@ -130,7 +130,7 @@ export default function ContactForm() {
           <div className="container">
             <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 max-w-5xl mx-auto">
               {/* Contact Form */}
-              <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-8">
+              <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -242,7 +242,13 @@ export default function ContactForm() {
 
               {/* Quick contact + CTA */}
               <div className="space-y-6">
-                <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm p-8">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm overflow-hidden">
+                  <img
+                    src="/images/brand/customer-care-team.jpg"
+                    alt="Aceroyal customer care team"
+                    className="aspect-[16/9] w-full object-cover object-[center_20%]"
+                  />
+                  <div className="p-8">
                   <h2 className="text-xl font-bold mb-6">Reach Us Directly</h2>
                   <div className="space-y-5">
                     <a href="tel:+2342013300287" className="flex items-start gap-4 group">
@@ -292,12 +298,13 @@ export default function ContactForm() {
                       </div>
                     </div>
                   </div>
+                  </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-primary to-[#7d150f] rounded-lg shadow-sm p-8 text-white">
+                <div className="bg-primary rounded-2xl shadow-sm p-8 text-white">
                   <h3 className="text-xl font-bold mb-3">Ready to find your dream property?</h3>
                   <p className="mb-4 opacity-90 leading-relaxed">
-                    Explore our estates and the land or apartment options within each.
+                    Explore our estates and the land, apartment and home options within each.
                   </p>
                   <Button variant="secondary" className="w-full" asChild>
                     <Link href="/estates">Explore Estates</Link>
@@ -313,19 +320,29 @@ export default function ContactForm() {
       <Reveal>
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
           <div className="container">
-            <h2 className="text-3xl font-bold mb-12 text-center">Our Offices</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Offices</h2>
             {offices.length > 0 ? (
-              <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
+              <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {offices.map((office: any) => (
-                  <div key={office.id} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm p-6 lg:w-auto lg:shrink">
+                  <div key={office.id} className="overflow-hidden bg-slate-50 dark:bg-slate-800 rounded-2xl shadow-sm">
+                    {office.photoUrl && (
+                      <img
+                        src={office.photoUrl}
+                        alt={office.photoAlt || `${office.name || office.city || office.state} team`}
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover object-top"
+                      />
+                    )}
+                    <div className="p-6">
                     <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
                       <Building2 className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="font-semibold mb-2">{office.city || office.state} Office</h3>
+                    <h3 className="font-semibold mb-2">{office.name || `${office.city || office.state} Office`}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-3">{office.address}</p>
                     {office.phones?.length > 0 && (
                       <p className="text-sm text-muted-foreground">{office.phones.join(', ')}</p>
                     )}
+                    </div>
                   </div>
                 ))}
               </div>

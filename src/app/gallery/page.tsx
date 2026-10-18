@@ -20,7 +20,7 @@ export default async function GalleryPage() {
     <div className="bg-background">
       <section className="py-16 md:py-24 text-center">
         <div className="container">
-          <h1 className="text-5xl font-bold mb-6">Gallery</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A look at life at Aceroyal Estates — allocations, site progress, launch events and
             more.

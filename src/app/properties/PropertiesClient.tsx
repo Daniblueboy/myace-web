@@ -10,11 +10,11 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FilterPills } from '@/components/ui/filter-pills';
 import { Filter } from 'lucide-react';
+import { PROPERTY_TYPES } from '@/lib/estate-offerings';
 
 const TYPE_OPTIONS = [
   { value: 'ALL', label: 'Any Type' },
-  { value: 'LAND', label: 'Land' },
-  { value: 'APARTMENT', label: 'Apartment' },
+  ...PROPERTY_TYPES.map((t) => ({ value: t.value, label: t.singular })),
 ];
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useSearchParams } from 'next/navigation';
@@ -118,7 +118,7 @@ export default function PropertiesClient() {
     <div className="container py-12 md:py-16">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Estate Offerings</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Estate Offerings</h1>
           <p className="text-slate-500 dark:text-muted-foreground mt-1">
             Land allocations and apartment sales within our master-planned estates.
           </p>
@@ -162,7 +162,7 @@ export default function PropertiesClient() {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Desktop Sidebar */}
         <aside className="hidden md:block w-64 shrink-0 space-y-6 sticky top-24 self-start">
-          <div className="bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-lg border">
+          <div className="bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-6 rounded-2xl border">
             <h3 className="font-semibold mb-4 flex items-center"><Filter className="mr-2 h-4 w-4" /> Filters</h3>
             <FilterControls
               filters={filters}
@@ -205,7 +205,7 @@ export default function PropertiesClient() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-24 bg-slate-50 dark:bg-slate-900 dark:border-slate-800 rounded-xl border border-dashed">
+            <div className="text-center py-24 bg-slate-50 dark:bg-slate-900 dark:border-slate-800 rounded-2xl border border-dashed">
               <h3 className="text-lg font-medium text-slate-900 dark:text-white">No estate offerings found</h3>
               <p className="text-slate-500 dark:text-muted-foreground mt-1">Try adjusting your filters or search criteria.</p>
               <Button variant="link" onClick={clearFilters} className="mt-2 text-primary">Clear all filters</Button>
@@ -303,7 +303,7 @@ function FilterControls({ filters, onChange, onApply, onClear, estates }: any) {
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium">Bedrooms (Apartments)</label>
+        <label className="text-sm font-medium">Bedrooms</label>
         <Input
           type="number"
           placeholder="Bedrooms"

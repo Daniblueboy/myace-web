@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Property } from '@/shared';
 import { MapPin, Bed, Bath, Square } from 'lucide-react';
+import { propertyTypeLabel } from '@/lib/estate-offerings';
+import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 interface PropertyCardProps {
   property: Property;
@@ -22,13 +24,13 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
   const displayPrice = minVariantPrice ?? Number(property.price);
 
   return (
-    <Card className="glass-card backdrop-blur-lg overflow-hidden group flex flex-col h-full">
+    <Card className="overflow-hidden group flex flex-col h-full">
       <div className="relative h-60 bg-slate-200 dark:bg-slate-800">
          {/* Image Placeholder */}
          {property.images && property.images[0] ? (
            <img src={property.images[0].url} alt={property.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
          ) : (
-           <div className="w-full h-full flex items-center justify-center text-slate-400 dark:text-slate-500">No Image</div>
+           <EstateImageFallback name={property.title} className="w-full h-full" />
          )}
          <div className="absolute top-4 left-4">
            <span className={`px-3 py-1 rounded-full text-xs font-bold ${property.status === 'AVAILABLE' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
@@ -51,7 +53,7 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
          )}
          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
            <span className="bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold uppercase tracking-wider text-slate-900">
-             {property.type === 'LAND' ? 'Land' : property.type === 'APARTMENT' ? 'Apartment' : property.type}
+             {propertyTypeLabel(property.type)}
            </span>
          </div>
       </div>

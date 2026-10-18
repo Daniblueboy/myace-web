@@ -83,8 +83,8 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
   return (
     <section className="container py-12 md:py-28">
       <div className="mb-6">
-        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Announcements</p>
-        <h2 className="text-2xl md:text-3xl font-bold">Estate Updates & Promos</h2>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Announcements</p>
+        <h2 className="text-3xl md:text-4xl font-bold">Estate Updates & Promos</h2>
       </div>
 
       <div className="relative">
@@ -104,7 +104,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
             >
               <div className="grid md:grid-cols-[1.1fr_0.9fr] min-h-[300px] md:min-h-[340px]">
                 <div className="p-8 flex flex-col justify-center text-white space-y-4">
-                  <h2 className="text-2xl md:text-3xl font-bold">{promo.title}</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold">{promo.title}</h2>
                   <p className="text-primary-foreground/90 text-base md:text-lg">
                     {promo.message}
                   </p>
@@ -174,7 +174,7 @@ export default function PromoCarousel({ promos }: { promos: Promo[] }) {
               <DialogDescription>{activePromo.message}</DialogDescription>
             </DialogHeader>
             {(activePromo.videoUrl || activePromo.imageUrl) && (
-              <div className="h-48 md:h-64 rounded-xl overflow-hidden border shrink-0">
+              <div className="h-48 md:h-64 rounded-2xl overflow-hidden border shrink-0">
                 {activePromo.videoUrl ? (
                   <video
                     className="w-full h-full object-cover"

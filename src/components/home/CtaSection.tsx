@@ -6,7 +6,7 @@ export function CtaSection() {
     <section className="py-12 md:py-28 bg-primary text-primary-foreground">
       <div className="container grid gap-6 md:grid-cols-2 items-center">
         <div>
-          <h2 className="text-3xl font-bold mb-3">Ready to book an inspection?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Ready to book an inspection?</h2>
           <p className="text-primary-foreground/80">
             Our advisors will guide you through the property journey end-to-end.
           </p>

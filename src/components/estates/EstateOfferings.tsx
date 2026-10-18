@@ -19,6 +19,8 @@ type OptionItem = {
   propertyTitle: string;
   flyers: FlyerItem[];
   available: boolean;
+  initialDeposit?: number | null;
+  priceNote?: string | null;
 };
 
 function isImage(url: string) {
@@ -72,7 +74,9 @@ export default function EstateOfferings({
             propertyTitle: property.title,
             flyers: variantFlyers,
             available: variant.active !== false,
-    });
+            initialDeposit: variant.initialDeposit ?? null,
+            priceNote: variant.priceNote ?? null,
+          });
         });
       } else {
         items.push({
@@ -91,7 +95,7 @@ export default function EstateOfferings({
 
   if (options.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-8 text-muted-foreground">
+      <div className="rounded-2xl border border-dashed bg-white dark:bg-slate-900 dark:border-slate-800 p-8 text-muted-foreground">
         No active offerings listed yet. Book an inspection to get early access.
       </div>
     );
@@ -99,11 +103,11 @@ export default function EstateOfferings({
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {options.map((option) => (
           <div
             key={option.id}
-            className={`glass-card backdrop-blur-lg shrink-0 w-[82%] max-w-sm snap-center rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-5 space-y-4 lg:w-auto lg:max-w-none lg:shrink ${option.available ? '' : 'opacity-60'}`}
+            className={`rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-5 space-y-4 ${option.available ? '' : 'opacity-60'}`}
           >
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Available Option</p>
@@ -117,12 +121,22 @@ export default function EstateOfferings({
               </div>
               <p className="text-sm text-muted-foreground">{option.propertyTitle}</p>
             </div>
-            <div className="text-2xl font-bold text-primary">
-              {option.currency} {Number(option.price).toLocaleString()}
+            <div>
+              <div className="text-2xl font-bold text-primary">
+                {option.currency} {Number(option.price).toLocaleString()}
+              </div>
+              {option.priceNote && (
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{option.priceNote}</p>
+              )}
+              {option.initialDeposit ? (
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  Initial deposit: {option.currency} {Number(option.initialDeposit).toLocaleString()}
+                </p>
+              ) : null}
             </div>
-            <div className="space-y-3">
-              <p className="text-sm font-medium">Click to view payment plan</p>
-              {option.flyers.length > 0 ? (
+            {option.flyers.length > 0 && (
+              <div className="space-y-3">
+                <p className="text-sm font-medium">View flyer</p>
                 <div className="grid grid-cols-3 gap-2">
                   {option.flyers.map((flyer) => (
                     <button
@@ -149,10 +163,8 @@ export default function EstateOfferings({
                     </button>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-muted-foreground">No flyers uploaded yet.</p>
-              )}
-            </div>
+              </div>
+            )}
             <div className="flex gap-2">
               <Button asChild className="flex-1 min-w-0 whitespace-normal h-auto py-2" disabled={!option.available}>
                 <Link href={`/contact${estateSlug ? `?estate=${estateSlug}&enquiry=PURCHASE` : '?enquiry=PURCHASE'}`}>
@@ -178,7 +190,7 @@ export default function EstateOfferings({
                 Close
               </Button>
             </div>
-            <div className="rounded-lg overflow-hidden border bg-slate-50 dark:bg-slate-800">
+            <div className="rounded-2xl overflow-hidden border bg-slate-50 dark:bg-slate-800">
               {isImage(activeUrl) ? (
                 <img src={activeUrl} alt={activeTitle} className="w-full h-auto" />
               ) : (

@@ -134,7 +134,7 @@ export default function BookInspectionForm() {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <h1 className="text-4xl font-bold mb-3">Book an Inspection</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-3">Book an Inspection</h1>
             <p className="text-muted-foreground">
               Schedule a site visit with our team. We will confirm your preferred time.
             </p>
@@ -145,7 +145,7 @@ export default function BookInspectionForm() {
             )}
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Full Name *</label>

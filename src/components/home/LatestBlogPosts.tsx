@@ -13,7 +13,7 @@ export default function LatestBlogPosts() {
       <div className="container">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold">Latest Insights</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Latest Insights</h2>
             <p className="text-muted-foreground">
               Market updates and property tips from our team.
             </p>
@@ -28,7 +28,7 @@ export default function LatestBlogPosts() {
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="glass-card backdrop-blur-lg group shrink-0 w-[82%] max-w-sm snap-center rounded-xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
+              className="group shrink-0 w-[82%] max-w-sm snap-center rounded-2xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
             >
               {post.coverImageUrl ? (
                 <div className="h-44 flex items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">

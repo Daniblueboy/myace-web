@@ -30,7 +30,7 @@ export default function PropertyMap({
 }: PropertyMapProps) {
   if (mapEmbedUrl) {
     return (
-      <div className="h-[400px] rounded-lg overflow-hidden border">
+      <div className="h-[400px] rounded-2xl overflow-hidden border">
         <iframe
           src={mapEmbedUrl}
           title={`Map for ${title}`}
@@ -47,7 +47,7 @@ export default function PropertyMap({
   const lng = longitude || 3.3792;
 
   return (
-    <div className="h-[400px] rounded-lg overflow-hidden border">
+    <div className="h-[400px] rounded-2xl overflow-hidden border">
       <MapContainer
         center={[lat, lng]}
         zoom={latitude && longitude ? 15 : 10}

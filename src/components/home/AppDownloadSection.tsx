@@ -30,11 +30,11 @@ export default function AppDownloadSection() {
   };
 
   return (
-    <section id="app-download" className="py-12 md:py-28 bg-slate-50 dark:bg-slate-950 scroll-mt-24">
+    <section id="app-download" className="py-12 md:py-28 bg-slate-50 dark:bg-slate-900 scroll-mt-24">
       <div className="container">
         <div className="rounded-3xl border bg-white dark:bg-slate-900 dark:border-slate-800 p-6 md:p-12 grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
           <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Aceroyal Mobile &amp; Updates</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Aceroyal Mobile &amp; Updates</p>
             <h2 className="text-3xl md:text-4xl font-bold">
               Our apps are launching soon — get updates as they happen
             </h2>

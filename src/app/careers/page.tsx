@@ -59,12 +59,12 @@ export default function CareersPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_42%)]" />
-        <div className="container relative py-12 md:py-16">
+        <div className="container relative grid gap-10 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
               Careers at Aceroyal
             </p>
-            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
               Build places, opportunities, and lasting value.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
@@ -82,6 +82,13 @@ export default function CareersPage() {
               </Button>
             </div>
           </div>
+          <img
+            src="/images/brand/team-collaboration.jpg"
+            alt="Aceroyal colleagues working together"
+            width={1000}
+            height={1250}
+            className="w-full max-w-sm mx-auto lg:max-w-none aspect-[4/5] rounded-3xl object-cover object-top shadow-xl"
+          />
         </div>
       </section>
 
@@ -89,16 +96,16 @@ export default function CareersPage() {
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">How we work</p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">Do work you can be proud of</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl font-bold">Do work you can be proud of</h2>
             <p className="mt-4 text-muted-foreground">
               We value people who are thoughtful, accountable, commercially aware, and committed
               to an excellent customer experience.
             </p>
           </div>
 
-          <div className="mt-10 flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-3">
             {values.map((value) => (
-              <article key={value.title} className="glass-card backdrop-blur-lg shrink-0 w-[78%] snap-center rounded-2xl border bg-card p-7 text-card-foreground shadow-sm lg:w-auto lg:shrink">
+              <article key={value.title} className="rounded-2xl border bg-card p-7 text-card-foreground shadow-sm">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <value.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
@@ -116,15 +123,15 @@ export default function CareersPage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
               <Users className="h-6 w-6" aria-hidden="true" />
             </div>
-            <h2 className="mt-5 text-3xl font-bold md:text-4xl">There is room for many strengths</h2>
+            <h2 className="mt-5 text-3xl md:text-4xl font-bold">There is room for many strengths</h2>
             <p className="mt-4 max-w-xl leading-7 text-slate-300">
               Our work brings together commercial, operational, creative, legal, financial, and
               technical expertise. Opportunities may open across these teams as we grow.
             </p>
           </div>
-          <div className="flex gap-3 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-2">
             {teams.map((team) => (
-              <div key={team} className="flex shrink-0 w-[70%] snap-center items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-4 lg:w-auto lg:shrink">
+              <div key={team} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
                 <Building2 className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                 <span className="font-medium">{team}</span>
               </div>

@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
       { source: "/eko-paragon-residence", destination: "/estates/eko-paragon-residence", permanent: true },
       { source: "/prime-annex", destination: "/estates/prime-annex", permanent: true },
 
+      // --- Offerings renamed to the client's approved unit names ---
+      { source: "/properties/villa-nova-3-bedroom-bungalow", destination: "/properties/villa-nova-bungalows", permanent: true },
+      { source: "/properties/eko-paragon-1-bedroom-business-suite", destination: "/properties/eko-paragon-one-bedroom-apartment", permanent: true },
+      { source: "/properties/eko-paragon-2-bedroom-signature-suite", destination: "/properties/eko-paragon-two-bedroom-apartment", permanent: true },
+      { source: "/properties/eko-paragon-3-bedroom-presidential-terrace-duplex", destination: "/properties/eko-paragon-three-bedroom-residential-terrace", permanent: true },
+
       // --- Discontinued/legacy estate pages: no new-site equivalent, send
       // to the current estate catalogue instead of 404 ---
       { source: "/legacy-garden", destination: "/estates", permanent: true },

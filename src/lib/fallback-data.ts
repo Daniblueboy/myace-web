@@ -15,28 +15,30 @@ const estateImages = {
   placeholder5: 'https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&w=1200&q=80',
 };
 
-// PRE-CUTOVER CHECKLIST: pricing baked into the descriptions below (Alpha
-// Garden City, Heritage Estate, Eko Paragon Residence, Prime Boulevard Annex)
-// is confirmed real per the client's own screenshots, but is promotional and
-// time-sensitive — verify current rates with Aceroyal before go-live. This
-// note was previously (wrongly) appended to the public-facing description
-// text itself; moved here so it's visible to us, not site visitors.
+// Pricing and deposits below follow Aceroyal's approved price list (Oct
+// 2026 "Updates for the website" request). Only the prices and deposits that
+// list names are published — no payment plans, promos or fees beyond it.
+// Flyers that print superseded prices or unapproved deposits were removed as
+// covers/media; affected estates show the branded image fallback until
+// approved imagery arrives. Brochure links were cleared because the old
+// wp-content URLs are dead (blocked by the old host) and their PDFs predate
+// the current prices.
 export const fallbackEstates: Estate[] = [
   {
     id: 'fallback-estate-alpha-garden-city',
-    name: 'Alpha Garden City',
+    name: 'Alpha Garden City Resort',
     slug: 'alpha-garden-city',
     description:
-      'Alpha Garden City is a thoughtfully planned, nature-forward residential community in Ibadan, designed around a simple idea: land should not just be owned, it should enhance life. Every acre is enriched with 10-15 fruit-bearing trees, forming a living orchard that improves air quality and creates a refreshing, green atmosphere.\n\nWellness is built into daily life here — nature walking trails, yoga and meditation platforms, cycling paths, and the Central Wellness Village (roughly 15-20 acres, with a holistic spa, wellness clinics, healthy dining, fitness studios, and retreat facilities), alongside an integrated golf course and family-friendly outdoor spaces.\n\nThe estate follows a low-density model — about one home per acre — with residential options spanning wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nDeveloped by Aceroyal, whose track record includes Eko Paragon (a 104-unit development delivered in partnership with the Lagos State Government) and Downtown Lagos Commercial City.\n\nPrelaunch pricing: 500sqm from ₦3.5M, 1 acre (+1 plot free) from ₦12.5M. Initial deposit from ₦500K (500sqm) / ₦1.5M (1 acre).',
+      'Alpha Garden City Resort is a thoughtfully planned, nature-forward residential community in Ibadan, designed around a simple idea: land should not just be owned, it should enhance life. Every acre is enriched with 10-15 fruit-bearing trees, forming a living orchard that improves air quality and creates a refreshing, green atmosphere.\n\nWellness is built into daily life here — nature walking trails, yoga and meditation platforms, cycling paths, and the Central Wellness Village (roughly 15-20 acres, with a holistic spa, wellness clinics, healthy dining, fitness studios, and retreat facilities), alongside an integrated golf course and family-friendly outdoor spaces.\n\nThe estate follows a low-density model — about one home per acre — with residential options spanning wellness villas, eco lodges, retirement homes, and serviced apartments.\n\nDeveloped by Aceroyal, whose track record includes Eko Paragon Residence (a 105-unit development delivered in partnership with the Lagos State Government) and Downtown Lagos Commercial City.\n\nPricing: 500sqm at ₦6M (₦500K initial deposit), 1 acre at ₦18M (₦1.5M initial deposit).',
     state: 'Oyo',
     city: 'Ibadan',
-    address: 'Ibadan, Oyo State',
-    coverImage: estateImages.alphaGardenCity,
+    address: 'Olomi Olunde, Academy Road, Ibadan, Oyo State',
+    // The only image on file is the prelaunch flyer, which prints superseded
+    // prices — branded fallback until approved imagery arrives.
+    coverImage: null,
     panoramaUrls: ['/images/virtual-tours/alpha-garden-city-360.png'],
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
-    // Only the one real photo we have — removed the generic stock photos
-    // that were standing in here, now that real flyers/pricing exist below.
-    gallery: [estateImages.alphaGardenCity],
+    brochureUrl: null,
+    gallery: [],
     status: 'ACTIVE',
     amenities: ['Golf Course', 'Wellness Spa', 'Yoga Hall', 'Healthy Restaurants', 'Gym Studio', 'Swimming Pool', 'Orchard Garden'],
     createdAt: now,
@@ -44,10 +46,10 @@ export const fallbackEstates: Estate[] = [
   },
   {
     id: 'fallback-estate-heritage',
-    name: 'Heritage Estate',
+    name: 'Heritage Estates',
     slug: 'heritage-estate',
     description:
-      'Heritage Estate (Obodo Oma) — the heartbeat of Coal City living. A premium residential and commercial estate strategically located in Ekwegbe Nike, Enugu State, one of the fastest-growing corridors in the Coal City, blending heritage, serenity, and modern living for homeowners and investors alike.\n\nThe estate comes with an approved layout and registered survey, guaranteeing secure ownership. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M (₦1M initial deposit), 1 Acre at ₦30M (₦5M initial deposit).',
+      'Heritage Estates (Obodo Oma) — the heartbeat of Coal City living. A premium residential and commercial estate strategically located in Ekwegbe Nike, Enugu State, one of the fastest-growing corridors in the Coal City, blending heritage, serenity, and modern living for homeowners and investors alike.\n\nThe estate comes with an approved layout and registered survey, guaranteeing secure ownership. Less than 5 minutes from Maduka University, Police Quarters, the Bio-Research Institute, and Ugwugo Roundabout, and about 15 minutes from Nike Lake.\n\nNow selling: 500sqm at ₦6M (₦1M initial deposit), 1 Acre at ₦30M (₦5M initial deposit).',
     state: 'Enugu',
     city: 'Nike',
     address: 'Ekwegbe Nike, Enugu State',
@@ -55,8 +57,8 @@ export const fallbackEstates: Estate[] = [
     // so no generic stock stand-ins; gallery stays empty (the flyers/video
     // cover the Media section instead).
     coverImage: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
-    videoUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/Heritage-Enugu.mp4',
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/The-Heritage-Estate-Brochure.pdf',
+    videoUrl: null,
+    brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Electricity', 'Gate House', 'Parking Space', 'Good Security', 'Good Road', 'Drainage', 'Approved Layout', 'Registered Survey'],
@@ -69,15 +71,14 @@ export const fallbackEstates: Estate[] = [
     name: 'Edo Mega City',
     slug: 'edo-mega-city',
     description:
-      'Edo Mega City — "Indeed a Homecoming Project," where every square meter is a canvas for your dreams. The biggest and most secured private residential estate in Edo State, heavily guarded by the Army, curated to bring comfort, luxury living, and an oasis of modern elegance and nature.\n\nAvailable plot sizes: 450sqm (50ft x 100ft), 900sqm (100ft x 100ft, suited to a duplex), and 1 acre / 3,600sqm (a country home mansion plot). Your country home is 100% ready for development.\n\nPrelaunch pricing: 450sqm from ₦1.5M, 900sqm from ₦2.5M (₦500K initial deposit), 1 acre from ₦7.5M (₦1.5M initial deposit). Titled C of O / Government Allocation.',
+      'Edo Mega City — "Indeed a Homecoming Project," where every square meter is a canvas for your dreams. The biggest and most secured private residential estate in Edo State, heavily guarded by the Army, curated to bring comfort, luxury living, and an oasis of modern elegance and nature.\n\nAvailable plot sizes: 450sqm (50ft × 100ft) and 900sqm (100ft × 100ft, suited to a duplex).\n\nPricing: 450sqm at ₦3M (₦500K initial deposit), 900sqm at ₦5M (₦1.5M initial deposit). Titled C of O / Government Allocation.',
     state: 'Edo',
     city: 'Benin City',
-    address: 'Igue Uwangue Community, Off Aduwawa By-Pass, Benin City, Edo State',
-    // Real pricing flyer as the cover — no clean non-flyer photography yet,
-    // so no generic stock stand-ins; gallery stays empty (the flyers cover
-    // the Media section instead).
-    coverImage: '/images/estates/edo-mega-city/edo-flyer-prelaunch.jpg',
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/Edo-Mega-City-FAQ-Consent-Form-2.pdf',
+    address: 'Aduwawa Bypass, Benin City, Edo State',
+    // The only image on file is the prelaunch flyer, which prints superseded
+    // prices — branded fallback until approved imagery arrives.
+    coverImage: null,
+    brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Army-Guarded Security', 'C of O Title', 'Investment Value', 'Quality Infrastructure'],
@@ -90,17 +91,16 @@ export const fallbackEstates: Estate[] = [
     name: 'Downtown Lagos Commercial City — Phase 2',
     slug: 'downtown-lagos-phase-2',
     description:
-      'Downtown Commercial City Phase 2 follows the sold-out Phase 1 — a fast-rising commercial district hub in Labour City, Ibeju-Lekki, on the Coastal Road, in the heart of Lagos\'s growth corridor. This is where businesses will stand, traffic will grow, and property value will multiply.\n\nStrategic landmarks nearby: Lekki Free Trade Zone, Dangote Refinery, Lekki Deep Sea Port, and Lekki-Epe International Airport.\n\n500sqm: ₦45M land + ₦15M infrastructure & documentation = ₦60M total (₦5M initial deposit). 1,000sqm: ₦80M land + ₦20M infrastructure & documentation = ₦100M total (₦10M initial deposit). A 6-month installment plan (10% interest included) is also available. Titled C of O / Government Allocation.',
+      'Downtown Commercial City Phase 2 follows the sold-out Phase 1 — a fast-rising commercial district hub in Labour City, Ibeju-Lekki, on the Coastal Road, in the heart of Lagos\'s growth corridor. This is where businesses will stand, traffic will grow, and property value will multiply.\n\nStrategic landmarks nearby: Lekki Free Trade Zone, Dangote Refinery, Lekki Deep Sea Port, and Lekki-Epe International Airport.\n\nAvailable options: 500sqm at ₦60M (₦45M land + ₦15M infrastructure & documentation) or 1,000sqm at ₦100M (₦80M land + ₦20M infrastructure & documentation). Titled C of O / Government Allocation.',
     state: 'Lagos',
     city: 'Ibeju-Lekki',
     address: 'Labour City, Ibeju-Lekki, Coastal Road, Lagos State',
-    // Real pricing flyer as the cover — no clean non-flyer photography for
-    // this one yet, so no generic stock stand-ins; gallery stays empty
-    // rather than showing unrelated stock photos (the flyers/video cover
-    // the Media section instead).
-    coverImage: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg',
+    // The pricing flyers print deposits and an installment plan that are not
+    // on the approved price list — branded fallback until approved imagery
+    // arrives.
+    coverImage: null,
     videoUrl: '/videos/downtown-lagos-phase-2.mp4',
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2025/03/Downtown-Brochure.pdf',
+    brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Office Spaces', 'Health Care Facilities', 'Shopping Mall', 'Financial Districts', 'Exclusive Membership', 'Helipad', 'Restaurants'],
@@ -122,7 +122,7 @@ export const fallbackEstates: Estate[] = [
     // and the estates grid both render a clean "coming soon"/no-image state
     // for this instead of a fake picture.
     coverImage: null,
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2025/03/Downtown-Brochure.pdf',
+    brochureUrl: null,
     gallery: [],
     status: 'SOLD_OUT',
     amenities: ['Business District', 'Green Spaces & Waterways', '24/7 Power', 'High-Speed Internet'],
@@ -135,16 +135,15 @@ export const fallbackEstates: Estate[] = [
     name: 'Eko Paragon Residence',
     slug: 'eko-paragon-residence',
     description:
-      'A development by AceRoyal Estate Homes, in partnership with Lagos State Development & Property Corporation (LSDPC). Eko Paragon Residence is a premium hotel-residence development designed to deliver comfort, elegance, and modern convenience in one exceptional environment.\n\nLocated in the serene and secure Abijo G.R.A., Lagos, the estate offers a peaceful lifestyle with seamless access to the Lekki-Epe Expressway and major commercial hubs.\n\nThe development features thoughtfully designed 1-bedroom business suite apartments, 2-bedroom signature suite apartments, and 3-bedroom presidential terrace duplexes with BQ, each crafted with contemporary architecture, spacious interiors, quality finishes, and dedicated parking. Eko Paragon Residence offers a hotel-style living experience for homeowners, professionals, and investors seeking a refined lifestyle in Lagos.\n\nPricing: 1-bedroom business suite ₦85M (₦5M initial deposit), 2-bedroom signature suite ₦95M (₦10M initial deposit), 3-bedroom presidential terrace duplex + BQ ₦150M (₦20M initial deposit).',
+      'A development by Aceroyal Estate Homes, in partnership with Lagos State Development & Property Corporation (LSDPC). Eko Paragon Residence is a premium hotel-residence development designed to deliver comfort, elegance, and modern convenience in one exceptional environment.\n\nLocated in the serene and secure Abijo G.R.A., Lagos, the estate offers a peaceful lifestyle with seamless access to the Lekki-Epe Expressway and major commercial hubs.\n\nThe development features thoughtfully designed one-bedroom apartments, two-bedroom apartments, and three-bedroom residential terraces with BQ, each crafted with contemporary architecture, spacious interiors, quality finishes, and dedicated parking. Eko Paragon Residence offers a hotel-style living experience for homeowners, professionals, and investors seeking a refined lifestyle in Lagos.\n\nPricing: One-Bedroom Apartment ₦85M, Two-Bedroom Apartment ₦95M, Three-Bedroom Residential Terrace + BQ ₦150M.',
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo G.R.A., Lagos',
-    // Real pricing flyer as the cover — no clean non-flyer photography yet,
-    // so no generic stock stand-ins; gallery stays empty (the flyers/video
-    // cover the Media section instead).
-    coverImage: '/images/estates/eko-paragon/eko-flyer-pricing.jpg',
+    // The pricing flyer prints deposits that are not on the approved price
+    // list — branded fallback until approved imagery arrives.
+    coverImage: null,
     videoUrl: '/videos/eko-paragon-progress.mp4',
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/EKO-PARAGON-MAIN-BROCHURE-1.pdf',
+    brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Fitness Center', 'Swimming Pool', 'Landscaped Green Areas', 'Recreational Facilities', '24/7 Security', 'Uninterrupted Power Supply', 'Bio-Digester Waste System'],
@@ -156,16 +155,16 @@ export const fallbackEstates: Estate[] = [
     name: 'Prime Boulevard Annex',
     slug: 'prime-annex',
     description:
-      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja — a bubbling area close to Prime Boulevard 1, the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital, on a motorable, tarred road leading to the airport and specialist hospital.\n\nAvailable for residential (300sqm & 500sqm) and commercial (1000sqm) purposes, titled C of O.\n\nNow selling: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit).',
+      'Prime Boulevard Annex sits behind Prime Boulevard 1 in Gwagwalada, Abuja — a bubbling area close to Prime Boulevard 1, the University of Abuja, Nnamdi Azikiwe International Airport, and the University of Abuja Teaching Hospital, on a motorable, tarred road leading to the airport and specialist hospital. Titled C of O.\n\nPricing: 300sqm at ₦3M (₦1M initial deposit), 500sqm at ₦5M (₦1.5M initial deposit).',
     state: 'Abuja',
     city: 'Gwagwalada',
-    address: 'Gwagwalada, Abuja (tarred road behind Prime Boulevard 1)',
+    address: 'Gwagwalada, Abuja, FCT',
     // Real pricing flyer as the cover — no clean non-flyer photography yet,
     // so no generic stock stand-ins; gallery stays empty (the flyers/video
     // cover the Media section instead).
     coverImage: '/images/estates/prime-annex/prime-flyer-pricing.jpg',
     videoUrl: '/videos/prime-annex.mp4',
-    brochureUrl: 'https://aceroyalestates.com/wp-content/uploads/2026/01/PRIME-BOULEVARD-ANNEX-CONSENT-FORM-AND-FAQS.pdf',
+    brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
     amenities: ['Perimeter Fencing', 'Maximum Security', 'Stable Electricity', 'Maximum Water Supply', 'Good Drainage', 'Good Road Network', 'Estate Gate House', 'Shopping Complex'],
@@ -177,10 +176,10 @@ export const fallbackEstates: Estate[] = [
     name: 'Villa Nova Bungalows',
     slug: 'villa-nova-bungalows',
     description:
-      'Villa Nova Bungalows — "The Villa Life, Reimagined." Modern 3-bedroom bungalows in Idera Scheme, Eleko, Lagos, with clean water and power supply, a swimming pool, tennis court, and green spaces throughout. Titled C of O.\n\nNow selling: 3-Bedroom Bungalow at ₦94M, 3-Bedroom Bungalow + Private Pool at ₦120M.',
+      'Villa Nova Bungalows — "The Villa Life, Reimagined." Modern bungalows and a waterfront villa in Abijo GRA, Lagos, with clean water and power supply, a swimming pool, tennis court, and green spaces throughout. Titled C of O.\n\nBungalows: 2-Bedroom Semi-Detached Bungalow at ₦77.5M, all-inclusive (₦5M initial deposit); 3-Bedroom Fully Detached Bungalow + BQ at ₦105.5M (without pool) or ₦131.5M (with pool).\n\nVilla: 5-Bedroom Waterfront Villa at ₦190.5M (₦10M initial deposit).',
     state: 'Lagos',
-    city: 'Eleko',
-    address: 'Idera Scheme, Eleko, Lagos',
+    city: 'Abijo',
+    address: 'Abijo GRA, Lagos',
     coverImage: '/images/estates/villa-nova/villa-nova-gate.jpg',
     brochureUrl: null,
     gallery: [
@@ -263,14 +262,14 @@ export const fallbackProperties: Property[] = [
     id: 'fallback-property-land',
     title: 'Prime Boulevard Annex — 300sqm / 500sqm Plots',
     slug: 'prime-boulevard-annex-plots',
-    description: 'Residential and commercial plots at Prime Boulevard Annex, Gwagwalada, Abuja — 300sqm, 500sqm, or 1000sqm (commercial), titled C of O.',
+    description: 'Residential plots at Prime Boulevard Annex, Gwagwalada, Abuja, FCT — 300sqm or 500sqm, titled C of O.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 3000000,
     currency: 'NGN',
     state: 'Abuja',
     city: 'Gwagwalada',
-    address: 'Gwagwalada, Abuja (tarred road behind Prime Boulevard 1)',
+    address: 'Gwagwalada, Abuja, FCT',
     bedrooms: null,
     bathrooms: null,
     size: '300sqm',
@@ -286,75 +285,37 @@ export const fallbackProperties: Property[] = [
     variants: [
       {
         id: 'fallback-land-variant-300',
-        label: '300sqm — Outright',
+        label: '300sqm Plot',
         price: 3000000,
+        initialDeposit: 1000000,
         currency: 'NGN',
         size: '300sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-prime-payment-300-v', type: 'FLYER', title: 'Prime Boulevard Annex — 300sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-300sqm.jpg' },
+          { id: 'fallback-prime-pricing-300-v', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
         ],
-      },
-      {
-        id: 'fallback-land-variant-300-installment',
-        label: '300sqm — 6-Month Plan',
-        price: 3300000,
-        currency: 'NGN',
-        size: '300sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 15,
-        installmentMonths: 6,
-        installmentAmount: 466000,
-        active: true,
       },
       {
         id: 'fallback-land-variant-500',
-        label: '500sqm — Outright',
+        label: '500sqm Plot',
         price: 5000000,
+        initialDeposit: 1500000,
         currency: 'NGN',
         size: '500sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-prime-payment-500-v', type: 'FLYER', title: 'Prime Boulevard Annex — 500sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-500sqm.jpg' },
+          { id: 'fallback-prime-pricing-500-v', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
         ],
       },
-      {
-        id: 'fallback-land-variant-500-installment',
-        label: '500sqm — 6-Month Plan',
-        price: 5500000,
-        currency: 'NGN',
-        size: '500sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 18,
-        installmentMonths: 6,
-        installmentAmount: 750000,
-        active: true,
-      },
     ],
-    faqs: [
-      {
-        id: 'fallback-land-faq-1',
-        question: 'Are payment plans available?',
-        answer: 'Yes. Payment-plan availability depends on the estate phase and allocation size.',
-      },
-    ],
-    resources: [
-      {
-        id: 'fallback-land-resource-1',
-        title: 'Estate Brochure',
-        fileType: 'PDF',
-        url: 'https://aceroyalestates.com/wp-content/uploads/2026/01/PRIME-BOULEVARD-ANNEX-CONSENT-FORM-AND-FAQS.pdf',
-      },
-    ],
+    faqs: [],
+    resources: [],
     media: [
-      { id: 'fallback-prime-payment-300', type: 'FLYER', title: 'Prime Boulevard Annex — 300sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-300sqm.jpg' },
-      { id: 'fallback-prime-payment-500', type: 'FLYER', title: 'Prime Boulevard Annex — 500sqm Payment Plan', url: '/images/estates/prime-annex/prime-payment-500sqm.jpg' },
+      { id: 'fallback-prime-pricing', type: 'FLYER', title: 'Prime Boulevard Annex — Pricing', url: '/images/estates/prime-annex/prime-flyer-pricing.jpg' },
     ],
     estateId: 'fallback-estate-prime-annex',
     estate: fallbackEstates.find((e) => e.slug === 'prime-annex'),
@@ -363,69 +324,52 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-alpha-garden-plot',
-    title: 'Alpha Garden City — 500sqm / 1 Acre Plots',
+    title: 'Alpha Garden City Resort — 500sqm / 1 Acre Plots',
     slug: 'alpha-garden-city-500sqm-plot',
-    description: 'Prelaunch plots at Alpha Garden City, a low-density, orchard-style residential community in Ibadan — 500sqm or 1 acre (+1 plot free).',
+    description: 'Plots at Alpha Garden City Resort, a low-density, orchard-style residential community at Olomi Olunde, Academy Road, Ibadan — 500sqm or 1 acre.',
     type: 'LAND',
     status: 'AVAILABLE',
-    price: 3500000,
+    price: 6000000,
     currency: 'NGN',
     state: 'Oyo',
     city: 'Ibadan',
-    address: 'Ibadan, Oyo State',
+    address: 'Olomi Olunde, Academy Road, Ibadan, Oyo State',
     bedrooms: null,
     bathrooms: null,
     size: '500sqm',
     amenities: ['Golf Course', 'Wellness Spa', 'Yoga Hall', 'Healthy Restaurants', 'Gym Studio', 'Swimming Pool', 'Orchard Garden'],
     featured: false,
-    images: [
-      {
-        id: 'fallback-property-alpha-garden-plot-image',
-        url: estateImages.alphaGardenCity,
-        altText: 'Alpha Garden City plot',
-      },
-    ],
+    // Existing flyers print superseded prelaunch prices — none shown until
+    // approved imagery arrives.
+    images: [],
     variants: [
       {
         id: 'fallback-alpha-garden-variant-500sqm',
         label: '500sqm Plot',
-        price: 3500000,
+        price: 6000000,
+        initialDeposit: 500000,
         currency: 'NGN',
         size: '500sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-alpha-garden-flyer-500-v', type: 'FLYER', title: 'Alpha Garden City — 500sqm Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-500sqm.jpg' },
-        ],
+        media: [],
       },
       {
         id: 'fallback-alpha-garden-variant-1acre',
-        label: '1 Acre (+1 Plot Free)',
-        price: 12500000,
+        label: '1 Acre',
+        price: 18000000,
+        initialDeposit: 1500000,
         currency: 'NGN',
         size: '1 Acre',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-alpha-garden-flyer-1acre-v', type: 'FLYER', title: 'Alpha Garden City — 1 Acre Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-1acre.jpg' },
-        ],
+        media: [],
       },
     ],
     faqs: [],
-    resources: [
-      {
-        id: 'fallback-alpha-garden-resource-1',
-        title: 'Estate Brochure',
-        fileType: 'PDF',
-        url: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
-      },
-    ],
-    media: [
-      { id: 'fallback-alpha-garden-flyer-1', type: 'FLYER', title: 'Alpha Garden City — 500sqm Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-500sqm.jpg' },
-      { id: 'fallback-alpha-garden-flyer-2', type: 'FLYER', title: 'Alpha Garden City — 1 Acre Pricing', url: '/images/estates/alpha-garden-city/alpha-flyer-1acre.jpg' },
-      { id: 'fallback-alpha-garden-flyer-3', type: 'FLYER', title: 'Alpha Garden City — Pricing Overview', url: '/images/estates/alpha-garden-city/alpha-flyer-pricing-combined.jpg' },
-    ],
+    resources: [],
+    media: [],
     estateId: 'fallback-estate-alpha-garden-city',
     estate: fallbackEstates.find((e) => e.slug === 'alpha-garden-city'),
     createdAt: now,
@@ -433,9 +377,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-heritage-plot',
-    title: 'Heritage Estate — 500sqm / 1 Acre Plots',
+    title: 'Heritage Estates — 500sqm / 1 Acre Plots',
     slug: 'heritage-estate-500sqm-plot',
-    description: 'Serviced plots at Heritage Estate (Obodo Oma), Ekwegbe Nike, Enugu State — 500sqm or 1 acre, approved layout, registered survey.',
+    description: 'Serviced plots at Heritage Estates (Obodo Oma), Ekwegbe Nike, Enugu State — 500sqm or 1 acre, approved layout, registered survey.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 6000000,
@@ -452,7 +396,7 @@ export const fallbackProperties: Property[] = [
       {
         id: 'fallback-property-heritage-plot-image',
         url: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
-        altText: 'Heritage Estate plot',
+        altText: 'Heritage Estates plot',
       },
     ],
     variants: [
@@ -460,42 +404,35 @@ export const fallbackProperties: Property[] = [
         id: 'fallback-heritage-variant-500sqm',
         label: '500sqm Plot',
         price: 6000000,
+        initialDeposit: 1000000,
         currency: 'NGN',
         size: '500sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-heritage-payment-500sqm-v', type: 'FLYER', title: 'Heritage Estate — 500sqm Payment Plan', url: '/images/estates/heritage/heritage-payment-500sqm.jpg' },
+          { id: 'fallback-heritage-flyer-500sqm-v', type: 'FLYER', title: 'Heritage Estates — 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
         ],
       },
       {
         id: 'fallback-heritage-variant-1acre',
         label: '1 Acre',
         price: 30000000,
+        initialDeposit: 5000000,
         currency: 'NGN',
         size: '1 Acre',
         paymentType: 'OUTRIGHT',
         active: true,
         media: [
-          { id: 'fallback-heritage-flyer-1acre-v', type: 'FLYER', title: 'Heritage Estate — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
-          { id: 'fallback-heritage-payment-1acre-v', type: 'FLYER', title: 'Heritage Estate — 1 Acre Payment Plan', url: '/images/estates/heritage/heritage-payment-1acre.jpg' },
+          { id: 'fallback-heritage-flyer-1acre-v', type: 'FLYER', title: 'Heritage Estates — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
         ],
       },
     ],
     faqs: [],
-    resources: [
-      {
-        id: 'fallback-heritage-resource-1',
-        title: 'Estate Brochure',
-        fileType: 'PDF',
-        url: 'https://aceroyalestates.com/wp-content/uploads/2026/01/The-Heritage-Estate-Brochure.pdf',
-      },
-    ],
+    resources: [],
     media: [
-      { id: 'fallback-heritage-flyer-1acre', type: 'FLYER', title: 'Heritage Estate — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
-      { id: 'fallback-heritage-payment-500sqm', type: 'FLYER', title: 'Heritage Estate — 500sqm Payment Plan', url: '/images/estates/heritage/heritage-payment-500sqm.jpg' },
-      { id: 'fallback-heritage-payment-1acre', type: 'FLYER', title: 'Heritage Estate — 1 Acre Payment Plan', url: '/images/estates/heritage/heritage-payment-1acre.jpg' },
+      { id: 'fallback-heritage-flyer-500sqm', type: 'FLYER', title: 'Heritage Estates — 500sqm Pricing', url: '/images/estates/heritage/heritage-flyer-500sqm.jpg' },
+      { id: 'fallback-heritage-flyer-1acre', type: 'FLYER', title: 'Heritage Estates — 1 Acre Pricing', url: '/images/estates/heritage/heritage-flyer-1acre.jpg' },
     ],
     estateId: 'fallback-estate-heritage',
     estate: fallbackEstates.find((e) => e.slug === 'heritage-estate'),
@@ -503,18 +440,22 @@ export const fallbackProperties: Property[] = [
     updatedAt: now,
   },
   {
+    // Villa Nova is houses, not apartments: the bungalows and the waterfront
+    // villa are separate listings so each shows its own price and deposit.
+    // The old flyers print superseded prices and the old Eleko location, so
+    // none are attached.
     id: 'fallback-property-villa-nova-bungalow',
-    title: 'Villa Nova — 3-Bedroom Bungalow',
-    slug: 'villa-nova-3-bedroom-bungalow',
-    description: 'A modern 3-bedroom bungalow at Villa Nova, Idera Scheme, Eleko, Lagos — clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
-    type: 'APARTMENT',
+    title: 'Villa Nova — Bungalows',
+    slug: 'villa-nova-bungalows',
+    description: 'Modern bungalows at Villa Nova, Abijo GRA, Lagos — a 2-bedroom semi-detached bungalow or a 3-bedroom fully detached bungalow with BQ, with or without a pool. Clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
+    type: 'HOUSE',
     status: 'AVAILABLE',
-    price: 94000000,
+    price: 77500000,
     currency: 'NGN',
     state: 'Lagos',
-    city: 'Eleko',
-    address: 'Idera Scheme, Eleko, Lagos',
-    bedrooms: 3,
+    city: 'Abijo',
+    address: 'Abijo GRA, Lagos',
+    bedrooms: 2,
     bathrooms: null,
     size: null,
     amenities: ['Clean Water Supply', 'Power Supply', 'Swimming Pool', 'Tennis Court', 'Green Spaces'],
@@ -525,32 +466,82 @@ export const fallbackProperties: Property[] = [
     ],
     variants: [
       {
+        id: 'fallback-villa-nova-variant-2bed-semi',
+        label: '2-Bedroom Semi-Detached Bungalow',
+        price: 77500000,
+        initialDeposit: 5000000,
+        priceNote: 'All-inclusive',
+        currency: 'NGN',
+        bedrooms: 2,
+        paymentType: 'OUTRIGHT',
+        active: true,
+        media: [],
+      },
+      {
         id: 'fallback-villa-nova-variant-standard',
-        label: '3-Bedroom Bungalow',
-        price: 94000000,
+        label: '3-Bedroom Fully Detached Bungalow + BQ (Without Pool)',
+        price: 105500000,
         currency: 'NGN',
         bedrooms: 3,
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [],
       },
       {
         id: 'fallback-villa-nova-variant-pool',
-        label: '3-Bedroom Bungalow + Private Pool',
-        price: 120000000,
+        label: '3-Bedroom Fully Detached Bungalow + BQ (With Pool)',
+        price: 131500000,
         currency: 'NGN',
         bedrooms: 3,
         paymentType: 'OUTRIGHT',
         active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-villa-nova-flyer-1', type: 'FLYER', title: 'Villa Nova Flyer — Pricing', url: '/images/estates/villa-nova/villa-nova-flyer-1.jpg' },
-      { id: 'fallback-villa-nova-flyer-2', type: 'FLYER', title: 'Villa Nova Flyer — 3-Bedroom Overview', url: '/images/estates/villa-nova/villa-nova-flyer-2.jpg' },
-      { id: 'fallback-villa-nova-flyer-3', type: 'FLYER', title: 'Villa Nova Flyer — Amenities', url: '/images/estates/villa-nova/villa-nova-flyer-3.jpg' },
-      { id: 'fallback-villa-nova-flyer-4', type: 'FLYER', title: 'Villa Nova Flyer — Full Details', url: '/images/estates/villa-nova/villa-nova-flyer-4.jpg' },
+    media: [],
+    estateId: 'fallback-estate-villa-nova',
+    estate: fallbackEstates.find((e) => e.slug === 'villa-nova-bungalows'),
+    createdAt: now,
+    updatedAt: now,
+  },
+  {
+    id: 'fallback-property-villa-nova-waterfront-villa',
+    title: 'Villa Nova — 5-Bedroom Waterfront Villa',
+    slug: 'villa-nova-five-bedroom-waterfront-villa',
+    description: 'A 5-bedroom waterfront villa at Villa Nova, Abijo GRA, Lagos — clean water and power supply, swimming pool, tennis court, and green spaces. Titled C of O.',
+    type: 'HOUSE',
+    status: 'AVAILABLE',
+    price: 190500000,
+    currency: 'NGN',
+    state: 'Lagos',
+    city: 'Abijo',
+    address: 'Abijo GRA, Lagos',
+    bedrooms: 5,
+    bathrooms: null,
+    size: null,
+    amenities: ['Waterfront', 'Clean Water Supply', 'Power Supply', 'Swimming Pool', 'Tennis Court', 'Green Spaces'],
+    featured: false,
+    // No villa imagery on file yet (the existing photos are of the
+    // bungalows) — branded fallback until approved renders arrive.
+    images: [],
+    variants: [
+      {
+        id: 'fallback-villa-nova-variant-waterfront-villa',
+        label: '5-Bedroom Waterfront Villa',
+        price: 190500000,
+        initialDeposit: 10000000,
+        currency: 'NGN',
+        bedrooms: 5,
+        paymentType: 'OUTRIGHT',
+        active: true,
+        media: [],
+      },
     ],
+    faqs: [],
+    resources: [],
+    media: [],
     estateId: 'fallback-estate-villa-nova',
     estate: fallbackEstates.find((e) => e.slug === 'villa-nova-bungalows'),
     createdAt: now,
@@ -560,7 +551,7 @@ export const fallbackProperties: Property[] = [
     id: 'fallback-property-downtown-phase2-plot',
     title: 'Downtown Lagos Phase 2 — 500sqm / 1,000sqm Plots',
     slug: 'downtown-lagos-phase-2-plots',
-    description: 'Commercial-district plots at Downtown Lagos Commercial City Phase 2, Labour City, Ibeju-Lekki — 500sqm or 1,000sqm, outright or a 6-month installment plan.',
+    description: 'Commercial-district plots at Downtown Lagos Commercial City Phase 2, Labour City, Ibeju-Lekki — 500sqm or 1,000sqm.',
     type: 'LAND',
     status: 'AVAILABLE',
     price: 60000000,
@@ -573,84 +564,49 @@ export const fallbackProperties: Property[] = [
     size: '500sqm',
     amenities: ['Office Spaces', 'Health Care Facilities', 'Shopping Mall', 'Financial Districts', 'Exclusive Membership', 'Helipad', 'Restaurants'],
     featured: true,
-    images: [
-      { id: 'fallback-downtown-phase2-image-1', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg', altText: 'Downtown Lagos Phase 2 — 500sqm pricing' },
-      { id: 'fallback-downtown-phase2-image-2', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-1000sqm.jpg', altText: 'Downtown Lagos Phase 2 — 1,000sqm pricing' },
-      { id: 'fallback-downtown-phase2-image-3', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg', altText: 'Downtown Lagos Phase 2 — payment plan' },
-    ],
+    // The pricing flyers print deposits and an installment plan that are not
+    // on the approved price list — none shown until approved imagery arrives.
+    images: [],
     variants: [
       {
         id: 'fallback-downtown-phase2-variant-500-outright',
-        label: '500sqm — Outright',
+        label: '500sqm Plot',
         price: 60000000,
         currency: 'NGN',
         size: '500sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-downtown-phase2-flyer-500-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 500sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg' },
-          { id: 'fallback-downtown-phase2-flyer-payment-500-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — Payment Plan', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg' },
-        ],
-      },
-      {
-        id: 'fallback-downtown-phase2-variant-500-installment',
-        label: '500sqm — 6-Month Plan',
-        price: 66000000,
-        currency: 'NGN',
-        size: '500sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 8,
-        installmentMonths: 6,
-        installmentAmount: 10166667,
-        active: true,
+        media: [],
       },
       {
         id: 'fallback-downtown-phase2-variant-1000-outright',
-        label: '1,000sqm — Outright',
+        label: '1,000sqm Plot',
         price: 100000000,
         currency: 'NGN',
         size: '1000sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-downtown-phase2-flyer-1000-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 1,000sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-1000sqm.jpg' },
-          { id: 'fallback-downtown-phase2-flyer-payment-1000-v', type: 'FLYER', title: 'Downtown Lagos Phase 2 — Payment Plan', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg' },
-        ],
-      },
-      {
-        id: 'fallback-downtown-phase2-variant-1000-installment',
-        label: '1,000sqm — 6-Month Plan',
-        price: 110000000,
-        currency: 'NGN',
-        size: '1000sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 9,
-        installmentMonths: 6,
-        installmentAmount: 16666667,
-        active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-downtown-phase2-flyer-1', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 500sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-500sqm.jpg' },
-      { id: 'fallback-downtown-phase2-flyer-2', type: 'FLYER', title: 'Downtown Lagos Phase 2 — 1,000sqm Pricing', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-1000sqm.jpg' },
-      { id: 'fallback-downtown-phase2-flyer-3', type: 'FLYER', title: 'Downtown Lagos Phase 2 — Payment Plan', url: '/images/estates/downtown-lagos-phase-2/dt-flyer-payment-plan.jpg' },
-    ],
+    media: [],
     estateId: 'fallback-estate-downtown-lagos-phase-2',
     estate: fallbackEstates.find((e) => e.slug === 'downtown-lagos-phase-2'),
     createdAt: now,
     updatedAt: now,
   },
+  // Eko Paragon unit names follow the client's approved price list. The
+  // pricing and payment-plan flyers print deposits and plans that are not on
+  // it, so none are attached.
   {
     id: 'fallback-property-eko-paragon-1bed',
-    title: 'Eko Paragon — 1 Bedroom Business Suite',
-    slug: 'eko-paragon-1-bedroom-business-suite',
-    description: 'A 1-bedroom business suite at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    title: 'Eko Paragon — One-Bedroom Apartment',
+    slug: 'eko-paragon-one-bedroom-apartment',
+    description: 'A one-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 85000000,
@@ -663,36 +619,22 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: false,
-    images: [{ id: 'fallback-eko-1bed-image', url: '/images/estates/eko-paragon/eko-flyer-pricing.jpg', altText: 'Eko Paragon 1 Bedroom Business Suite' }],
+    images: [],
     variants: [
       {
         id: 'fallback-eko-1bed-variant-outright',
-        label: '1 Bedroom — Outright',
+        label: 'One-Bedroom Apartment',
         price: 85000000,
         currency: 'NGN',
         bedrooms: 1,
         paymentType: 'OUTRIGHT',
         active: true,
-      },
-      {
-        id: 'fallback-eko-1bed-variant-installment',
-        label: '1 Bedroom — 12-Month Plan',
-        price: 93500000,
-        currency: 'NGN',
-        bedrooms: 1,
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 5,
-        installmentMonths: 12,
-        installmentAmount: 7375000,
-        active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-eko-pricing-flyer', type: 'FLYER', title: 'Eko Paragon — Pricing Overview', url: '/images/estates/eko-paragon/eko-flyer-pricing.jpg' },
-      { id: 'fallback-eko-1bed-flyer', type: 'FLYER', title: 'Eko Paragon — 1 Bedroom Payment Plan', url: '/images/estates/eko-paragon/eko-payment-plan-1bed.jpg' },
-    ],
+    media: [],
     estateId: 'fallback-estate-eko-paragon',
     estate: fallbackEstates.find((e) => e.slug === 'eko-paragon-residence'),
     createdAt: now,
@@ -700,9 +642,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-eko-paragon-2bed',
-    title: 'Eko Paragon — 2 Bedroom Signature Suite',
-    slug: 'eko-paragon-2-bedroom-signature-suite',
-    description: 'A 2-bedroom signature suite at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    title: 'Eko Paragon — Two-Bedroom Apartment',
+    slug: 'eko-paragon-two-bedroom-apartment',
+    description: 'A two-bedroom apartment at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 95000000,
@@ -715,35 +657,22 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: true,
-    images: [{ id: 'fallback-eko-2bed-image', url: '/images/estates/eko-paragon/eko-flyer-pricing.jpg', altText: 'Eko Paragon 2 Bedroom Signature Suite' }],
+    images: [],
     variants: [
       {
         id: 'fallback-eko-2bed-variant-outright',
-        label: '2 Bedroom — Outright',
+        label: 'Two-Bedroom Apartment',
         price: 95000000,
         currency: 'NGN',
         bedrooms: 2,
         paymentType: 'OUTRIGHT',
         active: true,
-      },
-      {
-        id: 'fallback-eko-2bed-variant-installment',
-        label: '2 Bedroom — 12-Month Plan',
-        price: 104500000,
-        currency: 'NGN',
-        bedrooms: 2,
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 10,
-        installmentMonths: 12,
-        installmentAmount: 7875000,
-        active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-eko-2bed-flyer', type: 'FLYER', title: 'Eko Paragon — 2 Bedroom Payment Plan', url: '/images/estates/eko-paragon/eko-payment-plan-2bed.jpg' },
-    ],
+    media: [],
     estateId: 'fallback-estate-eko-paragon',
     estate: fallbackEstates.find((e) => e.slug === 'eko-paragon-residence'),
     createdAt: now,
@@ -751,9 +680,9 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-eko-paragon-3bed',
-    title: 'Eko Paragon — 3 Bedroom Presidential Terrace Duplex + BQ',
-    slug: 'eko-paragon-3-bedroom-presidential-terrace-duplex',
-    description: 'A 3-bedroom presidential terrace duplex with BQ at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
+    title: 'Eko Paragon — Three-Bedroom Residential Terrace + BQ',
+    slug: 'eko-paragon-three-bedroom-residential-terrace',
+    description: 'A three-bedroom residential terrace with BQ at Eko Paragon Residence, Abijo G.R.A., Lagos — contemporary architecture, quality finishes, dedicated parking, hotel-style amenities.',
     type: 'APARTMENT',
     status: 'AVAILABLE',
     price: 150000000,
@@ -766,35 +695,22 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: false,
-    images: [{ id: 'fallback-eko-3bed-image', url: '/images/estates/eko-paragon/eko-flyer-pricing.jpg', altText: 'Eko Paragon 3 Bedroom Presidential Terrace Duplex' }],
+    images: [],
     variants: [
       {
         id: 'fallback-eko-3bed-variant-outright',
-        label: '3 Bedroom + BQ — Outright',
+        label: 'Three-Bedroom Residential Terrace + BQ',
         price: 150000000,
         currency: 'NGN',
         bedrooms: 3,
         paymentType: 'OUTRIGHT',
         active: true,
-      },
-      {
-        id: 'fallback-eko-3bed-variant-installment',
-        label: '3 Bedroom + BQ — 12-Month Plan',
-        price: 165000000,
-        currency: 'NGN',
-        bedrooms: 3,
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 12,
-        installmentMonths: 12,
-        installmentAmount: 12083000,
-        active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-eko-3bed-flyer', type: 'FLYER', title: 'Eko Paragon — 3 Bedroom Payment Plan', url: '/images/estates/eko-paragon/eko-payment-plan-3bed.jpg' },
-    ],
+    media: [],
     estateId: 'fallback-estate-eko-paragon',
     estate: fallbackEstates.find((e) => e.slug === 'eko-paragon-residence'),
     createdAt: now,
@@ -802,97 +718,53 @@ export const fallbackProperties: Property[] = [
   },
   {
     id: 'fallback-property-edo-mega-plot',
-    title: 'Edo Mega City — 450sqm / 900sqm / 1 Acre Plots',
+    title: 'Edo Mega City — 450sqm / 900sqm Plots',
     slug: 'edo-mega-city-plots',
-    description: 'Prelaunch plots at Edo Mega City, Igue Uwangue Community, Off Aduwawa By-Pass, Benin City — 450sqm, 900sqm (duplex-ready), or 1 acre (country home mansion plot).',
+    description: 'Plots at Edo Mega City, Aduwawa Bypass, Benin City, Edo State — 450sqm or 900sqm (duplex-ready). Titled C of O / Government Allocation.',
     type: 'LAND',
     status: 'AVAILABLE',
-    price: 2500000,
+    price: 3000000,
     currency: 'NGN',
     state: 'Edo',
     city: 'Benin City',
-    address: 'Igue Uwangue Community, Off Aduwawa By-Pass, Benin City, Edo State',
+    address: 'Aduwawa Bypass, Benin City, Edo State',
     bedrooms: null,
     bathrooms: null,
-    size: '900sqm',
+    size: '450sqm',
     amenities: ['Army-Guarded Security', 'C of O Title'],
     featured: true,
-    images: [{ id: 'fallback-edo-mega-image', url: '/images/estates/edo-mega-city/edo-flyer-prelaunch.jpg', altText: 'Edo Mega City' }],
+    // Existing flyers print superseded prelaunch prices — none shown until
+    // approved imagery arrives.
+    images: [],
     variants: [
       {
         id: 'fallback-edo-mega-variant-450',
-        label: '450sqm (50ft x 100ft)',
-        price: 1500000,
+        label: '450sqm (50ft × 100ft)',
+        price: 3000000,
+        initialDeposit: 500000,
         currency: 'NGN',
         size: '450sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-edo-mega-flyer-450-v', type: 'FLYER', title: 'Edo Mega City — 450sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-450sqm.jpg' },
-        ],
+        media: [],
       },
       {
         id: 'fallback-edo-mega-variant-900-outright',
-        label: '900sqm (100ft x 100ft) — Outright',
-        price: 2500000,
+        label: '900sqm (100ft × 100ft)',
+        price: 5000000,
+        initialDeposit: 1500000,
         currency: 'NGN',
         size: '900sqm',
         sizeUnit: 'SQM',
         paymentType: 'OUTRIGHT',
         active: true,
-        media: [
-          { id: 'fallback-edo-mega-flyer-900-v', type: 'FLYER', title: 'Edo Mega City — 900sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-900sqm.jpg' },
-          { id: 'fallback-edo-mega-flyer-payment-900-v', type: 'FLYER', title: 'Edo Mega City — Payment Plan', url: '/images/estates/edo-mega-city/edo-flyer-payment-plan.jpg' },
-        ],
-      },
-      {
-        id: 'fallback-edo-mega-variant-900-installment',
-        label: '900sqm — 6-Month Plan',
-        price: 2750000,
-        currency: 'NGN',
-        size: '900sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 18,
-        installmentMonths: 6,
-        installmentAmount: 375000,
-        active: true,
-      },
-      {
-        id: 'fallback-edo-mega-variant-1acre-outright',
-        label: '1 Acre (3,600sqm) — Outright',
-        price: 7500000,
-        currency: 'NGN',
-        size: '1 Acre',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [
-          { id: 'fallback-edo-mega-flyer-1acre-v', type: 'FLYER', title: 'Edo Mega City — 1 Acre Pricing', url: '/images/estates/edo-mega-city/edo-flyer-1acre.jpg' },
-          { id: 'fallback-edo-mega-flyer-payment-1acre-v', type: 'FLYER', title: 'Edo Mega City — Payment Plan', url: '/images/estates/edo-mega-city/edo-flyer-payment-plan.jpg' },
-        ],
-      },
-      {
-        id: 'fallback-edo-mega-variant-1acre-installment',
-        label: '1 Acre — 6-Month Plan',
-        price: 8250000,
-        currency: 'NGN',
-        size: '1 Acre',
-        paymentType: 'INSTALLMENT',
-        upfrontPercent: 18,
-        installmentMonths: 6,
-        installmentAmount: 1125000,
-        active: true,
+        media: [],
       },
     ],
     faqs: [],
     resources: [],
-    media: [
-      { id: 'fallback-edo-mega-flyer-450', type: 'FLYER', title: 'Edo Mega City — 450sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-450sqm.jpg' },
-      { id: 'fallback-edo-mega-flyer-900', type: 'FLYER', title: 'Edo Mega City — 900sqm Pricing', url: '/images/estates/edo-mega-city/edo-flyer-900sqm.jpg' },
-      { id: 'fallback-edo-mega-flyer-1acre', type: 'FLYER', title: 'Edo Mega City — 1 Acre Pricing', url: '/images/estates/edo-mega-city/edo-flyer-1acre.jpg' },
-      { id: 'fallback-edo-mega-flyer-payment', type: 'FLYER', title: 'Edo Mega City — Payment Plan', url: '/images/estates/edo-mega-city/edo-flyer-payment-plan.jpg' },
-    ],
+    media: [],
     estateId: 'fallback-estate-edo-mega-city',
     estate: fallbackEstates.find((e) => e.slug === 'edo-mega-city'),
     createdAt: now,
@@ -1080,7 +952,7 @@ fallbackEstates.forEach((estate) => {
     {
       id: `${estate.id}-faq-1`,
       question: 'Are documents available for review?',
-      answer: 'Yes. The sales team can provide brochure, title, and payment-plan details during enquiry or inspection.',
+      answer: 'Yes. The sales team can provide title documents and payment details during enquiry or inspection.',
       sortOrder: 0,
     },
   ];
@@ -1364,32 +1236,31 @@ export const fallbackBlogPosts = [
   },
 ];
 
-// Real names/roles confirmed against the live site's own "Meet The Team"
-// section (2026-09-01). Note the live site's team grid uses "Endurance
-// Cletus Agonor" with no "Dr." title — different from how a 2023 blog post
-// headline referred to him — the formal team listing is treated as the
-// more authoritative source. TODO(content): real headshots still needed
-// for everyone except the CEO; using the logo as a placeholder for now.
-// Deliberately not reproducing "Abidemi Adedoyin" appearing twice, which
-// the live site does — looks like a duplication bug there, not something
-// to carry over.
-// photoUrl is only set where we have a real photo (currently just the CEO) —
-// everyone else renders as an initials avatar on the About page rather than
-// the company logo standing in for a face.
+// Leadership list, names and titles per Aceroyal's approved list (Oct 2026
+// "Updates for the website" request), in the order given. Headshots are
+// square crops from the Oct 2026 studio shoot, framed to a matching face
+// scale so the grid reads consistently.
 export const fallbackTeamMembers: TeamMember[] = [
   {
     id: 'fallback-team-ceo',
     name: 'Dr. Endurance Cletus Agonor',
-    role: 'Founder & Chief Executive Officer',
-    bio: 'President of the Africa Under 40 CEO Forum and a member of REDAN (Real Estate Developers Association of Nigeria). Leads Aceroyal Estate Homes’ strategy, partnerships, and delivery.',
-    photoUrl: '/images/ceo.jpg',
+    role: 'GCEO / Chairman, Aceroyal Group',
+    bio: 'President of the Africa Under 40 CEO Forum and a member of REDAN (Real Estate Developers Association of Nigeria). Leads Aceroyal Group’s strategy, partnerships, and delivery.',
+    photoUrl: '/images/team/endurance-agonor.jpg',
     active: true,
   },
   {
     id: 'fallback-team-coo',
     name: 'Dr. Racheal Okun Agonor',
-    role: 'Chief Operating Officer & Co-Founder',
+    role: 'Chief Operating Officer / Director',
     photoUrl: '/images/team/racheal-agonor.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-head-legal',
+    name: 'Andrew Arowolo',
+    role: 'Head of Legal',
+    photoUrl: '/images/team/andrew-arowolo.jpg',
     active: true,
   },
   {
@@ -1401,30 +1272,65 @@ export const fallbackTeamMembers: TeamMember[] = [
   },
   {
     id: 'fallback-team-hr-manager',
-    name: 'Umeh Jennifer Oluchi',
+    name: 'Umeh Jennifer',
     role: 'HR Manager',
-    photoUrl: '/images/team/jennifer-oluchi.jpg',
-    active: true,
-  },
-  {
-    id: 'fallback-team-head-legal',
-    name: 'Barr. Arowolo Akinwale',
-    role: 'Head of Legal',
-    photoUrl: '/images/team/akinwale-arowolo.jpg',
-    active: true,
-  },
-  {
-    id: 'fallback-team-project-manager',
-    name: 'Abidemi Adedoyin',
-    role: 'Project Manager',
-    photoUrl: '/images/team/abidemi-adedoyin.jpg',
+    photoUrl: '/images/team/jennifer-umeh.jpg',
     active: true,
   },
   {
     id: 'fallback-team-client-service',
-    name: 'Mary A. Adekahunsi',
-    role: 'Head, Client Service/Customer Support (CSCSP, ACISCSM)',
+    name: 'Mary Adekahunsi',
+    role: 'Head of Customer Support',
     photoUrl: '/images/team/mary-adekahunsi.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-head-creatives',
+    name: 'Sylvia Alex',
+    role: 'Head of Creatives',
+    photoUrl: '/images/team/sylvia-alex.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-internal-operations',
+    name: 'Yetunde Salami',
+    role: 'Internal Operations Manager',
+    photoUrl: '/images/team/yetunde-salami.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-head-accounts',
+    name: 'Annabelle Uroh',
+    role: 'Head of Accounts',
+    photoUrl: '/images/team/annabelle-uroh.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-operations-site',
+    name: 'Ifeoluwa Adeye',
+    role: 'Operations Manager – Site & Services',
+    photoUrl: '/images/team/ifeoluwa-adeye.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-chief-of-staff',
+    name: 'Rita Ozommadu',
+    role: 'Chief of Staff',
+    photoUrl: '/images/team/rita-ozommadu.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-head-admin',
+    name: 'Princess Aladetan',
+    role: 'Head of Admin',
+    photoUrl: '/images/team/princess-aladetan.jpg',
+    active: true,
+  },
+  {
+    id: 'fallback-team-brand-comms',
+    name: 'Success Ehibor',
+    role: 'Brand and Comms Manager',
+    photoUrl: '/images/team/success-ehibor.jpg',
     active: true,
   },
 ];
@@ -1638,7 +1544,7 @@ export const fallbackPromos = [
   {
     id: 'fallback-promo-1',
     title: 'Estate Inspection Slots Open',
-    message: 'Book an inspection to review available plots, apartments, and payment plans.',
+    message: 'Book an inspection to review available plots, apartments, and homes.',
     details: 'Limited weekly inspection slots are available for Lagos and Abuja estate enquiries.',
     imageUrl: estateImages.placeholder1,
     linkUrl: '/book-inspection',
@@ -1648,74 +1554,36 @@ export const fallbackPromos = [
   },
 ];
 
-// Real "Consent Form and FAQs" PDFs linked from each estate's page on the
-// live site. Note: the live site's own Alpha Garden City page links to the
-// Downtown Lagos PDF by mistake (likely a copy-paste template bug) — not
-// reproduced here; flagged to Daniel instead of propagating the error.
+// Downloads list. The old "Consent Form and FAQs" and brochure PDFs were
+// hosted under the old site's wp-content uploads, which no longer serve them
+// (every link returns 403), and they predate the current approved prices —
+// removed until Aceroyal supplies updated files. Only flyers whose printed
+// prices and deposits match the approved price list are listed for active
+// estates.
 export const fallbackResources = [
   {
-    id: 'fallback-resource-heritage-faq',
-    title: 'Heritage Estate — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2026/01/HERITAGE-ESTATES-CONSENT-FORM-AND-FAQS.pdf',
-    fileType: 'PDF',
+    id: 'fallback-resource-heritage-500sqm-flyer',
+    title: 'Heritage Estates — 500sqm Pricing Flyer',
+    url: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
+    fileType: 'JPG',
     estateId: 'fallback-estate-heritage',
     estate: fallbackEstates.find((e) => e.slug === 'heritage-estate'),
   },
   {
-    id: 'fallback-resource-edo-faq',
-    title: 'Edo Mega City — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2026/01/Edo-Mega-City-FAQ-Consent-Form-2.pdf',
-    fileType: 'PDF',
-    estateId: 'fallback-estate-edo-mega-city',
-    estate: fallbackEstates.find((e) => e.slug === 'edo-mega-city'),
+    id: 'fallback-resource-heritage-1acre-flyer',
+    title: 'Heritage Estates — 1 Acre Pricing Flyer',
+    url: '/images/estates/heritage/heritage-flyer-1acre.jpg',
+    fileType: 'JPG',
+    estateId: 'fallback-estate-heritage',
+    estate: fallbackEstates.find((e) => e.slug === 'heritage-estate'),
   },
   {
-    id: 'fallback-resource-downtown-lagos-faq',
-    title: 'Downtown Lagos — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2025/03/DOWNTOWN-LAGOS-CONSENT-FORM-AND-FAQS-2.pdf',
-    fileType: 'PDF',
-    estateId: 'fallback-estate-downtown-lagos',
-    estate: fallbackEstates.find((e) => e.slug === 'downtown-lagos'),
-  },
-  {
-    id: 'fallback-resource-downtown-lagos-phase2-faq',
-    title: 'Downtown Lagos Phase 2 — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2026/03/DOWNTOWN-LAGOS-PHASE-2.pdf',
-    fileType: 'PDF',
-    estateId: 'fallback-estate-downtown-lagos-phase-2',
-    estate: fallbackEstates.find((e) => e.slug === 'downtown-lagos-phase-2'),
-  },
-  {
-    id: 'fallback-resource-eko-paragon-faq',
-    title: 'Eko Paragon Residence — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2025/01/EKO-PARAGON-CONSENT-FORM-AND-FAQss.pdf',
-    fileType: 'PDF',
-    estateId: 'fallback-estate-eko-paragon',
-    estate: fallbackEstates.find((e) => e.slug === 'eko-paragon-residence'),
-  },
-  {
-    id: 'fallback-resource-prime-annex-faq',
-    title: 'Prime Boulevard Annex — Consent Form & FAQs',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2026/01/PRIME-BOULEVARD-ANNEX-CONSENT-FORM-AND-FAQS.pdf',
-    fileType: 'PDF',
+    id: 'fallback-resource-prime-annex-flyer',
+    title: 'Prime Boulevard Annex — Pricing Flyer',
+    url: '/images/estates/prime-annex/prime-flyer-pricing.jpg',
+    fileType: 'JPG',
     estateId: 'fallback-estate-prime-annex',
     estate: fallbackEstates.find((e) => e.slug === 'prime-annex'),
-  },
-  {
-    id: 'fallback-resource-alpha-garden-brochure',
-    title: 'Alpha Garden City — Brochure',
-    url: 'https://aceroyalestates.com/wp-content/uploads/2026/05/Alpha-Garden-City-Brochure-Plus.pdf',
-    fileType: 'PDF',
-    estateId: 'fallback-estate-alpha-garden-city',
-    estate: fallbackEstates.find((e) => e.slug === 'alpha-garden-city'),
-  },
-  {
-    id: 'fallback-resource-villa-nova-flyer',
-    title: 'Villa Nova Bungalows — Pricing Flyer',
-    url: '/images/estates/villa-nova/villa-nova-flyer-1.jpg',
-    fileType: 'JPG',
-    estateId: 'fallback-estate-villa-nova',
-    estate: fallbackEstates.find((e) => e.slug === 'villa-nova-bungalows'),
   },
   {
     id: 'fallback-resource-new-city-flyer',
@@ -1752,8 +1620,8 @@ export const fallbackFaqs = [
   },
   {
     id: 'fallback-faq-2',
-    question: 'Are payment plans available?',
-    answer: 'Most estates offer both an outright price and an installment plan (typically 6-12 months with an initial deposit). Payment-plan availability and terms vary by estate and plot size — check the estate’s Available Options section or contact the team for the current schedule.',
+    question: 'How do prices and deposits work?',
+    answer: 'Each estate’s Available Options section shows the current price and, where one applies, the initial deposit. For payment options beyond that, contact the sales team for the current terms.',
     sortOrder: 1,
   },
   {
@@ -1789,7 +1657,7 @@ export const fallbackFaqs = [
   {
     id: 'fallback-faq-8',
     question: 'Where can I find brochures and consent forms?',
-    answer: 'Estate-specific brochures, consent forms, and pricing flyers are available on the Downloads & Resources page, and linked directly from each estate’s own page.',
+    answer: 'Current pricing flyers are on the Downloads & Resources page. For estate brochures and consent forms, contact the sales team and they will send the latest versions.',
     sortOrder: 7,
   },
 ];
@@ -1797,6 +1665,9 @@ export const fallbackFaqs = [
 export const fallbackOffices = [
   {
     id: 'fallback-office-lagos',
+    name: 'Lagos Office',
+    photoUrl: '/images/brand/management-team.jpg',
+    photoAlt: 'Aceroyal management team',
     state: 'Lagos',
     city: 'Ajah',
     address: 'KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah, Lagos, Nigeria.',
@@ -1806,6 +1677,9 @@ export const fallbackOffices = [
   },
   {
     id: 'fallback-office-abuja',
+    name: 'Abuja Office',
+    photoUrl: '/images/brand/abuja-office-team.jpg',
+    photoAlt: 'Aceroyal Abuja office team',
     state: 'Abuja',
     city: 'Gwarimpa',
     address: 'House A, 45 Road off Navy Quarters, By First Avenue, Gwarimpa, Abuja.',
@@ -1815,6 +1689,9 @@ export const fallbackOffices = [
   },
   {
     id: 'fallback-office-benin',
+    name: 'Benin Office',
+    photoUrl: '/images/brand/benin-office-team.jpg',
+    photoAlt: 'Aceroyal Benin office team',
     state: 'Edo',
     city: 'Benin City',
     address: 'No 2 New Lagos Road, Off 2nd Junction, by Akpakpava, Benin City.',
