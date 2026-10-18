@@ -56,7 +56,7 @@ const teams = [
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
+    <div className="min-h-screen">
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_srgb,var(--primary)_18%,transparent),transparent_42%)]" />
         <div className="container relative grid gap-10 py-12 md:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { fallbackBlogPosts } from '@/lib/fallback-data';
 import { Calendar } from 'lucide-react';
 import { BlogCoverFallback } from '@/components/blog/BlogCoverFallback';
+import { Stagger } from '@/components/motion/Stagger';
 
 export default function LatestBlogPosts() {
   const posts = [...fallbackBlogPosts]
@@ -23,7 +24,7 @@ export default function LatestBlogPosts() {
           </Link>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-3">
+        <Stagger className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-3">
           {posts.map((post) => (
             <Link
               key={post.id}
@@ -55,7 +56,7 @@ export default function LatestBlogPosts() {
               </div>
             </Link>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

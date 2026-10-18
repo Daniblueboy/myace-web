@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   ]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-black dark:to-black">
+    <div className="min-h-screen">
       <script
         id="blog-post-json-ld"
         type="application/ld+json"

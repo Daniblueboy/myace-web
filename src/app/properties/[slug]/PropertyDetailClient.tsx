@@ -48,6 +48,33 @@ function getAutoplayEmbedUrl(url: string) {
   return url;
 }
 
+// Mirrors the loaded layout (gallery, title block, price, stats, sidebar) so
+// content settles into place instead of the page jumping when it arrives.
+function PropertyDetailSkeleton() {
+  const block = 'rounded-2xl bg-slate-200/70 dark:bg-white/[0.06] motion-safe:animate-pulse';
+  return (
+    <div className="min-h-screen pb-20" role="status" aria-label="Loading property details">
+      <div className="container py-4">
+        <div className={`h-9 w-48 ${block}`} />
+      </div>
+      <div className="container mb-8">
+        <div className={`aspect-video w-full ${block}`} />
+      </div>
+      <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="order-2 md:order-1 md:col-span-2 space-y-4">
+          <div className={`h-6 w-40 ${block}`} />
+          <div className={`h-10 w-3/4 ${block}`} />
+          <div className={`h-5 w-1/2 ${block}`} />
+          <div className={`h-9 w-56 ${block}`} />
+          <div className={`h-32 w-full ${block}`} />
+          <div className={`h-48 w-full ${block}`} />
+        </div>
+        <div className={`order-1 md:order-2 h-80 ${block}`} />
+      </div>
+    </div>
+  );
+}
+
 export default function PropertyDetailClient() {
   const params = useParams();
   const router = useRouter();
@@ -105,7 +132,7 @@ export default function PropertyDetailClient() {
       .catch(() => setRelated([]));
   }, [property]);
 
-  if (loading) return <div className="container py-24 text-center">Loading property details...</div>;
+  if (loading) return <PropertyDetailSkeleton />;
   if (!property) return <div className="container py-24 text-center">Property not found.</div>;
 
   return (

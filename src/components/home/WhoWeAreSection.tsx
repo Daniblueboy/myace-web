@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Home, Award, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Stagger } from '@/components/motion/Stagger';
+import { CountUp } from '@/components/motion/CountUp';
 
 // Condensed from the About page's "Our Story" copy (src/app/about/page.tsx)
 // rather than written fresh, so the two pages stay consistent. Stats match
@@ -27,15 +29,15 @@ export function WhoWeAreSection() {
           by structured documentation, professional guidance and after-sales support.
         </p>
 
-        <div className="grid grid-cols-3 gap-4 max-w-xl mx-auto pt-4">
+        <Stagger className="grid grid-cols-3 gap-4 max-w-xl mx-auto pt-4">
           {stats.map((stat) => (
             <div key={stat.label} className="rounded-2xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 p-4">
               <stat.icon className="h-5 w-5 text-primary mx-auto mb-2" />
-              <div className="text-2xl font-bold">{stat.value}</div>
+              <div className="text-2xl font-bold"><CountUp value={Number(stat.value)} /></div>
               <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
             </div>
           ))}
-        </div>
+        </Stagger>
 
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <Button variant="outline" asChild>

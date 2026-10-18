@@ -199,12 +199,8 @@
     font-size: 1rem;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
-    /* Faint brand-red wash so the page has some depth behind the frosted
-       nav and menu panels. .dark body below sets its own wash. */
-    background-image:
-      radial-gradient(circle at 12% -8%, rgb(187 30 21 / 7%), transparent 26rem),
-      radial-gradient(circle at 100% 15%, rgb(187 30 21 / 5%), transparent 30rem);
-    background-attachment: fixed;
+    /* Depth behind content comes from the drifting AmbientBackdrop layer
+       (see .ambient-* below), not a static wash on body. */
   }
 
   /* Slim, brand-colored scrollbars instead of the bulky browser default. */
@@ -253,12 +249,6 @@
     cursor: not-allowed;
   }
 
-  .dark body {
-    background-image:
-      radial-gradient(circle at 10% -10%, rgb(187 30 21 / 10%), transparent 28rem),
-      radial-gradient(circle at 100% 20%, rgb(187 30 21 / 4%), transparent 32rem);
-    background-attachment: fixed;
-  }
 }
 
 @layer utilities {
@@ -535,6 +525,169 @@
     }
   }
 
+  /* ---- Ambient backdrop (AmbientBackdrop.tsx) ----
+     Three large brand-red gradient blobs drifting on offset 24-40s loops.
+     Only transform animates (compositor-only); the gradients themselves are
+     painted once. Plain rgb() rather than color-mix() — see the build note
+     on .premium-navigation above. */
+  .ambient-blob {
+    position: absolute;
+    width: 70vmax;
+    height: 70vmax;
+    border-radius: 9999px;
+    will-change: transform;
+  }
+
+  .ambient-blob--one {
+    top: -30vmax;
+    left: -20vmax;
+    background: radial-gradient(circle, rgb(187 30 21 / 38%) 0%, transparent 62%);
+    animation: ambient-drift-one 24s ease-in-out infinite alternate;
+  }
+
+  .ambient-blob--two {
+    top: 20vh;
+    right: -35vmax;
+    background: radial-gradient(circle, rgb(150 25 18 / 42%) 0%, transparent 62%);
+    animation: ambient-drift-two 32s ease-in-out infinite alternate;
+  }
+
+  .ambient-blob--three {
+    bottom: -40vmax;
+    left: 10vw;
+    background: radial-gradient(circle, rgb(187 30 21 / 26%) 0%, transparent 62%);
+    animation: ambient-drift-three 40s ease-in-out infinite alternate;
+  }
+
+  /* Static film grain: an SVG turbulence tile, so flat black has texture.
+     Not animated — moving grain reads as video noise and costs repaints. */
+  .ambient-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Light theme: same motion, quieter. */
+  :root:not(.dark) .ambient-backdrop {
+    opacity: 0.55;
+  }
+
+  :root:not(.dark) .ambient-grain {
+    opacity: 0.04;
+  }
+
+  @keyframes ambient-drift-one {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(28vw, 22vh, 0) scale(1.25);
+    }
+  }
+
+  @keyframes ambient-drift-two {
+    from {
+      transform: translate3d(0, 0, 0) scale(1.1);
+    }
+    to {
+      transform: translate3d(-30vw, 32vh, 0) scale(0.9);
+    }
+  }
+
+  @keyframes ambient-drift-three {
+    from {
+      transform: translate3d(0, 0, 0) scale(0.95);
+    }
+    to {
+      transform: translate3d(24vw, -28vh, 0) scale(1.2);
+    }
+  }
+
+  /* Dark-mode sections are slightly see-through so the backdrop glows
+     through, while keeping the black / #111 alternation. More specific than
+     the solid .dark:bg-slate-9xx overrides above, which still apply to
+     cards and panels (those stay solid for legibility). */
+  .dark section:is(.dark\:bg-slate-950) {
+    background-color: rgb(0 0 0 / 15%) !important;
+  }
+
+  .dark section:is(.dark\:bg-slate-900) {
+    background-color: rgb(17 17 17 / 50%) !important;
+  }
+
+  /* ---- Staggered reveals (Stagger.tsx) ----
+     Children rise into place one after another once the group scrolls into
+     view. Only applied after hydration and only to groups that start below
+     the fold, so nothing flashes hidden and no-JS visitors see everything. */
+  [data-stagger='pending'] > * {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  /* Transitions and delays exist only during the reveal ('revealing'), then
+     Stagger.tsx sets 'done' so cards' own hover transitions aren't delayed. */
+  /* !important only for this brief phase: cards that declare their own
+     transition-* utilities would otherwise win and skip the sequence. */
+  [data-stagger='revealing'] > * {
+    transition:
+      opacity 500ms ease-out,
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  [data-stagger='revealing'] > *:nth-child(2) { transition-delay: 60ms !important; }
+  [data-stagger='revealing'] > *:nth-child(3) { transition-delay: 120ms !important; }
+  [data-stagger='revealing'] > *:nth-child(4) { transition-delay: 180ms !important; }
+  [data-stagger='revealing'] > *:nth-child(5) { transition-delay: 240ms !important; }
+  [data-stagger='revealing'] > *:nth-child(n + 6) { transition-delay: 300ms !important; }
+
+  /* ---- Image fade-in (ImageFadeIn.tsx) ----
+     Images that weren't already loaded fade in instead of popping in. */
+  img[data-fade='pending'] {
+    opacity: 0;
+  }
+
+  img[data-fade] {
+    transition: opacity 500ms ease-out;
+  }
+
+  /* ---- Chat button entrance ---- */
+  @keyframes fab-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-fab-enter {
+    animation: fab-enter 450ms cubic-bezier(0.22, 1, 0.36, 1) 700ms both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ambient-blob,
+    .animate-fab-enter {
+      animation: none;
+    }
+
+    [data-stagger='pending'] > * {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-stagger='revealing'] > *,
+    img[data-fade] {
+      transition: none;
+    }
+
+    img[data-fade='pending'] {
+      opacity: 1;
+    }
+  }
+
   .container {
     width: 100%;
     max-width: 72rem;
@@ -554,5 +707,44 @@
       padding-left: 2rem;
       padding-right: 2rem;
     }
+  }
+}
+
+/* ---- Page transitions (PublicChrome's <ViewTransition>) ----
+   A soft crossfade with a slight rise between pages. The nav, bottom bar and
+   chat button sit outside the transitioning boundary, so they stay put.
+   Browsers without View Transitions just swap pages as before. */
+::view-transition {
+  /* Clicks during the short transition reach the live page. */
+  pointer-events: none;
+}
+
+::view-transition-old(.page-fade) {
+  animation: page-fade-out 160ms ease-in both;
+}
+
+::view-transition-new(.page-fade) {
+  animation: page-fade-in 280ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

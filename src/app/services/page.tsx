@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check, Building2, Users, FileText, HeadphonesIcon } from 'lucide-react';
 import Link from 'next/link';
+import { Stagger } from '@/components/motion/Stagger';
 
 const TITLE = 'Our Services | Aceroyal Estates';
 const DESCRIPTION =
@@ -65,7 +66,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-12 md:py-16">
         {/* Hero */}
         <div className="text-center mb-16">
@@ -83,7 +84,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid gap-4 md:grid-cols-2 lg:gap-8 lg:grid-cols-2 mb-16">
+        <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-8 lg:grid-cols-2 mb-16">
           {services.map((service) => (
             <Card key={service.title} className="p-8 hover:shadow-xl transition-shadow">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg mb-6">
@@ -101,7 +102,7 @@ export default function ServicesPage() {
               </ul>
             </Card>
           ))}
-        </div>
+        </Stagger>
 
         {/* CTA Section */}
         <div className="bg-primary rounded-2xl shadow-lg p-12 text-white text-center">

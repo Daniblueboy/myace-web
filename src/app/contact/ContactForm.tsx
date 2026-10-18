@@ -11,6 +11,7 @@ import { Mail, Phone, MapPin, MessageCircle, Building2 } from 'lucide-react';
 import { fetchAPI } from '@/lib/api';
 import { toast } from 'sonner';
 import { Reveal } from '@/components/motion/Reveal';
+import { Stagger } from '@/components/motion/Stagger';
 
 const WHATSAPP_NUMBER = '2349156549709';
 
@@ -107,7 +108,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-background">
+    <div>
       {/* Hero */}
       <section className="py-16 md:py-24 text-center">
         <div className="container">
@@ -322,7 +323,7 @@ export default function ContactForm() {
           <div className="container">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Offices</h2>
             {offices.length > 0 ? (
-              <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
+              <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
                 {offices.map((office: any) => (
                   <div key={office.id} className="overflow-hidden bg-slate-50 dark:bg-slate-800 rounded-2xl shadow-sm">
                     {office.photoUrl && (
@@ -345,7 +346,7 @@ export default function ContactForm() {
                     </div>
                   </div>
                 ))}
-              </div>
+              </Stagger>
             ) : (
               <p className="text-center text-muted-foreground">Loading offices...</p>
             )}

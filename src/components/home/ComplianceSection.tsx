@@ -1,5 +1,6 @@
 import { CheckCircle2, Award, Shield, type LucideIcon } from 'lucide-react';
 import { fallbackComplianceItems } from '@/lib/fallback-data';
+import { Stagger } from '@/components/motion/Stagger';
 
 // Was individual cards — with item 2 missing a registrationNo/issuedBy the
 // other two had, the cards visibly didn't match. These are trust facts, not
@@ -20,7 +21,7 @@ export function ComplianceList() {
   };
 
   return (
-        <div className="max-w-4xl mx-auto grid gap-8 sm:grid-cols-3">
+        <Stagger className="max-w-4xl mx-auto grid gap-8 sm:grid-cols-3">
           {items.map((item) => {
             const Icon = iconMap[item.type] || CheckCircle2;
             return (
@@ -38,6 +39,6 @@ export function ComplianceList() {
               </div>
             );
           })}
-        </div>
+        </Stagger>
   );
 }

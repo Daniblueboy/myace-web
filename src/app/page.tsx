@@ -50,7 +50,7 @@ export default function HomePage() {
       {/* <Reveal><PromoSection /></Reveal> */}
       <Reveal><LatestBlogPosts /></Reveal>
       <Reveal><AppDownloadSection /></Reveal>
-      <Reveal><CtaSection /></Reveal>
+      <CtaSection />
     </div>
   );
 }

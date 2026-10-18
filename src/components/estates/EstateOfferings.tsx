@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FileImage } from 'lucide-react';
+import { Stagger } from '@/components/motion/Stagger';
 
 type FlyerItem = {
   url: string;
@@ -103,7 +104,7 @@ export default function EstateOfferings({
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {options.map((option) => (
           <div
             key={option.id}
@@ -179,7 +180,7 @@ export default function EstateOfferings({
             </div>
           </div>
         ))}
-      </div>
+      </Stagger>
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-6">

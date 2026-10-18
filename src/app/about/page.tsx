@@ -16,6 +16,8 @@ import { fetchAPI } from '@/lib/api';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import { Reveal } from '@/components/motion/Reveal';
 import { TeamGrid } from '@/components/about/TeamGrid';
+import { Stagger } from '@/components/motion/Stagger';
+import { CountUp } from '@/components/motion/CountUp';
 
 const TITLE = 'About Aceroyal Estates | Nigerian Real Estate Company';
 const DESCRIPTION =
@@ -79,11 +81,11 @@ export default async function AboutPage() {
   ];
 
   const teamMembers = await fetchAPI('/team').catch(() => []);
-  const featuredLeaders = teamMembers.filter((member: any) => FEATURED_PORTRAITS[member.id]);
-  const otherMembers = teamMembers.filter((member: any) => !FEATURED_PORTRAITS[member.id]);
+  const featuredLeaders = teamMembers.filter((member: { id: string }) => FEATURED_PORTRAITS[member.id]);
+  const otherMembers = teamMembers.filter((member: { id: string }) => !FEATURED_PORTRAITS[member.id]);
 
   return (
-    <div className="bg-background">
+    <div>
       {/* Hero */}
       <section className="py-16 md:py-24 text-center">
         <div className="container">
@@ -107,17 +109,17 @@ export default async function AboutPage() {
       <Reveal>
         <section className="py-16 md:py-20 bg-slate-50 dark:bg-slate-950">
           <div className="container">
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <Stagger className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
               {stats.map((stat) => (
                 <div key={stat.label} className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-6 text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                     <stat.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <div className="text-3xl font-bold mb-2">{stat.value}</div>
+                  <div className="text-3xl font-bold mb-2"><CountUp value={Number(stat.value)} /></div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </Stagger>
           </div>
         </section>
       </Reveal>
@@ -187,7 +189,7 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-white dark:bg-slate-900">
           <div className="container">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Core Values</h2>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            <Stagger as="ul" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
               {values.map((value, index) => (
                 <li
                   key={value}
@@ -198,7 +200,7 @@ export default async function AboutPage() {
                   <h3 className="text-lg font-semibold text-primary break-words">{value}</h3>
                 </li>
               ))}
-            </ul>
+            </Stagger>
           </div>
         </section>
       </Reveal>
@@ -208,7 +210,7 @@ export default async function AboutPage() {
         <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950">
           <div className="container">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">What We Do</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
+            <Stagger className="grid gap-4 md:grid-cols-2 lg:gap-6 lg:grid-cols-2 xl:grid-cols-3 max-w-5xl lg:mx-auto">
               {services.map((service) => (
                 <div key={service.title} className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm p-6">
                   <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/10 rounded-lg mb-4">
@@ -218,7 +220,7 @@ export default async function AboutPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
               ))}
-            </div>
+            </Stagger>
             <div className="text-center mt-10">
               <Link href="/services">
                 <Button size="lg" variant="outline">Explore Our Services</Button>
@@ -236,8 +238,8 @@ export default async function AboutPage() {
             <div className="container">
               <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Leadership & Team</h2>
               {featuredLeaders.length > 0 && (
-                <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
-                  {featuredLeaders.map((leader: any) => (
+                <Stagger className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+                  {featuredLeaders.map((leader: { id: string; name: string; role: string }) => (
                     <figure
                       key={leader.id}
                       className="overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-800 shadow-sm"
@@ -254,7 +256,7 @@ export default async function AboutPage() {
                       </figcaption>
                     </figure>
                   ))}
-                </div>
+                </Stagger>
               )}
               <TeamGrid members={otherMembers} />
             </div>
@@ -281,14 +283,14 @@ export default async function AboutPage() {
           <div className="container grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr] lg:gap-16">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-8">Why Aceroyal Estates?</h2>
-              <ul className="divide-y divide-white/20">
+              <Stagger as="ul" className="divide-y divide-white/20">
                 {whyAceroyal.map((item) => (
                   <li key={item.title} className="py-5 first:pt-0 last:pb-0">
                     <h3 className="font-bold text-xl mb-2">{item.title}</h3>
                     <p className="opacity-90 leading-relaxed">{item.description}</p>
                   </li>
                 ))}
-              </ul>
+              </Stagger>
             </div>
             <img
               src="/images/brand/aceroyal-team-trio.jpg"

@@ -4,6 +4,7 @@ import { MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getOfferingLabel } from '@/lib/estate-offerings';
 import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
+import { Stagger } from '@/components/motion/Stagger';
 
 type FeaturedEstatesProps = {
   estates: Estate[];
@@ -31,7 +32,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
           </Button>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <Stagger className="flex gap-4 overflow-x-auto scroll-hide snap-x snap-mandatory -mx-4 px-4 lg:mx-0 lg:px-0 lg:grid lg:overflow-visible lg:gap-6 lg:grid-cols-2 xl:grid-cols-3">
           {shown.map((estate) => {
             const isNew = estate.id === latest?.id;
             const isFastSelling = Boolean(estate.featured) && !isNew;
@@ -92,7 +93,7 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
               </div>
             );
           })}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ export default async function GalleryPage() {
   const items = await fetchAPI('/gallery').catch(() => []);
 
   return (
-    <div className="bg-background">
+    <div>
       <section className="py-16 md:py-24 text-center">
         <div className="container">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>

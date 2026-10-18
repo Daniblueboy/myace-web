@@ -1,12 +1,18 @@
 'use client';
 
+import { ViewTransition } from 'react';
+import { usePathname } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
 import { ChatFab } from '@/components/layout/ChatFab';
 import { ScrollManager } from '@/components/layout/ScrollManager';
+import { AmbientBackdrop } from '@/components/layout/AmbientBackdrop';
+import { ImageFadeIn } from '@/components/motion/ImageFadeIn';
 
 export function PublicChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   return (
     // Bottom tab bar is fixed on mobile, so the page needs matching bottom
     // padding here (after the Footer, not just after <main>) or the fixed
@@ -18,9 +24,18 @@ export function PublicChrome({ children }: { children: React.ReactNode }) {
       >
         Skip to main content
       </a>
+      <AmbientBackdrop />
       <ScrollManager />
+      <ImageFadeIn />
       <Navbar />
-      <main id="main-content" className="grow">{children}</main>
+      <main id="main-content" className="grow">
+        {/* Keyed by path so each navigation is an exit/enter pair: the page
+            crossfades (.page-fade in globals.css) while the nav, bottom bar
+            and chat button outside this boundary stay put. */}
+        <ViewTransition key={pathname} enter="page-fade" exit="page-fade" default="none">
+          <div>{children}</div>
+        </ViewTransition>
+      </main>
 
       <ChatFab />
       <MobileBottomNav />

@@ -1,4 +1,5 @@
 import { BadgeCheck, Zap, Shield, Headset } from 'lucide-react';
+import { Stagger } from '@/components/motion/Stagger';
 
 // Copy is still unverified scaffold boilerplate, not sourced from the live
 // site or confirmed by Aceroyal — softened from stronger, SLA-sounding
@@ -15,7 +16,7 @@ const differentiators = [
  * WhyChooseSection rather than as a row of icon cards. */
 export function WhyChooseAceroyal() {
   return (
-    <ul className="divide-y divide-border">
+    <Stagger as="ul" className="divide-y divide-border">
       {differentiators.map((item) => (
         <li key={item.title} className="flex gap-4 py-5 first:pt-0 last:pb-0">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -27,6 +28,6 @@ export function WhyChooseAceroyal() {
           </div>
         </li>
       ))}
-    </ul>
+    </Stagger>
   );
 }

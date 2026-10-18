@@ -32,7 +32,7 @@ export function ChatFab() {
         <button
           type="button"
           aria-label="Chat with us"
-          className="fixed right-4 bottom-[calc(var(--bottom-nav-h)+1rem)] z-40 flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-primary text-white shadow-lg shadow-black/30 transition hover:brightness-110 active:scale-95 lg:right-6 lg:bottom-6 lg:h-auto lg:w-auto lg:px-5 lg:py-3"
+          className="animate-fab-enter fixed right-4 bottom-[calc(var(--bottom-nav-h)+1rem)] z-40 flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-primary text-white shadow-lg shadow-black/30 transition hover:brightness-110 active:scale-95 lg:right-6 lg:bottom-6 lg:h-auto lg:w-auto lg:px-5 lg:py-3"
         >
           <MessageCircle className="h-6 w-6 lg:h-5 lg:w-5" />
           <span className="hidden text-sm font-semibold lg:inline">Chat with us</span>
