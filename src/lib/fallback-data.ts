@@ -19,10 +19,11 @@ const estateImages = {
 // 2026 "Updates for the website" request). Only the prices and deposits that
 // list names are published — no payment plans, promos or fees beyond it.
 // Flyers that print superseded prices or unapproved deposits were removed as
-// covers/media; affected estates show the branded image fallback until
-// approved imagery arrives. Brochure links were cleared because the old
-// wp-content URLs are dead (blocked by the old host) and their PDFs predate
-// the current prices.
+// covers/media. Estate covers and listing cards use the uniform branded
+// thumbnail set Aceroyal supplied (public/images/estates/thumbnails/), except
+// Villa Nova (real photos) and New City (no thumbnail supplied). Brochure
+// links were cleared because the old wp-content URLs are dead (blocked by the
+// old host) and their PDFs predate the current prices.
 export const fallbackEstates: Estate[] = [
   {
     id: 'fallback-estate-alpha-garden-city',
@@ -33,9 +34,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Oyo',
     city: 'Ibadan',
     address: 'Olomi Olunde, Academy Road, Ibadan, Oyo State',
-    // The only image on file is the prelaunch flyer, which prints superseded
-    // prices — branded fallback until approved imagery arrives.
-    coverImage: null,
+    coverImage: '/images/estates/thumbnails/alpha-garden-city.jpg',
     panoramaUrls: ['/images/virtual-tours/alpha-garden-city-360.png'],
     brochureUrl: null,
     gallery: [],
@@ -53,10 +52,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Enugu',
     city: 'Nike',
     address: 'Ekwegbe Nike, Enugu State',
-    // Real pricing flyer as the cover — no clean non-flyer photography yet,
-    // so no generic stock stand-ins; gallery stays empty (the flyers/video
-    // cover the Media section instead).
-    coverImage: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
+    coverImage: '/images/estates/thumbnails/heritage-estate.jpg',
     videoUrl: null,
     brochureUrl: null,
     gallery: [],
@@ -75,9 +71,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Edo',
     city: 'Benin City',
     address: 'Aduwawa Bypass, Benin City, Edo State',
-    // The only image on file is the prelaunch flyer, which prints superseded
-    // prices — branded fallback until approved imagery arrives.
-    coverImage: null,
+    coverImage: '/images/estates/thumbnails/edo-mega-city.jpg',
     brochureUrl: null,
     gallery: [],
     status: 'ACTIVE',
@@ -95,10 +89,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Ibeju-Lekki',
     address: 'Labour City, Ibeju-Lekki, Coastal Road, Lagos State',
-    // The pricing flyers print deposits and an installment plan that are not
-    // on the approved price list — branded fallback until approved imagery
-    // arrives.
-    coverImage: null,
+    coverImage: '/images/estates/thumbnails/downtown-lagos-phase-2.jpg',
     videoUrl: '/videos/downtown-lagos-phase-2.mp4',
     brochureUrl: null,
     gallery: [],
@@ -117,11 +108,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Lagos',
     address: 'Lekki Coastal Road, Lagos',
-    // No real photos ever came in for Phase 1 (sold out before this content
-    // pass) — leave both empty rather than stock photos; EstateHeroCarousel
-    // and the estates grid both render a clean "coming soon"/no-image state
-    // for this instead of a fake picture.
-    coverImage: null,
+    coverImage: '/images/estates/thumbnails/downtown-lagos.jpg',
     brochureUrl: null,
     gallery: [],
     status: 'SOLD_OUT',
@@ -139,9 +126,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Abijo',
     address: 'Abijo G.R.A., Lagos',
-    // The pricing flyer prints deposits that are not on the approved price
-    // list — branded fallback until approved imagery arrives.
-    coverImage: null,
+    coverImage: '/images/estates/thumbnails/eko-paragon-residence.jpg',
     videoUrl: '/videos/eko-paragon-progress.mp4',
     brochureUrl: null,
     gallery: [],
@@ -159,10 +144,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Abuja',
     city: 'Gwagwalada',
     address: 'Gwagwalada, Abuja, FCT',
-    // Real pricing flyer as the cover — no clean non-flyer photography yet,
-    // so no generic stock stand-ins; gallery stays empty (the flyers/video
-    // cover the Media section instead).
-    coverImage: '/images/estates/prime-annex/prime-flyer-pricing.jpg',
+    coverImage: '/images/estates/thumbnails/prime-annex.jpg',
     videoUrl: '/videos/prime-annex.mp4',
     brochureUrl: null,
     gallery: [],
@@ -226,7 +208,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Itoikin, Epe',
     address: 'Itoikin, Epe, Lagos',
-    coverImage: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
+    coverImage: '/images/estates/thumbnails/metro-city-garden.jpg',
     brochureUrl: null,
     gallery: [],
     status: 'SOLD_OUT',
@@ -243,7 +225,7 @@ export const fallbackEstates: Estate[] = [
     state: 'Lagos',
     city: 'Iraye, Epe',
     address: 'Iraye, Epe, Lagos',
-    coverImage: '/images/estates/novena-estate/novena-estate-flyer.jpg',
+    coverImage: '/images/estates/thumbnails/novena-estate-phase-2.jpg',
     videoUrl: '/videos/novena-estate.mp4',
     brochureUrl: null,
     gallery: [],
@@ -275,13 +257,7 @@ export const fallbackProperties: Property[] = [
     size: '300sqm',
     amenities: ['Perimeter Fencing', 'Maximum Security', 'Stable Electricity', 'Maximum Water Supply', 'Good Drainage', 'Good Road Network', 'Estate Gate House', 'Shopping Complex'],
     featured: true,
-    images: [
-      {
-        id: 'fallback-property-land-image',
-        url: '/images/estates/prime-annex/prime-flyer-pricing.jpg',
-        altText: 'Prime Boulevard Annex',
-      },
-    ],
+    images: [{ id: 'thumb-prime-boulevard-annex-plots', url: '/images/estates/thumbnails/prime-annex.jpg', altText: 'Prime Boulevard Annex' }],
     variants: [
       {
         id: 'fallback-land-variant-300',
@@ -339,34 +315,7 @@ export const fallbackProperties: Property[] = [
     size: '500sqm',
     amenities: ['Golf Course', 'Wellness Spa', 'Yoga Hall', 'Healthy Restaurants', 'Gym Studio', 'Swimming Pool', 'Orchard Garden'],
     featured: false,
-    // Existing flyers print superseded prelaunch prices — none shown until
-    // approved imagery arrives.
-    images: [],
-    variants: [
-      {
-        id: 'fallback-alpha-garden-variant-500sqm',
-        label: '500sqm Plot',
-        price: 6000000,
-        initialDeposit: 500000,
-        currency: 'NGN',
-        size: '500sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-      {
-        id: 'fallback-alpha-garden-variant-1acre',
-        label: '1 Acre',
-        price: 18000000,
-        initialDeposit: 1500000,
-        currency: 'NGN',
-        size: '1 Acre',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-alpha-garden-city-500sqm-plot', url: '/images/estates/thumbnails/alpha-garden-city.jpg', altText: 'Alpha Garden City Resort' }],
     faqs: [],
     resources: [],
     media: [],
@@ -392,13 +341,7 @@ export const fallbackProperties: Property[] = [
     size: '500sqm',
     amenities: ['Electricity', 'Gate House', 'Parking Space', 'Good Security', 'Good Road', 'Drainage'],
     featured: false,
-    images: [
-      {
-        id: 'fallback-property-heritage-plot-image',
-        url: '/images/estates/heritage/heritage-flyer-500sqm.jpg',
-        altText: 'Heritage Estates plot',
-      },
-    ],
+    images: [{ id: 'thumb-heritage-estate-500sqm-plot', url: '/images/estates/thumbnails/heritage-estate.jpg', altText: 'Heritage Estates' }],
     variants: [
       {
         id: 'fallback-heritage-variant-500sqm',
@@ -564,33 +507,7 @@ export const fallbackProperties: Property[] = [
     size: '500sqm',
     amenities: ['Office Spaces', 'Health Care Facilities', 'Shopping Mall', 'Financial Districts', 'Exclusive Membership', 'Helipad', 'Restaurants'],
     featured: true,
-    // The pricing flyers print deposits and an installment plan that are not
-    // on the approved price list — none shown until approved imagery arrives.
-    images: [],
-    variants: [
-      {
-        id: 'fallback-downtown-phase2-variant-500-outright',
-        label: '500sqm Plot',
-        price: 60000000,
-        currency: 'NGN',
-        size: '500sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-      {
-        id: 'fallback-downtown-phase2-variant-1000-outright',
-        label: '1,000sqm Plot',
-        price: 100000000,
-        currency: 'NGN',
-        size: '1000sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-downtown-lagos-phase-2-plots', url: '/images/estates/thumbnails/downtown-lagos-phase-2.jpg', altText: 'Downtown Lagos Commercial City Phase 2' }],
     faqs: [],
     resources: [],
     media: [],
@@ -619,19 +536,7 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: false,
-    images: [],
-    variants: [
-      {
-        id: 'fallback-eko-1bed-variant-outright',
-        label: 'One-Bedroom Apartment',
-        price: 85000000,
-        currency: 'NGN',
-        bedrooms: 1,
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-eko-paragon-one-bedroom-apartment', url: '/images/estates/thumbnails/eko-paragon-residence.jpg', altText: 'Eko Paragon Residence' }],
     faqs: [],
     resources: [],
     media: [],
@@ -657,19 +562,7 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: true,
-    images: [],
-    variants: [
-      {
-        id: 'fallback-eko-2bed-variant-outright',
-        label: 'Two-Bedroom Apartment',
-        price: 95000000,
-        currency: 'NGN',
-        bedrooms: 2,
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-eko-paragon-two-bedroom-apartment', url: '/images/estates/thumbnails/eko-paragon-residence.jpg', altText: 'Eko Paragon Residence' }],
     faqs: [],
     resources: [],
     media: [],
@@ -695,19 +588,7 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Fitness Center', 'Swimming Pool', '24/7 Security', 'Uninterrupted Power Supply'],
     featured: false,
-    images: [],
-    variants: [
-      {
-        id: 'fallback-eko-3bed-variant-outright',
-        label: 'Three-Bedroom Residential Terrace + BQ',
-        price: 150000000,
-        currency: 'NGN',
-        bedrooms: 3,
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-eko-paragon-three-bedroom-residential-terrace', url: '/images/estates/thumbnails/eko-paragon-residence.jpg', altText: 'Eko Paragon Residence' }],
     faqs: [],
     resources: [],
     media: [],
@@ -733,35 +614,7 @@ export const fallbackProperties: Property[] = [
     size: '450sqm',
     amenities: ['Army-Guarded Security', 'C of O Title'],
     featured: true,
-    // Existing flyers print superseded prelaunch prices — none shown until
-    // approved imagery arrives.
-    images: [],
-    variants: [
-      {
-        id: 'fallback-edo-mega-variant-450',
-        label: '450sqm (50ft × 100ft)',
-        price: 3000000,
-        initialDeposit: 500000,
-        currency: 'NGN',
-        size: '450sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-      {
-        id: 'fallback-edo-mega-variant-900-outright',
-        label: '900sqm (100ft × 100ft)',
-        price: 5000000,
-        initialDeposit: 1500000,
-        currency: 'NGN',
-        size: '900sqm',
-        sizeUnit: 'SQM',
-        paymentType: 'OUTRIGHT',
-        active: true,
-        media: [],
-      },
-    ],
+    images: [{ id: 'thumb-edo-mega-city-plots', url: '/images/estates/thumbnails/edo-mega-city.jpg', altText: 'Edo Mega City' }],
     faqs: [],
     resources: [],
     media: [],
@@ -851,9 +704,7 @@ export const fallbackProperties: Property[] = [
     size: null,
     amenities: ['Perimeter Fencing', 'Green Areas', 'Dry Land', '24-Hour Power', 'Clean Water Supply', 'Drainage', 'Gym/Spa', 'Swimming Pool'],
     featured: false,
-    images: [
-      { id: 'fallback-metro-city-image-1', url: '/images/estates/metro-city-garden/metro-city-flyer.jpg', altText: 'Metro City Garden pricing flyer' },
-    ],
+    images: [{ id: 'thumb-metro-city-garden-plots', url: '/images/estates/thumbnails/metro-city-garden.jpg', altText: 'Metro City Garden' }],
     variants: [
       {
         id: 'fallback-metro-city-variant-300sqm',
@@ -910,10 +761,7 @@ export const fallbackProperties: Property[] = [
     size: '500sqm',
     amenities: [],
     featured: false,
-    images: [
-      { id: 'fallback-novena-image-1', url: '/images/estates/novena-estate/novena-estate-flyer.jpg', altText: 'Novena Estate Phase 2 pricing flyer' },
-      { id: 'fallback-novena-image-2', url: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg', altText: 'Novena Estate Phase 2 Goody Bag Promo flyer' },
-    ],
+    images: [{ id: 'thumb-novena-estate-phase-2-plot', url: '/images/estates/thumbnails/novena-estate-phase-2.jpg', altText: 'Novena Estate Phase 2' }],
     variants: [
       {
         id: 'fallback-novena-variant-500sqm',

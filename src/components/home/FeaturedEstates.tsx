@@ -43,32 +43,38 @@ export default function FeaturedEstates({ estates }: FeaturedEstatesProps) {
                 className="group flex flex-col shrink-0 w-[82%] max-w-sm snap-center rounded-2xl border bg-slate-50 dark:bg-slate-900 dark:border-slate-800 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:w-auto lg:max-w-none lg:shrink"
               >
                 <Link href={`/estates/${estate.slug}`} className="block">
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative aspect-[7/5] overflow-hidden">
                     {estate.coverImage ? (
                       <img
                         src={estate.coverImage}
                         alt={estate.name}
-                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                     ) : (
                       <EstateImageFallback name={estate.name} className="h-full w-full" />
                     )}
-                    {(isNew || isFastSelling) && (
-                      <span
-                        className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
-                          isNew ? 'bg-primary text-primary-foreground' : 'bg-amber-500 text-white'
-                        }`}
-                      >
-                        {isNew ? 'New' : 'Fast Selling'}
-                      </span>
-                    )}
-                    {offeringLabel && (
-                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-slate-900/80 text-white backdrop-blur-sm">
-                        {offeringLabel}
-                      </span>
-                    )}
                   </div>
+                  {/* Badges sit below the image so they don't cover the branded
+                      thumbnail's own labels. */}
                   <div className="p-5 space-y-2">
+                    {(offeringLabel || isNew || isFastSelling) && (
+                      <div className="flex flex-wrap items-center gap-2 pb-1">
+                        {offeringLabel && (
+                          <span className="px-3 py-1 rounded-full border text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                            {offeringLabel}
+                          </span>
+                        )}
+                        {(isNew || isFastSelling) && (
+                          <span
+                            className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
+                              isNew ? 'bg-primary text-primary-foreground' : 'bg-amber-500 text-white'
+                            }`}
+                          >
+                            {isNew ? 'New' : 'Fast Selling'}
+                          </span>
+                        )}
+                      </div>
+                    )}
                     <h3 className="font-semibold text-lg">{estate.name}</h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4" />

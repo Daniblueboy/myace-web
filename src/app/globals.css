@@ -641,16 +641,6 @@
   [data-stagger='revealing'] > *:nth-child(5) { transition-delay: 240ms !important; }
   [data-stagger='revealing'] > *:nth-child(n + 6) { transition-delay: 300ms !important; }
 
-  /* ---- Image fade-in (ImageFadeIn.tsx) ----
-     Images that weren't already loaded fade in instead of popping in. */
-  img[data-fade='pending'] {
-    opacity: 0;
-  }
-
-  img[data-fade] {
-    transition: opacity 500ms ease-out;
-  }
-
   /* ---- Chat button entrance ---- */
   @keyframes fab-enter {
     from {
@@ -678,13 +668,8 @@
       transform: none;
     }
 
-    [data-stagger='revealing'] > *,
-    img[data-fade] {
+    [data-stagger='revealing'] > * {
       transition: none;
-    }
-
-    img[data-fade='pending'] {
-      opacity: 1;
     }
   }
 

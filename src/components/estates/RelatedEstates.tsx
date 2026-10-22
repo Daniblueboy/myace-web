@@ -30,7 +30,7 @@ export async function RelatedEstates({ currentSlug, state }: { currentSlug: stri
             href={`/estates/${estate.slug}`}
             className="group rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow"
           >
-            <div className="h-40 overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <div className="aspect-[7/5] overflow-hidden bg-slate-100 dark:bg-slate-800">
               {estate.coverImage ? (
                 <img
                   src={estate.coverImage}

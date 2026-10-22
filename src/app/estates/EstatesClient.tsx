@@ -208,43 +208,47 @@ export default function EstatesClient() {
                   href={`/estates/${estate.slug}`}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
                 >
-                  <div className="relative h-56 overflow-hidden">
+                  {/* 7:5 matches the branded estate thumbnails. Nothing is laid
+                      over the image, so each thumbnail's own logo, title and
+                      location labels stay readable; badges and name sit below. */}
+                  <div className="relative aspect-[7/5] overflow-hidden">
                     {estate.coverImage ? (
                       <img
                         src={estate.coverImage}
                         alt={estate.name}
-                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                     ) : (
                       <EstateImageFallback name={estate.name} className="h-full w-full" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
-                    {estate.status && (
-                      <span
-                        className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
-                          estate.status === 'SOLD_OUT'
-                            ? 'bg-slate-900/80 text-white'
-                            : 'bg-primary text-primary-foreground'
-                        }`}
-                      >
-                        {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
-                      </span>
-                    )}
-                    {offeringLabel && (
-                      <span className="absolute right-4 top-4 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-                        {offeringLabel}
-                      </span>
-                    )}
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <h3 className="text-xl font-bold text-white">{estate.name}</h3>
-                      <div className="mt-1 flex items-center gap-2 text-sm text-white/85">
+                  </div>
+
+                  <div className="flex flex-1 flex-col gap-4 p-5">
+                    <div>
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        {estate.status && (
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                              estate.status === 'SOLD_OUT'
+                                ? 'bg-slate-200 text-slate-700 dark:bg-white/10 dark:text-white'
+                                : 'bg-primary text-primary-foreground'
+                            }`}
+                          >
+                            {estate.status === 'SOLD_OUT' ? 'Sold Out' : 'Available'}
+                          </span>
+                        )}
+                        {offeringLabel && (
+                          <span className="rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            {offeringLabel}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-xl font-bold">{estate.name}</h3>
+                      <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
                         <MapPin className="h-4 w-4" />
                         <span>{estate.city}, {estate.state}</span>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-4 p-5">
                     {estate.description && (
                       <p className="text-sm text-muted-foreground line-clamp-3">{estate.description}</p>
                     )}

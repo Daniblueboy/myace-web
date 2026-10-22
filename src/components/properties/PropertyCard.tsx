@@ -25,39 +25,40 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
 
   return (
     <Card className="overflow-hidden group flex flex-col h-full">
-      <div className="relative h-60 bg-slate-200 dark:bg-slate-800">
-         {/* Image Placeholder */}
+      {/* 7:5 matches the branded estate thumbnails; nothing is laid over the
+          image so its own labels stay readable. Badges sit in the header. */}
+      <div className="relative aspect-[7/5] overflow-hidden bg-slate-200 dark:bg-slate-800">
          {property.images && property.images[0] ? (
            <img src={property.images[0].url} alt={property.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
          ) : (
            <EstateImageFallback name={property.title} className="w-full h-full" />
          )}
-         <div className="absolute top-4 left-4">
-           <span className={`px-3 py-1 rounded-full text-xs font-bold ${property.status === 'AVAILABLE' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
-             {property.status}
-           </span>
-         </div>
-         {(isNew || isFastSelling) && (
-           <div className="absolute top-4 right-4 flex flex-col items-end gap-1.5">
-             {isNew && (
-               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-primary text-primary-foreground">
-                 New
-               </span>
-             )}
-             {isFastSelling && (
-               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-amber-500 text-white">
-                 Fast Selling
-               </span>
-             )}
-           </div>
-         )}
-         <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-           <span className="bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold uppercase tracking-wider text-slate-900">
-             {propertyTypeLabel(property.type)}
-           </span>
-         </div>
       </div>
       <CardHeader className="p-4 pb-2">
+         <div className="mb-2 flex flex-wrap items-center gap-2">
+           <span
+             className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
+               property.status === 'AVAILABLE'
+                 ? 'bg-primary text-primary-foreground'
+                 : 'bg-slate-200 text-slate-700 dark:bg-white/10 dark:text-white'
+             }`}
+           >
+             {property.status === 'AVAILABLE' ? 'Available' : property.status === 'SOLD' ? 'Sold' : property.status}
+           </span>
+           <span className="px-3 py-1 rounded-full border text-xs font-bold uppercase tracking-wide text-muted-foreground">
+             {propertyTypeLabel(property.type)}
+           </span>
+           {isNew && (
+             <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-primary text-primary-foreground">
+               New
+             </span>
+           )}
+           {isFastSelling && (
+             <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-amber-500 text-white">
+               Fast Selling
+             </span>
+           )}
+         </div>
          <h3 className="text-xl font-bold truncate" title={property.title}>{property.title}</h3>
          {property.estate?.name && (
            <p className="text-xs text-muted-foreground">{property.estate.name}</p>
