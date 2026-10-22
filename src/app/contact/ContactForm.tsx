@@ -15,6 +15,12 @@ import { Stagger } from '@/components/motion/Stagger';
 
 const WHATSAPP_NUMBER = '2349156549709';
 
+// '+234 915 654 9709' (or a local '0915...' number) -> 'tel:+2349156549709'
+function telHref(phone: string) {
+  const digits = phone.replace(/\D/g, '');
+  return `tel:+${digits.startsWith('0') ? `234${digits.slice(1)}` : digits}`;
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -252,13 +258,13 @@ export default function ContactForm() {
                   <div className="p-8">
                   <h2 className="text-xl font-bold mb-6">Reach Us Directly</h2>
                   <div className="space-y-5">
-                    <a href="tel:+2342013300287" className="flex items-start gap-4 group">
+                    <a href="tel:+2349156549709" className="flex items-start gap-4 group">
                       <div className="bg-primary/10 p-3 rounded-lg shrink-0">
                         <Phone className="w-5 h-5 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">Phone</h3>
-                        <p className="text-sm text-muted-foreground">0201 330 0287, 0915 654 9709</p>
+                        <p className="text-sm text-muted-foreground">+234 915 654 9709</p>
                       </div>
                     </a>
 
@@ -341,7 +347,13 @@ export default function ContactForm() {
                     <h3 className="font-semibold mb-2">{office.name || `${office.city || office.state} Office`}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-3">{office.address}</p>
                     {office.phones?.length > 0 && (
-                      <p className="text-sm text-muted-foreground">{office.phones.join(', ')}</p>
+                      <p className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                        {office.phones.map((phone: string) => (
+                          <a key={phone} href={telHref(phone)} className="hover:text-primary transition-colors">
+                            {phone}
+                          </a>
+                        ))}
+                      </p>
                     )}
                     </div>
                   </div>

@@ -6,8 +6,8 @@ import { ChevronRight, MessageCircle, Phone } from 'lucide-react';
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { WHATSAPP_NUMBER, ENQUIRY_OPTIONS, estateLabelFromPath } from '@/components/layout/whatsapp-enquiry';
 
-const PHONE_DISPLAY = '0201 330 0287';
-const PHONE_HREF = 'tel:+2342013300287';
+const PHONE_DISPLAY = '+234 915 654 9709';
+const PHONE_HREF = 'tel:+2349156549709';
 
 const rowClass =
   'flex min-h-14 items-center gap-4 rounded-xl px-3 py-3 text-left transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none';

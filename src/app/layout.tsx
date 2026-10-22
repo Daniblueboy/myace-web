@@ -74,7 +74,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/images/aceroyal-symbol-colour.png`,
   email: 'customercare@aceroyalestates.com',
-  telephone: ['+234-201-330-0287', '+234-915-654-9709'],
+  telephone: ['+234-915-654-9709'],
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah',

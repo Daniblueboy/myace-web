@@ -98,7 +98,9 @@ export default function HeroSection() {
     },
     {
       type: 'image' as const,
-      url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1920&q=80',
+      // Aceroyal's own team on a site inspection (replaced a stock New York
+      // street scene that read as foreign for this audience).
+      url: '/images/brand/site-inspection-team.jpg',
       headline: ['Building the Future', 'Together'],
     },
   ];

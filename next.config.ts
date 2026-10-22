@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       { source: "/downtown-lagos", destination: "/estates/downtown-lagos", permanent: true },
       { source: "/eko-paragon-residence", destination: "/estates/eko-paragon-residence", permanent: true },
       { source: "/prime-annex", destination: "/estates/prime-annex", permanent: true },
+      { source: "/legacy-garden", destination: "/estates/legacy-garden-city", permanent: true },
 
       // --- Offerings renamed to the client's approved unit names ---
       { source: "/properties/villa-nova-3-bedroom-bungalow", destination: "/properties/villa-nova-bungalows", permanent: true },
@@ -20,7 +21,6 @@ const nextConfig: NextConfig = {
 
       // --- Discontinued/legacy estate pages: no new-site equivalent, send
       // to the current estate catalogue instead of 404 ---
-      { source: "/legacy-garden", destination: "/estates", permanent: true },
       { source: "/the-prime", destination: "/estates", permanent: true },
       { source: "/the-prime-2", destination: "/estates", permanent: true },
       { source: "/prestige", destination: "/estates", permanent: true },

@@ -217,6 +217,30 @@ export const fallbackEstates: Estate[] = [
     updatedAt: '2023-03-24T00:00:00.000Z',
   },
   {
+    // Added as a sold-out listing at Aceroyal's request (Oct 2026 feedback).
+    // Description only states facts already on the site: location (from the
+    // branded thumbnail) and the Phase 1 allocation day.
+    id: 'fallback-estate-legacy-garden-city',
+    name: 'The Legacy Garden City',
+    slug: 'legacy-garden-city',
+    description:
+      'The Legacy Garden City is a residential estate at Imota, Ikorodu, Lagos.\n\nAllocation for Phase 1 took place on August 10th, 2024, when landowners received their documents and walked their plots on site. The estate has now sold out.',
+    state: 'Lagos',
+    city: 'Imota, Ikorodu',
+    address: 'Imota, Ikorodu, Lagos',
+    coverImage: '/images/estates/thumbnails/legacy-garden-city.jpg',
+    brochureUrl: null,
+    gallery: [
+      '/images/gallery/allocation-day/legacy-garden-city-allocated.jpg',
+      '/images/gallery/allocation-day/legacy-garden-city-key.jpg',
+    ],
+    status: 'SOLD_OUT',
+    amenities: [],
+    offeringType: 'LAND',
+    createdAt: '2024-08-10T00:00:00.000Z',
+    updatedAt: '2024-08-10T00:00:00.000Z',
+  },
+  {
     id: 'fallback-estate-novena',
     name: 'Novena Estate Phase 2',
     slug: 'novena-estate-phase-2',
@@ -1004,7 +1028,7 @@ export const fallbackBlogPosts = [
     slug: 'metro-city-garden-price-increase-alert',
     excerpt: 'Metro City Garden’s price just jumped from ₦850,000 to ₦1,500,000. See the new pricing and what’s driving the Buy & Hold strategy.',
     content:
-      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nNow unto the good news. Metro City Garden price increase alert: from ₦850,000 to ₦1,500,000. This is so much good news to those who subscribed to the just concluded promo. See how your investment just appreciated in a blink.\n\nMetro City Garden now selling: 500sqm at ₦1,500,000, 300sqm at ₦1,000,000. Location: Itoikin, Epe. Landmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.\n\nFeatures: perimeter fencing, green areas, dry land, 24-hour power, water supply, drainage, and more. Title: Freehold/Registered Survey.\n\nMetro City Garden guarantees 100% ROI just as you can see now. Join a team of landowners today and experience peace of mind. For more information, contact our customer care lines: 09156549709, 08053605093.\n\n~ACE, building the future together.',
+      'The investment strategy called Buy & Hold. It’s a very strategic investment that mostly requires a little chunk of your money, resource, time, and above all, patience.\n\nResearch has shown that the Buy & Hold strategy is one outstanding way to triple your real estate portfolio if you have the patience.\n\nNow unto the good news. Metro City Garden price increase alert: from ₦850,000 to ₦1,500,000. This is so much good news to those who subscribed to the just concluded promo. See how your investment just appreciated in a blink.\n\nMetro City Garden now selling: 500sqm at ₦1,500,000, 300sqm at ₦1,000,000. Location: Itoikin, Epe. Landmarks: Lagos State Food Hub, District 1, Ajebo Grammar School, Isime Lagos.\n\nFeatures: perimeter fencing, green areas, dry land, 24-hour power, water supply, drainage, and more. Title: Freehold/Registered Survey.\n\nMetro City Garden guarantees 100% ROI just as you can see now. Join a team of landowners today and experience peace of mind. For more information, contact our customer care lines: +234 915 654 9709, +234 805 360 5093.\n\n~ACE, building the future together.',
     coverImageUrl: '/images/estates/metro-city-garden/metro-city-flyer.jpg',
     published: true,
     createdAt: '2023-03-24T00:00:00.000Z',
@@ -1028,7 +1052,7 @@ export const fallbackBlogPosts = [
     slug: 'goody-bag-promo',
     excerpt: 'Buy a plot at Novena Estate Phase 2 and get 100 bags of Dangote Cement free.',
     content:
-      'Promo! Promo!! Promo!!! AceRoyal got you covered.\n\nAceRoyal Estates Homes Ltd is known for the amazing promos they always make available to their clients. The Goody Bag Promo is the promo of the century. It’s the first of its kind. No other estate company does it better than ACEROYAL.\n\nWhen you buy 1 plot of land in Novena Estate Phase 2, you get 100 bags of Dangote Cement free of charge. With this, you can start fencing your land or start the foundation of your house in Novena Estate 2, Iraye, Epe.\n\nWe don’t just sell land to you, we also support your vision of becoming a homeowner.\n\nJump on this offer today by calling 09156549709 to book an inspection with us now!\n\nAceroyal: we are building the future together!',
+      'Promo! Promo!! Promo!!! AceRoyal got you covered.\n\nAceRoyal Estates Homes Ltd is known for the amazing promos they always make available to their clients. The Goody Bag Promo is the promo of the century. It’s the first of its kind. No other estate company does it better than ACEROYAL.\n\nWhen you buy 1 plot of land in Novena Estate Phase 2, you get 100 bags of Dangote Cement free of charge. With this, you can start fencing your land or start the foundation of your house in Novena Estate 2, Iraye, Epe.\n\nWe don’t just sell land to you, we also support your vision of becoming a homeowner.\n\nJump on this offer today by calling +234 915 654 9709 to book an inspection with us now!\n\nAceroyal: we are building the future together!',
     coverImageUrl: '/images/estates/novena-estate/novena-goody-bag-flyer.jpg',
     published: true,
     createdAt: '2022-10-17T00:00:00.000Z',
@@ -1052,7 +1076,7 @@ export const fallbackBlogPosts = [
     slug: 'estate-launch-la-regina-luxury-resort-and-novena-estate-phase-2',
     excerpt: 'AceRoyal officially launches La Regina Luxury Resort Estate (Ketu, Epe) and Novena Estate Phase 2 (Iraye, Epe).',
     content:
-      'You’re invited!\n\nAceRoyal Estates Homes Ltd invites the general public to the launching of her estates: La Regina Luxury Resort Estate, located at Ketu, Epe, and Novena Estate Phase 2, located at Iraye, Epe.\n\nWith Coach Spark Ovadje as the Chief Launcher and host of other co-launchers. If you know Coach Spark very well (Nigeria’s National Real Estate Coach), then you will know this is not an event to miss, because there is so much to learn and unlearn!\n\nThere are a lot of amazing things that will happen on that day. We will have a raffle draw where so many persons will have the opportunity of winning a free standing fan, an electric kettle, a LED TV, a mini-refrigerator, and lots more!\n\nBuses will be available at strategic locations to pick and drop you off.\n\nYou will have plenty to eat and drink.\n\nThe time remains 9 AM on Saturday, June 18th, 2022. See you on Saturday, and till then, please stay safe!\n\nCall/WhatsApp 09156549709 for further inquiries.',
+      'You’re invited!\n\nAceRoyal Estates Homes Ltd invites the general public to the launching of her estates: La Regina Luxury Resort Estate, located at Ketu, Epe, and Novena Estate Phase 2, located at Iraye, Epe.\n\nWith Coach Spark Ovadje as the Chief Launcher and host of other co-launchers. If you know Coach Spark very well (Nigeria’s National Real Estate Coach), then you will know this is not an event to miss, because there is so much to learn and unlearn!\n\nThere are a lot of amazing things that will happen on that day. We will have a raffle draw where so many persons will have the opportunity of winning a free standing fan, an electric kettle, a LED TV, a mini-refrigerator, and lots more!\n\nBuses will be available at strategic locations to pick and drop you off.\n\nYou will have plenty to eat and drink.\n\nThe time remains 9 AM on Saturday, June 18th, 2022. See you on Saturday, and till then, please stay safe!\n\nCall/WhatsApp +234 915 654 9709 for further inquiries.',
     coverImageUrl: '/images/blog/estate-launch/launch-invite-flyer.jpg',
     published: true,
     createdAt: '2022-06-17T00:00:00.000Z',
@@ -1519,7 +1543,7 @@ export const fallbackOffices = [
     state: 'Lagos',
     city: 'Ajah',
     address: 'KM 22 Lekki-Epe Expressway, By University View Estate, Opposite Lagos Business School, Ajah, Lagos, Nigeria.',
-    phones: ['02013300287', '09156549709'],
+    phones: ['+234 915 654 9709'],
     emails: ['customercare@aceroyalestates.com'],
     openingHours: 'Mon-Fri: 9am - 5pm',
   },
@@ -1531,7 +1555,7 @@ export const fallbackOffices = [
     state: 'Abuja',
     city: 'Gwarimpa',
     address: 'House A, 45 Road off Navy Quarters, By First Avenue, Gwarimpa, Abuja.',
-    phones: ['02013300287', '09156549709'],
+    phones: ['+234 802 764 0727'],
     emails: ['customercare@aceroyalestates.com'],
     openingHours: 'Mon-Fri: 9am - 5pm',
   },
@@ -1543,7 +1567,7 @@ export const fallbackOffices = [
     state: 'Edo',
     city: 'Benin City',
     address: 'No 2 New Lagos Road, Off 2nd Junction, by Akpakpava, Benin City.',
-    phones: ['02013300287', '09156549709'],
+    phones: ['+234 915 658 8738', '+234 916 112 4425'],
     emails: ['customercare@aceroyalestates.com'],
     openingHours: 'Mon-Fri: 9am - 5pm',
   },

@@ -202,7 +202,7 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
                         estate.status === 'SOLD_OUT'
-                          ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+                          ? 'bg-slate-200 text-slate-800 dark:bg-white/15 dark:text-white'
                           : 'bg-primary/10 text-primary'
                       }`}
                     >
@@ -216,10 +216,12 @@ export default async function EstateDetailPage({ params }: { params: Promise<{ s
                   )}
                   {/* Only Enquire sits up here with the status badge — the
                       rest of the CTAs stay in their original spot below the
-                      description. */}
-                  <Button size="sm" asChild>
-                    <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
-                  </Button>
+                      description. Hidden once an estate is sold out. */}
+                  {estate.status !== 'SOLD_OUT' && (
+                    <Button size="sm" asChild>
+                      <Link href={`/contact?estate=${estate.slug}&enquiry=PURCHASE`}>Enquire to Purchase</Link>
+                    </Button>
+                  )}
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">{estate.name}</h1>
                 <div className="flex items-center gap-2 text-muted-foreground">
