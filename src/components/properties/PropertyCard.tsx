@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Property } from '@/shared';
-import { MapPin, Bed, Bath, Square } from 'lucide-react';
+import { MapPin, Bed, Ruler } from 'lucide-react';
 import { propertyTypeLabel } from '@/lib/estate-offerings';
+import { formatPrice, optionPrices } from '@/lib/property-search';
 import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 
 interface PropertyCardProps {
@@ -15,13 +16,18 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ property, isNew = false, isFastSelling = false }: PropertyCardProps) {
-  const outrightPrices = property.variants
-    ?.filter((variant) => !variant.paymentType || variant.paymentType === 'OUTRIGHT')
-    .map((variant) => Number(variant.price))
-    .filter((price) => !Number.isNaN(price));
-  const minVariantPrice =
-    outrightPrices && outrightPrices.length > 0 ? Math.min(...outrightPrices) : null;
-  const displayPrice = minVariantPrice ?? Number(property.price);
+  const prices = optionPrices(property);
+  const displayPrice = Math.min(...prices);
+  const hasRange = new Set(prices).size > 1;
+
+  // Only facts the listing actually has: bedrooms for homes, plot sizes for
+  // land. (Land used to show blank '-' placeholders here.)
+  const variants = property.variants || [];
+  const beds = [...new Set([...variants.map((v) => Number(v.bedrooms)), Number(property.bedrooms)].filter((n) => n > 0))].sort((a, b) => a - b);
+  const sizes = [...new Set([...variants.map((v) => v.size), property.size].filter((x): x is string => Boolean(x)))];
+  const bedLabel =
+    beds.length === 0 ? null : beds.length === 1 ? `${beds[0]} bed` : `${beds[0]}–${beds[beds.length - 1]} bed`;
+  const sizeLabel = sizes.length === 0 ? null : sizes.slice(0, 2).join(' / ') + (sizes.length > 2 ? ' +' : '');
 
   return (
     <Card className="overflow-hidden group flex flex-col h-full">
@@ -59,7 +65,7 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
              </span>
            )}
          </div>
-         <h3 className="text-xl font-bold truncate" title={property.title}>{property.title}</h3>
+         <h3 className="text-lg font-bold leading-snug line-clamp-2" title={property.title}>{property.title}</h3>
          {property.estate?.name && (
            <p className="text-xs text-muted-foreground">{property.estate.name}</p>
          )}
@@ -70,14 +76,19 @@ export function PropertyCard({ property, isNew = false, isFastSelling = false }:
       </CardHeader>
       <CardContent className="p-4 pt-2 space-y-4 flex-grow">
         <div className="text-2xl font-bold text-primary">
-          {minVariantPrice !== null ? 'From ' : ''}
-          {property.currency} {displayPrice.toLocaleString()}
+          {hasRange && <span className="mr-1 text-sm font-medium text-muted-foreground">From</span>}
+          {formatPrice(displayPrice, property.currency)}
         </div>
-        <div className="flex justify-between text-sm text-slate-600 dark:text-slate-300 border-t dark:border-slate-800 pt-4">
-           <div className="flex items-center gap-1" title="Bedrooms"><Bed className="w-4 h-4"/> {property.bedrooms || '-'}</div>
-           <div className="flex items-center gap-1" title="Bathrooms"><Bath className="w-4 h-4"/> {property.bathrooms || '-'}</div>
-           <div className="flex items-center gap-1" title="Size"><Square className="w-4 h-4"/> {property.size || '-'}</div>
-        </div>
+        {(bedLabel || sizeLabel) && (
+          <div className="flex flex-wrap gap-x-5 gap-y-1 border-t pt-4 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300">
+            {bedLabel && (
+              <span className="flex items-center gap-1.5"><Bed className="h-4 w-4" /> {bedLabel}</span>
+            )}
+            {sizeLabel && (
+              <span className="flex items-center gap-1.5"><Ruler className="h-4 w-4" /> {sizeLabel}</span>
+            )}
+          </div>
+        )}
       </CardContent>
       <CardFooter className="p-4 pt-0">
          <Link href={`/properties/${property.slug}`} className="w-full">
