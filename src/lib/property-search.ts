@@ -11,7 +11,6 @@ export type SearchState = {
   estate: string; // '' = any, else estate slug
   budget: string; // '' = any, else a BUDGETS key
   beds: string; // '' = any, '1'..'3', or '4' meaning 4+
-  sold: boolean; // include sold-out listings
   sort: SortKey;
 };
 
@@ -24,7 +23,6 @@ export const EMPTY_SEARCH: SearchState = {
   estate: '',
   budget: '',
   beds: '',
-  sold: false,
   sort: 'recommended',
 };
 
@@ -94,7 +92,8 @@ export function isSoldOut(property: Property) {
 /** Every filter except the one named in `skip` — used to count what each
  * option would return, so options show live counts. */
 export function matches(property: Property, search: SearchState, skip?: keyof SearchState) {
-  if (skip !== 'sold' && !search.sold && isSoldOut(property)) return false;
+  // Sold-out listings are never part of search results.
+  if (isSoldOut(property)) return false;
   if (skip !== 'type' && search.type && property.type !== search.type) return false;
   if (skip !== 'state' && search.state && property.state !== search.state) return false;
   if (skip !== 'estate' && search.estate && property.estate?.slug !== search.estate) return false;
@@ -119,9 +118,6 @@ export function matches(property: Property, search: SearchState, skip?: keyof Se
 export function runSearch(properties: Property[], search: SearchState): Property[] {
   const results = properties.filter((p) => matches(p, search));
   return results.sort((a, b) => {
-    // Available listings always come before sold-out ones.
-    const soldDiff = Number(isSoldOut(a)) - Number(isSoldOut(b));
-    if (soldDiff !== 0) return soldDiff;
     if (search.sort === 'price_asc') return startingPrice(a) - startingPrice(b);
     if (search.sort === 'price_desc') return startingPrice(b) - startingPrice(a);
     return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
@@ -130,7 +126,7 @@ export function runSearch(properties: Property[], search: SearchState): Property
 
 /** Number of active filters (search text and sort don't count). */
 export function activeFilterCount(search: SearchState) {
-  return [search.type, search.state, search.estate, search.budget, search.beds].filter(Boolean).length + (search.sold ? 1 : 0);
+  return [search.type, search.state, search.estate, search.budget, search.beds].filter(Boolean).length;
 }
 
 const PARAM_KEYS: (keyof SearchState)[] = ['q', 'type', 'state', 'estate', 'budget', 'beds', 'sort'];
@@ -145,7 +141,6 @@ export function searchFromParams(params: URLSearchParams): SearchState {
     estate: params.get('estate') || params.get('estateSlug') || '',
     budget: params.get('budget') || '',
     beds: params.get('beds') || '',
-    sold: params.get('sold') === '1',
     sort: sort === 'price_asc' || sort === 'price_desc' ? sort : 'recommended',
   };
 }
@@ -156,7 +151,6 @@ export function searchToQuery(search: SearchState) {
     const value = search[key];
     if (typeof value === 'string' && value && !(key === 'sort' && value === 'recommended')) params.set(key, value);
   }
-  if (search.sold) params.set('sold', '1');
   const query = params.toString();
   return query ? `?${query}` : '';
 }

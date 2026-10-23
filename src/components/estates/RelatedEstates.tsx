@@ -12,7 +12,7 @@ import { EstateImageFallback } from '@/components/estates/EstateImageFallback';
 export async function RelatedEstates({ currentSlug, state }: { currentSlug: string; state: string }) {
   const data = await fetchAPI('/estates').catch(() => ({ items: [] }));
   const allEstates = data?.items || data || [];
-  const others = allEstates.filter((e: any) => e.slug !== currentSlug);
+  const others = allEstates.filter((e: any) => e.slug !== currentSlug && e.status !== 'SOLD_OUT');
 
   const sameState = others.filter((e: any) => e.state === state);
   const rest = others.filter((e: any) => e.state !== state);

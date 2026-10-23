@@ -79,7 +79,12 @@ export default function EstatesClient() {
         }
         return true;
       })
-      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      // Estates still selling first (newest first), sold-out ones at the bottom.
+      .sort(
+        (a, b) =>
+          Number(a.status === 'SOLD_OUT') - Number(b.status === 'SOLD_OUT') ||
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
   }, [estates, search, state, status, offering, estateOfferingTypes]);
 
   const hasActiveFilters = Boolean(search) || state !== 'ALL' || status !== 'ALL' || offering !== 'ALL';

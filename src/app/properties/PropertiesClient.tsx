@@ -23,7 +23,6 @@ import {
 } from '@/lib/property-search';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
@@ -72,10 +71,6 @@ export default function PropertiesClient() {
 
   const results = useMemo(() => runSearch(properties, search), [properties, search]);
   const filterCount = activeFilterCount(search);
-  const hiddenSoldCount = useMemo(
-    () => (search.sold ? 0 : properties.filter((p) => isSoldOut(p) && matches(p, { ...search, sold: true })).length),
-    [properties, search]
-  );
 
   const resultLabel = `${results.length} ${results.length === 1 ? 'offering' : 'offerings'}`;
 
@@ -183,21 +178,7 @@ export default function PropertiesClient() {
               ))}
             </div>
           ) : (
-            <EmptyState
-              query={search.q.trim()}
-              hiddenSoldCount={hiddenSoldCount}
-              onShowSold={() => update('sold', true)}
-              onClearAll={clearAll}
-            />
-          )}
-
-          {results.length > 0 && hiddenSoldCount > 0 && (
-            <p className="mt-8 text-center text-sm text-muted-foreground">
-              {hiddenSoldCount} sold-out {hiddenSoldCount === 1 ? 'offering is' : 'offerings are'} hidden.{' '}
-              <button type="button" onClick={() => update('sold', true)} className="font-medium text-primary hover:underline">
-                Show them
-              </button>
-            </p>
+            <EmptyState query={search.q.trim()} onClearAll={clearAll} />
           )}
         </section>
       </div>
@@ -313,13 +294,13 @@ function FilterGroup({ title, children }: { title: string; children: ReactNode }
 function FilterPanel({ properties, search, update }: { properties: Property[]; search: SearchState; update: Update }) {
   const states = useMemo(() => {
     const seen = new Map<string, number>();
-    properties.forEach((p) => seen.set(p.state, (seen.get(p.state) || 0) + 1));
+    properties.forEach((p) => !isSoldOut(p) && seen.set(p.state, (seen.get(p.state) || 0) + 1));
     return [...seen.entries()].sort((a, b) => b[1] - a[1]).map(([s]) => s);
   }, [properties]);
 
   const estates = useMemo(() => {
     const seen = new Map<string, string>();
-    properties.forEach((p) => p.estate?.slug && seen.set(p.estate.slug, p.estate.name));
+    properties.forEach((p) => !isSoldOut(p) && p.estate?.slug && seen.set(p.estate.slug, p.estate.name));
     return [...seen.entries()].sort((a, b) => a[1].localeCompare(b[1]));
   }, [properties]);
 
@@ -402,13 +383,6 @@ function FilterPanel({ properties, search, update }: { properties: Property[]; s
           </SelectContent>
         </Select>
       </FilterGroup>
-
-      <div className="flex items-center justify-between gap-4 pt-5">
-        <label htmlFor="include-sold" className="text-sm font-semibold">
-          Include sold out
-        </label>
-        <Switch id="include-sold" checked={search.sold} onCheckedChange={(checked) => update('sold', checked)} />
-      </div>
     </div>
   );
 }
@@ -432,7 +406,6 @@ function ActiveFilters({
   if (search.budget) chips.push({ key: 'budget', label: BUDGETS.find((b) => b.value === search.budget)?.label || '', reset: '' });
   if (search.beds) chips.push({ key: 'beds', label: BEDROOMS.find((b) => b.value === search.beds)?.label || '', reset: '' });
   if (search.estate) chips.push({ key: 'estate', label: estateName || search.estate, reset: '' });
-  if (search.sold) chips.push({ key: 'sold', label: 'Including sold out', reset: false });
   if (chips.length === 0) return null;
 
   return (
@@ -456,17 +429,7 @@ function ActiveFilters({
   );
 }
 
-function EmptyState({
-  query,
-  hiddenSoldCount,
-  onShowSold,
-  onClearAll,
-}: {
-  query: string;
-  hiddenSoldCount: number;
-  onShowSold: () => void;
-  onClearAll: () => void;
-}) {
+function EmptyState({ query, onClearAll }: { query: string; onClearAll: () => void }) {
   return (
     <div className="mt-6 rounded-2xl border border-dashed bg-white px-6 py-16 text-center dark:bg-slate-900 dark:border-slate-800">
       <SearchX className="mx-auto h-10 w-10 text-muted-foreground" />
@@ -477,11 +440,6 @@ function EmptyState({
         Try a different word, such as an estate name or city, or loosen a filter.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
-        {hiddenSoldCount > 0 && (
-          <Button variant="outline" onClick={onShowSold}>
-            Include {hiddenSoldCount} sold out
-          </Button>
-        )}
         <Button onClick={onClearAll}>Clear search and filters</Button>
       </div>
     </div>

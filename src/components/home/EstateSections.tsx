@@ -8,5 +8,6 @@ import FeaturedEstates from '@/components/home/FeaturedEstates';
 // properties list — confirmed as the intended data source per Daniel,
 // after a few property-based experiments here were tried and reverted.
 export default function EstateSections() {
-  return <FeaturedEstates estates={fallbackEstates} />;
+  // Sold-out estates stay on /estates but aren't promoted here.
+  return <FeaturedEstates estates={fallbackEstates.filter((estate) => estate.status !== 'SOLD_OUT')} />;
 }

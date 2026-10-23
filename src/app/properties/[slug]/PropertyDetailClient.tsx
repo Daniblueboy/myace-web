@@ -18,6 +18,7 @@ import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { AdaptiveVideoPlayer } from '@/components/media/AdaptiveVideoPlayer';
 import { propertyTypeLabel } from '@/lib/estate-offerings';
+import { isSoldOut } from '@/lib/property-search';
 
 // Dynamically import map to avoid SSR issues with Leaflet
 const PropertyMap = dynamic(() => import('@/components/properties/PropertyMap'), {
@@ -124,10 +125,11 @@ export default function PropertyDetailClient() {
 
   useEffect(() => {
     if (!property?.state) return;
-    fetchAPI(`/properties?state=${encodeURIComponent(property.state)}&take=3`)
+    fetchAPI(`/properties?state=${encodeURIComponent(property.state)}&take=24`)
       .then((data) => {
-        const filtered = data.filter((item: Property) => item.id !== property.id);
-        setRelated(filtered);
+        // Never cross-sell a sold-out listing.
+        const filtered = data.filter((item: Property) => item.id !== property.id && !isSoldOut(item));
+        setRelated(filtered.slice(0, 3));
       })
       .catch(() => setRelated([]));
   }, [property]);
